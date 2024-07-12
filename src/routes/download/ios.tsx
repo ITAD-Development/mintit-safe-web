@@ -5,7 +5,12 @@ import { Button } from "../../components/Button";
 export const Ios: React.FC = () => {
   return (
     <>
-      <Button title="IOS 버전 다운로드" />
+      <div className="px-6">
+        <Button
+          icon={<img src="/images/download/ios-download.svg" />}
+          title="IOS 버전 다운로드"
+        />
+      </div>
       <Outlet />
     </>
   );

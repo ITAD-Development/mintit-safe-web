@@ -6,26 +6,35 @@ type Props = {
 };
 const TabMenu: React.FC<Props> = ({ activeIndex }) => {
   return (
-    <div className="flex  border-gray-300">
-      <div
-        className={`flex justify-center py-2 px-4 flex-1  text-gray-600 ${
-          activeIndex === 0 ? "border-b-4 border-blue-300" : ""
-        }`}
+    <div className="flex pt-[18px] mt-12">
+      <Link
+        to="../installation"
+        replace
+        className="flex-1 flex-col items-center gap-1.5 flex"
       >
-        <Link to="../installation" replace>
+        <div className="text-center text-black text-sm font-extrabold leading-[18px]">
           설치방법
-        </Link>
-      </div>
-
-      <div
-        className={`flex justify-center py-2 px-4 flex-1 text-gray-600 ${
-          activeIndex === 1 ? "border-b-4 border-blue-300" : ""
-        }`}
+        </div>
+        {activeIndex === 0 ? (
+          <div className="self-stretch h-0.5 bg-black" />
+        ) : (
+          <div className="self-stretch h-0.5 bg-zinc-100" />
+        )}
+      </Link>
+      <Link
+        to="../caution"
+        replace
+        className="flex-1 flex-col items-center gap-1.5 flex"
       >
-        <Link to="../caution" replace>
+        <div className="text-center text-zinc-400 text-sm font-extrabold leading-[18px]">
           주의사항
-        </Link>
-      </div>
+        </div>
+        {activeIndex === 1 ? (
+          <div className="self-stretch h-0.5 bg-black" />
+        ) : (
+          <div className="self-stretch h-0.5 bg-zinc-100" />
+        )}
+      </Link>
     </div>
   );
 };

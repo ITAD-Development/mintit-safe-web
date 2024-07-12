@@ -6,7 +6,7 @@ type Props = {
   title?: ReactNode | string;
   headerDescription?: ReactNode | string;
   footerDescription?: ReactNode | string;
-  imageSrc?: string;
+  body?: ReactNode;
 };
 
 const InstallStep: FC<Props> = ({
@@ -14,22 +14,32 @@ const InstallStep: FC<Props> = ({
   title,
   headerDescription,
   footerDescription,
-  imageSrc,
+  body,
 }) => {
   return (
-    <div className="mb-8">
-      <h3 className="text-sm text-blue-500 font-semibold mb-2">STEP 0{step}</h3>
-      {typeof title === "string" && (
-        <p className="text-gray-700 mb-4">{title}</p>
-      )}
-      {typeof title !== "string" && title}
+    <div>
+      <div className="flex mb-[16px] items-center">
+        <div className="w-12 mr-2.5 text-teal-400 text-[11px] font-extrabold leading-[14px]">
+          STEP {step}
+        </div>
+        {typeof title === "string" && (
+          <div className=" text-zinc-800 text-base font-extrabold leading-tight">
+            {title}
+          </div>
+        )}
+        {typeof title !== "string" && <div className="flex-1">{title}</div>}
+      </div>
       {typeof headerDescription === "string" && (
-        <p className="text-md text-gray-400 mb-4">{nl2br(headerDescription)}</p>
+        <div className="text-zinc-500 text-xs font-normal leading-none">
+          {nl2br(headerDescription)}
+        </div>
       )}
       {typeof headerDescription !== "string" && headerDescription}
-      <img src={imageSrc} alt="Profile Installation" className="mb-4 w-full" />
+      {body && <div className="flex felx-col justify-center">{body}</div>}
       {typeof footerDescription === "string" && (
-        <p className="text-md text-gray-400">{nl2br(footerDescription)}</p>
+        <div className="text-zinc-500 text-xs font-normal leading-4 mt-2">
+          {nl2br(footerDescription)}
+        </div>
       )}
       {typeof footerDescription !== "string" && footerDescription}
     </div>

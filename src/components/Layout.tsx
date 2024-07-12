@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import usePopupStore from "../stores/usePopupStore";
 import CertificationPopup from "./CertificatePopup";
 import Footer from "./Footer";
-import HamburgerMenu from "./HamburgerMenu";
 import PrivacyPopup from "./PrivacyPopup";
 import TermsPopup from "./TermsPopup";
 
@@ -20,11 +19,28 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
 
   return (
     <div className="h-screen justify-center flex">
-      <div className="flex flex-col h-full w-full md:w-desktop relative overflow-hidden">
-        <header className="flex justify-between items-center p-4 bg-gray-100 shadow-md">
-          <h1 className="text-xl font-bold">My App</h1>
-          <HamburgerMenu
-            onHambuger={() => {
+      <div className="sm:w-[420px] min-w-[360px] flex flex-col h-full relative overflow-hidden">
+        <div className="flex justify-between items-center px-6 py-[15px] border-b	 ">
+          <div className="flex gap-2 items-center">
+            <img
+              src="/square-logo.svg"
+              className="w-[28px] h-[28px] rounded-sm"
+            />
+            <div className="text-zinc-800 text-sm font-normal leading-[18px]">
+              민팃세이프 앱으로 편하게
+            </div>
+          </div>
+          <div className="h-[26px] px-4 py-1 bg-white rounded-[97px] border border-zinc-800 justify-center items-center gap-2.5 inline-flex">
+            <div className="text-zinc-800 text-sm font-normal leading-[18px]">
+              앱 다운로드
+            </div>
+          </div>
+        </div>
+        <header className="flex justify-between items-center px-6 py-[10px] border-b	 ">
+          <img src="/square-logo.svg" />
+          <img
+            src="/hamburgur.svg"
+            onClick={() => {
               setIsOpen(!isOpen);
             }}
           />
@@ -39,7 +55,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
 
         {/* Side menu */}
         <div
-          className={`absolute top-0 right-0 w-4/5 h-full bg-white shadow-lg transform transition-transform z-50 ${
+          className={`absolute top-0 right-0 w-4/5 h-full bg-white transform transition-transform z-50 ${
             isOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
@@ -63,7 +79,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
                 </Link>
               </li>
               <li className="mb-4">
-                <Link to="/download" className="text-gray-800">
+                <Link to="/download/aos" className="text-gray-800">
                   MINTIT safe Download
                 </Link>
               </li>
@@ -76,7 +92,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
           </nav>
         </div>
         <div className="flex-1 h-full no-scrollbar overflow-y-scroll">
-          <main className={`p-4 pt-10 pb-10 ${className}`}>{children}</main>
+          <main className={`${className}`}>{children}</main>
           <Footer />
         </div>
         {isOpenTerms && <TermsPopup />}

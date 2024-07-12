@@ -1,49 +1,45 @@
 import React from "react";
-import usePopupStore from "../stores/usePopupStore";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-gray-100 text-gray-800 p-6 text-sm">
-      <div>
-        <div className="flex justify-between items-center mb-4">
-          <img src="logo.png" alt="MINTIT" className="h-8" />
-          <div className="space-x-4">
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              <i className="fab fa-youtube"></i>
-            </a>
-            <a href="#" className="text-gray-600 hover:text-gray-900">
-              <i className="fab fa-instagram"></i>
-            </a>
+    <footer className="w-full px-6 py-10 bg-neutral-100">
+      <div className="flex justify-between items-center mb-[22px]">
+        <img src="/logo.svg" />
+        <div className="flex gap-[10px]">
+          <img src="/youtube.svg" />
+          <img src="/instagram.svg" />
+        </div>
+      </div>
+      <div className="grow shrink basis-0 flex-col justify-start items-start gap-4 inline-flex">
+        <div className="self-stretch flex-col justify-start items-start gap-[22px] flex">
+          <div className="justify-start items-center gap-2 inline-flex">
+            <div className="text-zinc-800 text-sm font-bold font-['SUIT'] leading-[18px]">
+              이용약관
+            </div>
+            <div className="w-px h-2.5 bg-neutral-300" />
+            <div className="text-zinc-800 text-sm font-bold font-['SUIT'] leading-[18px]">
+              개인정보처리방침
+            </div>
+          </div>
+          <div className="flex-col justify-start items-start gap-2 flex">
+            <div className="text-zinc-600 text-xs font-normal font-['SUIT'] leading-none">
+              평일 9:00-18:00, 점심 12:00-13:00, 주말 및 공휴일 휴무
+            </div>
           </div>
         </div>
-        <div className="flex justify-between mb-4">
-          <a
-            onClick={() => {
-              usePopupStore.getState().openTerms();
-            }}
-            className="hover:underline"
-          >
-            이용약관
-          </a>
-          <a
-            onClick={() => {
-              usePopupStore.getState().openPrivacy();
-            }}
-            className="hover:underline"
-          >
-            개인정보 처리방침
-          </a>
+        <div className="text-zinc-600 text-sm font-normal font-['SUIT'] leading-normal">
+          대표자 : 하성문
+          <br />
+          사업자번호 : 137-81-49755
+          <br />
+          통신판매번호 : 제 2005-51호
+          <br />
+          개인정보관리책임자 : 성미라
+          <br />
+          서울특별시 마포구 성암로 189 중소기업 DMC타워 16층
         </div>
-        <div className="space-y-2">
-          <p>평일 9:00-18:00, 점심 12:00-13:00, 주말 및 공휴일 휴무</p>
-          <p>대표자: 하성문</p>
-          <p>사업자번호: 137-81-49755</p>
-          <p>통신판매번호: 제 2005-51호</p>
-          <p>개인정보관리책임자: 성미라</p>
-          <p>서울특별시 마포구 성암로 189 중소기업 DMC타워 16층</p>
-        </div>
-        <div className="mt-4 text-gray-500">
-          © 2024 MINTIT. All rights reserved
+        <div className="text-zinc-500 text-xs font-normal font-['SUIT'] leading-none">
+          ⓒ 2024 MINTIT. All rights reserved
         </div>
       </div>
     </footer>
