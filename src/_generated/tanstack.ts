@@ -1,7 +1,6 @@
-
-import axiosClient from '@libs/axiosClient';
-import { useQuery, useMutation, QueryOptions } from '@tanstack/react-query';
-import { AxiosRequestConfig } from 'axios';
+import axiosClient from "@libs/axiosClient";
+import { QueryOptions, useMutation, useQuery } from "@tanstack/react-query";
+import { AxiosRequestConfig } from "axios";
 const isLoading: {
   [key: string]: boolean;
 } = {};
@@ -9,19 +8,16 @@ const isLoading: {
 const apiResponseCache: {
   [key: string]: any;
 } = {};
-      
 
 export type PurchaseReqUpdate = {
   // 매입 아이디
   id?: number;
 };
 
-
 export type PurchaseResId = {
   // 매입 아이디
   id?: number;
 };
-
 
 export type CommonResponsePurchaseResId = {
   code?: string;
@@ -31,9 +27,7 @@ export type CommonResponsePurchaseResId = {
   data?: PurchaseResId;
 };
 
-
 export type PurchaseRewardReqUpdate = {};
-
 
 export type CommonResponseObject = {
   code?: string;
@@ -42,7 +36,6 @@ export type CommonResponseObject = {
 
   data?: any;
 };
-
 
 export type PurchasePricePolicyReqUpdate = {
   // 적용 시작 일자
@@ -61,7 +54,6 @@ export type PurchasePricePolicyReqUpdate = {
   deviceTypeCode?: string;
 };
 
-
 export type PurchaseDeviceModelReqUpdate = {
   // 디바이스 모델 아이디
   deviceModelId?: number;
@@ -72,7 +64,6 @@ export type PurchaseDeviceModelReqUpdate = {
   // A : Activated / D : Deleted
   status?: string;
 };
-
 
 export type PurchaseDeviceModelGradePriceReqUpdate = {
   // 매입 디바이스 모델 아이디
@@ -93,7 +84,6 @@ export type PurchaseDeviceModelGradePriceReqUpdate = {
   // 통화코드
   currencyCode?: string;
 };
-
 
 export type PartnerReqUpdateForManage = {
   // 이름
@@ -154,7 +144,6 @@ export type PartnerReqUpdateForManage = {
   deletePartnerFileIds?: number[];
 };
 
-
 export type PartnerReqUpdateForManagePartnerFile = {
   // S3 파일 아이디
   fileId: string;
@@ -163,12 +152,10 @@ export type PartnerReqUpdateForManagePartnerFile = {
   partnerFileTypeCode: string;
 };
 
-
 export type PartnerResId = {
   // 파트너 아이디
   id?: number;
 };
-
 
 export type CommonResponsePartnerResId = {
   code?: string;
@@ -177,7 +164,6 @@ export type CommonResponsePartnerResId = {
 
   data?: PartnerResId;
 };
-
 
 export type PartnerMemberBankAccountReqUpdate = {
   // 파트너 멤버 은행 계좌 아이디
@@ -196,7 +182,6 @@ export type PartnerMemberBankAccountReqUpdate = {
   bankAccountConfirmStatus?: string;
 };
 
-
 export type PartnerMemberReqCreatePartnerMemberFile = {
   // S3 파일 아이디
   fileId: string;
@@ -204,7 +189,6 @@ export type PartnerMemberReqCreatePartnerMemberFile = {
   // 파트너 파일 멤버 타입
   partnerMemberFileTypeCode: string;
 };
-
 
 export type PartnerMemberReqUpdateForManage = {
   // (Encryped) 이름
@@ -240,12 +224,10 @@ export type PartnerMemberReqUpdateForManage = {
   deletePartnerMemberFileIds?: number[];
 };
 
-
 export type PartnerMemberResId = {
   // 파트너 멤버 아이디
   id?: number;
 };
-
 
 export type CommonResponsePartnerMemberResId = {
   code?: string;
@@ -255,18 +237,15 @@ export type CommonResponsePartnerMemberResId = {
   data?: PartnerMemberResId;
 };
 
-
 export type PartnerMemberReqUpdateForInvite = {
   // 관한 유형
   administratorRoles: number;
 };
 
-
 export type PartnerMemberReqUpdateForInviteAccept = {
   // 로그인 패스워드
   loginPassword: string;
 };
-
 
 export type BranchReqCreateBranchFile = {
   // S3 파일 아이디
@@ -275,7 +254,6 @@ export type BranchReqCreateBranchFile = {
   // 브랜치 파일 타입
   branchFileTypeCode: string;
 };
-
 
 export type BranchReqUpdate = {
   // 이름
@@ -333,12 +311,10 @@ export type BranchReqUpdate = {
   deleteBranchFileIds?: number[];
 };
 
-
 export type BranchResId = {
   // 지점 아이디
   id?: number;
 };
-
 
 export type CommonResponseBranchResId = {
   code?: string;
@@ -348,18 +324,15 @@ export type CommonResponseBranchResId = {
   data?: BranchResId;
 };
 
-
 export type InspectionReqUpdate = {
   // 외관 검사 아이디
   id?: number;
 };
 
-
 export type InspectionResId = {
   // 외관 검사 아이디
   id?: number;
 };
-
 
 export type CommonResponseInspectionResId = {
   code?: string;
@@ -369,18 +342,14 @@ export type CommonResponseInspectionResId = {
   data?: InspectionResId;
 };
 
-
 export type InspectionProfileReqUpdate = {};
 
-
 export type DeviceDeletionReqUpdate = {};
-
 
 export type DeviceDeletionResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceDeletionResId = {
   code?: string;
@@ -390,18 +359,15 @@ export type CommonResponseDeviceDeletionResId = {
   data?: DeviceDeletionResId;
 };
 
-
 export type DeviceReqUpdate = {
   // 상태
   status?: string;
 };
 
-
 export type DeviceResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceResId = {
   code?: string;
@@ -410,7 +376,6 @@ export type CommonResponseDeviceResId = {
 
   data?: DeviceResId;
 };
-
 
 export type DeviceSeriesReqUpdate = {
   // 시리즈 이름
@@ -435,12 +400,10 @@ export type DeviceSeriesReqUpdate = {
   status?: string;
 };
 
-
 export type DeviceSeriesResId = {
   // 시리즈 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceSeriesResId = {
   code?: string;
@@ -449,7 +412,6 @@ export type CommonResponseDeviceSeriesResId = {
 
   data?: DeviceSeriesResId;
 };
-
 
 export type DeviceModelReqUpdate = {
   // 모델 번호 ( e.g., SM-S908-1T)
@@ -546,12 +508,10 @@ export type DeviceModelReqUpdate = {
   status?: string;
 };
 
-
 export type DeviceModelResId = {
   // 모델 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceModelResId = {
   code?: string;
@@ -560,7 +520,6 @@ export type CommonResponseDeviceModelResId = {
 
   data?: DeviceModelResId;
 };
-
 
 export type DeviceManufactureReqUpdate = {
   // 제조사 이름
@@ -579,12 +538,10 @@ export type DeviceManufactureReqUpdate = {
   status?: string;
 };
 
-
 export type DeviceManufactureResId = {
   // 디바이스 유형 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceManufactureResId = {
   code?: string;
@@ -593,7 +550,6 @@ export type CommonResponseDeviceManufactureResId = {
 
   data?: DeviceManufactureResId;
 };
-
 
 export type DeviceManufactureTypeReqUpdate = {
   // 디바이스 제조사 아이디
@@ -606,12 +562,10 @@ export type DeviceManufactureTypeReqUpdate = {
   status?: string;
 };
 
-
 export type DeviceManufactureTypeResId = {
   // 디바이스 유형 아이디
   id?: number;
 };
-
 
 export type CommonResponseDeviceManufactureTypeResId = {
   code?: string;
@@ -621,15 +575,12 @@ export type CommonResponseDeviceManufactureTypeResId = {
   data?: DeviceManufactureTypeResId;
 };
 
-
 export type TermsAgreementReqUpdate = {};
-
 
 export type TermsAgreementResId = {
   // 약관 동의 아이디
   id?: string;
 };
-
 
 export type CommonResponseTermsAgreementResId = {
   code?: string;
@@ -639,15 +590,12 @@ export type CommonResponseTermsAgreementResId = {
   data?: TermsAgreementResId;
 };
 
-
 export type EventApplicationReqUpdate = {};
-
 
 export type EventApplicationResId = {
   // 약관 동의 아이디
   id?: number;
 };
-
 
 export type CommonResponseEventApplicationResId = {
   code?: string;
@@ -656,7 +604,6 @@ export type CommonResponseEventApplicationResId = {
 
   data?: EventApplicationResId;
 };
-
 
 export type TermsReqUpdate = {
   // 이름
@@ -681,12 +628,10 @@ export type TermsReqUpdate = {
   status?: string;
 };
 
-
 export type TermsResId = {
   // 국가 아이디
   id?: string;
 };
-
 
 export type CommonResponseTermsResId = {
   code?: string;
@@ -695,7 +640,6 @@ export type CommonResponseTermsResId = {
 
   data?: TermsResId;
 };
-
 
 export type TermsContentReqUpdate = {
   // 약관 내용
@@ -708,12 +652,10 @@ export type TermsContentReqUpdate = {
   executionAt?: Date;
 };
 
-
 export type TermsContentResId = {
   // 약관 내용 아이디
   id?: number;
 };
-
 
 export type CommonResponseTermsContentResId = {
   code?: string;
@@ -723,15 +665,12 @@ export type CommonResponseTermsContentResId = {
   data?: TermsContentResId;
 };
 
-
 export type SigunguReqUpdate = {};
-
 
 export type SigunguResId = {
   // 법정동 코드
   code?: string;
 };
-
 
 export type CommonResponseSigunguResId = {
   code?: string;
@@ -741,9 +680,7 @@ export type CommonResponseSigunguResId = {
   data?: SigunguResId;
 };
 
-
 export type ServiceSeviceReqUpdate = {};
-
 
 export type MenuReqUpdate = {
   // 메뉴명
@@ -765,12 +702,10 @@ export type MenuReqUpdate = {
   roles?: number;
 };
 
-
 export type MenuResId = {
   // 페이지 아이디
   id?: number;
 };
-
 
 export type CommonResponseMenuResId = {
   code?: string;
@@ -779,7 +714,6 @@ export type CommonResponseMenuResId = {
 
   data?: MenuResId;
 };
-
 
 export type MenuButtonReqUpdate = {
   // 버튼 설명
@@ -798,12 +732,10 @@ export type MenuButtonReqUpdate = {
   roles?: number;
 };
 
-
 export type MenuButtonResId = {
   // 페이지 버튼 아이디
   id?: number;
 };
-
 
 export type CommonResponseMenuButtonResId = {
   code?: string;
@@ -812,7 +744,6 @@ export type CommonResponseMenuButtonResId = {
 
   data?: MenuButtonResId;
 };
-
 
 export type EventFileReqUpdate = {
   // 이벤트 파일 유형 코드
@@ -824,7 +755,6 @@ export type EventFileReqUpdate = {
   // 노출 순서
   displayNumber: number;
 };
-
 
 export type EventReqUpdateForManage = {
   // 이름
@@ -864,12 +794,10 @@ export type EventReqUpdateForManage = {
   deleteEventFileIds?: number[];
 };
 
-
 export type EventResId = {
   // 이벤트 아이디
   id?: string;
 };
-
 
 export type CommonResponseEventResId = {
   code?: string;
@@ -878,7 +806,6 @@ export type CommonResponseEventResId = {
 
   data?: EventResId;
 };
-
 
 export type EventTermsReqUpdate = {
   // 이벤트 아이디
@@ -893,7 +820,6 @@ export type EventTermsReqUpdate = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type EventBenefitReqUpdate = {
   // 이벤트 아이디
@@ -911,7 +837,6 @@ export type EventBenefitReqUpdate = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type CouponPolicyReqUpdate = {
   // 이름
@@ -960,18 +885,15 @@ export type CouponPolicyReqUpdate = {
   status?: string;
 };
 
-
 export type ContentDisplayReqUpdate = {
   // 배너 아이디
   id?: number;
 };
 
-
 export type ContentDisplayResId = {
   // 배너 아이디
   id?: number;
 };
-
 
 export type CommonResponseContentDisplayResId = {
   code?: string;
@@ -980,7 +902,6 @@ export type CommonResponseContentDisplayResId = {
 
   data?: ContentDisplayResId;
 };
-
 
 export type CommonCodeReqUpdate = {
   // 공통 코드 이름
@@ -1008,7 +929,6 @@ export type CommonCodeReqUpdate = {
   commonCodeName?: string;
 };
 
-
 export type CommonCodeReqUpdateForOrder = {
   // 공통코드 아이디
   id: string;
@@ -1017,7 +937,6 @@ export type CommonCodeReqUpdateForOrder = {
   displayNumber: number;
 };
 
-
 export type CommonCodeTypeReqUpdate = {
   // 공통 코드 유형 이름
   name?: string;
@@ -1025,7 +944,6 @@ export type CommonCodeTypeReqUpdate = {
   // 공통 코드 유형 설명
   description?: string;
 };
-
 
 export type ApiReqUpdate = {
   // API 이름
@@ -1044,12 +962,10 @@ export type ApiReqUpdate = {
   roles?: number;
 };
 
-
 export type ApiResId = {
   // API 아이디
   id?: number;
 };
-
 
 export type CommonResponseApiResId = {
   code?: string;
@@ -1059,15 +975,12 @@ export type CommonResponseApiResId = {
   data?: ApiResId;
 };
 
-
 export type AtmReqUpdateForRecoveryComplete = {};
-
 
 export type AtmResId = {
   // ATM 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmResId = {
   code?: string;
@@ -1077,7 +990,6 @@ export type CommonResponseAtmResId = {
   data?: AtmResId;
 };
 
-
 export type AtmReqUpdateForComponentVersionUpdate = {
   // 구성요소 코드
   atmComponentCode: string;
@@ -1085,7 +997,6 @@ export type AtmReqUpdateForComponentVersionUpdate = {
   // S/W 버전
   atmComponentVersion: string;
 };
-
 
 export type AtmComponentResItem = {
   // ATM 구성 요소 아이디
@@ -1121,7 +1032,6 @@ export type AtmComponentResItem = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type AtmMaintenanceRequestCategoryResItem = {
   // ATM 점검 요청 분류 아이디
@@ -1162,7 +1072,6 @@ export type AtmMaintenanceRequestCategoryResItem = {
   updatorName?: string;
 };
 
-
 export type AtmMaintenanceRequestResItem = {
   // 아이디
   id?: number;
@@ -1181,7 +1090,6 @@ export type AtmMaintenanceRequestResItem = {
 
   atmMaintenanceRequestCategory?: AtmMaintenanceRequestCategoryResItem;
 };
-
 
 export type AtmMaintenanceResItem = {
   // 아이디
@@ -1239,7 +1147,6 @@ export type AtmMaintenanceResItem = {
 
   updatorName?: string;
 };
-
 
 export type AtmResItem = {
   // ATM 아이디
@@ -1370,7 +1277,6 @@ export type AtmResItem = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmResItem = {
   code?: string;
 
@@ -1379,12 +1285,9 @@ export type CommonResponseAtmResItem = {
   data?: AtmResItem;
 };
 
-
 export type AtmMaintenanceReqUpdateForCollectorComplate = {};
 
-
 export type AtmMaintenanceReqUpdateForCollectorLogin = {};
-
 
 export type AtmCollectionReqUpdate = {
   // (수거) 파트너 아이디
@@ -1403,12 +1306,10 @@ export type AtmCollectionReqUpdate = {
   fileId?: string;
 };
 
-
 export type AtmCollectionResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmCollectionResId = {
   code?: string;
@@ -1418,7 +1319,6 @@ export type CommonResponseAtmCollectionResId = {
   data?: AtmCollectionResId;
 };
 
-
 export type AtmCollectionReqUpdateForQuantityCollected = {
   // 수거 수량
   quantityCollected?: number;
@@ -1426,7 +1326,6 @@ export type AtmCollectionReqUpdateForQuantityCollected = {
   // 디바이스 아이디
   deviceIds?: number[];
 };
-
 
 export type AtmReqUpdate = {
   // ATM 이름
@@ -1529,7 +1428,6 @@ export type AtmReqUpdate = {
   atmComponents?: AtmReqUpdateAtmComponent[];
 };
 
-
 export type AtmReqUpdateAtmComponent = {
   // ATM 구성 요소 아이디
   id?: number;
@@ -1553,33 +1451,23 @@ export type AtmReqUpdateAtmComponent = {
   status: string;
 };
 
-
 export type AtmReqUpdateForWithdrawal = {};
-
 
 export type AtmReqUpdateForWithdrawalRequest = {};
 
-
 export type AtmReqUpdateForReplacement = {};
-
 
 export type AtmReqUpdateForReplacementRequest = {};
 
-
 export type AtmReqUpdateForRepairComplete = {};
-
 
 export type AtmReqUpdateForOperating = {};
 
-
 export type AtmReqUpdateForInstallRequest = {};
-
 
 export type AtmReqUpdateForInstallComplate = {};
 
-
 export type AtmReqUpdateForDelete = {};
-
 
 export type AtmTypeComponentReqUpdateForOrder = {
   // ATM 유형 별 구성 요소 아이디
@@ -1589,15 +1477,12 @@ export type AtmTypeComponentReqUpdateForOrder = {
   displayNumber: number;
 };
 
-
 export type AtmStatusReqUpdate = {};
-
 
 export type AtmStatusResId = {
   // ATM 상태 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmStatusResId = {
   code?: string;
@@ -1606,7 +1491,6 @@ export type CommonResponseAtmStatusResId = {
 
   data?: AtmStatusResId;
 };
-
 
 export type AtmMaintenanceReqUpdate = {
   // (ATM 점거 가이드에 따른) ATM 점검 결과 OAM을 통한 원격 점검 내역 등록시 생략 가능
@@ -1622,7 +1506,6 @@ export type AtmMaintenanceReqUpdate = {
   atmComponentMaintenances?: AtmMaintenanceReqUpdateAtmComponentMaintenance[];
 };
 
-
 export type AtmMaintenanceReqUpdateAtmComponentMaintenance = {
   // 점검 요청 내역
   maintenanceRequest?: string;
@@ -1633,12 +1516,10 @@ export type AtmMaintenanceReqUpdateAtmComponentMaintenance = {
   atmComponentCode?: string;
 };
 
-
 export type AtmMaintenanceResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmMaintenanceResId = {
   code?: string;
@@ -1648,33 +1529,26 @@ export type CommonResponseAtmMaintenanceResId = {
   data?: AtmMaintenanceResId;
 };
 
-
 export type AtmMaintenanceReqUpdateForEmergencyDispatch = {};
-
 
 export type AtmMaintenanceReqUpdateForConfirm = {
   // H/W 일련 번호
   atmComponentSerialNumbers?: string[];
 };
 
-
 export type AtmMaintenanceReqUpdateForCollectorAssign = {
   // 츨동 기사 아이디
   partnerMemberId?: number;
 };
 
-
 export type AtmMaintenanceReqUpdateForCancelConfirm = {};
 
-
 export type AtmMaintenanceStatusReqUpdate = {};
-
 
 export type AtmMaintenanceStatusResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmMaintenanceStatusResId = {
   code?: string;
@@ -1683,7 +1557,6 @@ export type CommonResponseAtmMaintenanceStatusResId = {
 
   data?: AtmMaintenanceStatusResId;
 };
-
 
 export type AtmMaintenanceRequestCategoryReqUpdateForManage = {
   // ATM 점검 요청 분류 이름
@@ -1702,12 +1575,10 @@ export type AtmMaintenanceRequestCategoryReqUpdateForManage = {
   status?: string;
 };
 
-
 export type AtmMaintenanceRequestCategoryResId = {
   // ATM 점검 요청 분류 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmMaintenanceRequestCategoryResId = {
   code?: string;
@@ -1716,7 +1587,6 @@ export type CommonResponseAtmMaintenanceRequestCategoryResId = {
 
   data?: AtmMaintenanceRequestCategoryResId;
 };
-
 
 export type AtmComponentStockReqUpdate = {
   // ATM 구성요소 코드
@@ -1747,12 +1617,10 @@ export type AtmComponentStockReqUpdate = {
   atmTypeCode?: string;
 };
 
-
 export type AtmComponentStockResId = {
   // ATM 구성 요소 재고 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmComponentStockResId = {
   code?: string;
@@ -1762,18 +1630,14 @@ export type CommonResponseAtmComponentStockResId = {
   data?: AtmComponentStockResId;
 };
 
-
 export type AtmComponentStockReqUpdateForRepaired = {};
 
-
 export type AtmCollectionStatusReqUpdate = {};
-
 
 export type AtmCollectionStatusResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseAtmCollectionStatusResId = {
   code?: string;
@@ -1783,7 +1647,6 @@ export type CommonResponseAtmCollectionStatusResId = {
   data?: AtmCollectionStatusResId;
 };
 
-
 export type AdministratorReqUpdateForManage = {
   // 권한 유형
   roles?: number;
@@ -1792,12 +1655,10 @@ export type AdministratorReqUpdateForManage = {
   status?: string;
 };
 
-
 export type AdministratorResId = {
   // 아이디
   id?: string;
 };
-
 
 export type CommonResponseAdministratorResId = {
   code?: string;
@@ -1807,12 +1668,10 @@ export type CommonResponseAdministratorResId = {
   data?: AdministratorResId;
 };
 
-
 export type AdministratorReqUpdateForLoginPassword = {
   // 로그인 패스워드
   loginPassword?: string;
 };
-
 
 export type DailyAtmStatusReqCreate = {
   // 통계 날짜
@@ -1843,12 +1702,10 @@ export type DailyAtmStatusReqCreate = {
   purchaseCount?: number;
 };
 
-
 export type DailyAtmStatusResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseDailyAtmStatusResId = {
   code?: string;
@@ -1857,7 +1714,6 @@ export type CommonResponseDailyAtmStatusResId = {
 
   data?: DailyAtmStatusResId;
 };
-
 
 export type SmartVisionReqResult = {
   // 스마트비전 결과 ID
@@ -1910,7 +1766,6 @@ export type SmartVisionReqResult = {
   HAS_CORNER_FILM?: string;
 };
 
-
 export type SmartVisionReqResultSmartVisionImage = {
   // 이미지 아이디
   IMAGE_ID?: string;
@@ -1927,7 +1782,6 @@ export type SmartVisionReqResultSmartVisionImage = {
   // 예측확률 결과
   PROBABILITY_RESULT?: string;
 };
-
 
 export type PurchaseReqCreate = {
   // 회원 아이디
@@ -1949,7 +1803,6 @@ export type PurchaseReqCreate = {
   purchaseRewards?: PurchaseReqCreatePurchaseReward[];
 };
 
-
 export type PurchaseReqCreatePurchaseReward = {
   // 보상 타입 코드
   rewardTypeCode: string;
@@ -1961,15 +1814,12 @@ export type PurchaseReqCreatePurchaseReward = {
   rewardValue: string;
 };
 
-
 export type PurchaseRewardReqCreate = {};
-
 
 export type PurchaseRewardResId = {
   // 매입 보상 아이디
   id?: number;
 };
-
 
 export type CommonResponsePurchaseRewardResId = {
   code?: string;
@@ -1978,7 +1828,6 @@ export type CommonResponsePurchaseRewardResId = {
 
   data?: PurchaseRewardResId;
 };
-
 
 export type PurchasePricePolicyReqCreate = {
   // 적용 시작 일자
@@ -1997,12 +1846,10 @@ export type PurchasePricePolicyReqCreate = {
   deviceTypeCode: string;
 };
 
-
 export type PurchasePricePolicyResId = {
   // 매입 가격 정책 아이디
   id?: number;
 };
-
 
 export type CommonResponsePurchasePricePolicyResId = {
   code?: string;
@@ -2011,7 +1858,6 @@ export type CommonResponsePurchasePricePolicyResId = {
 
   data?: PurchasePricePolicyResId;
 };
-
 
 export type PurchaseDeviceModelReqCreate = {
   // 디바이스 모델 아이디
@@ -2024,12 +1870,10 @@ export type PurchaseDeviceModelReqCreate = {
   status: string;
 };
 
-
 export type PurchaseDeviceModelResId = {
   // 매입 디바이스 모델 아이디
   id?: number;
 };
-
 
 export type CommonResponsePurchaseDeviceModelResId = {
   code?: string;
@@ -2038,7 +1882,6 @@ export type CommonResponsePurchaseDeviceModelResId = {
 
   data?: PurchaseDeviceModelResId;
 };
-
 
 export type PurchaseDeviceModelGradePriceReqCreate = {
   // 매입 디바이스 모델 아이디
@@ -2060,12 +1903,10 @@ export type PurchaseDeviceModelGradePriceReqCreate = {
   currencyCode: string;
 };
 
-
 export type PurchaseDeviceModelGradePriceResId = {
   // 매입 디바이스 모델 가격 아이디
   id?: number;
 };
-
 
 export type CommonResponsePurchaseDeviceModelGradePriceResId = {
   code?: string;
@@ -2074,7 +1915,6 @@ export type CommonResponsePurchaseDeviceModelGradePriceResId = {
 
   data?: PurchaseDeviceModelGradePriceResId;
 };
-
 
 export type PartnerReqCreateForManage = {
   // 이름
@@ -2132,7 +1972,6 @@ export type PartnerReqCreateForManage = {
   partnerFiles?: PartnerReqCreateForManagePartnerFile[];
 };
 
-
 export type PartnerReqCreateForManagePartnerFile = {
   // S3 파일 아이디
   fileId: string;
@@ -2140,7 +1979,6 @@ export type PartnerReqCreateForManagePartnerFile = {
   // 파트너 파일 타입
   partnerFileTypeCode: string;
 };
-
 
 export type PartnerMemberBankAccountReqCreate = {
   // 은행코드
@@ -2155,7 +1993,6 @@ export type PartnerMemberBankAccountReqCreate = {
   // 계좌 확인 상태
   bankAccountConfirmStatus?: string;
 };
-
 
 export type PartnerMemberReqCreate = {
   // (Encryped) 이름
@@ -2184,7 +2021,6 @@ export type PartnerMemberReqCreate = {
 
   partnerMemberBankAccount?: PartnerMemberBankAccountReqCreate;
 };
-
 
 export type BranchReqCreate = {
   // 이름
@@ -2236,7 +2072,6 @@ export type BranchReqCreate = {
   branchFiles?: BranchReqCreateBranchFile[];
 };
 
-
 export type InspectionReqCreate = {
   // 회원 아이디
   memberId: string;
@@ -2276,14 +2111,12 @@ export type InspectionReqCreate = {
   inspectionFiles?: InspectionReqCreateInspectionFile[];
 };
 
-
 export type InspectionReqCreateInspectionFile = {
   // 검사 부위 코드
   sectionCode: string;
 
   files?: InspectionReqCreateInspectionFileFile[];
 };
-
 
 export type InspectionReqCreateInspectionFileFile = {
   // 검사 파일 아이디
@@ -2293,7 +2126,6 @@ export type InspectionReqCreateInspectionFileFile = {
   fileNumber: number;
 };
 
-
 export type InspectionReqCreateSection = {
   // 검사 부위 코드
   sectionCode: string;
@@ -2302,15 +2134,12 @@ export type InspectionReqCreateSection = {
   defects?: any;
 };
 
-
 export type InspectionProfileReqCreate = {};
-
 
 export type InspectionProfileResId = {
   // 아이디
   id?: number;
 };
-
 
 export type CommonResponseInspectionProfileResId = {
   code?: string;
@@ -2319,7 +2148,6 @@ export type CommonResponseInspectionProfileResId = {
 
   data?: InspectionProfileResId;
 };
-
 
 export type DeviceDeletionReqCreateSafe = {
   // 디바이스 아이디
@@ -2348,7 +2176,6 @@ export type DeviceDeletionReqCreateSafe = {
   // 사용자 아이디
   memberId: string;
 };
-
 
 export type DeviceReqCreate = {
   // 디바이스 모델 아이디
@@ -2385,11 +2212,9 @@ export type DeviceReqCreate = {
   status: string;
 };
 
-
 export type ImeiReqFilter = {
   imei?: string;
 };
-
 
 export type DeviceReqCreateForImei = {
   // IMEI
@@ -2398,7 +2223,6 @@ export type DeviceReqCreateForImei = {
   // 2nd IMEI
   imei2?: string;
 };
-
 
 export type DeviceDeletionReqCreateAtm = {
   // 디바이스 아이디
@@ -2432,7 +2256,6 @@ export type DeviceDeletionReqCreateAtm = {
   purchaseId: number;
 };
 
-
 export type DeviceSeriesReqCreate = {
   // 시리즈 이름
   name: string;
@@ -2455,7 +2278,6 @@ export type DeviceSeriesReqCreate = {
   // A : Activate / D : Deactivated
   status: string;
 };
-
 
 export type DeviceModelReqCreate = {
   // 모델 번호 ( e.g., SM-S908-1T)
@@ -2552,7 +2374,6 @@ export type DeviceModelReqCreate = {
   status: string;
 };
 
-
 export type DeviceManufactureReqCreate = {
   // 제조사 이름
   name: string;
@@ -2570,7 +2391,6 @@ export type DeviceManufactureReqCreate = {
   status: string;
 };
 
-
 export type DeviceManufactureTypeReqCreate = {
   // 디바이스 제조사 아이디
   deviceManufactureId: number;
@@ -2581,7 +2401,6 @@ export type DeviceManufactureTypeReqCreate = {
   // A : Activate / D : Deactivated
   status: string;
 };
-
 
 export type TermsAgreementReqCreate = {
   // 약관 동의 아이디
@@ -2609,7 +2428,6 @@ export type TermsAgreementReqCreate = {
   updatedBy?: string;
 };
 
-
 export type SurveyParticipationReqCreate = {
   // 회원 아이디
   memberId: string;
@@ -2620,7 +2438,6 @@ export type SurveyParticipationReqCreate = {
   selectedAnswers?: SurveyParticipationReqCreateSelectedAnswer[];
 };
 
-
 export type SurveyParticipationReqCreateSelectedAnswer = {
   // 설문 질문 아이디
   surveyQuestionId: number;
@@ -2629,12 +2446,10 @@ export type SurveyParticipationReqCreateSelectedAnswer = {
   selectedAnswer: number;
 };
 
-
 export type SurveyParticipationResId = {
   // 약관 동의 아이디
   id?: number;
 };
-
 
 export type CommonResponseSurveyParticipationResId = {
   code?: string;
@@ -2643,7 +2458,6 @@ export type CommonResponseSurveyParticipationResId = {
 
   data?: SurveyParticipationResId;
 };
-
 
 export type EventApplicationReqCreate = {
   // 회원 아이디
@@ -2692,7 +2506,6 @@ export type EventApplicationReqCreate = {
   term?: TermsAgreementReqFilter[];
 };
 
-
 export type TermsAgreementReqFilter = {
   // 회원 아이디
   memberId?: string;
@@ -2715,7 +2528,6 @@ export type TermsAgreementReqFilter = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type TermsReqCreate = {
   // 이름
@@ -2740,7 +2552,6 @@ export type TermsReqCreate = {
   status: string;
 };
 
-
 export type TermsContentReqCreate = {
   // 약관 내용
   content: string;
@@ -2755,18 +2566,14 @@ export type TermsContentReqCreate = {
   executionAt: Date;
 };
 
-
 export type SigunguReqCreate = {};
 
-
 export type ServiceSeviceReqCreate = {};
-
 
 export type ServiceSeviceResId = {
   // 아이디
   id?: string;
 };
-
 
 export type CommonResponseServiceSeviceResId = {
   code?: string;
@@ -2775,7 +2582,6 @@ export type CommonResponseServiceSeviceResId = {
 
   data?: ServiceSeviceResId;
 };
-
 
 export type MenuReqCreate = {
   // 메뉴명
@@ -2803,7 +2609,6 @@ export type MenuReqCreate = {
   roles: number;
 };
 
-
 export type MenuButtonReqCreate = {
   // 페이지 아이디
   menuId: number;
@@ -2827,7 +2632,6 @@ export type MenuButtonReqCreate = {
   roles?: number;
 };
 
-
 export type EventFileReqCreate = {
   // 이벤트 파일 유형 코드
   eventFileTypeCode: string;
@@ -2838,7 +2642,6 @@ export type EventFileReqCreate = {
   // 노출 순서
   displayNumber: number;
 };
-
 
 export type EventReqCreateForManage = {
   // 이름
@@ -2875,7 +2678,6 @@ export type EventReqCreateForManage = {
   eventFiles?: EventFileReqCreate[];
 };
 
-
 export type EventTermsReqCreate = {
   // 이벤트 아이디
   eventId: string;
@@ -2890,12 +2692,10 @@ export type EventTermsReqCreate = {
   status: string;
 };
 
-
 export type EventTermsResId = {
   // 이벤트 파일 아이디
   id?: number;
 };
-
 
 export type CommonResponseEventTermsResId = {
   code?: string;
@@ -2904,7 +2704,6 @@ export type CommonResponseEventTermsResId = {
 
   data?: EventTermsResId;
 };
-
 
 export type EventBenefitReqCreate = {
   // 이벤트 아이디
@@ -2923,12 +2722,10 @@ export type EventBenefitReqCreate = {
   status: string;
 };
 
-
 export type EventBenefitResId = {
   // 이벤트 혜택 아이디
   id?: number;
 };
-
 
 export type CommonResponseEventBenefitResId = {
   code?: string;
@@ -2937,7 +2734,6 @@ export type CommonResponseEventBenefitResId = {
 
   data?: EventBenefitResId;
 };
-
 
 export type CouponPolicyReqCreate = {
   // 이름
@@ -2986,12 +2782,10 @@ export type CouponPolicyReqCreate = {
   status: string;
 };
 
-
 export type CouponPolicyResId = {
   // 쿠폰 정책 아이디
   id?: number;
 };
-
 
 export type CommonResponseCouponPolicyResId = {
   code?: string;
@@ -3001,9 +2795,7 @@ export type CommonResponseCouponPolicyResId = {
   data?: CouponPolicyResId;
 };
 
-
 export type ContentDisplayReqCreate = {};
-
 
 export type CommonCodeReqCreate = {
   // 공통 코드
@@ -3037,12 +2829,10 @@ export type CommonCodeReqCreate = {
   commonCodeName?: string;
 };
 
-
 export type CommonCodeResId = {
   // 공통 코드
   id?: string;
 };
-
 
 export type CommonResponseCommonCodeResId = {
   code?: string;
@@ -3051,7 +2841,6 @@ export type CommonResponseCommonCodeResId = {
 
   data?: CommonCodeResId;
 };
-
 
 export type CommonCodeTypeReqCreate = {
   // 공통 코드 유형 아이디
@@ -3064,12 +2853,10 @@ export type CommonCodeTypeReqCreate = {
   description?: string;
 };
 
-
 export type CommonCodeTypeResId = {
   // 공통 코드 유형 아이디
   id?: string;
 };
-
 
 export type CommonResponseCommonCodeTypeResId = {
   code?: string;
@@ -3078,7 +2865,6 @@ export type CommonResponseCommonCodeTypeResId = {
 
   data?: CommonCodeTypeResId;
 };
-
 
 export type ApiReqCreate = {
   // API 이름
@@ -3097,7 +2883,6 @@ export type ApiReqCreate = {
   roles?: number;
 };
 
-
 export type AtmMaintenanceReqCreateForRemoteMaintenance = {
   // ATM 아이디
   atmId: number;
@@ -3109,7 +2894,6 @@ export type AtmMaintenanceReqCreateForRemoteMaintenance = {
   atmComponentMaintenances?: AtmMaintenanceReqCreateForRemoteMaintenanceAtmComponentMaintenance[];
 };
 
-
 export type AtmMaintenanceReqCreateForRemoteMaintenanceAtmComponentMaintenance =
   {
     // 점검 요청 내역
@@ -3120,7 +2904,6 @@ export type AtmMaintenanceReqCreateForRemoteMaintenanceAtmComponentMaintenance =
 
     atmComponentCode?: string;
   };
-
 
 export type AtmMaintenanceReqCreateForOnsiteMaintenance = {
   // ATM 아이디
@@ -3136,7 +2919,6 @@ export type AtmMaintenanceReqCreateForOnsiteMaintenance = {
   atmComponentMaintenances?: AtmMaintenanceReqCreateForOnsiteMaintenanceAtmComponentMaintenance[];
 };
 
-
 export type AtmMaintenanceReqCreateForOnsiteMaintenanceAtmComponentMaintenance =
   {
     // 점검 요청 내역
@@ -3147,7 +2929,6 @@ export type AtmMaintenanceReqCreateForOnsiteMaintenanceAtmComponentMaintenance =
 
     atmComponentCode?: string;
   };
-
 
 export type AtmMaintenanceReqUpdateForOnsiteNpsCallback = {
   // 장애 등록 번호
@@ -3160,7 +2941,6 @@ export type AtmMaintenanceReqUpdateForOnsiteNpsCallback = {
   prcs_ctts?: string;
 };
 
-
 export type AtmAcceptanceDeviceReqCreate = {
   // 디바이스 아이디
   deviceId: number;
@@ -3172,7 +2952,6 @@ export type AtmAcceptanceDeviceReqCreate = {
   atmAcceptanceDeviceFiles?: AtmAcceptanceDeviceReqCreateAtmAcceptanceDeviceFile[];
 };
 
-
 export type AtmAcceptanceDeviceReqCreateAtmAcceptanceDeviceFile = {
   // ATM 부품 코드
   atmPartCode: string;
@@ -3180,7 +2959,6 @@ export type AtmAcceptanceDeviceReqCreateAtmAcceptanceDeviceFile = {
   // 파일 아이디
   fileId: string;
 };
-
 
 export type AtmReqCreate = {
   // ATM 이름
@@ -3279,7 +3057,6 @@ export type AtmReqCreate = {
   atmComponents?: AtmReqCreateAtmComponent[];
 };
 
-
 export type AtmReqCreateAtmComponent = {
   // 구성요소 코드
   atmComponentCode: string;
@@ -3296,7 +3073,6 @@ export type AtmReqCreateAtmComponent = {
   // 상태
   status: string;
 };
-
 
 export type AtmTypeComponentReqSave = {
   // ATM 유형 별 구성 요소 아이디
@@ -3318,9 +3094,7 @@ export type AtmTypeComponentReqSave = {
   status: string;
 };
 
-
 export type AtmStatusReqCreate = {};
-
 
 export type AtmMaintenanceReqCreateForScheduledMaintenance = {
   // ATM 아이디
@@ -3333,9 +3107,7 @@ export type AtmMaintenanceReqCreateForScheduledMaintenance = {
   atmMaintenanceRequestCategoryIds: number[];
 };
 
-
 export type AtmMaintenanceStatusReqCreate = {};
-
 
 export type AtmMaintenanceRequestCategoryReqCreateForManage = {
   // ATM 점검 요청 분류 이름
@@ -3354,7 +3126,6 @@ export type AtmMaintenanceRequestCategoryReqCreateForManage = {
   status?: string;
 };
 
-
 export type AtmComponentReqCreate = {
   // ATM 아이디 (설치 시 업데이트 됨)
   atmId?: number;
@@ -3368,7 +3139,6 @@ export type AtmComponentReqCreate = {
   // ATM 구성 요소 교체 사유
   atmComponentStatusDescription?: string;
 };
-
 
 export type AtmComponentStockReqCreate = {
   // ATM 구성요소 코드
@@ -3399,12 +3169,10 @@ export type AtmComponentStockReqCreate = {
   atmTypeCode: string;
 };
 
-
 export type AtmCollectionReqCreate = {
   // ATM 아이디 리스트
   atmIds?: number[];
 };
-
 
 export type CommonResponseAtmCollectionResIdList = {
   code?: string;
@@ -3414,9 +3182,7 @@ export type CommonResponseAtmCollectionResIdList = {
   data?: AtmCollectionResId[];
 };
 
-
 export type AtmCollectionStatusReqCreate = {};
-
 
 export type AdministratorReqLogin = {
   // 로그인 아이디
@@ -3428,7 +3194,6 @@ export type AdministratorReqLogin = {
   // 인증번호
   authenticationNumber?: string;
 };
-
 
 export type AdministratorResResponseForJwtToken = {
   // 토큰 타입
@@ -3450,7 +3215,6 @@ export type AdministratorResResponseForJwtToken = {
   role?: number;
 };
 
-
 export type CommonResponseAdministratorResResponseForJwtToken = {
   code?: string;
 
@@ -3459,12 +3223,10 @@ export type CommonResponseAdministratorResResponseForJwtToken = {
   data?: AdministratorResResponseForJwtToken;
 };
 
-
 export type AdministratorReqRefreshToken = {
   // 리프레시 토큰
   refreshToken: string;
 };
-
 
 export type AdministratorReqLoginForOtp = {
   // 로그인 아이디
@@ -3476,7 +3238,6 @@ export type AdministratorReqLoginForOtp = {
   // 인증번호
   authenticationNumber?: string;
 };
-
 
 export type AdministratorReqCreateForAuthenticationNumber = {
   // (Encryped) 이름
@@ -3491,7 +3252,6 @@ export type AdministratorReqCreateForAuthenticationNumber = {
   // 로그인 패스워드
   loginPassword?: string;
 };
-
 
 export type AdministratorReqCreateForAuthentication = {
   // (Encryped) 이름
@@ -3510,12 +3270,10 @@ export type AdministratorReqCreateForAuthentication = {
   authenticationNumber?: string;
 };
 
-
 export type AdministratorResResponseForAuthentication = {
   // 인증 토큰
   token?: string;
 };
-
 
 export type CommonResponseAdministratorResResponseForAuthentication = {
   code?: string;
@@ -3525,7 +3283,6 @@ export type CommonResponseAdministratorResResponseForAuthentication = {
   data?: AdministratorResResponseForAuthentication;
 };
 
-
 export type AtmStatisticsReqFilter = {
   // ATM 통계 기준일
   yyyymmdd?: string;
@@ -3533,7 +3290,6 @@ export type AtmStatisticsReqFilter = {
   // ATM 통계 타입
   statisticsType?: string;
 };
-
 
 export type AtmResResponseForStatistics = {
   // 그룹 키
@@ -3552,7 +3308,6 @@ export type AtmResResponseForStatistics = {
   deleteCount?: number;
 };
 
-
 export type AtmStatisticsResItemForStatistics = {
   // 실시간 매입 건수
   purchaseStatistics?: BosPurchaseResResponseForStatistics[];
@@ -3563,7 +3318,6 @@ export type AtmStatisticsResItemForStatistics = {
   // 일별 ATM 현황 통계
   dailyAtmStatusStatistics?: DailyAtmStatusResResponseForStatistics[];
 };
-
 
 export type DailyAtmStatusResResponseForStatistics = {
   // 그룹 키
@@ -3591,7 +3345,6 @@ export type DailyAtmStatusResResponseForStatistics = {
   inspectionCount?: number;
 };
 
-
 export type BosPurchaseResResponseForStatistics = {
   // 그룹 키
   groupKey?: string;
@@ -3599,7 +3352,6 @@ export type BosPurchaseResResponseForStatistics = {
   // 매입 건수
   purchaseCount?: number;
 };
-
 
 export type CommonResponseAtmStatisticsResItemForStatistics = {
   code?: string;
@@ -3609,14 +3361,11 @@ export type CommonResponseAtmStatisticsResItemForStatistics = {
   data?: AtmStatisticsResItemForStatistics;
 };
 
-
 export type PurchaseReqFilter = {};
-
 
 export type Sort = {
   sort?: string[];
 };
-
 
 export type PurchaseResItem = {
   // 매입 아이디
@@ -3656,7 +3405,6 @@ export type PurchaseResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponsePurchaseResItemList = {
   code?: string;
 
@@ -3664,7 +3412,6 @@ export type CommonResponsePurchaseResItemList = {
 
   data?: PurchaseResItem[];
 };
-
 
 export type CommonResponsePurchaseResItem = {
   code?: string;
@@ -3674,7 +3421,6 @@ export type CommonResponsePurchaseResItem = {
   data?: PurchaseResItem;
 };
 
-
 export type Pageable = {
   page?: number;
 
@@ -3682,7 +3428,6 @@ export type Pageable = {
 
   sort?: string[];
 };
-
 
 export type PageableObject = {
   offset?: number;
@@ -3698,7 +3443,6 @@ export type PageableObject = {
   paged?: boolean;
 };
 
-
 export type SortObject = {
   empty?: boolean;
 
@@ -3707,7 +3451,6 @@ export type SortObject = {
   sorted?: boolean;
 };
 
-
 export type CommonResponsePurchaseResItemWithPage = {
   code?: string;
 
@@ -3715,7 +3458,6 @@ export type CommonResponsePurchaseResItemWithPage = {
 
   data?: PurchaseResItemWithPage;
 };
-
 
 export type PurchaseResItemWithPage = {
   totalPages?: number;
@@ -3740,7 +3482,6 @@ export type PurchaseResItemWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PurchaseRewardReqFilter = {
   // 매입 보상 아이디
@@ -3783,7 +3524,6 @@ export type PurchaseRewardReqFilter = {
   currencyCode?: string;
 };
 
-
 export type PurchaseRewardResSingle = {
   // 매입 보상 아이디
   id?: number;
@@ -3825,7 +3565,6 @@ export type PurchaseRewardResSingle = {
   currencyCode?: string;
 };
 
-
 export type CommonResponsePurchaseRewardResSingleList = {
   code?: string;
 
@@ -3833,7 +3572,6 @@ export type CommonResponsePurchaseRewardResSingleList = {
 
   data?: PurchaseRewardResSingle[];
 };
-
 
 export type PurchaseRewardResItem = {
   // 매입 보상 아이디
@@ -3876,7 +3614,6 @@ export type PurchaseRewardResItem = {
   currencyCode?: string;
 };
 
-
 export type CommonResponsePurchaseRewardResItem = {
   code?: string;
 
@@ -3885,7 +3622,6 @@ export type CommonResponsePurchaseRewardResItem = {
   data?: PurchaseRewardResItem;
 };
 
-
 export type CommonResponsePurchaseRewardResSingleWithPage = {
   code?: string;
 
@@ -3893,7 +3629,6 @@ export type CommonResponsePurchaseRewardResSingleWithPage = {
 
   data?: PurchaseRewardResSingleWithPage;
 };
-
 
 export type PurchaseRewardResSingleWithPage = {
   totalPages?: number;
@@ -3918,7 +3653,6 @@ export type PurchaseRewardResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PurchasePricePolicyReqFilter = {
   // 매입 가격 정책 아이디
@@ -3952,7 +3686,6 @@ export type PurchasePricePolicyReqFilter = {
   deviceTypeCode?: string;
 };
 
-
 export type PurchasePricePolicyResSingle = {
   // 매입 가격 정책 아이디
   id?: number;
@@ -3985,7 +3718,6 @@ export type PurchasePricePolicyResSingle = {
   deviceTypeCode?: string;
 };
 
-
 export type CommonResponsePurchasePricePolicyResSingleList = {
   code?: string;
 
@@ -3993,7 +3725,6 @@ export type CommonResponsePurchasePricePolicyResSingleList = {
 
   data?: PurchasePricePolicyResSingle[];
 };
-
 
 export type PurchasePricePolicyResItem = {
   // 매입 가격 정책 아이디
@@ -4027,7 +3758,6 @@ export type PurchasePricePolicyResItem = {
   deviceTypeCode?: string;
 };
 
-
 export type CommonResponsePurchasePricePolicyResItem = {
   code?: string;
 
@@ -4036,7 +3766,6 @@ export type CommonResponsePurchasePricePolicyResItem = {
   data?: PurchasePricePolicyResItem;
 };
 
-
 export type CommonResponsePurchasePricePolicyResSingleWithPage = {
   code?: string;
 
@@ -4044,7 +3773,6 @@ export type CommonResponsePurchasePricePolicyResSingleWithPage = {
 
   data?: PurchasePricePolicyResSingleWithPage;
 };
-
 
 export type PurchasePricePolicyResSingleWithPage = {
   totalPages?: number;
@@ -4069,7 +3797,6 @@ export type PurchasePricePolicyResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PurchaseDeviceModelReqFilter = {
   // 매입 디바이스 모델 아이디
@@ -4097,7 +3824,6 @@ export type PurchaseDeviceModelReqFilter = {
   updatedBy?: string;
 };
 
-
 export type PurchaseDeviceModelResSingle = {
   // 매입 디바이스 모델 아이디
   id?: number;
@@ -4124,7 +3850,6 @@ export type PurchaseDeviceModelResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponsePurchaseDeviceModelResSingleList = {
   code?: string;
 
@@ -4132,7 +3857,6 @@ export type CommonResponsePurchaseDeviceModelResSingleList = {
 
   data?: PurchaseDeviceModelResSingle[];
 };
-
 
 export type PurchaseDeviceModelResItem = {
   // 매입 디바이스 모델 아이디
@@ -4160,7 +3884,6 @@ export type PurchaseDeviceModelResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponsePurchaseDeviceModelResItem = {
   code?: string;
 
@@ -4169,7 +3892,6 @@ export type CommonResponsePurchaseDeviceModelResItem = {
   data?: PurchaseDeviceModelResItem;
 };
 
-
 export type CommonResponsePurchaseDeviceModelResSingleWithPage = {
   code?: string;
 
@@ -4177,7 +3899,6 @@ export type CommonResponsePurchaseDeviceModelResSingleWithPage = {
 
   data?: PurchaseDeviceModelResSingleWithPage;
 };
-
 
 export type PurchaseDeviceModelResSingleWithPage = {
   totalPages?: number;
@@ -4202,7 +3923,6 @@ export type PurchaseDeviceModelResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PurchaseDeviceModelGradePriceReqFilter = {
   // 매입 디바이스 모델 가격 아이디
@@ -4239,7 +3959,6 @@ export type PurchaseDeviceModelGradePriceReqFilter = {
   currencyCode?: string;
 };
 
-
 export type PurchaseDeviceModelGradePriceResSingle = {
   // 매입 디바이스 모델 가격 아이디
   id?: number;
@@ -4275,7 +3994,6 @@ export type PurchaseDeviceModelGradePriceResSingle = {
   currencyCode?: string;
 };
 
-
 export type CommonResponsePurchaseDeviceModelGradePriceResSingleList = {
   code?: string;
 
@@ -4283,7 +4001,6 @@ export type CommonResponsePurchaseDeviceModelGradePriceResSingleList = {
 
   data?: PurchaseDeviceModelGradePriceResSingle[];
 };
-
 
 export type PurchaseDeviceModelGradePriceResItem = {
   // 매입 디바이스 모델 가격 아이디
@@ -4320,7 +4037,6 @@ export type PurchaseDeviceModelGradePriceResItem = {
   currencyCode?: string;
 };
 
-
 export type CommonResponsePurchaseDeviceModelGradePriceResItem = {
   code?: string;
 
@@ -4329,7 +4045,6 @@ export type CommonResponsePurchaseDeviceModelGradePriceResItem = {
   data?: PurchaseDeviceModelGradePriceResItem;
 };
 
-
 export type CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage = {
   code?: string;
 
@@ -4337,7 +4052,6 @@ export type CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage = {
 
   data?: PurchaseDeviceModelGradePriceResSingleWithPage;
 };
-
 
 export type PurchaseDeviceModelGradePriceResSingleWithPage = {
   totalPages?: number;
@@ -4362,7 +4076,6 @@ export type PurchaseDeviceModelGradePriceResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PartnerReqFilter = {
   // 파트너 아이디
@@ -4422,7 +4135,6 @@ export type PartnerReqFilter = {
   // A : Activated / D : Deleted
   status?: string;
 };
-
 
 export type PartnerResSingle = {
   // 파트너 아이디
@@ -4499,7 +4211,6 @@ export type PartnerResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponsePartnerResSingleList = {
   code?: string;
 
@@ -4507,7 +4218,6 @@ export type CommonResponsePartnerResSingleList = {
 
   data?: PartnerResSingle[];
 };
-
 
 export type PartnerFileResItem = {
   // 지점 아이디
@@ -4541,7 +4251,6 @@ export type PartnerFileResItem = {
 
   fileUrl?: string;
 };
-
 
 export type PartnerResItem = {
   // 파트너 아이디
@@ -4621,7 +4330,6 @@ export type PartnerResItem = {
   updatorName?: string;
 };
 
-
 export type FileResItem = {
   // 파일 아이디
   id?: string;
@@ -4654,7 +4362,6 @@ export type FileResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponsePartnerResItem = {
   code?: string;
 
@@ -4663,7 +4370,6 @@ export type CommonResponsePartnerResItem = {
   data?: PartnerResItem;
 };
 
-
 export type CommonResponsePartnerResSingleWithPage = {
   code?: string;
 
@@ -4671,7 +4377,6 @@ export type CommonResponsePartnerResSingleWithPage = {
 
   data?: PartnerResSingleWithPage;
 };
-
 
 export type PartnerResSingleWithPage = {
   totalPages?: number;
@@ -4696,7 +4401,6 @@ export type PartnerResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type PartnerMemberReqFilter = {
   // 파트너 멤버 아이디
@@ -4732,7 +4436,6 @@ export type PartnerMemberReqFilter = {
   // 상태
   statuses?: string[];
 };
-
 
 export type PartnerMemberResSingle = {
   // 파트너 멤버 아이디
@@ -4815,7 +4518,6 @@ export type PartnerMemberResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponsePartnerMemberResSingleList = {
   code?: string;
 
@@ -4823,7 +4525,6 @@ export type CommonResponsePartnerMemberResSingleList = {
 
   data?: PartnerMemberResSingle[];
 };
-
 
 export type BranchFileResItem = {
   // 지점 파일 아이디
@@ -4857,7 +4558,6 @@ export type BranchFileResItem = {
 
   fileUrl?: string;
 };
-
 
 export type BranchResItem = {
   // 지점 아이디
@@ -4933,7 +4633,6 @@ export type BranchResItem = {
   updatorName?: string;
 };
 
-
 export type PartnerMemberBankAccountResItem = {
   // 파트너 멤버 파일 아이디
   id?: number;
@@ -4965,7 +4664,6 @@ export type PartnerMemberBankAccountResItem = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type PartnerMemberFileResItem = {
   // 파트너 멤버 파일 아이디
@@ -4999,7 +4697,6 @@ export type PartnerMemberFileResItem = {
 
   fileUrl?: string;
 };
-
 
 export type PartnerMemberResItem = {
   // 파트너 멤버 아이디
@@ -5092,7 +4789,6 @@ export type PartnerMemberResItem = {
   updatorName?: string;
 };
 
-
 export type CommonResponsePartnerMemberResItem = {
   code?: string;
 
@@ -5100,7 +4796,6 @@ export type CommonResponsePartnerMemberResItem = {
 
   data?: PartnerMemberResItem;
 };
-
 
 export type PartnerMemberResSingleExField = {
   // 파트너 멤버 아이디
@@ -5189,7 +4884,6 @@ export type PartnerMemberResSingleExField = {
   updatorName?: string;
 };
 
-
 export type CommonResponsePartnerMemberResSingleExFieldWithPage = {
   code?: string;
 
@@ -5197,7 +4891,6 @@ export type CommonResponsePartnerMemberResSingleExFieldWithPage = {
 
   data?: PartnerMemberResSingleExFieldWithPage;
 };
-
 
 export type PartnerMemberResSingleExFieldWithPage = {
   totalPages?: number;
@@ -5222,7 +4915,6 @@ export type PartnerMemberResSingleExFieldWithPage = {
 
   empty?: boolean;
 };
-
 
 export type BranchReqFilter = {
   // 지점 아이디
@@ -5276,7 +4968,6 @@ export type BranchReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type BranchResSingle = {
   // 지점 아이디
@@ -5347,7 +5038,6 @@ export type BranchResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseBranchResSingleList = {
   code?: string;
 
@@ -5355,7 +5045,6 @@ export type CommonResponseBranchResSingleList = {
 
   data?: BranchResSingle[];
 };
-
 
 export type CommonResponseBranchResItem = {
   code?: string;
@@ -5365,7 +5054,6 @@ export type CommonResponseBranchResItem = {
   data?: BranchResItem;
 };
 
-
 export type CommonResponseBranchResItemWithPage = {
   code?: string;
 
@@ -5373,7 +5061,6 @@ export type CommonResponseBranchResItemWithPage = {
 
   data?: BranchResItemWithPage;
 };
-
 
 export type BranchResItemWithPage = {
   totalPages?: number;
@@ -5398,7 +5085,6 @@ export type BranchResItemWithPage = {
 
   empty?: boolean;
 };
-
 
 export type InspectionResItem = {
   // 외관 검사 아이디
@@ -5438,7 +5124,6 @@ export type InspectionResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseInspectionResItem = {
   code?: string;
 
@@ -5447,14 +5132,11 @@ export type CommonResponseInspectionResItem = {
   data?: InspectionResItem;
 };
 
-
 export type SseEmitter = {
   timeout?: number;
 };
 
-
 export type InspectionReqFilter = {};
-
 
 export type CommonResponseInspectionResItemList = {
   code?: string;
@@ -5464,7 +5146,6 @@ export type CommonResponseInspectionResItemList = {
   data?: InspectionResItem[];
 };
 
-
 export type CommonResponseInspectionResItemWithPage = {
   code?: string;
 
@@ -5472,7 +5153,6 @@ export type CommonResponseInspectionResItemWithPage = {
 
   data?: InspectionResItemWithPage;
 };
-
 
 export type InspectionResItemWithPage = {
   totalPages?: number;
@@ -5497,7 +5177,6 @@ export type InspectionResItemWithPage = {
 
   empty?: boolean;
 };
-
 
 export type InspectionProfileReqFilter = {
   // 아이디
@@ -5537,7 +5216,6 @@ export type InspectionProfileReqFilter = {
   updatedBy?: string;
 };
 
-
 export type InspectionProfileResSingle = {
   // 아이디
   id?: number;
@@ -5576,7 +5254,6 @@ export type InspectionProfileResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseInspectionProfileResSingleList = {
   code?: string;
 
@@ -5584,7 +5261,6 @@ export type CommonResponseInspectionProfileResSingleList = {
 
   data?: InspectionProfileResSingle[];
 };
-
 
 export type InspectionProfileResItem = {
   // 아이디
@@ -5624,7 +5300,6 @@ export type InspectionProfileResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseInspectionProfileResItem = {
   code?: string;
 
@@ -5633,7 +5308,6 @@ export type CommonResponseInspectionProfileResItem = {
   data?: InspectionProfileResItem;
 };
 
-
 export type CommonResponseInspectionProfileResSingleWithPage = {
   code?: string;
 
@@ -5641,7 +5315,6 @@ export type CommonResponseInspectionProfileResSingleWithPage = {
 
   data?: InspectionProfileResSingleWithPage;
 };
-
 
 export type InspectionProfileResSingleWithPage = {
   totalPages?: number;
@@ -5667,9 +5340,7 @@ export type InspectionProfileResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type DeviceDeletionReqFilter = {};
-
 
 export type DeviceDeletionResSingle = {
   // 아이디
@@ -5721,7 +5392,6 @@ export type DeviceDeletionResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseDeviceDeletionResSingleList = {
   code?: string;
 
@@ -5729,7 +5399,6 @@ export type CommonResponseDeviceDeletionResSingleList = {
 
   data?: DeviceDeletionResSingle[];
 };
-
 
 export type DeviceDeletionResItem = {
   // 아이디
@@ -5781,7 +5450,6 @@ export type DeviceDeletionResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseDeviceDeletionResItem = {
   code?: string;
 
@@ -5789,7 +5457,6 @@ export type CommonResponseDeviceDeletionResItem = {
 
   data?: DeviceDeletionResItem;
 };
-
 
 export type CommonResponseDeviceDeletionResItemList = {
   code?: string;
@@ -5799,7 +5466,6 @@ export type CommonResponseDeviceDeletionResItemList = {
   data?: DeviceDeletionResItem[];
 };
 
-
 export type CommonResponseDeviceDeletionResSingleWithPage = {
   code?: string;
 
@@ -5807,7 +5473,6 @@ export type CommonResponseDeviceDeletionResSingleWithPage = {
 
   data?: DeviceDeletionResSingleWithPage;
 };
-
 
 export type DeviceDeletionResSingleWithPage = {
   totalPages?: number;
@@ -5832,7 +5497,6 @@ export type DeviceDeletionResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type DeviceModelReqFilter = {
   // 모델 아이디
@@ -5931,7 +5595,6 @@ export type DeviceModelReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type DeviceModelResSingle = {
   // 모델 아이디
@@ -6045,7 +5708,6 @@ export type DeviceModelResSingle = {
   imageFileUrl?: string;
 };
 
-
 export type CommonResponseDeviceModelResSingleList = {
   code?: string;
 
@@ -6054,9 +5716,7 @@ export type CommonResponseDeviceModelResSingleList = {
   data?: DeviceModelResSingle[];
 };
 
-
 export type DeviceReqFilter = {};
-
 
 export type DeviceResItem = {
   // 아이디
@@ -6111,7 +5771,6 @@ export type DeviceResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseDeviceResItemList = {
   code?: string;
 
@@ -6119,7 +5778,6 @@ export type CommonResponseDeviceResItemList = {
 
   data?: DeviceResItem[];
 };
-
 
 export type CommonResponseDeviceResItem = {
   code?: string;
@@ -6129,7 +5787,6 @@ export type CommonResponseDeviceResItem = {
   data?: DeviceResItem;
 };
 
-
 export type CommonResponseDeviceResItemWithPage = {
   code?: string;
 
@@ -6137,7 +5794,6 @@ export type CommonResponseDeviceResItemWithPage = {
 
   data?: DeviceResItemWithPage;
 };
-
 
 export type DeviceResItemWithPage = {
   totalPages?: number;
@@ -6162,7 +5818,6 @@ export type DeviceResItemWithPage = {
 
   empty?: boolean;
 };
-
 
 export type DeviceSeriesReqFilter = {
   // 시리즈 아이디
@@ -6189,7 +5844,6 @@ export type DeviceSeriesReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type DeviceManufactureResItem = {
   // 디바이스 유형 아이디
@@ -6224,7 +5878,6 @@ export type DeviceManufactureResItem = {
 
   imageFileUrl?: string;
 };
-
 
 export type DeviceSeriesResItem = {
   // 시리즈 아이디
@@ -6268,7 +5921,6 @@ export type DeviceSeriesResItem = {
   imageFileUrl?: string;
 };
 
-
 export type CommonResponseDeviceSeriesResItemList = {
   code?: string;
 
@@ -6277,7 +5929,6 @@ export type CommonResponseDeviceSeriesResItemList = {
   data?: DeviceSeriesResItem[];
 };
 
-
 export type CommonResponseDeviceSeriesResItem = {
   code?: string;
 
@@ -6285,7 +5936,6 @@ export type CommonResponseDeviceSeriesResItem = {
 
   data?: DeviceSeriesResItem;
 };
-
 
 export type DeviceSeriesResSingle = {
   // 시리즈 아이디
@@ -6327,7 +5977,6 @@ export type DeviceSeriesResSingle = {
   imageFileUrl?: string;
 };
 
-
 export type CommonResponseDeviceSeriesResSingleWithPage = {
   code?: string;
 
@@ -6335,7 +5984,6 @@ export type CommonResponseDeviceSeriesResSingleWithPage = {
 
   data?: DeviceSeriesResSingleWithPage;
 };
-
 
 export type DeviceSeriesResSingleWithPage = {
   totalPages?: number;
@@ -6360,7 +6008,6 @@ export type DeviceSeriesResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type DeviceModelResItem = {
   // 모델 아이디
@@ -6478,7 +6125,6 @@ export type DeviceModelResItem = {
   imageFileUrl?: string;
 };
 
-
 export type CommonResponseDeviceModelResItem = {
   code?: string;
 
@@ -6487,7 +6133,6 @@ export type CommonResponseDeviceModelResItem = {
   data?: DeviceModelResItem;
 };
 
-
 export type CommonResponseDeviceModelResItemWithPage = {
   code?: string;
 
@@ -6495,7 +6140,6 @@ export type CommonResponseDeviceModelResItemWithPage = {
 
   data?: DeviceModelResItemWithPage;
 };
-
 
 export type DeviceModelResItemWithPage = {
   totalPages?: number;
@@ -6521,7 +6165,6 @@ export type DeviceModelResItemWithPage = {
   empty?: boolean;
 };
 
-
 export type DeviceManufactureReqFilter = {
   // 디바이스 유형 아이디
   id?: number;
@@ -6541,7 +6184,6 @@ export type DeviceManufactureReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type DeviceManufactureResSingle = {
   // 디바이스 유형 아이디
@@ -6577,7 +6219,6 @@ export type DeviceManufactureResSingle = {
   imageFileUrl?: string;
 };
 
-
 export type CommonResponseDeviceManufactureResSingleList = {
   code?: string;
 
@@ -6585,7 +6226,6 @@ export type CommonResponseDeviceManufactureResSingleList = {
 
   data?: DeviceManufactureResSingle[];
 };
-
 
 export type CommonResponseDeviceManufactureResItem = {
   code?: string;
@@ -6595,7 +6235,6 @@ export type CommonResponseDeviceManufactureResItem = {
   data?: DeviceManufactureResItem;
 };
 
-
 export type CommonResponseDeviceManufactureResSingleWithPage = {
   code?: string;
 
@@ -6603,7 +6242,6 @@ export type CommonResponseDeviceManufactureResSingleWithPage = {
 
   data?: DeviceManufactureResSingleWithPage;
 };
-
 
 export type DeviceManufactureResSingleWithPage = {
   totalPages?: number;
@@ -6629,7 +6267,6 @@ export type DeviceManufactureResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type DeviceManufactureTypeReqFilter = {
   // 디바이스 유형 아이디
   id?: number;
@@ -6643,7 +6280,6 @@ export type DeviceManufactureTypeReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type DeviceManufactureTypeResSingle = {
   // 디바이스 유형 아이디
@@ -6671,7 +6307,6 @@ export type DeviceManufactureTypeResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseDeviceManufactureTypeResSingleList = {
   code?: string;
 
@@ -6679,7 +6314,6 @@ export type CommonResponseDeviceManufactureTypeResSingleList = {
 
   data?: DeviceManufactureTypeResSingle[];
 };
-
 
 export type DeviceManufactureTypeResItem = {
   // 디바이스 유형 아이디
@@ -6709,7 +6343,6 @@ export type DeviceManufactureTypeResItem = {
   deviceManufacture?: DeviceManufactureResItem;
 };
 
-
 export type CommonResponseDeviceManufactureTypeResItem = {
   code?: string;
 
@@ -6718,7 +6351,6 @@ export type CommonResponseDeviceManufactureTypeResItem = {
   data?: DeviceManufactureTypeResItem;
 };
 
-
 export type CommonResponseDeviceManufactureTypeResItemWithPage = {
   code?: string;
 
@@ -6726,7 +6358,6 @@ export type CommonResponseDeviceManufactureTypeResItemWithPage = {
 
   data?: DeviceManufactureTypeResItemWithPage;
 };
-
 
 export type DeviceManufactureTypeResItemWithPage = {
   totalPages?: number;
@@ -6752,7 +6383,6 @@ export type DeviceManufactureTypeResItemWithPage = {
   empty?: boolean;
 };
 
-
 export type DeviceDeletionReqFilterForManage = {
   // 삭제 시작 일시
   deleteStartAt?: Date;
@@ -6772,7 +6402,6 @@ export type DeviceDeletionReqFilterForManage = {
   // 상태
   status?: string;
 };
-
 
 export type DeviceDeletionResResponseForManage = {
   // 삭제 아이디
@@ -6811,7 +6440,6 @@ export type DeviceDeletionResResponseForManage = {
   fileUrl?: string;
 };
 
-
 export type CommonResponseDeviceDeletionResResponseForManageWithPage = {
   code?: string;
 
@@ -6819,7 +6447,6 @@ export type CommonResponseDeviceDeletionResResponseForManageWithPage = {
 
   data?: DeviceDeletionResResponseForManageWithPage;
 };
-
 
 export type DeviceDeletionResResponseForManageWithPage = {
   totalPages?: number;
@@ -6844,7 +6471,6 @@ export type DeviceDeletionResResponseForManageWithPage = {
 
   empty?: boolean;
 };
-
 
 export type TermsAgreementResSingle = {
   // 약관 동의 아이디
@@ -6875,7 +6501,6 @@ export type TermsAgreementResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseTermsAgreementResSingleList = {
   code?: string;
 
@@ -6883,7 +6508,6 @@ export type CommonResponseTermsAgreementResSingleList = {
 
   data?: TermsAgreementResSingle[];
 };
-
 
 export type TermsAgreementResItem = {
   // 약관 동의 아이디
@@ -6914,7 +6538,6 @@ export type TermsAgreementResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseTermsAgreementResItem = {
   code?: string;
 
@@ -6923,7 +6546,6 @@ export type CommonResponseTermsAgreementResItem = {
   data?: TermsAgreementResItem;
 };
 
-
 export type CommonResponseTermsAgreementResSingleWithPage = {
   code?: string;
 
@@ -6931,7 +6553,6 @@ export type CommonResponseTermsAgreementResSingleWithPage = {
 
   data?: TermsAgreementResSingleWithPage;
 };
-
 
 export type TermsAgreementResSingleWithPage = {
   totalPages?: number;
@@ -6956,7 +6577,6 @@ export type TermsAgreementResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type EventApplicationReqFilter = {
   // 약관 동의 아이디
@@ -6983,7 +6603,6 @@ export type EventApplicationReqFilter = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type EventApplicationResSingle = {
   // 약관 동의 아이디
@@ -7014,7 +6633,6 @@ export type EventApplicationResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventApplicationResSingleList = {
   code?: string;
 
@@ -7022,7 +6640,6 @@ export type CommonResponseEventApplicationResSingleList = {
 
   data?: EventApplicationResSingle[];
 };
-
 
 export type EventApplicationResItem = {
   // 약관 동의 아이디
@@ -7053,7 +6670,6 @@ export type EventApplicationResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventApplicationResItem = {
   code?: string;
 
@@ -7062,7 +6678,6 @@ export type CommonResponseEventApplicationResItem = {
   data?: EventApplicationResItem;
 };
 
-
 export type CommonResponseEventApplicationResSingleWithPage = {
   code?: string;
 
@@ -7070,7 +6685,6 @@ export type CommonResponseEventApplicationResSingleWithPage = {
 
   data?: EventApplicationResSingleWithPage;
 };
-
 
 export type EventApplicationResSingleWithPage = {
   totalPages?: number;
@@ -7095,7 +6709,6 @@ export type EventApplicationResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type EventFileResItem = {
   // 이벤트 파일 아이디
@@ -7130,7 +6743,6 @@ export type EventFileResItem = {
 
   fileUrl?: string;
 };
-
 
 export type EventResItemForTerms = {
   // 이벤트 아이디
@@ -7188,7 +6800,6 @@ export type EventResItemForTerms = {
   eventTerms?: EventTermsResItem[];
 };
 
-
 export type EventTermsResItem = {
   // 이벤트 파일 아이디
   id?: number;
@@ -7220,7 +6831,6 @@ export type EventTermsResItem = {
   terms?: TermsResItem;
 };
 
-
 export type TermsContentResItem = {
   // 약관 내용 아이디
   id?: number;
@@ -7249,7 +6859,6 @@ export type TermsContentResItem = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type TermsResItem = {
   // 국가 아이디
@@ -7298,7 +6907,6 @@ export type TermsResItem = {
   updatorName?: string;
 };
 
-
 export type CommonResponseEventResItemForTerms = {
   code?: string;
 
@@ -7306,7 +6914,6 @@ export type CommonResponseEventResItemForTerms = {
 
   data?: EventResItemForTerms;
 };
-
 
 export type SurveyAnswerResItem = {
   // 설문 답변 아이디
@@ -7339,7 +6946,6 @@ export type SurveyAnswerResItem = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type SurveyQuestionResItem = {
   // 설문 질문 아이디
@@ -7375,7 +6981,6 @@ export type SurveyQuestionResItem = {
   surveyAnswers?: SurveyAnswerResItem[];
 };
 
-
 export type SurveyResItem = {
   // 설문 아이디
   id?: number;
@@ -7410,7 +7015,6 @@ export type SurveyResItem = {
   surveyQuestions?: SurveyQuestionResItem[];
 };
 
-
 export type CommonResponseSurveyResItemList = {
   code?: string;
 
@@ -7419,12 +7023,10 @@ export type CommonResponseSurveyResItemList = {
   data?: SurveyResItem[];
 };
 
-
 export type ContentDisplayReqFilter = {
   // 컨텐츠 노출 방식
   contentDisplayMethodCode?: string;
 };
-
 
 export type CommonCodeReqFilter = {
   // 공통 코드
@@ -7455,7 +7057,6 @@ export type CommonCodeReqFilter = {
   externalCode1s?: string[];
 };
 
-
 export type CommonCodeNameResItem = {
   // 공통 코드
   commonCodeId?: string;
@@ -7478,7 +7079,6 @@ export type CommonCodeNameResItem = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type CommonCodeResItem = {
   // 공통 코드
@@ -7529,7 +7129,6 @@ export type CommonCodeResItem = {
   updatorName?: string;
 };
 
-
 export type CommonCodeTypeResSingle = {
   // 공통 코드 유형 아이디
   id?: string;
@@ -7561,7 +7160,6 @@ export type CommonCodeTypeResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseCommonCodeResItemList = {
   code?: string;
 
@@ -7569,7 +7167,6 @@ export type CommonResponseCommonCodeResItemList = {
 
   data?: CommonCodeResItem[];
 };
-
 
 export type TermsReqFilter = {
   // 약관 아이디
@@ -7596,7 +7193,6 @@ export type TermsReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type TermsResSingle = {
   // 국가 아이디
@@ -7643,7 +7239,6 @@ export type TermsResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseTermsResSingleList = {
   code?: string;
 
@@ -7651,7 +7246,6 @@ export type CommonResponseTermsResSingleList = {
 
   data?: TermsResSingle[];
 };
-
 
 export type CommonResponseTermsResItem = {
   code?: string;
@@ -7661,7 +7255,6 @@ export type CommonResponseTermsResItem = {
   data?: TermsResItem;
 };
 
-
 export type CommonResponseTermsResSingleWithPage = {
   code?: string;
 
@@ -7669,7 +7262,6 @@ export type CommonResponseTermsResSingleWithPage = {
 
   data?: TermsResSingleWithPage;
 };
-
 
 export type TermsResSingleWithPage = {
   totalPages?: number;
@@ -7695,7 +7287,6 @@ export type TermsResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type TermsContentReqFilter = {
   // 약관 내용 아이디
   id?: number;
@@ -7712,7 +7303,6 @@ export type TermsContentReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type TermsContentResSingle = {
   // 약관 내용 아이디
@@ -7743,7 +7333,6 @@ export type TermsContentResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseTermsContentResSingleList = {
   code?: string;
 
@@ -7751,7 +7340,6 @@ export type CommonResponseTermsContentResSingleList = {
 
   data?: TermsContentResSingle[];
 };
-
 
 export type CommonResponseTermsContentResItem = {
   code?: string;
@@ -7761,7 +7349,6 @@ export type CommonResponseTermsContentResItem = {
   data?: TermsContentResItem;
 };
 
-
 export type CommonResponseTermsContentResSingleWithPage = {
   code?: string;
 
@@ -7769,7 +7356,6 @@ export type CommonResponseTermsContentResSingleWithPage = {
 
   data?: TermsContentResSingleWithPage;
 };
-
 
 export type TermsContentResSingleWithPage = {
   totalPages?: number;
@@ -7795,7 +7381,6 @@ export type TermsContentResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type SigunguReqFilter = {
   // 법정동 코드 접두사
   prefix?: string;
@@ -7809,7 +7394,6 @@ export type SigunguReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type SigunguResSingle = {
   // 법정동 코드
@@ -7834,7 +7418,6 @@ export type SigunguResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseSigunguResSingleList = {
   code?: string;
 
@@ -7842,7 +7425,6 @@ export type CommonResponseSigunguResSingleList = {
 
   data?: SigunguResSingle[];
 };
-
 
 export type SigunguResItem = {
   // 법정동 코드
@@ -7867,7 +7449,6 @@ export type SigunguResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseSigunguResItem = {
   code?: string;
 
@@ -7876,7 +7457,6 @@ export type CommonResponseSigunguResItem = {
   data?: SigunguResItem;
 };
 
-
 export type CommonResponseSigunguResSingleWithPage = {
   code?: string;
 
@@ -7884,7 +7464,6 @@ export type CommonResponseSigunguResSingleWithPage = {
 
   data?: SigunguResSingleWithPage;
 };
-
 
 export type SigunguResSingleWithPage = {
   totalPages?: number;
@@ -7909,7 +7488,6 @@ export type SigunguResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type ServiceSeviceReqFilter = {
   // 아이디
@@ -7937,7 +7515,6 @@ export type ServiceSeviceReqFilter = {
   updatedBy?: string;
 };
 
-
 export type ServiceSeviceResSingle = {
   // 아이디
   id?: string;
@@ -7964,7 +7541,6 @@ export type ServiceSeviceResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseServiceSeviceResSingleList = {
   code?: string;
 
@@ -7972,7 +7548,6 @@ export type CommonResponseServiceSeviceResSingleList = {
 
   data?: ServiceSeviceResSingle[];
 };
-
 
 export type ServiceSeviceResItem = {
   // 아이디
@@ -8000,7 +7575,6 @@ export type ServiceSeviceResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseServiceSeviceResItem = {
   code?: string;
 
@@ -8009,7 +7583,6 @@ export type CommonResponseServiceSeviceResItem = {
   data?: ServiceSeviceResItem;
 };
 
-
 export type CommonResponseServiceSeviceResSingleWithPage = {
   code?: string;
 
@@ -8017,7 +7590,6 @@ export type CommonResponseServiceSeviceResSingleWithPage = {
 
   data?: ServiceSeviceResSingleWithPage;
 };
-
 
 export type ServiceSeviceResSingleWithPage = {
   totalPages?: number;
@@ -8042,7 +7614,6 @@ export type ServiceSeviceResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type MenuReqFilter = {
   // 메뉴명
@@ -8069,7 +7640,6 @@ export type MenuReqFilter = {
   // 접근 가능 역할(s)
   roles?: number;
 };
-
 
 export type MenuResSingle = {
   // 페이지 아이디
@@ -8115,7 +7685,6 @@ export type MenuResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseMenuResSingleList = {
   code?: string;
 
@@ -8123,7 +7692,6 @@ export type CommonResponseMenuResSingleList = {
 
   data?: MenuResSingle[];
 };
-
 
 export type MenuResItem = {
   // 페이지 아이디
@@ -8169,7 +7737,6 @@ export type MenuResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseMenuResItem = {
   code?: string;
 
@@ -8177,7 +7744,6 @@ export type CommonResponseMenuResItem = {
 
   data?: MenuResItem;
 };
-
 
 export type MenuResResponseForMenuTree = {
   // 메뉴명
@@ -8196,7 +7762,6 @@ export type MenuResResponseForMenuTree = {
   childrens?: MenuResResponseForMenuTree[];
 };
 
-
 export type CommonResponseMenuResResponseForMenuTreeList = {
   code?: string;
 
@@ -8205,7 +7770,6 @@ export type CommonResponseMenuResResponseForMenuTreeList = {
   data?: MenuResResponseForMenuTree[];
 };
 
-
 export type CommonResponseMenuResSingleWithPage = {
   code?: string;
 
@@ -8213,7 +7777,6 @@ export type CommonResponseMenuResSingleWithPage = {
 
   data?: MenuResSingleWithPage;
 };
-
 
 export type MenuResSingleWithPage = {
   totalPages?: number;
@@ -8238,7 +7801,6 @@ export type MenuResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type MenuButtonReqFilter = {
   // 페이지 버튼 아이디
@@ -8268,7 +7830,6 @@ export type MenuButtonReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type MenuButtonResSingle = {
   // 페이지 버튼 아이디
@@ -8311,7 +7872,6 @@ export type MenuButtonResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseMenuButtonResSingleList = {
   code?: string;
 
@@ -8319,7 +7879,6 @@ export type CommonResponseMenuButtonResSingleList = {
 
   data?: MenuButtonResSingle[];
 };
-
 
 export type MenuButtonResItem = {
   // 페이지 버튼 아이디
@@ -8362,7 +7921,6 @@ export type MenuButtonResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseMenuButtonResItem = {
   code?: string;
 
@@ -8371,7 +7929,6 @@ export type CommonResponseMenuButtonResItem = {
   data?: MenuButtonResItem;
 };
 
-
 export type CommonResponseMenuButtonResSingleWithPage = {
   code?: string;
 
@@ -8379,7 +7936,6 @@ export type CommonResponseMenuButtonResSingleWithPage = {
 
   data?: MenuButtonResSingleWithPage;
 };
-
 
 export type MenuButtonResSingleWithPage = {
   totalPages?: number;
@@ -8405,7 +7961,6 @@ export type MenuButtonResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type MenuButtonResResponseForAuthorized = {
   // 버튼 코드 (client 에서 정의 됨)
   buttonCode?: string;
@@ -8414,7 +7969,6 @@ export type MenuButtonResResponseForAuthorized = {
   roles?: number;
 };
 
-
 export type CommonResponseMenuButtonResResponseForAuthorizedList = {
   code?: string;
 
@@ -8422,7 +7976,6 @@ export type CommonResponseMenuButtonResResponseForAuthorizedList = {
 
   data?: MenuButtonResResponseForAuthorized[];
 };
-
 
 export type EventReqFilter = {
   // 이벤트 아이디
@@ -8458,7 +8011,6 @@ export type EventReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type EventResSingle = {
   // 이벤트 아이디
@@ -8510,7 +8062,6 @@ export type EventResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventResSingleList = {
   code?: string;
 
@@ -8519,7 +8070,6 @@ export type CommonResponseEventResSingleList = {
   data?: EventResSingle[];
 };
 
-
 export type CommonResponseEventResSingleWithPage = {
   code?: string;
 
@@ -8527,7 +8077,6 @@ export type CommonResponseEventResSingleWithPage = {
 
   data?: EventResSingleWithPage;
 };
-
 
 export type EventResSingleWithPage = {
   totalPages?: number;
@@ -8553,7 +8102,6 @@ export type EventResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type EventTermsReqFilter = {
   // 이벤트 약관 아이디
   id?: number;
@@ -8570,7 +8118,6 @@ export type EventTermsReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type EventTermsResSingle = {
   // 이벤트 파일 아이디
@@ -8601,7 +8148,6 @@ export type EventTermsResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventTermsResSingleList = {
   code?: string;
 
@@ -8609,7 +8155,6 @@ export type CommonResponseEventTermsResSingleList = {
 
   data?: EventTermsResSingle[];
 };
-
 
 export type CommonResponseEventTermsResItem = {
   code?: string;
@@ -8619,7 +8164,6 @@ export type CommonResponseEventTermsResItem = {
   data?: EventTermsResItem;
 };
 
-
 export type CommonResponseEventTermsResSingleWithPage = {
   code?: string;
 
@@ -8627,7 +8171,6 @@ export type CommonResponseEventTermsResSingleWithPage = {
 
   data?: EventTermsResSingleWithPage;
 };
-
 
 export type EventTermsResSingleWithPage = {
   totalPages?: number;
@@ -8653,7 +8196,6 @@ export type EventTermsResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type EventBenefitReqFilter = {
   // 이벤트 혜택 아이디
   id?: number;
@@ -8673,7 +8215,6 @@ export type EventBenefitReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type EventBenefitResSingle = {
   // 이벤트 혜택 아이디
@@ -8707,7 +8248,6 @@ export type EventBenefitResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventBenefitResSingleList = {
   code?: string;
 
@@ -8715,7 +8255,6 @@ export type CommonResponseEventBenefitResSingleList = {
 
   data?: EventBenefitResSingle[];
 };
-
 
 export type EventBenefitResItem = {
   // 이벤트 혜택 아이디
@@ -8749,7 +8288,6 @@ export type EventBenefitResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseEventBenefitResItem = {
   code?: string;
 
@@ -8758,7 +8296,6 @@ export type CommonResponseEventBenefitResItem = {
   data?: EventBenefitResItem;
 };
 
-
 export type CommonResponseEventBenefitResSingleWithPage = {
   code?: string;
 
@@ -8766,7 +8303,6 @@ export type CommonResponseEventBenefitResSingleWithPage = {
 
   data?: EventBenefitResSingleWithPage;
 };
-
 
 export type EventBenefitResSingleWithPage = {
   totalPages?: number;
@@ -8791,7 +8327,6 @@ export type EventBenefitResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type CouponPolicyReqFilter = {
   // 쿠폰 정책 아이디
@@ -8842,7 +8377,6 @@ export type CouponPolicyReqFilter = {
   // A : Activate / D : Deactivated
   status?: string;
 };
-
 
 export type CouponPolicyResSingle = {
   // 쿠폰 정책 아이디
@@ -8909,7 +8443,6 @@ export type CouponPolicyResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseCouponPolicyResSingleList = {
   code?: string;
 
@@ -8917,7 +8450,6 @@ export type CommonResponseCouponPolicyResSingleList = {
 
   data?: CouponPolicyResSingle[];
 };
-
 
 export type CouponPolicyResItem = {
   // 쿠폰 정책 아이디
@@ -8984,7 +8516,6 @@ export type CouponPolicyResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseCouponPolicyResItem = {
   code?: string;
 
@@ -8993,7 +8524,6 @@ export type CommonResponseCouponPolicyResItem = {
   data?: CouponPolicyResItem;
 };
 
-
 export type CommonResponseCouponPolicyResSingleWithPage = {
   code?: string;
 
@@ -9001,7 +8531,6 @@ export type CommonResponseCouponPolicyResSingleWithPage = {
 
   data?: CouponPolicyResSingleWithPage;
 };
-
 
 export type CouponPolicyResSingleWithPage = {
   totalPages?: number;
@@ -9026,7 +8555,6 @@ export type CouponPolicyResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type ContentDisplayResItem = {
   // 배너 아이디
@@ -9066,7 +8594,6 @@ export type ContentDisplayResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseContentDisplayResItemList = {
   code?: string;
 
@@ -9074,7 +8601,6 @@ export type CommonResponseContentDisplayResItemList = {
 
   data?: ContentDisplayResItem[];
 };
-
 
 export type CommonResponseContentDisplayResItem = {
   code?: string;
@@ -9084,7 +8610,6 @@ export type CommonResponseContentDisplayResItem = {
   data?: ContentDisplayResItem;
 };
 
-
 export type CommonResponseContentDisplayResItemWithPage = {
   code?: string;
 
@@ -9092,7 +8617,6 @@ export type CommonResponseContentDisplayResItemWithPage = {
 
   data?: ContentDisplayResItemWithPage;
 };
-
 
 export type ContentDisplayResItemWithPage = {
   totalPages?: number;
@@ -9118,7 +8642,6 @@ export type ContentDisplayResItemWithPage = {
   empty?: boolean;
 };
 
-
 export type CommonResponseCommonCodeResItem = {
   code?: string;
 
@@ -9126,7 +8649,6 @@ export type CommonResponseCommonCodeResItem = {
 
   data?: CommonCodeResItem;
 };
-
 
 export type CommonCodeResSingle = {
   // 공통 코드
@@ -9173,7 +8695,6 @@ export type CommonCodeResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseCommonCodeResSingleWithPage = {
   code?: string;
 
@@ -9181,7 +8702,6 @@ export type CommonResponseCommonCodeResSingleWithPage = {
 
   data?: CommonCodeResSingleWithPage;
 };
-
 
 export type CommonCodeResSingleWithPage = {
   totalPages?: number;
@@ -9207,7 +8727,6 @@ export type CommonCodeResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type CommonCodeTypeReqFilter = {
   // 공통 코드 유형 아이디
   id?: string;
@@ -9219,7 +8738,6 @@ export type CommonCodeTypeReqFilter = {
   description?: string;
 };
 
-
 export type CommonResponseCommonCodeTypeResSingleList = {
   code?: string;
 
@@ -9227,7 +8745,6 @@ export type CommonResponseCommonCodeTypeResSingleList = {
 
   data?: CommonCodeTypeResSingle[];
 };
-
 
 export type CommonCodeTypeResItem = {
   // 공통 코드 유형 아이디
@@ -9263,7 +8780,6 @@ export type CommonCodeTypeResItem = {
   updatorName?: string;
 };
 
-
 export type CommonResponseCommonCodeTypeResItem = {
   code?: string;
 
@@ -9272,7 +8788,6 @@ export type CommonResponseCommonCodeTypeResItem = {
   data?: CommonCodeTypeResItem;
 };
 
-
 export type CommonResponseCommonCodeTypeResSingleWithPage = {
   code?: string;
 
@@ -9280,7 +8795,6 @@ export type CommonResponseCommonCodeTypeResSingleWithPage = {
 
   data?: CommonCodeTypeResSingleWithPage;
 };
-
 
 export type CommonCodeTypeResSingleWithPage = {
   totalPages?: number;
@@ -9306,9 +8820,7 @@ export type CommonCodeTypeResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type ApiReqFilter = {};
-
 
 export type ApiResSingle = {
   // API 아이디
@@ -9345,7 +8857,6 @@ export type ApiResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseApiResSingleList = {
   code?: string;
 
@@ -9353,7 +8864,6 @@ export type CommonResponseApiResSingleList = {
 
   data?: ApiResSingle[];
 };
-
 
 export type ApiResItem = {
   // API 아이디
@@ -9390,7 +8900,6 @@ export type ApiResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseApiResItem = {
   code?: string;
 
@@ -9399,7 +8908,6 @@ export type CommonResponseApiResItem = {
   data?: ApiResItem;
 };
 
-
 export type CommonResponseApiResSingleWithPage = {
   code?: string;
 
@@ -9407,7 +8915,6 @@ export type CommonResponseApiResSingleWithPage = {
 
   data?: ApiResSingleWithPage;
 };
-
 
 export type ApiResSingleWithPage = {
   totalPages?: number;
@@ -9433,7 +8940,6 @@ export type ApiResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmTypeComponentReqFilter = {
   // ATM Type 코드
   atmTypeCode?: string;
@@ -9441,7 +8947,6 @@ export type AtmTypeComponentReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type AtmTypeComponentResItem = {
   // ATM 유형 별 구성 요소 아이디
@@ -9478,7 +8983,6 @@ export type AtmTypeComponentResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseAtmTypeComponentResItemList = {
   code?: string;
 
@@ -9486,7 +8990,6 @@ export type CommonResponseAtmTypeComponentResItemList = {
 
   data?: AtmTypeComponentResItem[];
 };
-
 
 export type AtmMaintenanceRequestCategoryReqFilter = {
   // ATM 점검 요청 분류 이름
@@ -9501,7 +9004,6 @@ export type AtmMaintenanceRequestCategoryReqFilter = {
   // ATM 유형(s)
   atmTypes?: number;
 };
-
 
 export type AtmMaintenanceRequestCategoryResSingle = {
   // ATM 점검 요청 분류 아이디
@@ -9542,7 +9044,6 @@ export type AtmMaintenanceRequestCategoryResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage = {
   code?: string;
 
@@ -9550,7 +9051,6 @@ export type CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage = {
 
   data?: AtmMaintenanceRequestCategoryResSingleWithPage;
 };
-
 
 export type AtmMaintenanceRequestCategoryResSingleWithPage = {
   totalPages?: number;
@@ -9575,7 +9075,6 @@ export type AtmMaintenanceRequestCategoryResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type AtmAcceptanceDeviceResSingle = {
   // ATM 수납 디바이스 아이디
@@ -9605,7 +9104,6 @@ export type AtmAcceptanceDeviceResSingle = {
   // 수정자 아이디
   updatedBy?: string;
 };
-
 
 export type AtmMaintenanceResSingle = {
   // 아이디
@@ -9660,7 +9158,6 @@ export type AtmMaintenanceResSingle = {
 
   updatorName?: string;
 };
-
 
 export type AtmResSingleExFieldForDetail = {
   // ATM 아이디
@@ -9795,7 +9292,6 @@ export type AtmResSingleExFieldForDetail = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmResSingleExFieldForDetail = {
   code?: string;
 
@@ -9803,7 +9299,6 @@ export type CommonResponseAtmResSingleExFieldForDetail = {
 
   data?: AtmResSingleExFieldForDetail;
 };
-
 
 export type AtmAcceptanceDeviceReqFilter = {
   // ATM 아이디
@@ -9813,7 +9308,6 @@ export type AtmAcceptanceDeviceReqFilter = {
   status?: string;
 };
 
-
 export type CommonResponseAtmAcceptanceDeviceResSingleList = {
   code?: string;
 
@@ -9821,7 +9315,6 @@ export type CommonResponseAtmAcceptanceDeviceResSingleList = {
 
   data?: AtmAcceptanceDeviceResSingle[];
 };
-
 
 export type AtmReqFilter = {
   // ATM 아이디
@@ -9927,7 +9420,6 @@ export type AtmReqFilter = {
   npsId?: string;
 };
 
-
 export type CommonResponseAtmResItemList = {
   code?: string;
 
@@ -9936,12 +9428,10 @@ export type CommonResponseAtmResItemList = {
   data?: AtmResItem[];
 };
 
-
 export type AtmReqFilterForStatistics = {
   // ATM 통계 타입
   statisticsType?: string;
 };
-
 
 export type CommonResponseAtmResResponseForStatisticsList = {
   code?: string;
@@ -9950,7 +9440,6 @@ export type CommonResponseAtmResResponseForStatisticsList = {
 
   data?: AtmResResponseForStatistics[];
 };
-
 
 export type AtmResSingleExField = {
   // ATM 아이디
@@ -10096,7 +9585,6 @@ export type AtmResSingleExField = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmResSingleExFieldWithPage = {
   code?: string;
 
@@ -10104,7 +9592,6 @@ export type CommonResponseAtmResSingleExFieldWithPage = {
 
   data?: AtmResSingleExFieldWithPage;
 };
-
 
 export type AtmResSingleExFieldWithPage = {
   totalPages?: number;
@@ -10130,9 +9617,7 @@ export type AtmResSingleExFieldWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmReqFilterForDailyAtmStatus = {};
-
 
 export type AtmResResponseForDailyAtmStatus = {
   // ATM 유형 코드
@@ -10151,7 +9636,6 @@ export type AtmResResponseForDailyAtmStatus = {
   atmCount?: number;
 };
 
-
 export type CommonResponseAtmResResponseForDailyAtmStatusWithPage = {
   code?: string;
 
@@ -10159,7 +9643,6 @@ export type CommonResponseAtmResResponseForDailyAtmStatusWithPage = {
 
   data?: AtmResResponseForDailyAtmStatusWithPage;
 };
-
 
 export type AtmResResponseForDailyAtmStatusWithPage = {
   totalPages?: number;
@@ -10185,7 +9668,6 @@ export type AtmResResponseForDailyAtmStatusWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmTypeComponentResResponseForUnregister = {
   // ATM 유형 별 구성 요소 아이디
   id?: number;
@@ -10200,7 +9682,6 @@ export type AtmTypeComponentResResponseForUnregister = {
   status?: string;
 };
 
-
 export type CommonResponseAtmTypeComponentResResponseForUnregisterList = {
   code?: string;
 
@@ -10208,7 +9689,6 @@ export type CommonResponseAtmTypeComponentResResponseForUnregisterList = {
 
   data?: AtmTypeComponentResResponseForUnregister[];
 };
-
 
 export type AtmTypeComponentResResponseForRegister = {
   // ATM 유형 별 구성 요소 아이디
@@ -10230,7 +9710,6 @@ export type AtmTypeComponentResResponseForRegister = {
   mandatoryYn?: string;
 };
 
-
 export type CommonResponseAtmTypeComponentResResponseForRegisterList = {
   code?: string;
 
@@ -10239,7 +9718,6 @@ export type CommonResponseAtmTypeComponentResResponseForRegisterList = {
   data?: AtmTypeComponentResResponseForRegister[];
 };
 
-
 export type AtmStatusReqFilter = {
   // ATM 아이디
   atmId?: number;
@@ -10247,7 +9725,6 @@ export type AtmStatusReqFilter = {
   // N : Not Installed / I : Installed / A : Activated / U : Under Maintenance / S : Suspended / D : Deleted
   status?: string;
 };
-
 
 export type AtmStatusResSingle = {
   // ATM 상태 아이디
@@ -10272,7 +9749,6 @@ export type AtmStatusResSingle = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseAtmStatusResSingleList = {
   code?: string;
 
@@ -10280,7 +9756,6 @@ export type CommonResponseAtmStatusResSingleList = {
 
   data?: AtmStatusResSingle[];
 };
-
 
 export type AtmStatusResItem = {
   // ATM 상태 아이디
@@ -10305,7 +9780,6 @@ export type AtmStatusResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseAtmStatusResItem = {
   code?: string;
 
@@ -10314,7 +9788,6 @@ export type CommonResponseAtmStatusResItem = {
   data?: AtmStatusResItem;
 };
 
-
 export type CommonResponseAtmStatusResSingleWithPage = {
   code?: string;
 
@@ -10322,7 +9795,6 @@ export type CommonResponseAtmStatusResSingleWithPage = {
 
   data?: AtmStatusResSingleWithPage;
 };
-
 
 export type AtmStatusResSingleWithPage = {
   totalPages?: number;
@@ -10347,7 +9819,6 @@ export type AtmStatusResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type AtmMaintenanceReqFilter = {
   // ATM 아이디
@@ -10381,7 +9852,6 @@ export type AtmMaintenanceReqFilter = {
   scheduledAt?: string;
 };
 
-
 export type CommonResponseAtmMaintenanceResSingleList = {
   code?: string;
 
@@ -10389,7 +9859,6 @@ export type CommonResponseAtmMaintenanceResSingleList = {
 
   data?: AtmMaintenanceResSingle[];
 };
-
 
 export type CommonResponseAtmMaintenanceResItem = {
   code?: string;
@@ -10399,7 +9868,6 @@ export type CommonResponseAtmMaintenanceResItem = {
   data?: AtmMaintenanceResItem;
 };
 
-
 export type CommonResponseAtmMaintenanceResSingleWithPage = {
   code?: string;
 
@@ -10407,7 +9875,6 @@ export type CommonResponseAtmMaintenanceResSingleWithPage = {
 
   data?: AtmMaintenanceResSingleWithPage;
 };
-
 
 export type AtmMaintenanceResSingleWithPage = {
   totalPages?: number;
@@ -10433,12 +9900,10 @@ export type AtmMaintenanceResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmMaintenanceStatusReqFilter = {
   // ATM 점검 아이디
   atmMaintenanceId?: number;
 };
-
 
 export type AtmMaintenanceStatusResSingle = {
   // 아이디
@@ -10457,7 +9922,6 @@ export type AtmMaintenanceStatusResSingle = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAtmMaintenanceStatusResSingleList = {
   code?: string;
 
@@ -10465,7 +9929,6 @@ export type CommonResponseAtmMaintenanceStatusResSingleList = {
 
   data?: AtmMaintenanceStatusResSingle[];
 };
-
 
 export type AtmMaintenanceStatusResItem = {
   // 아이디
@@ -10484,7 +9947,6 @@ export type AtmMaintenanceStatusResItem = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAtmMaintenanceStatusResItem = {
   code?: string;
 
@@ -10493,7 +9955,6 @@ export type CommonResponseAtmMaintenanceStatusResItem = {
   data?: AtmMaintenanceStatusResItem;
 };
 
-
 export type CommonResponseAtmMaintenanceStatusResSingleWithPage = {
   code?: string;
 
@@ -10501,7 +9962,6 @@ export type CommonResponseAtmMaintenanceStatusResSingleWithPage = {
 
   data?: AtmMaintenanceStatusResSingleWithPage;
 };
-
 
 export type AtmMaintenanceStatusResSingleWithPage = {
   totalPages?: number;
@@ -10527,7 +9987,6 @@ export type AtmMaintenanceStatusResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type CommonResponseAtmMaintenanceRequestCategoryResSingleList = {
   code?: string;
 
@@ -10536,7 +9995,6 @@ export type CommonResponseAtmMaintenanceRequestCategoryResSingleList = {
   data?: AtmMaintenanceRequestCategoryResSingle[];
 };
 
-
 export type CommonResponseAtmMaintenanceRequestCategoryResSingle = {
   code?: string;
 
@@ -10544,7 +10002,6 @@ export type CommonResponseAtmMaintenanceRequestCategoryResSingle = {
 
   data?: AtmMaintenanceRequestCategoryResSingle;
 };
-
 
 export type AtmComponentStockReqFilter = {
   // ATM 유형
@@ -10565,7 +10022,6 @@ export type AtmComponentStockReqFilter = {
   // (수리 업체 관리) 파트너 아이디
   partnerId?: number;
 };
-
 
 export type AtmComponentStockResSingle = {
   // ATM 구성 요소 재고 아이디
@@ -10615,7 +10071,6 @@ export type AtmComponentStockResSingle = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmComponentStockResSingleList = {
   code?: string;
 
@@ -10624,7 +10079,6 @@ export type CommonResponseAtmComponentStockResSingleList = {
   data?: AtmComponentStockResSingle[];
 };
 
-
 export type CommonResponseAtmComponentStockResSingle = {
   code?: string;
 
@@ -10632,7 +10086,6 @@ export type CommonResponseAtmComponentStockResSingle = {
 
   data?: AtmComponentStockResSingle;
 };
-
 
 export type AtmComponentStockResSingleExField = {
   // ATM 구성 요소 재고 아이디
@@ -10691,7 +10144,6 @@ export type AtmComponentStockResSingleExField = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAtmComponentStockResSingleExFieldWithPage = {
   code?: string;
 
@@ -10699,7 +10151,6 @@ export type CommonResponseAtmComponentStockResSingleExFieldWithPage = {
 
   data?: AtmComponentStockResSingleExFieldWithPage;
 };
-
 
 export type AtmComponentStockResSingleExFieldWithPage = {
   totalPages?: number;
@@ -10725,9 +10176,7 @@ export type AtmComponentStockResSingleExFieldWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmCollectionReqFilter = {};
-
 
 export type AtmCollectionResItem = {
   // 아이디
@@ -10767,7 +10216,6 @@ export type AtmCollectionResItem = {
   updatedBy?: string;
 };
 
-
 export type CommonResponseAtmCollectionResItemList = {
   code?: string;
 
@@ -10775,7 +10223,6 @@ export type CommonResponseAtmCollectionResItemList = {
 
   data?: AtmCollectionResItem[];
 };
-
 
 export type CommonResponseAtmCollectionResItem = {
   code?: string;
@@ -10785,7 +10232,6 @@ export type CommonResponseAtmCollectionResItem = {
   data?: AtmCollectionResItem;
 };
 
-
 export type CommonResponseAtmCollectionResItemWithPage = {
   code?: string;
 
@@ -10793,7 +10239,6 @@ export type CommonResponseAtmCollectionResItemWithPage = {
 
   data?: AtmCollectionResItemWithPage;
 };
-
 
 export type AtmCollectionResItemWithPage = {
   totalPages?: number;
@@ -10819,7 +10264,6 @@ export type AtmCollectionResItemWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmCollectionStatusReqFilter = {
   // ATM 회수 아이디
   atmCollectionId?: number;
@@ -10827,7 +10271,6 @@ export type AtmCollectionStatusReqFilter = {
   // 상태
   status?: string;
 };
-
 
 export type AtmCollectionStatusResSingle = {
   // 아이디
@@ -10846,7 +10289,6 @@ export type AtmCollectionStatusResSingle = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAtmCollectionStatusResSingleList = {
   code?: string;
 
@@ -10854,7 +10296,6 @@ export type CommonResponseAtmCollectionStatusResSingleList = {
 
   data?: AtmCollectionStatusResSingle[];
 };
-
 
 export type AtmCollectionStatusResItem = {
   // 아이디
@@ -10873,7 +10314,6 @@ export type AtmCollectionStatusResItem = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAtmCollectionStatusResItem = {
   code?: string;
 
@@ -10882,7 +10322,6 @@ export type CommonResponseAtmCollectionStatusResItem = {
   data?: AtmCollectionStatusResItem;
 };
 
-
 export type CommonResponseAtmCollectionStatusResSingleWithPage = {
   code?: string;
 
@@ -10890,7 +10329,6 @@ export type CommonResponseAtmCollectionStatusResSingleWithPage = {
 
   data?: AtmCollectionStatusResSingleWithPage;
 };
-
 
 export type AtmCollectionStatusResSingleWithPage = {
   totalPages?: number;
@@ -10916,7 +10354,6 @@ export type AtmCollectionStatusResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export type AtmChangedHistoryReqFilter = {
   // ATM 아이디
   atmId?: number;
@@ -10930,7 +10367,6 @@ export type AtmChangedHistoryReqFilter = {
   // 변경 후
   newValue?: string;
 };
-
 
 export type AtmChangedHistoryResSingle = {
   // ATM 현장 점검 내역 아이디
@@ -10955,7 +10391,6 @@ export type AtmChangedHistoryResSingle = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAtmChangedHistoryResSingleList = {
   code?: string;
 
@@ -10964,7 +10399,6 @@ export type CommonResponseAtmChangedHistoryResSingleList = {
   data?: AtmChangedHistoryResSingle[];
 };
 
-
 export type CommonResponseAtmChangedHistoryResSingleWithPage = {
   code?: string;
 
@@ -10972,7 +10406,6 @@ export type CommonResponseAtmChangedHistoryResSingleWithPage = {
 
   data?: AtmChangedHistoryResSingleWithPage;
 };
-
 
 export type AtmChangedHistoryResSingleWithPage = {
   totalPages?: number;
@@ -10997,7 +10430,6 @@ export type AtmChangedHistoryResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type AtmAcceptanceDeviceFileResItem = {
   // ATM 구성 요소 아이디
@@ -11026,7 +10458,6 @@ export type AtmAcceptanceDeviceFileResItem = {
 
   fileUrl?: string;
 };
-
 
 export type AtmAcceptanceDeviceResItem = {
   // ATM 수납 디바이스 아이디
@@ -11060,7 +10491,6 @@ export type AtmAcceptanceDeviceResItem = {
   atmAcceptanceDeviceFiles?: AtmAcceptanceDeviceFileResItem[];
 };
 
-
 export type CommonResponseAtmAcceptanceDeviceResItem = {
   code?: string;
 
@@ -11069,7 +10499,6 @@ export type CommonResponseAtmAcceptanceDeviceResItem = {
   data?: AtmAcceptanceDeviceResItem;
 };
 
-
 export type CommonResponseAtmAcceptanceDeviceResSingleWithPage = {
   code?: string;
 
@@ -11077,7 +10506,6 @@ export type CommonResponseAtmAcceptanceDeviceResSingleWithPage = {
 
   data?: AtmAcceptanceDeviceResSingleWithPage;
 };
-
 
 export type AtmAcceptanceDeviceResSingleWithPage = {
   totalPages?: number;
@@ -11102,7 +10530,6 @@ export type AtmAcceptanceDeviceResSingleWithPage = {
 
   empty?: boolean;
 };
-
 
 export type AdministratorResItem = {
   // 아이디
@@ -11145,7 +10572,6 @@ export type AdministratorResItem = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAdministratorResItem = {
   code?: string;
 
@@ -11153,7 +10579,6 @@ export type CommonResponseAdministratorResItem = {
 
   data?: AdministratorResItem;
 };
-
 
 export type AdministratorReqFilterForManage = {
   // 휴대폰번호
@@ -11174,7 +10599,6 @@ export type AdministratorReqFilterForManage = {
   // 지점 아이디
   branchId?: number;
 };
-
 
 export type AdministratorResSingleExField = {
   // 아이디
@@ -11224,7 +10648,6 @@ export type AdministratorResSingleExField = {
   updatorName?: string;
 };
 
-
 export type CommonResponseAdministratorResSingleExFieldWithPage = {
   code?: string;
 
@@ -11232,7 +10655,6 @@ export type CommonResponseAdministratorResSingleExFieldWithPage = {
 
   data?: AdministratorResSingleExFieldWithPage;
 };
-
 
 export type AdministratorResSingleExFieldWithPage = {
   totalPages?: number;
@@ -11257,7 +10679,6 @@ export type AdministratorResSingleExFieldWithPage = {
 
   empty?: boolean;
 };
-
 
 export type AdministratorLoginHistoryReqFilter = {
   // 아이디
@@ -11285,7 +10706,6 @@ export type AdministratorLoginHistoryReqFilter = {
   createdBy?: string;
 };
 
-
 export type AdministratorLoginHistoryResSingle = {
   // 아이디
   id?: number;
@@ -11312,7 +10732,6 @@ export type AdministratorLoginHistoryResSingle = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAdministratorLoginHistoryResSingleList = {
   code?: string;
 
@@ -11320,7 +10739,6 @@ export type CommonResponseAdministratorLoginHistoryResSingleList = {
 
   data?: AdministratorLoginHistoryResSingle[];
 };
-
 
 export type AdministratorLoginHistoryResItem = {
   // 아이디
@@ -11348,7 +10766,6 @@ export type AdministratorLoginHistoryResItem = {
   createdBy?: string;
 };
 
-
 export type CommonResponseAdministratorLoginHistoryResItem = {
   code?: string;
 
@@ -11357,7 +10774,6 @@ export type CommonResponseAdministratorLoginHistoryResItem = {
   data?: AdministratorLoginHistoryResItem;
 };
 
-
 export type CommonResponseAdministratorLoginHistoryResSingleWithPage = {
   code?: string;
 
@@ -11365,7 +10781,6 @@ export type CommonResponseAdministratorLoginHistoryResSingleWithPage = {
 
   data?: AdministratorLoginHistoryResSingleWithPage;
 };
-
 
 export type AdministratorLoginHistoryResSingleWithPage = {
   totalPages?: number;
@@ -11391,14 +10806,13 @@ export type AdministratorLoginHistoryResSingleWithPage = {
   empty?: boolean;
 };
 
-
 export const PurchaseApiAdminPurchasesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseResItem>(
     `/purchase/api-admin/purchases/${params.path.id}`,
@@ -11409,11 +10823,10 @@ export const PurchaseApiAdminPurchasesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesIdGetQuery = (
   params: {
@@ -11422,7 +10835,7 @@ export const usePurchaseApiAdminPurchasesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11433,7 +10846,7 @@ export const usePurchaseApiAdminPurchasesIdGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11444,7 +10857,6 @@ export const usePurchaseApiAdminPurchasesIdGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasesIdGetLazyQuery = (
   params: {
     path: {
@@ -11452,7 +10864,7 @@ export const usePurchaseApiAdminPurchasesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11463,7 +10875,7 @@ export const usePurchaseApiAdminPurchasesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11475,7 +10887,6 @@ export const usePurchaseApiAdminPurchasesIdGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasesIdPutMutation = async (
   params: {
     path: {
@@ -11484,7 +10895,7 @@ export const PurchaseApiAdminPurchasesIdPutMutation = async (
 
     body: PurchaseReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseResId>(
     `/purchase/api-admin/purchases/${params.path.id}`,
@@ -11492,11 +10903,10 @@ export const PurchaseApiAdminPurchasesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesIdPutMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasesIdPut";
@@ -11519,7 +10929,7 @@ export const usePurchaseApiAdminPurchasesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchasesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -11527,14 +10937,13 @@ export const usePurchaseApiAdminPurchasesIdPutMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchasesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchases/${params.path.id}`,
@@ -11542,11 +10951,10 @@ export const PurchaseApiAdminPurchasesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesIdDeleteMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasesIdDelete";
@@ -11567,7 +10975,7 @@ export const usePurchaseApiAdminPurchasesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchasesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -11575,14 +10983,13 @@ export const usePurchaseApiAdminPurchasesIdDeleteMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchaseRewardsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseRewardResItem>(
     `/purchase/api-admin/purchase-rewards/${params.path.id}`,
@@ -11593,11 +11000,10 @@ export const PurchaseApiAdminPurchaseRewardsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsIdGetQuery = (
   params: {
@@ -11606,7 +11012,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11617,7 +11023,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11628,7 +11034,6 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseRewardsIdGetLazyQuery = (
   params: {
     path: {
@@ -11636,7 +11041,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11647,7 +11052,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11659,7 +11064,6 @@ export const usePurchaseApiAdminPurchaseRewardsIdGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseRewardsIdPutMutation = async (
   params: {
     path: {
@@ -11668,7 +11072,7 @@ export const PurchaseApiAdminPurchaseRewardsIdPutMutation = async (
 
     body: PurchaseRewardReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-rewards/${params.path.id}`,
@@ -11676,11 +11080,10 @@ export const PurchaseApiAdminPurchaseRewardsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsIdPutMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseRewardsIdPut";
@@ -11703,7 +11106,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchaseRewardsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -11711,14 +11114,13 @@ export const usePurchaseApiAdminPurchaseRewardsIdPutMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchaseRewardsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-rewards/${params.path.id}`,
@@ -11726,11 +11128,10 @@ export const PurchaseApiAdminPurchaseRewardsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsIdDeleteMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseRewardsIdDelete";
@@ -11751,7 +11152,7 @@ export const usePurchaseApiAdminPurchaseRewardsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchaseRewardsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -11759,14 +11160,13 @@ export const usePurchaseApiAdminPurchaseRewardsIdDeleteMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchasePricePoliciesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchasePricePolicyResItem>(
     `/purchase/api-admin/purchase-price-policies/${params.path.id}`,
@@ -11777,11 +11177,10 @@ export const PurchaseApiAdminPurchasePricePoliciesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesIdGetQuery = (
   params: {
@@ -11790,7 +11189,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11801,7 +11200,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11812,7 +11211,6 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasePricePoliciesIdGetLazyQuery = (
   params: {
     path: {
@@ -11820,7 +11218,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11831,7 +11229,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11843,7 +11241,6 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasePricePoliciesIdPutMutation = async (
   params: {
     path: {
@@ -11852,7 +11249,7 @@ export const PurchaseApiAdminPurchasePricePoliciesIdPutMutation = async (
 
     body: PurchasePricePolicyReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-price-policies/${params.path.id}`,
@@ -11860,11 +11257,10 @@ export const PurchaseApiAdminPurchasePricePoliciesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesIdPutMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasePricePoliciesIdPut";
@@ -11887,7 +11283,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchasePricePoliciesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -11895,14 +11291,13 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdPutMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchasePricePoliciesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-price-policies/${params.path.id}`,
@@ -11910,11 +11305,10 @@ export const PurchaseApiAdminPurchasePricePoliciesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesIdDeleteMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasePricePoliciesIdDelete";
@@ -11936,7 +11330,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdDeleteMutation = () => {
       const response =
         await PurchaseApiAdminPurchasePricePoliciesIdDeleteMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -11944,14 +11338,13 @@ export const usePurchaseApiAdminPurchasePricePoliciesIdDeleteMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseDeviceModelResItem>(
     `/purchase/api-admin/purchase-device-models/${params.path.id}`,
@@ -11962,11 +11355,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsIdGetQuery = (
   params: {
@@ -11975,7 +11367,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -11986,7 +11378,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -11997,7 +11389,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseDeviceModelsIdGetLazyQuery = (
   params: {
     path: {
@@ -12005,7 +11396,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12016,7 +11407,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12028,7 +11419,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelsIdPutMutation = async (
   params: {
     path: {
@@ -12037,7 +11427,7 @@ export const PurchaseApiAdminPurchaseDeviceModelsIdPutMutation = async (
 
     body: PurchaseDeviceModelReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-device-models/${params.path.id}`,
@@ -12045,11 +11435,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsIdPutMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseDeviceModelsIdPut";
@@ -12072,7 +11461,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12080,14 +11469,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdPutMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/purchase/api-admin/purchase-device-models/${params.path.id}`,
@@ -12095,11 +11483,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseDeviceModelsIdDelete";
@@ -12121,7 +11508,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation = () => {
       const response =
         await PurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -12129,14 +11516,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelsIdDeleteMutation = () => {
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchaseDeviceModelGradePriceResItem>(
@@ -12148,11 +11534,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = (
   params: {
@@ -12161,7 +11546,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12173,7 +11558,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = (
       const response =
         await PurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -12184,7 +11569,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetLazyQuery = (
   params: {
     path: {
@@ -12192,7 +11576,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResItem>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12204,7 +11588,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetLazyQuery = (
       const response =
         await PurchaseApiAdminPurchaseDeviceModelGradePricesIdGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -12216,7 +11600,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation =
   async (
     params: {
@@ -12226,7 +11609,7 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation =
 
       body: PurchaseDeviceModelGradePriceReqUpdate;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response = await axiosClient<CommonResponseObject>(
       `/purchase/api-admin/purchase-device-model-grade-prices/${params.path.id}`,
@@ -12234,11 +11617,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation =
         method: "put",
         data: params.body,
         ...options,
-      },
+      }
     );
     return response.data;
   };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation =
   () => {
@@ -12263,14 +11645,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation =
         const response =
           await PurchaseApiAdminPurchaseDeviceModelGradePricesIdPutMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
       retry: false,
     });
   };
-
 
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
   async (
@@ -12279,7 +11660,7 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
         id: number;
       };
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response = await axiosClient<CommonResponseObject>(
       `/purchase/api-admin/purchase-device-model-grade-prices/${params.path.id}`,
@@ -12287,11 +11668,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
         method: "delete",
 
         ...options,
-      },
+      }
     );
     return response.data;
   };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
   () => {
@@ -12315,7 +11695,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
         const response =
           await PurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -12323,14 +11703,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesIdDeleteMutation =
     });
   };
 
-
 export const PartnerApiAdminPartnersIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerResItem>(
     `/partner/api-admin/partners/${params.path.id}`,
@@ -12341,11 +11720,10 @@ export const PartnerApiAdminPartnersIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersIdGetQuery = (
   params: {
@@ -12354,7 +11732,7 @@ export const usePartnerApiAdminPartnersIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResItem>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12365,7 +11743,7 @@ export const usePartnerApiAdminPartnersIdGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12376,7 +11754,6 @@ export const usePartnerApiAdminPartnersIdGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnersIdGetLazyQuery = (
   params: {
     path: {
@@ -12384,7 +11761,7 @@ export const usePartnerApiAdminPartnersIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResItem>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12395,7 +11772,7 @@ export const usePartnerApiAdminPartnersIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12407,7 +11784,6 @@ export const usePartnerApiAdminPartnersIdGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminPartnersIdPutMutation = async (
   params: {
     path: {
@@ -12416,7 +11792,7 @@ export const PartnerApiAdminPartnersIdPutMutation = async (
 
     body: PartnerReqUpdateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerResId>(
     `/partner/api-admin/partners/${params.path.id}`,
@@ -12424,11 +11800,10 @@ export const PartnerApiAdminPartnersIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersIdPutMutation = () => {
   const mutationKey = "PartnerApiAdminPartnersIdPut";
@@ -12451,7 +11826,7 @@ export const usePartnerApiAdminPartnersIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnersIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12459,14 +11834,13 @@ export const usePartnerApiAdminPartnersIdPutMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminPartnersIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/partner/api-admin/partners/${params.path.id}`,
@@ -12474,11 +11848,10 @@ export const PartnerApiAdminPartnersIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersIdDeleteMutation = () => {
   const mutationKey = "PartnerApiAdminPartnersIdDelete";
@@ -12499,7 +11872,7 @@ export const usePartnerApiAdminPartnersIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnersIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12507,14 +11880,13 @@ export const usePartnerApiAdminPartnersIdDeleteMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerMemberResItem>(
     `/partner/api-admin/partner-members/${params.path.id}`,
@@ -12525,11 +11897,10 @@ export const PartnerApiAdminPartnerMembersIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersIdGetQuery = (
   params: {
@@ -12538,7 +11909,7 @@ export const usePartnerApiAdminPartnerMembersIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResItem>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12549,7 +11920,7 @@ export const usePartnerApiAdminPartnerMembersIdGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12560,7 +11931,6 @@ export const usePartnerApiAdminPartnerMembersIdGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnerMembersIdGetLazyQuery = (
   params: {
     path: {
@@ -12568,7 +11938,7 @@ export const usePartnerApiAdminPartnerMembersIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResItem>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12579,7 +11949,7 @@ export const usePartnerApiAdminPartnerMembersIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12591,7 +11961,6 @@ export const usePartnerApiAdminPartnerMembersIdGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersIdPutMutation = async (
   params: {
     path: {
@@ -12600,7 +11969,7 @@ export const PartnerApiAdminPartnerMembersIdPutMutation = async (
 
     body: PartnerMemberReqUpdateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerMemberResId>(
     `/partner/api-admin/partner-members/${params.path.id}`,
@@ -12608,11 +11977,10 @@ export const PartnerApiAdminPartnerMembersIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersIdPutMutation = () => {
   const mutationKey = "PartnerApiAdminPartnerMembersIdPut";
@@ -12635,7 +12003,7 @@ export const usePartnerApiAdminPartnerMembersIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnerMembersIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12643,14 +12011,13 @@ export const usePartnerApiAdminPartnerMembersIdPutMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/partner/api-admin/partner-members/${params.path.id}`,
@@ -12658,11 +12025,10 @@ export const PartnerApiAdminPartnerMembersIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersIdDeleteMutation = () => {
   const mutationKey = "PartnerApiAdminPartnerMembersIdDelete";
@@ -12683,14 +12049,13 @@ export const usePartnerApiAdminPartnerMembersIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnerMembersIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PartnerApiAdminPartnerMembersIdInvitePutMutation = async (
   params: {
@@ -12700,7 +12065,7 @@ export const PartnerApiAdminPartnerMembersIdInvitePutMutation = async (
 
     body: PartnerMemberReqUpdateForInvite;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/partner/api-admin/partner-members/${params.path.id}/invite`,
@@ -12708,11 +12073,10 @@ export const PartnerApiAdminPartnerMembersIdInvitePutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersIdInvitePutMutation = () => {
   const mutationKey = "PartnerApiAdminPartnerMembersIdInvitePut";
@@ -12735,7 +12099,7 @@ export const usePartnerApiAdminPartnerMembersIdInvitePutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnerMembersIdInvitePutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12743,12 +12107,11 @@ export const usePartnerApiAdminPartnerMembersIdInvitePutMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersRegistPutMutation = async (
   params: {
     body: PartnerMemberReqUpdateForInviteAccept;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/partner/api-admin/partner-members/regist`,
@@ -12756,11 +12119,10 @@ export const PartnerApiAdminPartnerMembersRegistPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersRegistPutMutation = () => {
   const mutationKey = "PartnerApiAdminPartnerMembersRegistPut";
@@ -12779,7 +12141,7 @@ export const usePartnerApiAdminPartnerMembersRegistPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnerMembersRegistPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12787,14 +12149,13 @@ export const usePartnerApiAdminPartnerMembersRegistPutMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminBranchesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseBranchResItem>(
     `/partner/api-admin/branches/${params.path.id}`,
@@ -12805,11 +12166,10 @@ export const PartnerApiAdminBranchesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesIdGetQuery = (
   params: {
@@ -12818,7 +12178,7 @@ export const usePartnerApiAdminBranchesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResItem>,
+  queryOptions?: QueryOptions<CommonResponseBranchResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12829,7 +12189,7 @@ export const usePartnerApiAdminBranchesIdGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12840,7 +12200,6 @@ export const usePartnerApiAdminBranchesIdGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminBranchesIdGetLazyQuery = (
   params: {
     path: {
@@ -12848,7 +12207,7 @@ export const usePartnerApiAdminBranchesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResItem>,
+  queryOptions?: QueryOptions<CommonResponseBranchResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -12859,7 +12218,7 @@ export const usePartnerApiAdminBranchesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -12871,7 +12230,6 @@ export const usePartnerApiAdminBranchesIdGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminBranchesIdPutMutation = async (
   params: {
     path: {
@@ -12880,7 +12238,7 @@ export const PartnerApiAdminBranchesIdPutMutation = async (
 
     body: BranchReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseBranchResId>(
     `/partner/api-admin/branches/${params.path.id}`,
@@ -12888,11 +12246,10 @@ export const PartnerApiAdminBranchesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesIdPutMutation = () => {
   const mutationKey = "PartnerApiAdminBranchesIdPut";
@@ -12915,7 +12272,7 @@ export const usePartnerApiAdminBranchesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminBranchesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12923,14 +12280,13 @@ export const usePartnerApiAdminBranchesIdPutMutation = () => {
   });
 };
 
-
 export const PartnerApiAdminBranchesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/partner/api-admin/branches/${params.path.id}`,
@@ -12938,11 +12294,10 @@ export const PartnerApiAdminBranchesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesIdDeleteMutation = () => {
   const mutationKey = "PartnerApiAdminBranchesIdDelete";
@@ -12963,7 +12318,7 @@ export const usePartnerApiAdminBranchesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminBranchesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -12971,14 +12326,13 @@ export const usePartnerApiAdminBranchesIdDeleteMutation = () => {
   });
 };
 
-
 export const InspectionApiAdminInspectionsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionResItem>(
     `/inspection/api-admin/inspections/${params.path.id}`,
@@ -12989,11 +12343,10 @@ export const InspectionApiAdminInspectionsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsIdGetQuery = (
   params: {
@@ -13002,7 +12355,7 @@ export const useInspectionApiAdminInspectionsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItem>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13013,7 +12366,7 @@ export const useInspectionApiAdminInspectionsIdGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13024,7 +12377,6 @@ export const useInspectionApiAdminInspectionsIdGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionsIdGetLazyQuery = (
   params: {
     path: {
@@ -13032,7 +12384,7 @@ export const useInspectionApiAdminInspectionsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItem>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13043,7 +12395,7 @@ export const useInspectionApiAdminInspectionsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13055,7 +12407,6 @@ export const useInspectionApiAdminInspectionsIdGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionsIdPutMutation = async (
   params: {
     path: {
@@ -13064,7 +12415,7 @@ export const InspectionApiAdminInspectionsIdPutMutation = async (
 
     body: InspectionReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionResId>(
     `/inspection/api-admin/inspections/${params.path.id}`,
@@ -13072,11 +12423,10 @@ export const InspectionApiAdminInspectionsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsIdPutMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionsIdPut";
@@ -13099,7 +12449,7 @@ export const useInspectionApiAdminInspectionsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await InspectionApiAdminInspectionsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13107,14 +12457,13 @@ export const useInspectionApiAdminInspectionsIdPutMutation = () => {
   });
 };
 
-
 export const InspectionApiAdminInspectionsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/inspection/api-admin/inspections/${params.path.id}`,
@@ -13122,11 +12471,10 @@ export const InspectionApiAdminInspectionsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsIdDeleteMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionsIdDelete";
@@ -13147,7 +12495,7 @@ export const useInspectionApiAdminInspectionsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await InspectionApiAdminInspectionsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13155,14 +12503,13 @@ export const useInspectionApiAdminInspectionsIdDeleteMutation = () => {
   });
 };
 
-
 export const InspectionApiAdminInspectionProfilesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionProfileResItem>(
     `/inspection/api-admin/inspection-profiles/${params.path.id}`,
@@ -13173,11 +12520,10 @@ export const InspectionApiAdminInspectionProfilesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesIdGetQuery = (
   params: {
@@ -13186,7 +12532,7 @@ export const useInspectionApiAdminInspectionProfilesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResItem>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13197,7 +12543,7 @@ export const useInspectionApiAdminInspectionProfilesIdGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13208,7 +12554,6 @@ export const useInspectionApiAdminInspectionProfilesIdGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionProfilesIdGetLazyQuery = (
   params: {
     path: {
@@ -13216,7 +12561,7 @@ export const useInspectionApiAdminInspectionProfilesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResItem>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13227,7 +12572,7 @@ export const useInspectionApiAdminInspectionProfilesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13239,7 +12584,6 @@ export const useInspectionApiAdminInspectionProfilesIdGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionProfilesIdPutMutation = async (
   params: {
     path: {
@@ -13248,7 +12592,7 @@ export const InspectionApiAdminInspectionProfilesIdPutMutation = async (
 
     body: InspectionProfileReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/inspection/api-admin/inspection-profiles/${params.path.id}`,
@@ -13256,11 +12600,10 @@ export const InspectionApiAdminInspectionProfilesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesIdPutMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionProfilesIdPut";
@@ -13283,7 +12626,7 @@ export const useInspectionApiAdminInspectionProfilesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await InspectionApiAdminInspectionProfilesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13291,14 +12634,13 @@ export const useInspectionApiAdminInspectionProfilesIdPutMutation = () => {
   });
 };
 
-
 export const InspectionApiAdminInspectionProfilesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/inspection/api-admin/inspection-profiles/${params.path.id}`,
@@ -13306,11 +12648,10 @@ export const InspectionApiAdminInspectionProfilesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesIdDeleteMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionProfilesIdDelete";
@@ -13332,7 +12673,7 @@ export const useInspectionApiAdminInspectionProfilesIdDeleteMutation = () => {
       const response =
         await InspectionApiAdminInspectionProfilesIdDeleteMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -13340,14 +12681,13 @@ export const useInspectionApiAdminInspectionProfilesIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDevicesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceResItem>(
     `/device/api-admin/devices/${params.path.id}`,
@@ -13358,11 +12698,10 @@ export const DeviceApiAdminDevicesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesIdGetQuery = (
   params: {
@@ -13371,7 +12710,7 @@ export const useDeviceApiAdminDevicesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13382,7 +12721,7 @@ export const useDeviceApiAdminDevicesIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13393,7 +12732,6 @@ export const useDeviceApiAdminDevicesIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDevicesIdGetLazyQuery = (
   params: {
     path: {
@@ -13401,7 +12739,7 @@ export const useDeviceApiAdminDevicesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13412,7 +12750,7 @@ export const useDeviceApiAdminDevicesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13424,7 +12762,6 @@ export const useDeviceApiAdminDevicesIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDevicesIdPutMutation = async (
   params: {
     path: {
@@ -13433,7 +12770,7 @@ export const DeviceApiAdminDevicesIdPutMutation = async (
 
     body: DeviceReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceResId>(
     `/device/api-admin/devices/${params.path.id}`,
@@ -13441,11 +12778,10 @@ export const DeviceApiAdminDevicesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDevicesIdPut";
@@ -13468,7 +12804,7 @@ export const useDeviceApiAdminDevicesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDevicesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13476,14 +12812,13 @@ export const useDeviceApiAdminDevicesIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDevicesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/devices/${params.path.id}`,
@@ -13491,11 +12826,10 @@ export const DeviceApiAdminDevicesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDevicesIdDelete";
@@ -13516,7 +12850,7 @@ export const useDeviceApiAdminDevicesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDevicesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13524,14 +12858,13 @@ export const useDeviceApiAdminDevicesIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceSeriessIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceSeriesResItem>(
     `/device/api-admin/device-seriess/${params.path.id}`,
@@ -13542,11 +12875,10 @@ export const DeviceApiAdminDeviceSeriessIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessIdGetQuery = (
   params: {
@@ -13555,7 +12887,7 @@ export const useDeviceApiAdminDeviceSeriessIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13566,7 +12898,7 @@ export const useDeviceApiAdminDeviceSeriessIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13577,7 +12909,6 @@ export const useDeviceApiAdminDeviceSeriessIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceSeriessIdGetLazyQuery = (
   params: {
     path: {
@@ -13585,7 +12916,7 @@ export const useDeviceApiAdminDeviceSeriessIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13596,7 +12927,7 @@ export const useDeviceApiAdminDeviceSeriessIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13608,7 +12939,6 @@ export const useDeviceApiAdminDeviceSeriessIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceSeriessIdPutMutation = async (
   params: {
     path: {
@@ -13617,7 +12947,7 @@ export const DeviceApiAdminDeviceSeriessIdPutMutation = async (
 
     body: DeviceSeriesReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceSeriesResId>(
     `/device/api-admin/device-seriess/${params.path.id}`,
@@ -13625,11 +12955,10 @@ export const DeviceApiAdminDeviceSeriessIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceSeriessIdPut";
@@ -13652,7 +12981,7 @@ export const useDeviceApiAdminDeviceSeriessIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceSeriessIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13660,14 +12989,13 @@ export const useDeviceApiAdminDeviceSeriessIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceSeriessIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/device-seriess/${params.path.id}`,
@@ -13675,11 +13003,10 @@ export const DeviceApiAdminDeviceSeriessIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceSeriessIdDelete";
@@ -13700,7 +13027,7 @@ export const useDeviceApiAdminDeviceSeriessIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceSeriessIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13708,14 +13035,13 @@ export const useDeviceApiAdminDeviceSeriessIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceModelsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceModelResItem>(
     `/device/api-admin/device-models/${params.path.id}`,
@@ -13726,11 +13052,10 @@ export const DeviceApiAdminDeviceModelsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsIdGetQuery = (
   params: {
@@ -13739,7 +13064,7 @@ export const useDeviceApiAdminDeviceModelsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13750,7 +13075,7 @@ export const useDeviceApiAdminDeviceModelsIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13761,7 +13086,6 @@ export const useDeviceApiAdminDeviceModelsIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceModelsIdGetLazyQuery = (
   params: {
     path: {
@@ -13769,7 +13093,7 @@ export const useDeviceApiAdminDeviceModelsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13780,7 +13104,7 @@ export const useDeviceApiAdminDeviceModelsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13792,7 +13116,6 @@ export const useDeviceApiAdminDeviceModelsIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceModelsIdPutMutation = async (
   params: {
     path: {
@@ -13801,7 +13124,7 @@ export const DeviceApiAdminDeviceModelsIdPutMutation = async (
 
     body: DeviceModelReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceModelResId>(
     `/device/api-admin/device-models/${params.path.id}`,
@@ -13809,11 +13132,10 @@ export const DeviceApiAdminDeviceModelsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceModelsIdPut";
@@ -13836,7 +13158,7 @@ export const useDeviceApiAdminDeviceModelsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceModelsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13844,14 +13166,13 @@ export const useDeviceApiAdminDeviceModelsIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceModelsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/device-models/${params.path.id}`,
@@ -13859,11 +13180,10 @@ export const DeviceApiAdminDeviceModelsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceModelsIdDelete";
@@ -13884,7 +13204,7 @@ export const useDeviceApiAdminDeviceModelsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceModelsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -13892,14 +13212,13 @@ export const useDeviceApiAdminDeviceModelsIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceManufacturesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceManufactureResItem>(
     `/device/api-admin/device-manufactures/${params.path.id}`,
@@ -13910,11 +13229,10 @@ export const DeviceApiAdminDeviceManufacturesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesIdGetQuery = (
   params: {
@@ -13923,7 +13241,7 @@ export const useDeviceApiAdminDeviceManufacturesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13934,7 +13252,7 @@ export const useDeviceApiAdminDeviceManufacturesIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13945,7 +13263,6 @@ export const useDeviceApiAdminDeviceManufacturesIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufacturesIdGetLazyQuery = (
   params: {
     path: {
@@ -13953,7 +13270,7 @@ export const useDeviceApiAdminDeviceManufacturesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -13964,7 +13281,7 @@ export const useDeviceApiAdminDeviceManufacturesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -13976,7 +13293,6 @@ export const useDeviceApiAdminDeviceManufacturesIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufacturesIdPutMutation = async (
   params: {
     path: {
@@ -13985,7 +13301,7 @@ export const DeviceApiAdminDeviceManufacturesIdPutMutation = async (
 
     body: DeviceManufactureReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceManufactureResId>(
     `/device/api-admin/device-manufactures/${params.path.id}`,
@@ -13993,11 +13309,10 @@ export const DeviceApiAdminDeviceManufacturesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufacturesIdPut";
@@ -14020,7 +13335,7 @@ export const useDeviceApiAdminDeviceManufacturesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceManufacturesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14028,14 +13343,13 @@ export const useDeviceApiAdminDeviceManufacturesIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceManufacturesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/device-manufactures/${params.path.id}`,
@@ -14043,11 +13357,10 @@ export const DeviceApiAdminDeviceManufacturesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufacturesIdDelete";
@@ -14068,7 +13381,7 @@ export const useDeviceApiAdminDeviceManufacturesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceManufacturesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14076,14 +13389,13 @@ export const useDeviceApiAdminDeviceManufacturesIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceManufactureTypesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceManufactureTypeResItem>(
@@ -14095,11 +13407,10 @@ export const DeviceApiAdminDeviceManufactureTypesIdGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesIdGetQuery = (
   params: {
@@ -14108,7 +13419,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14119,7 +13430,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14130,7 +13441,6 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufactureTypesIdGetLazyQuery = (
   params: {
     path: {
@@ -14138,7 +13448,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14149,7 +13459,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14161,7 +13471,6 @@ export const useDeviceApiAdminDeviceManufactureTypesIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufactureTypesIdPutMutation = async (
   params: {
     path: {
@@ -14170,7 +13479,7 @@ export const DeviceApiAdminDeviceManufactureTypesIdPutMutation = async (
 
     body: DeviceManufactureTypeReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceManufactureTypeResId>(
     `/device/api-admin/device-manufacture-types/${params.path.id}`,
@@ -14178,11 +13487,10 @@ export const DeviceApiAdminDeviceManufactureTypesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufactureTypesIdPut";
@@ -14205,7 +13513,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceManufactureTypesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14213,14 +13521,13 @@ export const useDeviceApiAdminDeviceManufactureTypesIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceManufactureTypesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/device-manufacture-types/${params.path.id}`,
@@ -14228,11 +13535,10 @@ export const DeviceApiAdminDeviceManufactureTypesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufactureTypesIdDelete";
@@ -14254,7 +13560,7 @@ export const useDeviceApiAdminDeviceManufactureTypesIdDeleteMutation = () => {
       const response =
         await DeviceApiAdminDeviceManufactureTypesIdDeleteMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -14262,14 +13568,13 @@ export const useDeviceApiAdminDeviceManufactureTypesIdDeleteMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceDeletionsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceDeletionResItem>(
     `/device/api-admin/device-deletions/${params.path.id}`,
@@ -14280,11 +13585,10 @@ export const DeviceApiAdminDeviceDeletionsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsIdGetQuery = (
   params: {
@@ -14293,7 +13597,7 @@ export const useDeviceApiAdminDeviceDeletionsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14304,7 +13608,7 @@ export const useDeviceApiAdminDeviceDeletionsIdGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14315,7 +13619,6 @@ export const useDeviceApiAdminDeviceDeletionsIdGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceDeletionsIdGetLazyQuery = (
   params: {
     path: {
@@ -14323,7 +13626,7 @@ export const useDeviceApiAdminDeviceDeletionsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResItem>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14334,7 +13637,7 @@ export const useDeviceApiAdminDeviceDeletionsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14346,7 +13649,6 @@ export const useDeviceApiAdminDeviceDeletionsIdGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceDeletionsIdPutMutation = async (
   params: {
     path: {
@@ -14355,7 +13657,7 @@ export const DeviceApiAdminDeviceDeletionsIdPutMutation = async (
 
     body: DeviceDeletionReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceDeletionResId>(
     `/device/api-admin/device-deletions/${params.path.id}`,
@@ -14363,11 +13665,10 @@ export const DeviceApiAdminDeviceDeletionsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsIdPutMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceDeletionsIdPut";
@@ -14390,7 +13691,7 @@ export const useDeviceApiAdminDeviceDeletionsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceDeletionsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14398,14 +13699,13 @@ export const useDeviceApiAdminDeviceDeletionsIdPutMutation = () => {
   });
 };
 
-
 export const DeviceApiAdminDeviceDeletionsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/device/api-admin/device-deletions/${params.path.id}`,
@@ -14413,11 +13713,10 @@ export const DeviceApiAdminDeviceDeletionsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsIdDeleteMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceDeletionsIdDelete";
@@ -14438,7 +13737,7 @@ export const useDeviceApiAdminDeviceDeletionsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceDeletionsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14446,14 +13745,13 @@ export const useDeviceApiAdminDeviceDeletionsIdDeleteMutation = () => {
   });
 };
 
-
 export const CustomerApiAdminTermsAgreementsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsAgreementResItem>(
     `/customer/api-admin/terms-agreements/${params.path.id}`,
@@ -14464,11 +13762,10 @@ export const CustomerApiAdminTermsAgreementsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsIdGetQuery = (
   params: {
@@ -14477,7 +13774,7 @@ export const useCustomerApiAdminTermsAgreementsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14488,7 +13785,7 @@ export const useCustomerApiAdminTermsAgreementsIdGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14499,7 +13796,6 @@ export const useCustomerApiAdminTermsAgreementsIdGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminTermsAgreementsIdGetLazyQuery = (
   params: {
     path: {
@@ -14507,7 +13803,7 @@ export const useCustomerApiAdminTermsAgreementsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14518,7 +13814,7 @@ export const useCustomerApiAdminTermsAgreementsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14530,7 +13826,6 @@ export const useCustomerApiAdminTermsAgreementsIdGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminTermsAgreementsIdPutMutation = async (
   params: {
     path: {
@@ -14539,7 +13834,7 @@ export const CustomerApiAdminTermsAgreementsIdPutMutation = async (
 
     body: TermsAgreementReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsAgreementResId>(
     `/customer/api-admin/terms-agreements/${params.path.id}`,
@@ -14547,11 +13842,10 @@ export const CustomerApiAdminTermsAgreementsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsIdPutMutation = () => {
   const mutationKey = "CustomerApiAdminTermsAgreementsIdPut";
@@ -14574,7 +13868,7 @@ export const useCustomerApiAdminTermsAgreementsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminTermsAgreementsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14582,14 +13876,13 @@ export const useCustomerApiAdminTermsAgreementsIdPutMutation = () => {
   });
 };
 
-
 export const CustomerApiAdminTermsAgreementsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/customer/api-admin/terms-agreements/${params.path.id}`,
@@ -14597,11 +13890,10 @@ export const CustomerApiAdminTermsAgreementsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsIdDeleteMutation = () => {
   const mutationKey = "CustomerApiAdminTermsAgreementsIdDelete";
@@ -14622,7 +13914,7 @@ export const useCustomerApiAdminTermsAgreementsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminTermsAgreementsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14630,14 +13922,13 @@ export const useCustomerApiAdminTermsAgreementsIdDeleteMutation = () => {
   });
 };
 
-
 export const CustomerApiAdminEventApplicationsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventApplicationResItem>(
     `/customer/api-admin/event-applications/${params.path.id}`,
@@ -14648,11 +13939,10 @@ export const CustomerApiAdminEventApplicationsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsIdGetQuery = (
   params: {
@@ -14661,7 +13951,7 @@ export const useCustomerApiAdminEventApplicationsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14672,7 +13962,7 @@ export const useCustomerApiAdminEventApplicationsIdGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14683,7 +13973,6 @@ export const useCustomerApiAdminEventApplicationsIdGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminEventApplicationsIdGetLazyQuery = (
   params: {
     path: {
@@ -14691,7 +13980,7 @@ export const useCustomerApiAdminEventApplicationsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14702,7 +13991,7 @@ export const useCustomerApiAdminEventApplicationsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14714,7 +14003,6 @@ export const useCustomerApiAdminEventApplicationsIdGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminEventApplicationsIdPutMutation = async (
   params: {
     path: {
@@ -14723,7 +14011,7 @@ export const CustomerApiAdminEventApplicationsIdPutMutation = async (
 
     body: EventApplicationReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventApplicationResId>(
     `/customer/api-admin/event-applications/${params.path.id}`,
@@ -14731,11 +14019,10 @@ export const CustomerApiAdminEventApplicationsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsIdPutMutation = () => {
   const mutationKey = "CustomerApiAdminEventApplicationsIdPut";
@@ -14758,7 +14045,7 @@ export const useCustomerApiAdminEventApplicationsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminEventApplicationsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14766,14 +14053,13 @@ export const useCustomerApiAdminEventApplicationsIdPutMutation = () => {
   });
 };
 
-
 export const CustomerApiAdminEventApplicationsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/customer/api-admin/event-applications/${params.path.id}`,
@@ -14781,11 +14067,10 @@ export const CustomerApiAdminEventApplicationsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsIdDeleteMutation = () => {
   const mutationKey = "CustomerApiAdminEventApplicationsIdDelete";
@@ -14806,7 +14091,7 @@ export const useCustomerApiAdminEventApplicationsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminEventApplicationsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14814,14 +14099,13 @@ export const useCustomerApiAdminEventApplicationsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminTermsIdGetQuery = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsResItem>(
     `/common/api-admin/terms/${params.path.id}`,
@@ -14832,11 +14116,10 @@ export const CommonApiAdminTermsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsIdGetQuery = (
   params: {
@@ -14845,7 +14128,7 @@ export const useCommonApiAdminTermsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14856,7 +14139,7 @@ export const useCommonApiAdminTermsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14867,7 +14150,6 @@ export const useCommonApiAdminTermsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsIdGetLazyQuery = (
   params: {
     path: {
@@ -14875,7 +14157,7 @@ export const useCommonApiAdminTermsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -14886,7 +14168,7 @@ export const useCommonApiAdminTermsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -14898,7 +14180,6 @@ export const useCommonApiAdminTermsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsIdPutMutation = async (
   params: {
     path: {
@@ -14907,7 +14188,7 @@ export const CommonApiAdminTermsIdPutMutation = async (
 
     body: TermsReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsResId>(
     `/common/api-admin/terms/${params.path.id}`,
@@ -14915,11 +14196,10 @@ export const CommonApiAdminTermsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminTermsIdPut";
@@ -14942,7 +14222,7 @@ export const useCommonApiAdminTermsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14950,14 +14230,13 @@ export const useCommonApiAdminTermsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminTermsIdDeleteMutation = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/terms/${params.path.id}`,
@@ -14965,11 +14244,10 @@ export const CommonApiAdminTermsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminTermsIdDelete";
@@ -14990,7 +14268,7 @@ export const useCommonApiAdminTermsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -14998,14 +14276,13 @@ export const useCommonApiAdminTermsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminTermsContentsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsContentResItem>(
     `/common/api-admin/terms-contents/${params.path.id}`,
@@ -15016,11 +14293,10 @@ export const CommonApiAdminTermsContentsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsIdGetQuery = (
   params: {
@@ -15029,7 +14305,7 @@ export const useCommonApiAdminTermsContentsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15040,7 +14316,7 @@ export const useCommonApiAdminTermsContentsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15051,7 +14327,6 @@ export const useCommonApiAdminTermsContentsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsContentsIdGetLazyQuery = (
   params: {
     path: {
@@ -15059,7 +14334,7 @@ export const useCommonApiAdminTermsContentsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResItem>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15070,7 +14345,7 @@ export const useCommonApiAdminTermsContentsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15082,7 +14357,6 @@ export const useCommonApiAdminTermsContentsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsContentsIdPutMutation = async (
   params: {
     path: {
@@ -15091,7 +14365,7 @@ export const CommonApiAdminTermsContentsIdPutMutation = async (
 
     body: TermsContentReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsContentResId>(
     `/common/api-admin/terms-contents/${params.path.id}`,
@@ -15099,11 +14373,10 @@ export const CommonApiAdminTermsContentsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminTermsContentsIdPut";
@@ -15126,7 +14399,7 @@ export const useCommonApiAdminTermsContentsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsContentsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15134,14 +14407,13 @@ export const useCommonApiAdminTermsContentsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminTermsContentsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/terms-contents/${params.path.id}`,
@@ -15149,11 +14421,10 @@ export const CommonApiAdminTermsContentsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminTermsContentsIdDelete";
@@ -15174,7 +14445,7 @@ export const useCommonApiAdminTermsContentsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsContentsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15182,14 +14453,13 @@ export const useCommonApiAdminTermsContentsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminSigungusIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSigunguResItem>(
     `/common/api-admin/sigungus/${params.path.id}`,
@@ -15200,11 +14470,10 @@ export const CommonApiAdminSigungusIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusIdGetQuery = (
   params: {
@@ -15213,7 +14482,7 @@ export const useCommonApiAdminSigungusIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResItem>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15224,7 +14493,7 @@ export const useCommonApiAdminSigungusIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15235,7 +14504,6 @@ export const useCommonApiAdminSigungusIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminSigungusIdGetLazyQuery = (
   params: {
     path: {
@@ -15243,7 +14511,7 @@ export const useCommonApiAdminSigungusIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResItem>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15254,7 +14522,7 @@ export const useCommonApiAdminSigungusIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15266,7 +14534,6 @@ export const useCommonApiAdminSigungusIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminSigungusIdPutMutation = async (
   params: {
     path: {
@@ -15275,7 +14542,7 @@ export const CommonApiAdminSigungusIdPutMutation = async (
 
     body: SigunguReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSigunguResId>(
     `/common/api-admin/sigungus/${params.path.id}`,
@@ -15283,11 +14550,10 @@ export const CommonApiAdminSigungusIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusIdPutMutation = () => {
   const mutationKey = "CommonApiAdminSigungusIdPut";
@@ -15310,7 +14576,7 @@ export const useCommonApiAdminSigungusIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminSigungusIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15318,14 +14584,13 @@ export const useCommonApiAdminSigungusIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminSigungusIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/sigungus/${params.path.id}`,
@@ -15333,11 +14598,10 @@ export const CommonApiAdminSigungusIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminSigungusIdDelete";
@@ -15358,7 +14622,7 @@ export const useCommonApiAdminSigungusIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminSigungusIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15366,14 +14630,13 @@ export const useCommonApiAdminSigungusIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminServicesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseServiceSeviceResItem>(
     `/common/api-admin/services/${params.path.id}`,
@@ -15384,11 +14647,10 @@ export const CommonApiAdminServicesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesIdGetQuery = (
   params: {
@@ -15397,7 +14659,7 @@ export const useCommonApiAdminServicesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15408,7 +14670,7 @@ export const useCommonApiAdminServicesIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15419,7 +14681,6 @@ export const useCommonApiAdminServicesIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminServicesIdGetLazyQuery = (
   params: {
     path: {
@@ -15427,7 +14688,7 @@ export const useCommonApiAdminServicesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15438,7 +14699,7 @@ export const useCommonApiAdminServicesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15450,7 +14711,6 @@ export const useCommonApiAdminServicesIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminServicesIdPutMutation = async (
   params: {
     path: {
@@ -15459,7 +14719,7 @@ export const CommonApiAdminServicesIdPutMutation = async (
 
     body: ServiceSeviceReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/services/${params.path.id}`,
@@ -15467,11 +14727,10 @@ export const CommonApiAdminServicesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesIdPutMutation = () => {
   const mutationKey = "CommonApiAdminServicesIdPut";
@@ -15494,7 +14753,7 @@ export const useCommonApiAdminServicesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminServicesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15502,14 +14761,13 @@ export const useCommonApiAdminServicesIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminServicesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/services/${params.path.id}`,
@@ -15517,11 +14775,10 @@ export const CommonApiAdminServicesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminServicesIdDelete";
@@ -15542,7 +14799,7 @@ export const useCommonApiAdminServicesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminServicesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15550,14 +14807,13 @@ export const useCommonApiAdminServicesIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminMenusIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuResItem>(
     `/common/api-admin/menus/${params.path.id}`,
@@ -15568,11 +14824,10 @@ export const CommonApiAdminMenusIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusIdGetQuery = (
   params: {
@@ -15581,7 +14836,7 @@ export const useCommonApiAdminMenusIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResItem>,
+  queryOptions?: QueryOptions<CommonResponseMenuResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15592,7 +14847,7 @@ export const useCommonApiAdminMenusIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15603,7 +14858,6 @@ export const useCommonApiAdminMenusIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenusIdGetLazyQuery = (
   params: {
     path: {
@@ -15611,7 +14865,7 @@ export const useCommonApiAdminMenusIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResItem>,
+  queryOptions?: QueryOptions<CommonResponseMenuResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15622,7 +14876,7 @@ export const useCommonApiAdminMenusIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15634,7 +14888,6 @@ export const useCommonApiAdminMenusIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenusIdPutMutation = async (
   params: {
     path: {
@@ -15643,7 +14896,7 @@ export const CommonApiAdminMenusIdPutMutation = async (
 
     body: MenuReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuResId>(
     `/common/api-admin/menus/${params.path.id}`,
@@ -15651,11 +14904,10 @@ export const CommonApiAdminMenusIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusIdPutMutation = () => {
   const mutationKey = "CommonApiAdminMenusIdPut";
@@ -15678,7 +14930,7 @@ export const useCommonApiAdminMenusIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenusIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15686,14 +14938,13 @@ export const useCommonApiAdminMenusIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminMenusIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/menus/${params.path.id}`,
@@ -15701,11 +14952,10 @@ export const CommonApiAdminMenusIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminMenusIdDelete";
@@ -15726,7 +14976,7 @@ export const useCommonApiAdminMenusIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenusIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15734,14 +14984,13 @@ export const useCommonApiAdminMenusIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminMenuButtonsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuButtonResItem>(
     `/common/api-admin/menu-buttons/${params.path.id}`,
@@ -15752,11 +15001,10 @@ export const CommonApiAdminMenuButtonsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsIdGetQuery = (
   params: {
@@ -15765,7 +15013,7 @@ export const useCommonApiAdminMenuButtonsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResItem>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15776,7 +15024,7 @@ export const useCommonApiAdminMenuButtonsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15787,7 +15035,6 @@ export const useCommonApiAdminMenuButtonsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenuButtonsIdGetLazyQuery = (
   params: {
     path: {
@@ -15795,7 +15042,7 @@ export const useCommonApiAdminMenuButtonsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResItem>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15806,7 +15053,7 @@ export const useCommonApiAdminMenuButtonsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15818,7 +15065,6 @@ export const useCommonApiAdminMenuButtonsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenuButtonsIdPutMutation = async (
   params: {
     path: {
@@ -15827,7 +15073,7 @@ export const CommonApiAdminMenuButtonsIdPutMutation = async (
 
     body: MenuButtonReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuButtonResId>(
     `/common/api-admin/menu-buttons/${params.path.id}`,
@@ -15835,11 +15081,10 @@ export const CommonApiAdminMenuButtonsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminMenuButtonsIdPut";
@@ -15862,7 +15107,7 @@ export const useCommonApiAdminMenuButtonsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenuButtonsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15870,14 +15115,13 @@ export const useCommonApiAdminMenuButtonsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminMenuButtonsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/menu-buttons/${params.path.id}`,
@@ -15885,11 +15129,10 @@ export const CommonApiAdminMenuButtonsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminMenuButtonsIdDelete";
@@ -15910,7 +15153,7 @@ export const useCommonApiAdminMenuButtonsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenuButtonsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -15918,14 +15161,13 @@ export const useCommonApiAdminMenuButtonsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventsIdGetQuery = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventResItemForTerms>(
     `/common/api-admin/events/${params.path.id}`,
@@ -15936,11 +15178,10 @@ export const CommonApiAdminEventsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsIdGetQuery = (
   params: {
@@ -15949,7 +15190,7 @@ export const useCommonApiAdminEventsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResItemForTerms>,
+  queryOptions?: QueryOptions<CommonResponseEventResItemForTerms>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15960,7 +15201,7 @@ export const useCommonApiAdminEventsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -15971,7 +15212,6 @@ export const useCommonApiAdminEventsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventsIdGetLazyQuery = (
   params: {
     path: {
@@ -15979,7 +15219,7 @@ export const useCommonApiAdminEventsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResItemForTerms>,
+  queryOptions?: QueryOptions<CommonResponseEventResItemForTerms>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -15990,7 +15230,7 @@ export const useCommonApiAdminEventsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16002,7 +15242,6 @@ export const useCommonApiAdminEventsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventsIdPutMutation = async (
   params: {
     path: {
@@ -16011,7 +15250,7 @@ export const CommonApiAdminEventsIdPutMutation = async (
 
     body: EventReqUpdateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventResId>(
     `/common/api-admin/events/${params.path.id}`,
@@ -16019,11 +15258,10 @@ export const CommonApiAdminEventsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminEventsIdPut";
@@ -16046,7 +15284,7 @@ export const useCommonApiAdminEventsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16054,14 +15292,13 @@ export const useCommonApiAdminEventsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventsIdDeleteMutation = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/events/${params.path.id}`,
@@ -16069,11 +15306,10 @@ export const CommonApiAdminEventsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminEventsIdDelete";
@@ -16094,7 +15330,7 @@ export const useCommonApiAdminEventsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16102,14 +15338,13 @@ export const useCommonApiAdminEventsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventTermsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventTermsResItem>(
     `/common/api-admin/event-terms/${params.path.id}`,
@@ -16120,11 +15355,10 @@ export const CommonApiAdminEventTermsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsIdGetQuery = (
   params: {
@@ -16133,7 +15367,7 @@ export const useCommonApiAdminEventTermsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16144,7 +15378,7 @@ export const useCommonApiAdminEventTermsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16155,7 +15389,6 @@ export const useCommonApiAdminEventTermsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventTermsIdGetLazyQuery = (
   params: {
     path: {
@@ -16163,7 +15396,7 @@ export const useCommonApiAdminEventTermsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16174,7 +15407,7 @@ export const useCommonApiAdminEventTermsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16186,7 +15419,6 @@ export const useCommonApiAdminEventTermsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventTermsIdPutMutation = async (
   params: {
     path: {
@@ -16195,7 +15427,7 @@ export const CommonApiAdminEventTermsIdPutMutation = async (
 
     body: EventTermsReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/event-terms/${params.path.id}`,
@@ -16203,11 +15435,10 @@ export const CommonApiAdminEventTermsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminEventTermsIdPut";
@@ -16230,7 +15461,7 @@ export const useCommonApiAdminEventTermsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventTermsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16238,14 +15469,13 @@ export const useCommonApiAdminEventTermsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventTermsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/event-terms/${params.path.id}`,
@@ -16253,11 +15483,10 @@ export const CommonApiAdminEventTermsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminEventTermsIdDelete";
@@ -16278,7 +15507,7 @@ export const useCommonApiAdminEventTermsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventTermsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16286,14 +15515,13 @@ export const useCommonApiAdminEventTermsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventBenefitsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventBenefitResItem>(
     `/common/api-admin/event-benefits/${params.path.id}`,
@@ -16304,11 +15532,10 @@ export const CommonApiAdminEventBenefitsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsIdGetQuery = (
   params: {
@@ -16317,7 +15544,7 @@ export const useCommonApiAdminEventBenefitsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16328,7 +15555,7 @@ export const useCommonApiAdminEventBenefitsIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16339,7 +15566,6 @@ export const useCommonApiAdminEventBenefitsIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventBenefitsIdGetLazyQuery = (
   params: {
     path: {
@@ -16347,7 +15573,7 @@ export const useCommonApiAdminEventBenefitsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResItem>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16358,7 +15584,7 @@ export const useCommonApiAdminEventBenefitsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16370,7 +15596,6 @@ export const useCommonApiAdminEventBenefitsIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventBenefitsIdPutMutation = async (
   params: {
     path: {
@@ -16379,7 +15604,7 @@ export const CommonApiAdminEventBenefitsIdPutMutation = async (
 
     body: EventBenefitReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/event-benefits/${params.path.id}`,
@@ -16387,11 +15612,10 @@ export const CommonApiAdminEventBenefitsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsIdPutMutation = () => {
   const mutationKey = "CommonApiAdminEventBenefitsIdPut";
@@ -16414,7 +15638,7 @@ export const useCommonApiAdminEventBenefitsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventBenefitsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16422,14 +15646,13 @@ export const useCommonApiAdminEventBenefitsIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminEventBenefitsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/event-benefits/${params.path.id}`,
@@ -16437,11 +15660,10 @@ export const CommonApiAdminEventBenefitsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminEventBenefitsIdDelete";
@@ -16462,7 +15684,7 @@ export const useCommonApiAdminEventBenefitsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventBenefitsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16470,14 +15692,13 @@ export const useCommonApiAdminEventBenefitsIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminCouponPoliciesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCouponPolicyResItem>(
     `/common/api-admin/coupon-policies/${params.path.id}`,
@@ -16488,11 +15709,10 @@ export const CommonApiAdminCouponPoliciesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesIdGetQuery = (
   params: {
@@ -16501,7 +15721,7 @@ export const useCommonApiAdminCouponPoliciesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResItem>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16512,7 +15732,7 @@ export const useCommonApiAdminCouponPoliciesIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16523,7 +15743,6 @@ export const useCommonApiAdminCouponPoliciesIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCouponPoliciesIdGetLazyQuery = (
   params: {
     path: {
@@ -16531,7 +15750,7 @@ export const useCommonApiAdminCouponPoliciesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResItem>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16542,7 +15761,7 @@ export const useCommonApiAdminCouponPoliciesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16554,7 +15773,6 @@ export const useCommonApiAdminCouponPoliciesIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCouponPoliciesIdPutMutation = async (
   params: {
     path: {
@@ -16563,7 +15781,7 @@ export const CommonApiAdminCouponPoliciesIdPutMutation = async (
 
     body: CouponPolicyReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/coupon-policies/${params.path.id}`,
@@ -16571,11 +15789,10 @@ export const CommonApiAdminCouponPoliciesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesIdPutMutation = () => {
   const mutationKey = "CommonApiAdminCouponPoliciesIdPut";
@@ -16598,7 +15815,7 @@ export const useCommonApiAdminCouponPoliciesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCouponPoliciesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16606,14 +15823,13 @@ export const useCommonApiAdminCouponPoliciesIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminCouponPoliciesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/coupon-policies/${params.path.id}`,
@@ -16621,11 +15837,10 @@ export const CommonApiAdminCouponPoliciesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminCouponPoliciesIdDelete";
@@ -16646,7 +15861,7 @@ export const useCommonApiAdminCouponPoliciesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCouponPoliciesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16654,14 +15869,13 @@ export const useCommonApiAdminCouponPoliciesIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminContentDisplaysIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseContentDisplayResItem>(
     `/common/api-admin/content-displays/${params.path.id}`,
@@ -16672,11 +15886,10 @@ export const CommonApiAdminContentDisplaysIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysIdGetQuery = (
   params: {
@@ -16685,7 +15898,7 @@ export const useCommonApiAdminContentDisplaysIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItem>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16696,7 +15909,7 @@ export const useCommonApiAdminContentDisplaysIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16707,7 +15920,6 @@ export const useCommonApiAdminContentDisplaysIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminContentDisplaysIdGetLazyQuery = (
   params: {
     path: {
@@ -16715,7 +15927,7 @@ export const useCommonApiAdminContentDisplaysIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItem>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16726,7 +15938,7 @@ export const useCommonApiAdminContentDisplaysIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16738,7 +15950,6 @@ export const useCommonApiAdminContentDisplaysIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminContentDisplaysIdPutMutation = async (
   params: {
     path: {
@@ -16747,7 +15958,7 @@ export const CommonApiAdminContentDisplaysIdPutMutation = async (
 
     body: ContentDisplayReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseContentDisplayResId>(
     `/common/api-admin/content-displays/${params.path.id}`,
@@ -16755,11 +15966,10 @@ export const CommonApiAdminContentDisplaysIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysIdPutMutation = () => {
   const mutationKey = "CommonApiAdminContentDisplaysIdPut";
@@ -16782,7 +15992,7 @@ export const useCommonApiAdminContentDisplaysIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminContentDisplaysIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16790,14 +16000,13 @@ export const useCommonApiAdminContentDisplaysIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminContentDisplaysIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/content-displays/${params.path.id}`,
@@ -16805,11 +16014,10 @@ export const CommonApiAdminContentDisplaysIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminContentDisplaysIdDelete";
@@ -16830,7 +16038,7 @@ export const useCommonApiAdminContentDisplaysIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminContentDisplaysIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16838,14 +16046,13 @@ export const useCommonApiAdminContentDisplaysIdDeleteMutation = () => {
   });
 };
 
-
 export const CommonApiAdminCommonCodesIdGetQuery = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeResItem>(
     `/common/api-admin/common-codes/${params.path.id}`,
@@ -16856,11 +16063,10 @@ export const CommonApiAdminCommonCodesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesIdGetQuery = (
   params: {
@@ -16869,7 +16075,7 @@ export const useCommonApiAdminCommonCodesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResItem>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16880,7 +16086,7 @@ export const useCommonApiAdminCommonCodesIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16891,7 +16097,6 @@ export const useCommonApiAdminCommonCodesIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodesIdGetLazyQuery = (
   params: {
     path: {
@@ -16899,7 +16104,7 @@ export const useCommonApiAdminCommonCodesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResItem>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -16910,7 +16115,7 @@ export const useCommonApiAdminCommonCodesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -16922,7 +16127,6 @@ export const useCommonApiAdminCommonCodesIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodesIdPutMutation = async (
   params: {
     path: {
@@ -16931,7 +16135,7 @@ export const CommonApiAdminCommonCodesIdPutMutation = async (
 
     body: CommonCodeReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/common-codes/${params.path.id}`,
@@ -16939,11 +16143,10 @@ export const CommonApiAdminCommonCodesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesIdPutMutation = () => {
   const mutationKey = "CommonApiAdminCommonCodesIdPut";
@@ -16966,7 +16169,7 @@ export const useCommonApiAdminCommonCodesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCommonCodesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -16974,12 +16177,11 @@ export const useCommonApiAdminCommonCodesIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminCommonCodesOrderPutMutation = async (
   params: {
     body: CommonCodeReqUpdateForOrder[];
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/common-codes/order`,
@@ -16987,11 +16189,10 @@ export const CommonApiAdminCommonCodesOrderPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesOrderPutMutation = () => {
   const mutationKey = "CommonApiAdminCommonCodesOrderPut";
@@ -17010,7 +16211,7 @@ export const useCommonApiAdminCommonCodesOrderPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCommonCodesOrderPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -17018,14 +16219,13 @@ export const useCommonApiAdminCommonCodesOrderPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminCommonCodeTypesIdGetQuery = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeTypeResItem>(
     `/common/api-admin/common-code-types/${params.path.id}`,
@@ -17036,11 +16236,10 @@ export const CommonApiAdminCommonCodeTypesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodeTypesIdGetQuery = (
   params: {
@@ -17049,7 +16248,7 @@ export const useCommonApiAdminCommonCodeTypesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResItem>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17060,7 +16259,7 @@ export const useCommonApiAdminCommonCodeTypesIdGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -17071,7 +16270,6 @@ export const useCommonApiAdminCommonCodeTypesIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodeTypesIdGetLazyQuery = (
   params: {
     path: {
@@ -17079,7 +16277,7 @@ export const useCommonApiAdminCommonCodeTypesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResItem>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17090,7 +16288,7 @@ export const useCommonApiAdminCommonCodeTypesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -17102,7 +16300,6 @@ export const useCommonApiAdminCommonCodeTypesIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodeTypesIdPutMutation = async (
   params: {
     path: {
@@ -17111,7 +16308,7 @@ export const CommonApiAdminCommonCodeTypesIdPutMutation = async (
 
     body: CommonCodeTypeReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/common-code-types/${params.path.id}`,
@@ -17119,11 +16316,10 @@ export const CommonApiAdminCommonCodeTypesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodeTypesIdPutMutation = () => {
   const mutationKey = "CommonApiAdminCommonCodeTypesIdPut";
@@ -17146,7 +16342,7 @@ export const useCommonApiAdminCommonCodeTypesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCommonCodeTypesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -17154,14 +16350,13 @@ export const useCommonApiAdminCommonCodeTypesIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminApisIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseApiResItem>(
     `/common/api-admin/apis/${params.path.id}`,
@@ -17172,11 +16367,10 @@ export const CommonApiAdminApisIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisIdGetQuery = (
   params: {
@@ -17185,7 +16379,7 @@ export const useCommonApiAdminApisIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResItem>,
+  queryOptions?: QueryOptions<CommonResponseApiResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17204,7 +16398,6 @@ export const useCommonApiAdminApisIdGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminApisIdGetLazyQuery = (
   params: {
     path: {
@@ -17212,7 +16405,7 @@ export const useCommonApiAdminApisIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResItem>,
+  queryOptions?: QueryOptions<CommonResponseApiResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17232,7 +16425,6 @@ export const useCommonApiAdminApisIdGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminApisIdPutMutation = async (
   params: {
     path: {
@@ -17241,7 +16433,7 @@ export const CommonApiAdminApisIdPutMutation = async (
 
     body: ApiReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseApiResId>(
     `/common/api-admin/apis/${params.path.id}`,
@@ -17249,11 +16441,10 @@ export const CommonApiAdminApisIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisIdPutMutation = () => {
   const mutationKey = "CommonApiAdminApisIdPut";
@@ -17276,7 +16467,7 @@ export const useCommonApiAdminApisIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminApisIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -17284,14 +16475,13 @@ export const useCommonApiAdminApisIdPutMutation = () => {
   });
 };
 
-
 export const CommonApiAdminApisIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/common/api-admin/apis/${params.path.id}`,
@@ -17299,11 +16489,10 @@ export const CommonApiAdminApisIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisIdDeleteMutation = () => {
   const mutationKey = "CommonApiAdminApisIdDelete";
@@ -17324,7 +16513,7 @@ export const useCommonApiAdminApisIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminApisIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -17332,14 +16521,13 @@ export const useCommonApiAdminApisIdDeleteMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmResSingleExFieldForDetail>(
@@ -17351,11 +16539,10 @@ export const AtmApiAdminAtmsIdGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdGetQuery = (
   params: {
@@ -17364,7 +16551,7 @@ export const useAtmApiAdminAtmsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldForDetail>,
+  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldForDetail>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17383,7 +16570,6 @@ export const useAtmApiAdminAtmsIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmsIdGetLazyQuery = (
   params: {
     path: {
@@ -17391,7 +16577,7 @@ export const useAtmApiAdminAtmsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldForDetail>,
+  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldForDetail>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -17411,7 +16597,6 @@ export const useAtmApiAdminAtmsIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmsIdPutMutation = async (
   params: {
     path: {
@@ -17420,7 +16605,7 @@ export const AtmApiAdminAtmsIdPutMutation = async (
 
     body: AtmReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}`,
@@ -17428,11 +16613,10 @@ export const AtmApiAdminAtmsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdPut";
@@ -17455,7 +16639,7 @@ export const useAtmApiAdminAtmsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -17463,14 +16647,13 @@ export const useAtmApiAdminAtmsIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atms/${params.path.id}`,
@@ -17478,11 +16661,10 @@ export const AtmApiAdminAtmsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdDelete";
@@ -17503,14 +16685,13 @@ export const useAtmApiAdminAtmsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdWithdrawalPutMutation = async (
   params: {
@@ -17520,7 +16701,7 @@ export const AtmApiAdminAtmsIdWithdrawalPutMutation = async (
 
     body: AtmReqUpdateForWithdrawal;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/withdrawal`,
@@ -17528,11 +16709,10 @@ export const AtmApiAdminAtmsIdWithdrawalPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdWithdrawalPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdWithdrawalPut";
@@ -17555,14 +16735,13 @@ export const useAtmApiAdminAtmsIdWithdrawalPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdWithdrawalPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdWithdrawalRequestPutMutation = async (
   params: {
@@ -17572,7 +16751,7 @@ export const AtmApiAdminAtmsIdWithdrawalRequestPutMutation = async (
 
     body: AtmReqUpdateForWithdrawalRequest;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/withdrawal-request`,
@@ -17580,11 +16759,10 @@ export const AtmApiAdminAtmsIdWithdrawalRequestPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdWithdrawalRequestPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdWithdrawalRequestPut";
@@ -17607,14 +16785,13 @@ export const useAtmApiAdminAtmsIdWithdrawalRequestPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdWithdrawalRequestPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdReplacementPutMutation = async (
   params: {
@@ -17624,7 +16801,7 @@ export const AtmApiAdminAtmsIdReplacementPutMutation = async (
 
     body: AtmReqUpdateForReplacement;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/replacement`,
@@ -17632,11 +16809,10 @@ export const AtmApiAdminAtmsIdReplacementPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdReplacementPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdReplacementPut";
@@ -17659,14 +16835,13 @@ export const useAtmApiAdminAtmsIdReplacementPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdReplacementPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdReplacementRequestPutMutation = async (
   params: {
@@ -17676,7 +16851,7 @@ export const AtmApiAdminAtmsIdReplacementRequestPutMutation = async (
 
     body: AtmReqUpdateForReplacementRequest;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/replacement-request`,
@@ -17684,11 +16859,10 @@ export const AtmApiAdminAtmsIdReplacementRequestPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdReplacementRequestPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdReplacementRequestPut";
@@ -17711,14 +16885,13 @@ export const useAtmApiAdminAtmsIdReplacementRequestPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdReplacementRequestPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdRepairCompletePutMutation = async (
   params: {
@@ -17728,7 +16901,7 @@ export const AtmApiAdminAtmsIdRepairCompletePutMutation = async (
 
     body: AtmReqUpdateForRepairComplete;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/repair-complete`,
@@ -17736,11 +16909,10 @@ export const AtmApiAdminAtmsIdRepairCompletePutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdRepairCompletePutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdRepairCompletePut";
@@ -17763,14 +16935,13 @@ export const useAtmApiAdminAtmsIdRepairCompletePutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdRepairCompletePutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdRecoveryCompletePutMutation = async (
   params: {
@@ -17780,7 +16951,7 @@ export const AtmApiAdminAtmsIdRecoveryCompletePutMutation = async (
 
     body: AtmReqUpdateForRecoveryComplete;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/recovery-complete`,
@@ -17788,11 +16959,10 @@ export const AtmApiAdminAtmsIdRecoveryCompletePutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdRecoveryCompletePutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdRecoveryCompletePut";
@@ -17815,14 +16985,13 @@ export const useAtmApiAdminAtmsIdRecoveryCompletePutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdRecoveryCompletePutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdOperatingPutMutation = async (
   params: {
@@ -17832,7 +17001,7 @@ export const AtmApiAdminAtmsIdOperatingPutMutation = async (
 
     body: AtmReqUpdateForOperating;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atms/${params.path.id}/operating`,
@@ -17840,11 +17009,10 @@ export const AtmApiAdminAtmsIdOperatingPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdOperatingPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdOperatingPut";
@@ -17867,14 +17035,13 @@ export const useAtmApiAdminAtmsIdOperatingPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdOperatingPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdInstallRequestPutMutation = async (
   params: {
@@ -17884,7 +17051,7 @@ export const AtmApiAdminAtmsIdInstallRequestPutMutation = async (
 
     body: AtmReqUpdateForInstallRequest;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atms/${params.path.id}/install-request`,
@@ -17892,11 +17059,10 @@ export const AtmApiAdminAtmsIdInstallRequestPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdInstallRequestPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdInstallRequestPut";
@@ -17919,14 +17085,13 @@ export const useAtmApiAdminAtmsIdInstallRequestPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdInstallRequestPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdInstallComplatePutMutation = async (
   params: {
@@ -17936,7 +17101,7 @@ export const AtmApiAdminAtmsIdInstallComplatePutMutation = async (
 
     body: AtmReqUpdateForInstallComplate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atms/${params.path.id}/install-complate`,
@@ -17944,11 +17109,10 @@ export const AtmApiAdminAtmsIdInstallComplatePutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdInstallComplatePutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdInstallComplatePut";
@@ -17971,14 +17135,13 @@ export const useAtmApiAdminAtmsIdInstallComplatePutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdInstallComplatePutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsIdDeletePutMutation = async (
   params: {
@@ -17988,7 +17151,7 @@ export const AtmApiAdminAtmsIdDeletePutMutation = async (
 
     body: AtmReqUpdateForDelete;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms/${params.path.id}/delete`,
@@ -17996,11 +17159,10 @@ export const AtmApiAdminAtmsIdDeletePutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsIdDeletePutMutation = () => {
   const mutationKey = "AtmApiAdminAtmsIdDeletePut";
@@ -18023,7 +17185,7 @@ export const useAtmApiAdminAtmsIdDeletePutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsIdDeletePutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18031,12 +17193,11 @@ export const useAtmApiAdminAtmsIdDeletePutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmTypeComponentsOrderPutMutation = async (
   params: {
     body: AtmTypeComponentReqUpdateForOrder[];
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-type-components/order`,
@@ -18044,11 +17205,10 @@ export const AtmApiAdminAtmTypeComponentsOrderPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmTypeComponentsOrderPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmTypeComponentsOrderPut";
@@ -18067,7 +17227,7 @@ export const useAtmApiAdminAtmTypeComponentsOrderPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmTypeComponentsOrderPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18075,14 +17235,13 @@ export const useAtmApiAdminAtmTypeComponentsOrderPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmStatusesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmStatusResItem>(
     `/atm/api-admin/atm-statuses/${params.path.id}`,
@@ -18093,11 +17252,10 @@ export const AtmApiAdminAtmStatusesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesIdGetQuery = (
   params: {
@@ -18106,7 +17264,7 @@ export const useAtmApiAdminAtmStatusesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18117,7 +17275,7 @@ export const useAtmApiAdminAtmStatusesIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18128,7 +17286,6 @@ export const useAtmApiAdminAtmStatusesIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmStatusesIdGetLazyQuery = (
   params: {
     path: {
@@ -18136,7 +17293,7 @@ export const useAtmApiAdminAtmStatusesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18147,7 +17304,7 @@ export const useAtmApiAdminAtmStatusesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18159,7 +17316,6 @@ export const useAtmApiAdminAtmStatusesIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmStatusesIdPutMutation = async (
   params: {
     path: {
@@ -18168,7 +17324,7 @@ export const AtmApiAdminAtmStatusesIdPutMutation = async (
 
     body: AtmStatusReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmStatusResId>(
     `/atm/api-admin/atm-statuses/${params.path.id}`,
@@ -18176,11 +17332,10 @@ export const AtmApiAdminAtmStatusesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmStatusesIdPut";
@@ -18203,7 +17358,7 @@ export const useAtmApiAdminAtmStatusesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmStatusesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18211,14 +17366,13 @@ export const useAtmApiAdminAtmStatusesIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmStatusesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-statuses/${params.path.id}`,
@@ -18226,11 +17380,10 @@ export const AtmApiAdminAtmStatusesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmStatusesIdDelete";
@@ -18251,7 +17404,7 @@ export const useAtmApiAdminAtmStatusesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmStatusesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18259,14 +17412,13 @@ export const useAtmApiAdminAtmStatusesIdDeleteMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceResItem>(
     `/atm/api-admin/atm-maintenance/${params.path.id}`,
@@ -18277,11 +17429,10 @@ export const AtmApiAdminAtmMaintenanceIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdGetQuery = (
   params: {
@@ -18290,7 +17441,7 @@ export const useAtmApiAdminAtmMaintenanceIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18301,7 +17452,7 @@ export const useAtmApiAdminAtmMaintenanceIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18312,7 +17463,6 @@ export const useAtmApiAdminAtmMaintenanceIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceIdGetLazyQuery = (
   params: {
     path: {
@@ -18320,7 +17470,7 @@ export const useAtmApiAdminAtmMaintenanceIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18331,7 +17481,7 @@ export const useAtmApiAdminAtmMaintenanceIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18343,7 +17493,6 @@ export const useAtmApiAdminAtmMaintenanceIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceIdPutMutation = async (
   params: {
     path: {
@@ -18352,7 +17501,7 @@ export const AtmApiAdminAtmMaintenanceIdPutMutation = async (
 
     body: AtmMaintenanceReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceResId>(
     `/atm/api-admin/atm-maintenance/${params.path.id}`,
@@ -18360,11 +17509,10 @@ export const AtmApiAdminAtmMaintenanceIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceIdPut";
@@ -18387,7 +17535,7 @@ export const useAtmApiAdminAtmMaintenanceIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18395,14 +17543,13 @@ export const useAtmApiAdminAtmMaintenanceIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance/${params.path.id}`,
@@ -18410,11 +17557,10 @@ export const AtmApiAdminAtmMaintenanceIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceIdDelete";
@@ -18435,14 +17581,13 @@ export const useAtmApiAdminAtmMaintenanceIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation = async (
   params: {
@@ -18452,7 +17597,7 @@ export const AtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation = async (
 
     body: AtmMaintenanceReqUpdateForEmergencyDispatch;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance/${params.path.id}/emergency-dispatch`,
@@ -18460,11 +17605,10 @@ export const AtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation =
   () => {
@@ -18489,14 +17633,13 @@ export const useAtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation =
         const response =
           await AtmApiAdminAtmMaintenanceIdEmergencyDispatchPutMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
       retry: false,
     });
   };
-
 
 export const AtmApiAdminAtmMaintenanceIdConfirmPutMutation = async (
   params: {
@@ -18506,7 +17649,7 @@ export const AtmApiAdminAtmMaintenanceIdConfirmPutMutation = async (
 
     body: AtmMaintenanceReqUpdateForConfirm;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance/${params.path.id}/confirm`,
@@ -18514,11 +17657,10 @@ export const AtmApiAdminAtmMaintenanceIdConfirmPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdConfirmPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceIdConfirmPut";
@@ -18541,14 +17683,13 @@ export const useAtmApiAdminAtmMaintenanceIdConfirmPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceIdConfirmPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation = async (
   params: {
@@ -18558,7 +17699,7 @@ export const AtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation = async (
 
     body: AtmMaintenanceReqUpdateForCollectorAssign;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance/${params.path.id}/collector-assign`,
@@ -18566,11 +17707,10 @@ export const AtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceIdCollectorAssignPut";
@@ -18594,14 +17734,13 @@ export const useAtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation = () => {
       const response =
         await AtmApiAdminAtmMaintenanceIdCollectorAssignPutMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = async (
   params: {
@@ -18611,7 +17750,7 @@ export const AtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = async (
 
     body: AtmMaintenanceReqUpdateForCancelConfirm;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance/${params.path.id}/cancel-confirm`,
@@ -18619,11 +17758,10 @@ export const AtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceIdCancelConfirmPut";
@@ -18647,7 +17785,7 @@ export const useAtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = () => {
       const response =
         await AtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -18655,14 +17793,13 @@ export const useAtmApiAdminAtmMaintenanceIdCancelConfirmPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceStatusesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceStatusResItem>(
     `/atm/api-admin/atm-maintenance-statuses/${params.path.id}`,
@@ -18673,11 +17810,10 @@ export const AtmApiAdminAtmMaintenanceStatusesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesIdGetQuery = (
   params: {
@@ -18686,7 +17822,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18697,7 +17833,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18708,7 +17844,6 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceStatusesIdGetLazyQuery = (
   params: {
     path: {
@@ -18716,7 +17851,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18727,7 +17862,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -18739,7 +17874,6 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceStatusesIdPutMutation = async (
   params: {
     path: {
@@ -18748,7 +17882,7 @@ export const AtmApiAdminAtmMaintenanceStatusesIdPutMutation = async (
 
     body: AtmMaintenanceStatusReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceStatusResId>(
     `/atm/api-admin/atm-maintenance-statuses/${params.path.id}`,
@@ -18756,11 +17890,10 @@ export const AtmApiAdminAtmMaintenanceStatusesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceStatusesIdPut";
@@ -18783,7 +17916,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceStatusesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18791,14 +17924,13 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceStatusesIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-maintenance-statuses/${params.path.id}`,
@@ -18806,11 +17938,10 @@ export const AtmApiAdminAtmMaintenanceStatusesIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceStatusesIdDelete";
@@ -18831,7 +17962,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceStatusesIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -18839,14 +17970,13 @@ export const useAtmApiAdminAtmMaintenanceStatusesIdDeleteMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceRequestCategoryResSingle>(
@@ -18858,11 +17988,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = (
   params: {
@@ -18871,7 +18000,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingle>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingle>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18883,7 +18012,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = (
       const response =
         await AtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -18894,7 +18023,6 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetLazyQuery = (
   params: {
     path: {
@@ -18902,7 +18030,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingle>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingle>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -18914,7 +18042,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetLazyQuery = (
       const response =
         await AtmApiAdminAtmMaintenanceRequestCategoriesIdGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -18926,7 +18054,6 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation = async (
   params: {
     path: {
@@ -18935,7 +18062,7 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation = async (
 
     body: AtmMaintenanceRequestCategoryReqUpdateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceRequestCategoryResId>(
@@ -18944,11 +18071,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation = async (
         method: "put",
         data: params.body,
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation =
   () => {
@@ -18973,14 +18099,13 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation =
         const response =
           await AtmApiAdminAtmMaintenanceRequestCategoriesIdPutMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
       retry: false,
     });
   };
-
 
 export const AtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
   async (
@@ -18989,7 +18114,7 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
         id: number;
       };
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response = await axiosClient<CommonResponseObject>(
       `/atm/api-admin/atm-maintenance-request-categories/${params.path.id}`,
@@ -18997,11 +18122,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
         method: "delete",
 
         ...options,
-      },
+      }
     );
     return response.data;
   };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
   () => {
@@ -19024,7 +18148,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
         const response =
           await AtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -19032,14 +18156,13 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesIdDeleteMutation =
     });
   };
 
-
 export const AtmApiAdminAtmComponentStocksIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmComponentStockResSingle>(
     `/atm/api-admin/atm-component-stocks/${params.path.id}`,
@@ -19050,11 +18173,10 @@ export const AtmApiAdminAtmComponentStocksIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksIdGetQuery = (
   params: {
@@ -19063,7 +18185,7 @@ export const useAtmApiAdminAtmComponentStocksIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingle>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingle>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19074,7 +18196,7 @@ export const useAtmApiAdminAtmComponentStocksIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19085,7 +18207,6 @@ export const useAtmApiAdminAtmComponentStocksIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmComponentStocksIdGetLazyQuery = (
   params: {
     path: {
@@ -19093,7 +18214,7 @@ export const useAtmApiAdminAtmComponentStocksIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingle>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingle>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19104,7 +18225,7 @@ export const useAtmApiAdminAtmComponentStocksIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19116,7 +18237,6 @@ export const useAtmApiAdminAtmComponentStocksIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmComponentStocksIdPutMutation = async (
   params: {
     path: {
@@ -19125,7 +18245,7 @@ export const AtmApiAdminAtmComponentStocksIdPutMutation = async (
 
     body: AtmComponentStockReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmComponentStockResId>(
     `/atm/api-admin/atm-component-stocks/${params.path.id}`,
@@ -19133,11 +18253,10 @@ export const AtmApiAdminAtmComponentStocksIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmComponentStocksIdPut";
@@ -19160,7 +18279,7 @@ export const useAtmApiAdminAtmComponentStocksIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmComponentStocksIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19168,14 +18287,13 @@ export const useAtmApiAdminAtmComponentStocksIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmComponentStocksIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-component-stocks/${params.path.id}`,
@@ -19183,11 +18301,10 @@ export const AtmApiAdminAtmComponentStocksIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmComponentStocksIdDelete";
@@ -19208,14 +18325,13 @@ export const useAtmApiAdminAtmComponentStocksIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmComponentStocksIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmComponentStocksIdRepairedPutMutation = async (
   params: {
@@ -19225,7 +18341,7 @@ export const AtmApiAdminAtmComponentStocksIdRepairedPutMutation = async (
 
     body: AtmComponentStockReqUpdateForRepaired;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-component-stocks/${params.path.id}/repaired`,
@@ -19233,11 +18349,10 @@ export const AtmApiAdminAtmComponentStocksIdRepairedPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksIdRepairedPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmComponentStocksIdRepairedPut";
@@ -19260,7 +18375,7 @@ export const useAtmApiAdminAtmComponentStocksIdRepairedPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmComponentStocksIdRepairedPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19268,14 +18383,13 @@ export const useAtmApiAdminAtmComponentStocksIdRepairedPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmCollectionsIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionResItem>(
     `/atm/api-admin/atm-collections/${params.path.id}`,
@@ -19286,11 +18400,10 @@ export const AtmApiAdminAtmCollectionsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsIdGetQuery = (
   params: {
@@ -19299,7 +18412,7 @@ export const useAtmApiAdminAtmCollectionsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19310,7 +18423,7 @@ export const useAtmApiAdminAtmCollectionsIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19321,7 +18434,6 @@ export const useAtmApiAdminAtmCollectionsIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionsIdGetLazyQuery = (
   params: {
     path: {
@@ -19329,7 +18441,7 @@ export const useAtmApiAdminAtmCollectionsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19340,7 +18452,7 @@ export const useAtmApiAdminAtmCollectionsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19352,7 +18464,6 @@ export const useAtmApiAdminAtmCollectionsIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionsIdPutMutation = async (
   params: {
     path: {
@@ -19361,7 +18472,7 @@ export const AtmApiAdminAtmCollectionsIdPutMutation = async (
 
     body: AtmCollectionReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionResId>(
     `/atm/api-admin/atm-collections/${params.path.id}`,
@@ -19369,11 +18480,10 @@ export const AtmApiAdminAtmCollectionsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmCollectionsIdPut";
@@ -19396,7 +18506,7 @@ export const useAtmApiAdminAtmCollectionsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmCollectionsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19404,14 +18514,13 @@ export const useAtmApiAdminAtmCollectionsIdPutMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmCollectionsIdDeleteMutation = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-collections/${params.path.id}`,
@@ -19419,11 +18528,10 @@ export const AtmApiAdminAtmCollectionsIdDeleteMutation = async (
       method: "delete",
 
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsIdDeleteMutation = () => {
   const mutationKey = "AtmApiAdminAtmCollectionsIdDelete";
@@ -19444,7 +18552,7 @@ export const useAtmApiAdminAtmCollectionsIdDeleteMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmCollectionsIdDeleteMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19452,14 +18560,13 @@ export const useAtmApiAdminAtmCollectionsIdDeleteMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmCollectionStatusesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionStatusResItem>(
     `/atm/api-admin/atm-collection-statuses/${params.path.id}`,
@@ -19470,11 +18577,10 @@ export const AtmApiAdminAtmCollectionStatusesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionStatusesIdGetQuery = (
   params: {
@@ -19483,7 +18589,7 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19494,7 +18600,7 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19505,7 +18611,6 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionStatusesIdGetLazyQuery = (
   params: {
     path: {
@@ -19513,7 +18618,7 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19524,7 +18629,7 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19536,7 +18641,6 @@ export const useAtmApiAdminAtmCollectionStatusesIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionStatusesIdPutMutation = async (
   params: {
     path: {
@@ -19545,7 +18649,7 @@ export const AtmApiAdminAtmCollectionStatusesIdPutMutation = async (
 
     body: AtmCollectionStatusReqUpdate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionStatusResId>(
     `/atm/api-admin/atm-collection-statuses/${params.path.id}`,
@@ -19553,11 +18657,10 @@ export const AtmApiAdminAtmCollectionStatusesIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionStatusesIdPutMutation = () => {
   const mutationKey = "AtmApiAdminAtmCollectionStatusesIdPut";
@@ -19580,7 +18683,7 @@ export const useAtmApiAdminAtmCollectionStatusesIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmCollectionStatusesIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19588,14 +18691,13 @@ export const useAtmApiAdminAtmCollectionStatusesIdPutMutation = () => {
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsIdGetQuery = async (
   params: {
     path: {
       id: string;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAdministratorResItem>(
     `/administrator/api-admin/administrators/${params.path.id}`,
@@ -19606,11 +18708,10 @@ export const AdministratorApiAdminAdministratorsIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAdministratorApiAdminAdministratorsIdGetQuery = (
   params: {
@@ -19619,7 +18720,7 @@ export const useAdministratorApiAdminAdministratorsIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19630,7 +18731,7 @@ export const useAdministratorApiAdminAdministratorsIdGetQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19641,7 +18742,6 @@ export const useAdministratorApiAdminAdministratorsIdGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorsIdGetLazyQuery = (
   params: {
     path: {
@@ -19649,7 +18749,7 @@ export const useAdministratorApiAdminAdministratorsIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19660,7 +18760,7 @@ export const useAdministratorApiAdminAdministratorsIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19672,7 +18772,6 @@ export const useAdministratorApiAdminAdministratorsIdGetLazyQuery = (
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsIdPutMutation = async (
   params: {
     path: {
@@ -19681,7 +18780,7 @@ export const AdministratorApiAdminAdministratorsIdPutMutation = async (
 
     body: AdministratorReqUpdateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAdministratorResId>(
     `/administrator/api-admin/administrators/${params.path.id}`,
@@ -19689,11 +18788,10 @@ export const AdministratorApiAdminAdministratorsIdPutMutation = async (
       method: "put",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAdministratorApiAdminAdministratorsIdPutMutation = () => {
   const mutationKey = "AdministratorApiAdminAdministratorsIdPut";
@@ -19716,7 +18814,7 @@ export const useAdministratorApiAdminAdministratorsIdPutMutation = () => {
     mutationFn: async (configs) => {
       const response = await AdministratorApiAdminAdministratorsIdPutMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -19724,13 +18822,12 @@ export const useAdministratorApiAdminAdministratorsIdPutMutation = () => {
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsMeLoginPasswordPutMutation =
   async (
     params: {
       body: AdministratorReqUpdateForLoginPassword;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response = await axiosClient<CommonResponseObject>(
       `/administrator/api-admin/administrators/me/login-password`,
@@ -19738,11 +18835,10 @@ export const AdministratorApiAdminAdministratorsMeLoginPasswordPutMutation =
         method: "put",
         data: params.body,
         ...options,
-      },
+      }
     );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorsMeLoginPasswordPutMutation =
   () => {
@@ -19763,7 +18859,7 @@ export const useAdministratorApiAdminAdministratorsMeLoginPasswordPutMutation =
         const response =
           await AdministratorApiAdminAdministratorsMeLoginPasswordPutMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -19771,12 +18867,11 @@ export const useAdministratorApiAdminAdministratorsMeLoginPasswordPutMutation =
     });
   };
 
-
 export const StatisticsApiAdminDailyAtmStatusesPostMutation = async (
   params: {
     body: DailyAtmStatusReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDailyAtmStatusResId>(
     `/statistics/api-admin/daily-atm-statuses`,
@@ -19784,11 +18879,10 @@ export const StatisticsApiAdminDailyAtmStatusesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useStatisticsApiAdminDailyAtmStatusesPostMutation = () => {
   const mutationKey = "StatisticsApiAdminDailyAtmStatusesPost";
@@ -19807,14 +18901,13 @@ export const useStatisticsApiAdminDailyAtmStatusesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await StatisticsApiAdminDailyAtmStatusesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PurchaseApiAdminPurchasesGetQuery = async (
   params: {
@@ -19823,7 +18916,7 @@ export const PurchaseApiAdminPurchasesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseResItemList>(
     `/purchase/api-admin/purchases`,
@@ -19839,11 +18932,10 @@ export const PurchaseApiAdminPurchasesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesGetQuery = (
   params: {
@@ -19853,7 +18945,7 @@ export const usePurchaseApiAdminPurchasesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItemList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19864,7 +18956,7 @@ export const usePurchaseApiAdminPurchasesGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19875,7 +18967,6 @@ export const usePurchaseApiAdminPurchasesGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasesGetLazyQuery = (
   params: {
     query?: {
@@ -19884,7 +18975,7 @@ export const usePurchaseApiAdminPurchasesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItemList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -19895,7 +18986,7 @@ export const usePurchaseApiAdminPurchasesGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -19907,12 +18998,11 @@ export const usePurchaseApiAdminPurchasesGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasesPostMutation = async (
   params: {
     body: PurchaseReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseResId>(
     `/purchase/api-admin/purchases`,
@@ -19920,11 +19010,10 @@ export const PurchaseApiAdminPurchasesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesPostMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasesPost";
@@ -19943,14 +19032,13 @@ export const usePurchaseApiAdminPurchasesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchasesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PurchaseApiAdminPurchaseRewardsGetQuery = async (
   params: {
@@ -19959,7 +19047,7 @@ export const PurchaseApiAdminPurchaseRewardsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseRewardResSingleList>(
     `/purchase/api-admin/purchase-rewards`,
@@ -19975,11 +19063,10 @@ export const PurchaseApiAdminPurchaseRewardsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsGetQuery = (
   params: {
@@ -19989,7 +19076,7 @@ export const usePurchaseApiAdminPurchaseRewardsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20000,7 +19087,7 @@ export const usePurchaseApiAdminPurchaseRewardsGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20011,7 +19098,6 @@ export const usePurchaseApiAdminPurchaseRewardsGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseRewardsGetLazyQuery = (
   params: {
     query?: {
@@ -20020,7 +19106,7 @@ export const usePurchaseApiAdminPurchaseRewardsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20031,7 +19117,7 @@ export const usePurchaseApiAdminPurchaseRewardsGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20043,12 +19129,11 @@ export const usePurchaseApiAdminPurchaseRewardsGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseRewardsPostMutation = async (
   params: {
     body: PurchaseRewardReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseRewardResId>(
     `/purchase/api-admin/purchase-rewards`,
@@ -20056,11 +19141,10 @@ export const PurchaseApiAdminPurchaseRewardsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsPostMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseRewardsPost";
@@ -20079,14 +19163,13 @@ export const usePurchaseApiAdminPurchaseRewardsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchaseRewardsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PurchaseApiAdminPurchasePricePoliciesGetQuery = async (
   params: {
@@ -20095,7 +19178,7 @@ export const PurchaseApiAdminPurchasePricePoliciesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchasePricePolicyResSingleList>(
@@ -20112,11 +19195,10 @@ export const PurchaseApiAdminPurchasePricePoliciesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesGetQuery = (
   params: {
@@ -20126,7 +19208,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20137,7 +19219,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20148,7 +19230,6 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasePricePoliciesGetLazyQuery = (
   params: {
     query?: {
@@ -20157,7 +19238,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20168,7 +19249,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20180,12 +19261,11 @@ export const usePurchaseApiAdminPurchasePricePoliciesGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasePricePoliciesPostMutation = async (
   params: {
     body: PurchasePricePolicyReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchasePricePolicyResId>(
     `/purchase/api-admin/purchase-price-policies`,
@@ -20193,11 +19273,10 @@ export const PurchaseApiAdminPurchasePricePoliciesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesPostMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchasePricePoliciesPost";
@@ -20216,14 +19295,13 @@ export const usePurchaseApiAdminPurchasePricePoliciesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchasePricePoliciesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PurchaseApiAdminPurchaseDeviceModelsGetQuery = async (
   params: {
@@ -20232,7 +19310,7 @@ export const PurchaseApiAdminPurchaseDeviceModelsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchaseDeviceModelResSingleList>(
@@ -20249,11 +19327,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsGetQuery = (
   params: {
@@ -20263,7 +19340,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20274,7 +19351,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20285,7 +19362,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseDeviceModelsGetLazyQuery = (
   params: {
     query?: {
@@ -20294,7 +19370,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20305,7 +19381,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20317,12 +19393,11 @@ export const usePurchaseApiAdminPurchaseDeviceModelsGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelsPostMutation = async (
   params: {
     body: PurchaseDeviceModelReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseDeviceModelResId>(
     `/purchase/api-admin/purchase-device-models`,
@@ -20330,11 +19405,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsPostMutation = () => {
   const mutationKey = "PurchaseApiAdminPurchaseDeviceModelsPost";
@@ -20353,14 +19427,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = async (
   params: {
@@ -20369,7 +19442,7 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchaseDeviceModelGradePriceResSingleList>(
@@ -20386,11 +19459,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = (
   params: {
@@ -20400,7 +19472,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20412,7 +19484,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = (
       const response =
         await PurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -20423,7 +19495,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetLazyQuery = (
   params: {
     query?: {
@@ -20432,7 +19503,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20444,7 +19515,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetLazyQuery = (
       const response =
         await PurchaseApiAdminPurchaseDeviceModelGradePricesGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -20456,13 +19527,12 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesPostMutation =
   async (
     params: {
       body: PurchaseDeviceModelGradePriceReqCreate;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponsePurchaseDeviceModelGradePriceResId>(
@@ -20471,11 +19541,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesPostMutation =
           method: "post",
           data: params.body,
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPostMutation =
   () => {
@@ -20496,14 +19565,13 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPostMutation =
         const response =
           await PurchaseApiAdminPurchaseDeviceModelGradePricesPostMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
       retry: false,
     });
   };
-
 
 export const PartnerApiAdminPartnersGetQuery = async (
   params: {
@@ -20512,7 +19580,7 @@ export const PartnerApiAdminPartnersGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerResSingleList>(
     `/partner/api-admin/partners`,
@@ -20528,11 +19596,10 @@ export const PartnerApiAdminPartnersGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersGetQuery = (
   params: {
@@ -20542,7 +19609,7 @@ export const usePartnerApiAdminPartnersGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20553,7 +19620,7 @@ export const usePartnerApiAdminPartnersGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20564,7 +19631,6 @@ export const usePartnerApiAdminPartnersGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnersGetLazyQuery = (
   params: {
     query?: {
@@ -20573,7 +19639,7 @@ export const usePartnerApiAdminPartnersGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20584,7 +19650,7 @@ export const usePartnerApiAdminPartnersGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20596,12 +19662,11 @@ export const usePartnerApiAdminPartnersGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminPartnersPostMutation = async (
   params: {
     body: PartnerReqCreateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerResId>(
     `/partner/api-admin/partners`,
@@ -20609,11 +19674,10 @@ export const PartnerApiAdminPartnersPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersPostMutation = () => {
   const mutationKey = "PartnerApiAdminPartnersPost";
@@ -20632,14 +19696,13 @@ export const usePartnerApiAdminPartnersPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnersPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PartnerApiAdminPartnerMembersGetQuery = async (
   params: {
@@ -20648,7 +19711,7 @@ export const PartnerApiAdminPartnerMembersGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerMemberResSingleList>(
     `/partner/api-admin/partner-members`,
@@ -20664,11 +19727,10 @@ export const PartnerApiAdminPartnerMembersGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersGetQuery = (
   params: {
@@ -20678,7 +19740,7 @@ export const usePartnerApiAdminPartnerMembersGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20689,7 +19751,7 @@ export const usePartnerApiAdminPartnerMembersGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20700,7 +19762,6 @@ export const usePartnerApiAdminPartnerMembersGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnerMembersGetLazyQuery = (
   params: {
     query?: {
@@ -20709,7 +19770,7 @@ export const usePartnerApiAdminPartnerMembersGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleList>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20720,7 +19781,7 @@ export const usePartnerApiAdminPartnerMembersGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20732,12 +19793,11 @@ export const usePartnerApiAdminPartnerMembersGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersPostMutation = async (
   params: {
     body: PartnerMemberReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerMemberResId>(
     `/partner/api-admin/partner-members`,
@@ -20745,11 +19805,10 @@ export const PartnerApiAdminPartnerMembersPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersPostMutation = () => {
   const mutationKey = "PartnerApiAdminPartnerMembersPost";
@@ -20768,14 +19827,13 @@ export const usePartnerApiAdminPartnerMembersPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminPartnerMembersPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const PartnerApiAdminBranchesGetQuery = async (
   params: {
@@ -20784,7 +19842,7 @@ export const PartnerApiAdminBranchesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseBranchResSingleList>(
     `/partner/api-admin/branches`,
@@ -20800,11 +19858,10 @@ export const PartnerApiAdminBranchesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesGetQuery = (
   params: {
@@ -20814,7 +19871,7 @@ export const usePartnerApiAdminBranchesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseBranchResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20825,7 +19882,7 @@ export const usePartnerApiAdminBranchesGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20836,7 +19893,6 @@ export const usePartnerApiAdminBranchesGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminBranchesGetLazyQuery = (
   params: {
     query?: {
@@ -20845,7 +19901,7 @@ export const usePartnerApiAdminBranchesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseBranchResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20856,7 +19912,7 @@ export const usePartnerApiAdminBranchesGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20868,12 +19924,11 @@ export const usePartnerApiAdminBranchesGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminBranchesPostMutation = async (
   params: {
     body: BranchReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseBranchResId>(
     `/partner/api-admin/branches`,
@@ -20881,11 +19936,10 @@ export const PartnerApiAdminBranchesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesPostMutation = () => {
   const mutationKey = "PartnerApiAdminBranchesPost";
@@ -20904,14 +19958,13 @@ export const usePartnerApiAdminBranchesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await PartnerApiAdminBranchesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const InspectionApiAdminInspectionsGetQuery = async (
   params: {
@@ -20920,7 +19973,7 @@ export const InspectionApiAdminInspectionsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionResItemList>(
     `/inspection/api-admin/inspections`,
@@ -20936,11 +19989,10 @@ export const InspectionApiAdminInspectionsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsGetQuery = (
   params: {
@@ -20950,7 +20002,7 @@ export const useInspectionApiAdminInspectionsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItemList>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20961,7 +20013,7 @@ export const useInspectionApiAdminInspectionsGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -20972,7 +20024,6 @@ export const useInspectionApiAdminInspectionsGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionsGetLazyQuery = (
   params: {
     query?: {
@@ -20981,7 +20032,7 @@ export const useInspectionApiAdminInspectionsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItemList>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -20992,7 +20043,7 @@ export const useInspectionApiAdminInspectionsGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21004,12 +20055,11 @@ export const useInspectionApiAdminInspectionsGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionsPostMutation = async (
   params: {
     body: InspectionReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionResId>(
     `/inspection/api-admin/inspections`,
@@ -21017,11 +20067,10 @@ export const InspectionApiAdminInspectionsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsPostMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionsPost";
@@ -21040,14 +20089,13 @@ export const useInspectionApiAdminInspectionsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await InspectionApiAdminInspectionsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const InspectionApiAdminInspectionProfilesGetQuery = async (
   params: {
@@ -21056,7 +20104,7 @@ export const InspectionApiAdminInspectionProfilesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseInspectionProfileResSingleList>(
@@ -21073,11 +20121,10 @@ export const InspectionApiAdminInspectionProfilesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesGetQuery = (
   params: {
@@ -21087,7 +20134,7 @@ export const useInspectionApiAdminInspectionProfilesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21098,7 +20145,7 @@ export const useInspectionApiAdminInspectionProfilesGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21109,7 +20156,6 @@ export const useInspectionApiAdminInspectionProfilesGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionProfilesGetLazyQuery = (
   params: {
     query?: {
@@ -21118,7 +20164,7 @@ export const useInspectionApiAdminInspectionProfilesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21129,7 +20175,7 @@ export const useInspectionApiAdminInspectionProfilesGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21141,12 +20187,11 @@ export const useInspectionApiAdminInspectionProfilesGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionProfilesPostMutation = async (
   params: {
     body: InspectionProfileReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionProfileResId>(
     `/inspection/api-admin/inspection-profiles`,
@@ -21154,11 +20199,10 @@ export const InspectionApiAdminInspectionProfilesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesPostMutation = () => {
   const mutationKey = "InspectionApiAdminInspectionProfilesPost";
@@ -21177,14 +20221,13 @@ export const useInspectionApiAdminInspectionProfilesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await InspectionApiAdminInspectionProfilesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDevicesGetQuery = async (
   params: {
@@ -21193,7 +20236,7 @@ export const DeviceApiAdminDevicesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceResItemList>(
     `/device/api-admin/devices`,
@@ -21209,11 +20252,10 @@ export const DeviceApiAdminDevicesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesGetQuery = (
   params: {
@@ -21223,7 +20265,7 @@ export const useDeviceApiAdminDevicesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItemList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21234,7 +20276,7 @@ export const useDeviceApiAdminDevicesGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21245,7 +20287,6 @@ export const useDeviceApiAdminDevicesGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDevicesGetLazyQuery = (
   params: {
     query?: {
@@ -21254,7 +20295,7 @@ export const useDeviceApiAdminDevicesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItemList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21265,7 +20306,7 @@ export const useDeviceApiAdminDevicesGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21277,12 +20318,11 @@ export const useDeviceApiAdminDevicesGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDevicesPostMutation = async (
   params: {
     body: DeviceReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceResId>(
     `/device/api-admin/devices`,
@@ -21290,11 +20330,10 @@ export const DeviceApiAdminDevicesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesPostMutation = () => {
   const mutationKey = "DeviceApiAdminDevicesPost";
@@ -21313,14 +20352,13 @@ export const useDeviceApiAdminDevicesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDevicesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDeviceSeriessGetQuery = async (
   params: {
@@ -21329,7 +20367,7 @@ export const DeviceApiAdminDeviceSeriessGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceSeriesResItemList>(
     `/device/api-admin/device-seriess`,
@@ -21345,11 +20383,10 @@ export const DeviceApiAdminDeviceSeriessGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessGetQuery = (
   params: {
@@ -21359,7 +20396,7 @@ export const useDeviceApiAdminDeviceSeriessGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItemList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21370,7 +20407,7 @@ export const useDeviceApiAdminDeviceSeriessGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21381,7 +20418,6 @@ export const useDeviceApiAdminDeviceSeriessGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceSeriessGetLazyQuery = (
   params: {
     query?: {
@@ -21390,7 +20426,7 @@ export const useDeviceApiAdminDeviceSeriessGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItemList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21401,7 +20437,7 @@ export const useDeviceApiAdminDeviceSeriessGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21413,12 +20449,11 @@ export const useDeviceApiAdminDeviceSeriessGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceSeriessPostMutation = async (
   params: {
     body: DeviceSeriesReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceSeriesResId>(
     `/device/api-admin/device-seriess`,
@@ -21426,11 +20461,10 @@ export const DeviceApiAdminDeviceSeriessPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessPostMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceSeriessPost";
@@ -21449,14 +20483,13 @@ export const useDeviceApiAdminDeviceSeriessPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceSeriessPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDeviceModelsGetQuery = async (
   params: {
@@ -21465,7 +20498,7 @@ export const DeviceApiAdminDeviceModelsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceModelResSingleList>(
     `/device/api-admin/device-models`,
@@ -21481,11 +20514,10 @@ export const DeviceApiAdminDeviceModelsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsGetQuery = (
   params: {
@@ -21495,7 +20527,7 @@ export const useDeviceApiAdminDeviceModelsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21506,7 +20538,7 @@ export const useDeviceApiAdminDeviceModelsGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21517,7 +20549,6 @@ export const useDeviceApiAdminDeviceModelsGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceModelsGetLazyQuery = (
   params: {
     query?: {
@@ -21526,7 +20557,7 @@ export const useDeviceApiAdminDeviceModelsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21537,7 +20568,7 @@ export const useDeviceApiAdminDeviceModelsGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21549,12 +20580,11 @@ export const useDeviceApiAdminDeviceModelsGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceModelsPostMutation = async (
   params: {
     body: DeviceModelReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceModelResId>(
     `/device/api-admin/device-models`,
@@ -21562,11 +20592,10 @@ export const DeviceApiAdminDeviceModelsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsPostMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceModelsPost";
@@ -21585,14 +20614,13 @@ export const useDeviceApiAdminDeviceModelsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceModelsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDeviceManufacturesGetQuery = async (
   params: {
@@ -21601,7 +20629,7 @@ export const DeviceApiAdminDeviceManufacturesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceManufactureResSingleList>(
@@ -21618,11 +20646,10 @@ export const DeviceApiAdminDeviceManufacturesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesGetQuery = (
   params: {
@@ -21632,7 +20659,7 @@ export const useDeviceApiAdminDeviceManufacturesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21643,7 +20670,7 @@ export const useDeviceApiAdminDeviceManufacturesGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21654,7 +20681,6 @@ export const useDeviceApiAdminDeviceManufacturesGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufacturesGetLazyQuery = (
   params: {
     query?: {
@@ -21663,7 +20689,7 @@ export const useDeviceApiAdminDeviceManufacturesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21674,7 +20700,7 @@ export const useDeviceApiAdminDeviceManufacturesGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21686,12 +20712,11 @@ export const useDeviceApiAdminDeviceManufacturesGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufacturesPostMutation = async (
   params: {
     body: DeviceManufactureReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceManufactureResId>(
     `/device/api-admin/device-manufactures`,
@@ -21699,11 +20724,10 @@ export const DeviceApiAdminDeviceManufacturesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesPostMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufacturesPost";
@@ -21722,14 +20746,13 @@ export const useDeviceApiAdminDeviceManufacturesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceManufacturesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDeviceManufactureTypesGetQuery = async (
   params: {
@@ -21738,7 +20761,7 @@ export const DeviceApiAdminDeviceManufactureTypesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceManufactureTypeResSingleList>(
@@ -21755,11 +20778,10 @@ export const DeviceApiAdminDeviceManufactureTypesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesGetQuery = (
   params: {
@@ -21769,7 +20791,7 @@ export const useDeviceApiAdminDeviceManufactureTypesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21780,7 +20802,7 @@ export const useDeviceApiAdminDeviceManufactureTypesGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21791,7 +20813,6 @@ export const useDeviceApiAdminDeviceManufactureTypesGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufactureTypesGetLazyQuery = (
   params: {
     query?: {
@@ -21800,7 +20821,7 @@ export const useDeviceApiAdminDeviceManufactureTypesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21811,7 +20832,7 @@ export const useDeviceApiAdminDeviceManufactureTypesGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21823,12 +20844,11 @@ export const useDeviceApiAdminDeviceManufactureTypesGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufactureTypesPostMutation = async (
   params: {
     body: DeviceManufactureTypeReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceManufactureTypeResId>(
     `/device/api-admin/device-manufacture-types`,
@@ -21836,11 +20856,10 @@ export const DeviceApiAdminDeviceManufactureTypesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesPostMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceManufactureTypesPost";
@@ -21859,14 +20878,13 @@ export const useDeviceApiAdminDeviceManufactureTypesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceManufactureTypesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const DeviceApiAdminDeviceDeletionsGetQuery = async (
   params: {
@@ -21875,7 +20893,7 @@ export const DeviceApiAdminDeviceDeletionsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceDeletionResSingleList>(
     `/device/api-admin/device-deletions`,
@@ -21891,11 +20909,10 @@ export const DeviceApiAdminDeviceDeletionsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsGetQuery = (
   params: {
@@ -21905,7 +20922,7 @@ export const useDeviceApiAdminDeviceDeletionsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21916,7 +20933,7 @@ export const useDeviceApiAdminDeviceDeletionsGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21927,7 +20944,6 @@ export const useDeviceApiAdminDeviceDeletionsGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceDeletionsGetLazyQuery = (
   params: {
     query?: {
@@ -21936,7 +20952,7 @@ export const useDeviceApiAdminDeviceDeletionsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -21947,7 +20963,7 @@ export const useDeviceApiAdminDeviceDeletionsGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -21959,12 +20975,11 @@ export const useDeviceApiAdminDeviceDeletionsGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceDeletionsPostMutation = async (
   params: {
     body: DeviceDeletionReqCreateAtm;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceDeletionResId>(
     `/device/api-admin/device-deletions`,
@@ -21972,11 +20987,10 @@ export const DeviceApiAdminDeviceDeletionsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsPostMutation = () => {
   const mutationKey = "DeviceApiAdminDeviceDeletionsPost";
@@ -21995,14 +21009,13 @@ export const useDeviceApiAdminDeviceDeletionsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await DeviceApiAdminDeviceDeletionsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CustomerApiAdminTermsAgreementsGetQuery = async (
   params: {
@@ -22011,7 +21024,7 @@ export const CustomerApiAdminTermsAgreementsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsAgreementResSingleList>(
     `/customer/api-admin/terms-agreements`,
@@ -22027,11 +21040,10 @@ export const CustomerApiAdminTermsAgreementsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsGetQuery = (
   params: {
@@ -22041,7 +21053,7 @@ export const useCustomerApiAdminTermsAgreementsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22052,7 +21064,7 @@ export const useCustomerApiAdminTermsAgreementsGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22063,7 +21075,6 @@ export const useCustomerApiAdminTermsAgreementsGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminTermsAgreementsGetLazyQuery = (
   params: {
     query?: {
@@ -22072,7 +21083,7 @@ export const useCustomerApiAdminTermsAgreementsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22083,7 +21094,7 @@ export const useCustomerApiAdminTermsAgreementsGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22095,12 +21106,11 @@ export const useCustomerApiAdminTermsAgreementsGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminTermsAgreementsPostMutation = async (
   params: {
     body: TermsAgreementReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsAgreementResId>(
     `/customer/api-admin/terms-agreements`,
@@ -22108,11 +21118,10 @@ export const CustomerApiAdminTermsAgreementsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsPostMutation = () => {
   const mutationKey = "CustomerApiAdminTermsAgreementsPost";
@@ -22131,7 +21140,7 @@ export const useCustomerApiAdminTermsAgreementsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminTermsAgreementsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -22139,12 +21148,11 @@ export const useCustomerApiAdminTermsAgreementsPostMutation = () => {
   });
 };
 
-
 export const CustomerApiAdminSurveyParticipationsPostMutation = async (
   params: {
     body: SurveyParticipationReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSurveyParticipationResId>(
     `/customer/api-admin/survey-participations`,
@@ -22152,11 +21160,10 @@ export const CustomerApiAdminSurveyParticipationsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminSurveyParticipationsPostMutation = () => {
   const mutationKey = "CustomerApiAdminSurveyParticipationsPost";
@@ -22175,14 +21182,13 @@ export const useCustomerApiAdminSurveyParticipationsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminSurveyParticipationsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CustomerApiAdminEventApplicationsGetQuery = async (
   params: {
@@ -22191,7 +21197,7 @@ export const CustomerApiAdminEventApplicationsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseEventApplicationResSingleList>(
@@ -22208,11 +21214,10 @@ export const CustomerApiAdminEventApplicationsGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsGetQuery = (
   params: {
@@ -22222,7 +21227,7 @@ export const useCustomerApiAdminEventApplicationsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22233,7 +21238,7 @@ export const useCustomerApiAdminEventApplicationsGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22244,7 +21249,6 @@ export const useCustomerApiAdminEventApplicationsGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminEventApplicationsGetLazyQuery = (
   params: {
     query?: {
@@ -22253,7 +21257,7 @@ export const useCustomerApiAdminEventApplicationsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22264,7 +21268,7 @@ export const useCustomerApiAdminEventApplicationsGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22276,12 +21280,11 @@ export const useCustomerApiAdminEventApplicationsGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminEventApplicationsPostMutation = async (
   params: {
     body: EventApplicationReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventApplicationResId>(
     `/customer/api-admin/event-applications`,
@@ -22289,11 +21292,10 @@ export const CustomerApiAdminEventApplicationsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsPostMutation = () => {
   const mutationKey = "CustomerApiAdminEventApplicationsPost";
@@ -22312,14 +21314,13 @@ export const useCustomerApiAdminEventApplicationsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CustomerApiAdminEventApplicationsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminTermsGetQuery = async (
   params: {
@@ -22328,7 +21329,7 @@ export const CommonApiAdminTermsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsResSingleList>(
     `/common/api-admin/terms`,
@@ -22344,11 +21345,10 @@ export const CommonApiAdminTermsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsGetQuery = (
   params: {
@@ -22358,7 +21358,7 @@ export const useCommonApiAdminTermsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22377,7 +21377,6 @@ export const useCommonApiAdminTermsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsGetLazyQuery = (
   params: {
     query?: {
@@ -22386,7 +21385,7 @@ export const useCommonApiAdminTermsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22406,12 +21405,11 @@ export const useCommonApiAdminTermsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsPostMutation = async (
   params: {
     body: TermsReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsResId>(
     `/common/api-admin/terms`,
@@ -22419,11 +21417,10 @@ export const CommonApiAdminTermsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsPostMutation = () => {
   const mutationKey = "CommonApiAdminTermsPost";
@@ -22442,14 +21439,13 @@ export const useCommonApiAdminTermsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminTermsContentsGetQuery = async (
   params: {
@@ -22458,7 +21454,7 @@ export const CommonApiAdminTermsContentsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsContentResSingleList>(
     `/common/api-admin/terms-contents`,
@@ -22474,11 +21470,10 @@ export const CommonApiAdminTermsContentsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsGetQuery = (
   params: {
@@ -22488,7 +21483,7 @@ export const useCommonApiAdminTermsContentsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22499,7 +21494,7 @@ export const useCommonApiAdminTermsContentsGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22510,7 +21505,6 @@ export const useCommonApiAdminTermsContentsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsContentsGetLazyQuery = (
   params: {
     query?: {
@@ -22519,7 +21513,7 @@ export const useCommonApiAdminTermsContentsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22530,7 +21524,7 @@ export const useCommonApiAdminTermsContentsGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22542,12 +21536,11 @@ export const useCommonApiAdminTermsContentsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsContentsPostMutation = async (
   params: {
     body: TermsContentReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsContentResId>(
     `/common/api-admin/terms-contents`,
@@ -22555,11 +21548,10 @@ export const CommonApiAdminTermsContentsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsPostMutation = () => {
   const mutationKey = "CommonApiAdminTermsContentsPost";
@@ -22578,14 +21570,13 @@ export const useCommonApiAdminTermsContentsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminTermsContentsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminSigungusGetQuery = async (
   params: {
@@ -22594,7 +21585,7 @@ export const CommonApiAdminSigungusGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSigunguResSingleList>(
     `/common/api-admin/sigungus`,
@@ -22610,11 +21601,10 @@ export const CommonApiAdminSigungusGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusGetQuery = (
   params: {
@@ -22624,7 +21614,7 @@ export const useCommonApiAdminSigungusGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22635,7 +21625,7 @@ export const useCommonApiAdminSigungusGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22646,7 +21636,6 @@ export const useCommonApiAdminSigungusGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminSigungusGetLazyQuery = (
   params: {
     query?: {
@@ -22655,7 +21644,7 @@ export const useCommonApiAdminSigungusGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22666,7 +21655,7 @@ export const useCommonApiAdminSigungusGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22678,12 +21667,11 @@ export const useCommonApiAdminSigungusGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminSigungusPostMutation = async (
   params: {
     body: SigunguReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSigunguResId>(
     `/common/api-admin/sigungus`,
@@ -22691,11 +21679,10 @@ export const CommonApiAdminSigungusPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusPostMutation = () => {
   const mutationKey = "CommonApiAdminSigungusPost";
@@ -22714,14 +21701,13 @@ export const useCommonApiAdminSigungusPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminSigungusPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminServicesGetQuery = async (
   params: {
@@ -22730,7 +21716,7 @@ export const CommonApiAdminServicesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseServiceSeviceResSingleList>(
     `/common/api-admin/services`,
@@ -22746,11 +21732,10 @@ export const CommonApiAdminServicesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesGetQuery = (
   params: {
@@ -22760,7 +21745,7 @@ export const useCommonApiAdminServicesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22771,7 +21756,7 @@ export const useCommonApiAdminServicesGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22782,7 +21767,6 @@ export const useCommonApiAdminServicesGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminServicesGetLazyQuery = (
   params: {
     query?: {
@@ -22791,7 +21775,7 @@ export const useCommonApiAdminServicesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22802,7 +21786,7 @@ export const useCommonApiAdminServicesGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -22814,12 +21798,11 @@ export const useCommonApiAdminServicesGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminServicesPostMutation = async (
   params: {
     body: ServiceSeviceReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseServiceSeviceResId>(
     `/common/api-admin/services`,
@@ -22827,11 +21810,10 @@ export const CommonApiAdminServicesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesPostMutation = () => {
   const mutationKey = "CommonApiAdminServicesPost";
@@ -22850,14 +21832,13 @@ export const useCommonApiAdminServicesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminServicesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminMenusGetQuery = async (
   params: {
@@ -22866,7 +21847,7 @@ export const CommonApiAdminMenusGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuResSingleList>(
     `/common/api-admin/menus`,
@@ -22882,11 +21863,10 @@ export const CommonApiAdminMenusGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusGetQuery = (
   params: {
@@ -22896,7 +21876,7 @@ export const useCommonApiAdminMenusGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22915,7 +21895,6 @@ export const useCommonApiAdminMenusGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenusGetLazyQuery = (
   params: {
     query?: {
@@ -22924,7 +21903,7 @@ export const useCommonApiAdminMenusGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -22944,12 +21923,11 @@ export const useCommonApiAdminMenusGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenusPostMutation = async (
   params: {
     body: MenuReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuResId>(
     `/common/api-admin/menus`,
@@ -22957,11 +21935,10 @@ export const CommonApiAdminMenusPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusPostMutation = () => {
   const mutationKey = "CommonApiAdminMenusPost";
@@ -22980,14 +21957,13 @@ export const useCommonApiAdminMenusPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenusPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminMenuButtonsGetQuery = async (
   params: {
@@ -22996,7 +21972,7 @@ export const CommonApiAdminMenuButtonsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuButtonResSingleList>(
     `/common/api-admin/menu-buttons`,
@@ -23012,11 +21988,10 @@ export const CommonApiAdminMenuButtonsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsGetQuery = (
   params: {
@@ -23026,7 +22001,7 @@ export const useCommonApiAdminMenuButtonsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23037,7 +22012,7 @@ export const useCommonApiAdminMenuButtonsGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23048,7 +22023,6 @@ export const useCommonApiAdminMenuButtonsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenuButtonsGetLazyQuery = (
   params: {
     query?: {
@@ -23057,7 +22031,7 @@ export const useCommonApiAdminMenuButtonsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23068,7 +22042,7 @@ export const useCommonApiAdminMenuButtonsGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23080,12 +22054,11 @@ export const useCommonApiAdminMenuButtonsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenuButtonsPostMutation = async (
   params: {
     body: MenuButtonReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuButtonResId>(
     `/common/api-admin/menu-buttons`,
@@ -23093,11 +22066,10 @@ export const CommonApiAdminMenuButtonsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsPostMutation = () => {
   const mutationKey = "CommonApiAdminMenuButtonsPost";
@@ -23116,14 +22088,13 @@ export const useCommonApiAdminMenuButtonsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminMenuButtonsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminEventsGetQuery = async (
   params: {
@@ -23132,7 +22103,7 @@ export const CommonApiAdminEventsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventResSingleList>(
     `/common/api-admin/events`,
@@ -23148,11 +22119,10 @@ export const CommonApiAdminEventsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsGetQuery = (
   params: {
@@ -23162,7 +22132,7 @@ export const useCommonApiAdminEventsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23181,7 +22151,6 @@ export const useCommonApiAdminEventsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventsGetLazyQuery = (
   params: {
     query?: {
@@ -23190,7 +22159,7 @@ export const useCommonApiAdminEventsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23210,12 +22179,11 @@ export const useCommonApiAdminEventsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventsPostMutation = async (
   params: {
     body: EventReqCreateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventResId>(
     `/common/api-admin/events`,
@@ -23223,11 +22191,10 @@ export const CommonApiAdminEventsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsPostMutation = () => {
   const mutationKey = "CommonApiAdminEventsPost";
@@ -23246,14 +22213,13 @@ export const useCommonApiAdminEventsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminEventTermsGetQuery = async (
   params: {
@@ -23262,7 +22228,7 @@ export const CommonApiAdminEventTermsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventTermsResSingleList>(
     `/common/api-admin/event-terms`,
@@ -23278,11 +22244,10 @@ export const CommonApiAdminEventTermsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsGetQuery = (
   params: {
@@ -23292,7 +22257,7 @@ export const useCommonApiAdminEventTermsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23303,7 +22268,7 @@ export const useCommonApiAdminEventTermsGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23314,7 +22279,6 @@ export const useCommonApiAdminEventTermsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventTermsGetLazyQuery = (
   params: {
     query?: {
@@ -23323,7 +22287,7 @@ export const useCommonApiAdminEventTermsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23334,7 +22298,7 @@ export const useCommonApiAdminEventTermsGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23346,12 +22310,11 @@ export const useCommonApiAdminEventTermsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventTermsPostMutation = async (
   params: {
     body: EventTermsReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventTermsResId>(
     `/common/api-admin/event-terms`,
@@ -23359,11 +22322,10 @@ export const CommonApiAdminEventTermsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsPostMutation = () => {
   const mutationKey = "CommonApiAdminEventTermsPost";
@@ -23382,14 +22344,13 @@ export const useCommonApiAdminEventTermsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventTermsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminEventBenefitsGetQuery = async (
   params: {
@@ -23398,7 +22359,7 @@ export const CommonApiAdminEventBenefitsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventBenefitResSingleList>(
     `/common/api-admin/event-benefits`,
@@ -23414,11 +22375,10 @@ export const CommonApiAdminEventBenefitsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsGetQuery = (
   params: {
@@ -23428,7 +22388,7 @@ export const useCommonApiAdminEventBenefitsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23439,7 +22399,7 @@ export const useCommonApiAdminEventBenefitsGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23450,7 +22410,6 @@ export const useCommonApiAdminEventBenefitsGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventBenefitsGetLazyQuery = (
   params: {
     query?: {
@@ -23459,7 +22418,7 @@ export const useCommonApiAdminEventBenefitsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23470,7 +22429,7 @@ export const useCommonApiAdminEventBenefitsGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23482,12 +22441,11 @@ export const useCommonApiAdminEventBenefitsGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventBenefitsPostMutation = async (
   params: {
     body: EventBenefitReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventBenefitResId>(
     `/common/api-admin/event-benefits`,
@@ -23495,11 +22453,10 @@ export const CommonApiAdminEventBenefitsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsPostMutation = () => {
   const mutationKey = "CommonApiAdminEventBenefitsPost";
@@ -23518,14 +22475,13 @@ export const useCommonApiAdminEventBenefitsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminEventBenefitsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminCouponPoliciesGetQuery = async (
   params: {
@@ -23534,7 +22490,7 @@ export const CommonApiAdminCouponPoliciesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCouponPolicyResSingleList>(
     `/common/api-admin/coupon-policies`,
@@ -23550,11 +22506,10 @@ export const CommonApiAdminCouponPoliciesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesGetQuery = (
   params: {
@@ -23564,7 +22519,7 @@ export const useCommonApiAdminCouponPoliciesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23575,7 +22530,7 @@ export const useCommonApiAdminCouponPoliciesGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23586,7 +22541,6 @@ export const useCommonApiAdminCouponPoliciesGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCouponPoliciesGetLazyQuery = (
   params: {
     query?: {
@@ -23595,7 +22549,7 @@ export const useCommonApiAdminCouponPoliciesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23606,7 +22560,7 @@ export const useCommonApiAdminCouponPoliciesGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23618,12 +22572,11 @@ export const useCommonApiAdminCouponPoliciesGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCouponPoliciesPostMutation = async (
   params: {
     body: CouponPolicyReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCouponPolicyResId>(
     `/common/api-admin/coupon-policies`,
@@ -23631,11 +22584,10 @@ export const CommonApiAdminCouponPoliciesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesPostMutation = () => {
   const mutationKey = "CommonApiAdminCouponPoliciesPost";
@@ -23654,14 +22606,13 @@ export const useCommonApiAdminCouponPoliciesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCouponPoliciesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminContentDisplaysGetQuery = async (
   params: {
@@ -23670,7 +22621,7 @@ export const CommonApiAdminContentDisplaysGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseContentDisplayResItemList>(
     `/common/api-admin/content-displays`,
@@ -23686,11 +22637,10 @@ export const CommonApiAdminContentDisplaysGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysGetQuery = (
   params: {
@@ -23700,7 +22650,7 @@ export const useCommonApiAdminContentDisplaysGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemList>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23711,7 +22661,7 @@ export const useCommonApiAdminContentDisplaysGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23722,7 +22672,6 @@ export const useCommonApiAdminContentDisplaysGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminContentDisplaysGetLazyQuery = (
   params: {
     query?: {
@@ -23731,7 +22680,7 @@ export const useCommonApiAdminContentDisplaysGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemList>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23742,7 +22691,7 @@ export const useCommonApiAdminContentDisplaysGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23754,12 +22703,11 @@ export const useCommonApiAdminContentDisplaysGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminContentDisplaysPostMutation = async (
   params: {
     body: ContentDisplayReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseContentDisplayResId>(
     `/common/api-admin/content-displays`,
@@ -23767,11 +22715,10 @@ export const CommonApiAdminContentDisplaysPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysPostMutation = () => {
   const mutationKey = "CommonApiAdminContentDisplaysPost";
@@ -23790,14 +22737,13 @@ export const useCommonApiAdminContentDisplaysPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminContentDisplaysPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminCommonCodesGetQuery = async (
   params: {
@@ -23806,7 +22752,7 @@ export const CommonApiAdminCommonCodesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeResItemList>(
     `/common/api-admin/common-codes`,
@@ -23822,11 +22768,10 @@ export const CommonApiAdminCommonCodesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesGetQuery = (
   params: {
@@ -23836,7 +22781,7 @@ export const useCommonApiAdminCommonCodesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResItemList>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23847,7 +22792,7 @@ export const useCommonApiAdminCommonCodesGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23858,7 +22803,6 @@ export const useCommonApiAdminCommonCodesGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodesGetLazyQuery = (
   params: {
     query?: {
@@ -23867,7 +22811,7 @@ export const useCommonApiAdminCommonCodesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResItemList>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23878,7 +22822,7 @@ export const useCommonApiAdminCommonCodesGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23890,12 +22834,11 @@ export const useCommonApiAdminCommonCodesGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodesPostMutation = async (
   params: {
     body: CommonCodeReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeResId>(
     `/common/api-admin/common-codes`,
@@ -23903,11 +22846,10 @@ export const CommonApiAdminCommonCodesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesPostMutation = () => {
   const mutationKey = "CommonApiAdminCommonCodesPost";
@@ -23926,14 +22868,13 @@ export const useCommonApiAdminCommonCodesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCommonCodesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminCommonCodeTypesGetQuery = async (
   params: {
@@ -23942,7 +22883,7 @@ export const CommonApiAdminCommonCodeTypesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeTypeResSingleList>(
     `/common/api-admin/common-code-types`,
@@ -23958,11 +22899,10 @@ export const CommonApiAdminCommonCodeTypesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodeTypesGetQuery = (
   params: {
@@ -23972,7 +22912,7 @@ export const useCommonApiAdminCommonCodeTypesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -23983,7 +22923,7 @@ export const useCommonApiAdminCommonCodeTypesGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -23994,7 +22934,6 @@ export const useCommonApiAdminCommonCodeTypesGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodeTypesGetLazyQuery = (
   params: {
     query?: {
@@ -24003,7 +22942,7 @@ export const useCommonApiAdminCommonCodeTypesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24014,7 +22953,7 @@ export const useCommonApiAdminCommonCodeTypesGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24026,12 +22965,11 @@ export const useCommonApiAdminCommonCodeTypesGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodeTypesPostMutation = async (
   params: {
     body: CommonCodeTypeReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeTypeResId>(
     `/common/api-admin/common-code-types`,
@@ -24039,11 +22977,10 @@ export const CommonApiAdminCommonCodeTypesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodeTypesPostMutation = () => {
   const mutationKey = "CommonApiAdminCommonCodeTypesPost";
@@ -24062,14 +22999,13 @@ export const useCommonApiAdminCommonCodeTypesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminCommonCodeTypesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const CommonApiAdminApisGetQuery = async (
   params: {
@@ -24078,7 +23014,7 @@ export const CommonApiAdminApisGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseApiResSingleList>(
     `/common/api-admin/apis`,
@@ -24094,11 +23030,10 @@ export const CommonApiAdminApisGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisGetQuery = (
   params: {
@@ -24108,7 +23043,7 @@ export const useCommonApiAdminApisGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseApiResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24127,7 +23062,6 @@ export const useCommonApiAdminApisGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminApisGetLazyQuery = (
   params: {
     query?: {
@@ -24136,7 +23070,7 @@ export const useCommonApiAdminApisGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseApiResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24156,12 +23090,11 @@ export const useCommonApiAdminApisGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminApisPostMutation = async (
   params: {
     body: ApiReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseApiResId>(
     `/common/api-admin/apis`,
@@ -24169,11 +23102,10 @@ export const CommonApiAdminApisPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisPostMutation = () => {
   const mutationKey = "CommonApiAdminApisPost";
@@ -24192,14 +23124,13 @@ export const useCommonApiAdminApisPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await CommonApiAdminApisPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmsGetQuery = async (
   params: {
@@ -24208,7 +23139,7 @@ export const AtmApiAdminAtmsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResItemList>(
     `/atm/api-admin/atms`,
@@ -24224,11 +23155,10 @@ export const AtmApiAdminAtmsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsGetQuery = (
   params: {
@@ -24238,7 +23168,7 @@ export const useAtmApiAdminAtmsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24257,7 +23187,6 @@ export const useAtmApiAdminAtmsGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmsGetLazyQuery = (
   params: {
     query?: {
@@ -24266,7 +23195,7 @@ export const useAtmApiAdminAtmsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24286,12 +23215,11 @@ export const useAtmApiAdminAtmsGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmsPostMutation = async (
   params: {
     body: AtmReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResId>(
     `/atm/api-admin/atms`,
@@ -24299,11 +23227,10 @@ export const AtmApiAdminAtmsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmsPost";
@@ -24322,14 +23249,13 @@ export const useAtmApiAdminAtmsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmTypeComponentsGetQuery = async (
   params: {
@@ -24338,7 +23264,7 @@ export const AtmApiAdminAtmTypeComponentsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmTypeComponentResItemList>(
     `/atm/api-admin/atm-type-components`,
@@ -24354,11 +23280,10 @@ export const AtmApiAdminAtmTypeComponentsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmTypeComponentsGetQuery = (
   params: {
@@ -24368,7 +23293,7 @@ export const useAtmApiAdminAtmTypeComponentsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24379,7 +23304,7 @@ export const useAtmApiAdminAtmTypeComponentsGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24390,7 +23315,6 @@ export const useAtmApiAdminAtmTypeComponentsGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmTypeComponentsGetLazyQuery = (
   params: {
     query?: {
@@ -24399,7 +23323,7 @@ export const useAtmApiAdminAtmTypeComponentsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24410,7 +23334,7 @@ export const useAtmApiAdminAtmTypeComponentsGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24422,12 +23346,11 @@ export const useAtmApiAdminAtmTypeComponentsGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmTypeComponentsPostMutation = async (
   params: {
     body: AtmTypeComponentReqSave[];
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-type-components`,
@@ -24435,11 +23358,10 @@ export const AtmApiAdminAtmTypeComponentsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmTypeComponentsPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmTypeComponentsPost";
@@ -24458,14 +23380,13 @@ export const useAtmApiAdminAtmTypeComponentsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmTypeComponentsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmStatusesGetQuery = async (
   params: {
@@ -24474,7 +23395,7 @@ export const AtmApiAdminAtmStatusesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmStatusResSingleList>(
     `/atm/api-admin/atm-statuses`,
@@ -24490,11 +23411,10 @@ export const AtmApiAdminAtmStatusesGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesGetQuery = (
   params: {
@@ -24504,7 +23424,7 @@ export const useAtmApiAdminAtmStatusesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24515,7 +23435,7 @@ export const useAtmApiAdminAtmStatusesGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24526,7 +23446,6 @@ export const useAtmApiAdminAtmStatusesGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmStatusesGetLazyQuery = (
   params: {
     query?: {
@@ -24535,7 +23454,7 @@ export const useAtmApiAdminAtmStatusesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24546,7 +23465,7 @@ export const useAtmApiAdminAtmStatusesGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24558,12 +23477,11 @@ export const useAtmApiAdminAtmStatusesGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmStatusesPostMutation = async (
   params: {
     body: AtmStatusReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmStatusResId>(
     `/atm/api-admin/atm-statuses`,
@@ -24571,11 +23489,10 @@ export const AtmApiAdminAtmStatusesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmStatusesPost";
@@ -24594,7 +23511,7 @@ export const useAtmApiAdminAtmStatusesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmStatusesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -24602,12 +23519,11 @@ export const useAtmApiAdminAtmStatusesPostMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceScheduledPostMutation = async (
   params: {
     body: AtmMaintenanceReqCreateForScheduledMaintenance;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceResId>(
     `/atm/api-admin/atm-maintenance/scheduled`,
@@ -24615,11 +23531,10 @@ export const AtmApiAdminAtmMaintenanceScheduledPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceScheduledPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceScheduledPost";
@@ -24638,7 +23553,7 @@ export const useAtmApiAdminAtmMaintenanceScheduledPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceScheduledPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -24646,12 +23561,11 @@ export const useAtmApiAdminAtmMaintenanceScheduledPostMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceOnsitePostMutation = async (
   params: {
     body: AtmMaintenanceReqCreateForOnsiteMaintenance;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceResId>(
     `/atm/api-admin/atm-maintenance/onsite`,
@@ -24659,11 +23573,10 @@ export const AtmApiAdminAtmMaintenanceOnsitePostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceOnsitePostMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceOnsitePost";
@@ -24682,14 +23595,13 @@ export const useAtmApiAdminAtmMaintenanceOnsitePostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceOnsitePostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmMaintenanceStatusesGetQuery = async (
   params: {
@@ -24698,7 +23610,7 @@ export const AtmApiAdminAtmMaintenanceStatusesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceStatusResSingleList>(
@@ -24715,11 +23627,10 @@ export const AtmApiAdminAtmMaintenanceStatusesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesGetQuery = (
   params: {
@@ -24729,7 +23640,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24740,7 +23651,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24751,7 +23662,6 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceStatusesGetLazyQuery = (
   params: {
     query?: {
@@ -24760,7 +23670,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24771,7 +23681,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24783,12 +23693,11 @@ export const useAtmApiAdminAtmMaintenanceStatusesGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceStatusesPostMutation = async (
   params: {
     body: AtmMaintenanceStatusReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceStatusResId>(
     `/atm/api-admin/atm-maintenance-statuses`,
@@ -24796,11 +23705,10 @@ export const AtmApiAdminAtmMaintenanceStatusesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceStatusesPost";
@@ -24819,14 +23727,13 @@ export const useAtmApiAdminAtmMaintenanceStatusesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmMaintenanceStatusesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = async (
   params: {
@@ -24835,7 +23742,7 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceRequestCategoryResSingleList>(
@@ -24852,11 +23759,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = (
   params: {
@@ -24866,7 +23772,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24877,7 +23783,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceRequestCategoriesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24888,7 +23794,6 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetLazyQuery = (
   params: {
     query?: {
@@ -24897,7 +23802,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -24908,7 +23813,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceRequestCategoriesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -24920,12 +23825,11 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceRequestCategoriesPostMutation = async (
   params: {
     body: AtmMaintenanceRequestCategoryReqCreateForManage;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceRequestCategoryResId>(
@@ -24934,11 +23838,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesPostMutation = async (
         method: "post",
         data: params.body,
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmMaintenanceRequestCategoriesPost";
@@ -24958,7 +23861,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPostMutation = () => {
       const response =
         await AtmApiAdminAtmMaintenanceRequestCategoriesPostMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -24966,12 +23869,11 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPostMutation = () => {
   });
 };
 
-
 export const AtmApiAdminAtmComponentPostMutation = async (
   params: {
     body: AtmComponentReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseObject>(
     `/atm/api-admin/atm-component`,
@@ -24979,11 +23881,10 @@ export const AtmApiAdminAtmComponentPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmComponentPost";
@@ -25002,14 +23903,13 @@ export const useAtmApiAdminAtmComponentPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmComponentPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmComponentStocksGetQuery = async (
   params: {
@@ -25018,7 +23918,7 @@ export const AtmApiAdminAtmComponentStocksGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmComponentStockResSingleList>(
@@ -25035,11 +23935,10 @@ export const AtmApiAdminAtmComponentStocksGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksGetQuery = (
   params: {
@@ -25049,7 +23948,7 @@ export const useAtmApiAdminAtmComponentStocksGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25060,7 +23959,7 @@ export const useAtmApiAdminAtmComponentStocksGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25071,7 +23970,6 @@ export const useAtmApiAdminAtmComponentStocksGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmComponentStocksGetLazyQuery = (
   params: {
     query?: {
@@ -25080,7 +23978,7 @@ export const useAtmApiAdminAtmComponentStocksGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25091,7 +23989,7 @@ export const useAtmApiAdminAtmComponentStocksGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25103,12 +24001,11 @@ export const useAtmApiAdminAtmComponentStocksGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmComponentStocksPostMutation = async (
   params: {
     body: AtmComponentStockReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmComponentStockResId>(
     `/atm/api-admin/atm-component-stocks`,
@@ -25116,11 +24013,10 @@ export const AtmApiAdminAtmComponentStocksPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmComponentStocksPost";
@@ -25139,14 +24035,13 @@ export const useAtmApiAdminAtmComponentStocksPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmComponentStocksPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmCollectionsGetQuery = async (
   params: {
@@ -25155,7 +24050,7 @@ export const AtmApiAdminAtmCollectionsGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionResItemList>(
     `/atm/api-admin/atm-collections`,
@@ -25171,11 +24066,10 @@ export const AtmApiAdminAtmCollectionsGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsGetQuery = (
   params: {
@@ -25185,7 +24079,7 @@ export const useAtmApiAdminAtmCollectionsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25196,7 +24090,7 @@ export const useAtmApiAdminAtmCollectionsGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25207,7 +24101,6 @@ export const useAtmApiAdminAtmCollectionsGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionsGetLazyQuery = (
   params: {
     query?: {
@@ -25216,7 +24109,7 @@ export const useAtmApiAdminAtmCollectionsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemList>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25227,7 +24120,7 @@ export const useAtmApiAdminAtmCollectionsGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25239,12 +24132,11 @@ export const useAtmApiAdminAtmCollectionsGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionsPostMutation = async (
   params: {
     body: AtmCollectionReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionResIdList>(
     `/atm/api-admin/atm-collections`,
@@ -25252,11 +24144,10 @@ export const AtmApiAdminAtmCollectionsPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmCollectionsPost";
@@ -25275,14 +24166,13 @@ export const useAtmApiAdminAtmCollectionsPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmCollectionsPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
     retry: false,
   });
 };
-
 
 export const AtmApiAdminAtmCollectionStatusesGetQuery = async (
   params: {
@@ -25291,7 +24181,7 @@ export const AtmApiAdminAtmCollectionStatusesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmCollectionStatusResSingleList>(
@@ -25308,11 +24198,10 @@ export const AtmApiAdminAtmCollectionStatusesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionStatusesGetQuery = (
   params: {
@@ -25322,7 +24211,7 @@ export const useAtmApiAdminAtmCollectionStatusesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25333,7 +24222,7 @@ export const useAtmApiAdminAtmCollectionStatusesGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25344,7 +24233,6 @@ export const useAtmApiAdminAtmCollectionStatusesGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionStatusesGetLazyQuery = (
   params: {
     query?: {
@@ -25353,7 +24241,7 @@ export const useAtmApiAdminAtmCollectionStatusesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25364,7 +24252,7 @@ export const useAtmApiAdminAtmCollectionStatusesGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25376,12 +24264,11 @@ export const useAtmApiAdminAtmCollectionStatusesGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionStatusesPostMutation = async (
   params: {
     body: AtmCollectionStatusReqCreate;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmCollectionStatusResId>(
     `/atm/api-admin/atm-collection-statuses`,
@@ -25389,11 +24276,10 @@ export const AtmApiAdminAtmCollectionStatusesPostMutation = async (
       method: "post",
       data: params.body,
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionStatusesPostMutation = () => {
   const mutationKey = "AtmApiAdminAtmCollectionStatusesPost";
@@ -25412,7 +24298,7 @@ export const useAtmApiAdminAtmCollectionStatusesPostMutation = () => {
     mutationFn: async (configs) => {
       const response = await AtmApiAdminAtmCollectionStatusesPostMutation(
         configs.params,
-        configs.options,
+        configs.options
       );
       return response;
     },
@@ -25420,13 +24306,12 @@ export const useAtmApiAdminAtmCollectionStatusesPostMutation = () => {
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsRefreshTokenPostMutation =
   async (
     params: {
       body: AdministratorReqRefreshToken;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponseAdministratorResResponseForJwtToken>(
@@ -25435,11 +24320,10 @@ export const AdministratorApiAdminAdministratorsRefreshTokenPostMutation =
           method: "post",
           data: params.body,
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorsRefreshTokenPostMutation =
   () => {
@@ -25460,7 +24344,7 @@ export const useAdministratorApiAdminAdministratorsRefreshTokenPostMutation =
         const response =
           await AdministratorApiAdminAdministratorsRefreshTokenPostMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -25468,12 +24352,11 @@ export const useAdministratorApiAdminAdministratorsRefreshTokenPostMutation =
     });
   };
 
-
 export const AdministratorApiAdminAdministratorsLoginPostMutation = async (
   params: {
     body: AdministratorReqLoginForOtp;
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAdministratorResResponseForJwtToken>(
@@ -25482,11 +24365,10 @@ export const AdministratorApiAdminAdministratorsLoginPostMutation = async (
         method: "post",
         data: params.body,
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAdministratorApiAdminAdministratorsLoginPostMutation = () => {
   const mutationKey = "AdministratorApiAdminAdministratorsLoginPost";
@@ -25506,7 +24388,7 @@ export const useAdministratorApiAdminAdministratorsLoginPostMutation = () => {
       const response =
         await AdministratorApiAdminAdministratorsLoginPostMutation(
           configs.params,
-          configs.options,
+          configs.options
         );
       return response;
     },
@@ -25514,13 +24396,12 @@ export const useAdministratorApiAdminAdministratorsLoginPostMutation = () => {
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsAuthenticationNumbersSendPostMutation =
   async (
     params: {
       body: AdministratorReqCreateForAuthenticationNumber;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response = await axiosClient<CommonResponseObject>(
       `/administrator/api-admin/administrators/authentication-numbers/send`,
@@ -25528,11 +24409,10 @@ export const AdministratorApiAdminAdministratorsAuthenticationNumbersSendPostMut
         method: "post",
         data: params.body,
         ...options,
-      },
+      }
     );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorsAuthenticationNumbersSendPostMutation =
   () => {
@@ -25554,7 +24434,7 @@ export const useAdministratorApiAdminAdministratorsAuthenticationNumbersSendPost
         const response =
           await AdministratorApiAdminAdministratorsAuthenticationNumbersSendPostMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -25562,13 +24442,12 @@ export const useAdministratorApiAdminAdministratorsAuthenticationNumbersSendPost
     });
   };
 
-
 export const AdministratorApiAdminAdministratorsAuthenticationNumbersAuthenticatePostMutation =
   async (
     params: {
       body: AdministratorReqCreateForAuthentication;
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponseAdministratorResResponseForAuthentication>(
@@ -25577,11 +24456,10 @@ export const AdministratorApiAdminAdministratorsAuthenticationNumbersAuthenticat
           method: "post",
           data: params.body,
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorsAuthenticationNumbersAuthenticatePostMutation =
   () => {
@@ -25603,7 +24481,7 @@ export const useAdministratorApiAdminAdministratorsAuthenticationNumbersAuthenti
         const response =
           await AdministratorApiAdminAdministratorsAuthenticationNumbersAuthenticatePostMutation(
             configs.params,
-            configs.options,
+            configs.options
           );
         return response;
       },
@@ -25611,14 +24489,13 @@ export const useAdministratorApiAdminAdministratorsAuthenticationNumbersAuthenti
     });
   };
 
-
 export const StatisticsApiAdminAtmStatisticsGetQuery = async (
   params: {
     query?: {
       filter?: Partial<AtmStatisticsReqFilter>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmStatisticsResItemForStatistics>(
@@ -25635,11 +24512,10 @@ export const StatisticsApiAdminAtmStatisticsGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useStatisticsApiAdminAtmStatisticsGetQuery = (
   params: {
@@ -25648,7 +24524,7 @@ export const useStatisticsApiAdminAtmStatisticsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatisticsResItemForStatistics>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatisticsResItemForStatistics>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25659,7 +24535,7 @@ export const useStatisticsApiAdminAtmStatisticsGetQuery = (
     queryFn: async () => {
       const response = await StatisticsApiAdminAtmStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25670,7 +24546,6 @@ export const useStatisticsApiAdminAtmStatisticsGetQuery = (
   });
 };
 
-
 export const useStatisticsApiAdminAtmStatisticsGetLazyQuery = (
   params: {
     query?: {
@@ -25678,7 +24553,7 @@ export const useStatisticsApiAdminAtmStatisticsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatisticsResItemForStatistics>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatisticsResItemForStatistics>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25689,7 +24564,7 @@ export const useStatisticsApiAdminAtmStatisticsGetLazyQuery = (
     queryFn: async () => {
       const response = await StatisticsApiAdminAtmStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25701,7 +24576,6 @@ export const useStatisticsApiAdminAtmStatisticsGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasesPageGetQuery = async (
   params: {
     query?: {
@@ -25709,7 +24583,7 @@ export const PurchaseApiAdminPurchasesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePurchaseResItemWithPage>(
     `/purchase/api-admin/purchases/page`,
@@ -25725,11 +24599,10 @@ export const PurchaseApiAdminPurchasesPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasesPageGetQuery = (
   params: {
@@ -25739,7 +24612,7 @@ export const usePurchaseApiAdminPurchasesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25750,7 +24623,7 @@ export const usePurchaseApiAdminPurchasesPageGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25761,7 +24634,6 @@ export const usePurchaseApiAdminPurchasesPageGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasesPageGetLazyQuery = (
   params: {
     query?: {
@@ -25770,7 +24642,7 @@ export const usePurchaseApiAdminPurchasesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25781,7 +24653,7 @@ export const usePurchaseApiAdminPurchasesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25793,7 +24665,6 @@ export const usePurchaseApiAdminPurchasesPageGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseRewardsPageGetQuery = async (
   params: {
     query?: {
@@ -25801,7 +24672,7 @@ export const PurchaseApiAdminPurchaseRewardsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchaseRewardResSingleWithPage>(
@@ -25818,11 +24689,10 @@ export const PurchaseApiAdminPurchaseRewardsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseRewardsPageGetQuery = (
   params: {
@@ -25832,7 +24702,7 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25843,7 +24713,7 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25854,7 +24724,6 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseRewardsPageGetLazyQuery = (
   params: {
     query?: {
@@ -25863,7 +24732,7 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseRewardResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25874,7 +24743,7 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseRewardsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25886,7 +24755,6 @@ export const usePurchaseApiAdminPurchaseRewardsPageGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchasePricePoliciesPageGetQuery = async (
   params: {
     query?: {
@@ -25894,7 +24762,7 @@ export const PurchaseApiAdminPurchasePricePoliciesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchasePricePolicyResSingleWithPage>(
@@ -25911,11 +24779,10 @@ export const PurchaseApiAdminPurchasePricePoliciesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchasePricePoliciesPageGetQuery = (
   params: {
@@ -25925,7 +24792,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25936,7 +24803,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25947,7 +24814,6 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchasePricePoliciesPageGetLazyQuery = (
   params: {
     query?: {
@@ -25956,7 +24822,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchasePricePolicyResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -25967,7 +24833,7 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchasePricePoliciesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -25979,7 +24845,6 @@ export const usePurchaseApiAdminPurchasePricePoliciesPageGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelsPageGetQuery = async (
   params: {
     query?: {
@@ -25987,7 +24852,7 @@ export const PurchaseApiAdminPurchaseDeviceModelsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePurchaseDeviceModelResSingleWithPage>(
@@ -26004,11 +24869,10 @@ export const PurchaseApiAdminPurchaseDeviceModelsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelsPageGetQuery = (
   params: {
@@ -26018,7 +24882,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26029,7 +24893,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26040,7 +24904,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetQuery = (
   });
 };
 
-
 export const usePurchaseApiAdminPurchaseDeviceModelsPageGetLazyQuery = (
   params: {
     query?: {
@@ -26049,7 +24912,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26060,7 +24923,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PurchaseApiAdminPurchaseDeviceModelsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26072,7 +24935,6 @@ export const usePurchaseApiAdminPurchaseDeviceModelsPageGetLazyQuery = (
   });
 };
 
-
 export const PurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery =
   async (
     params: {
@@ -26081,7 +24943,7 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery =
         pageable?: Partial<Pageable>;
       };
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage>(
@@ -26098,11 +24960,10 @@ export const PurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery =
             indexes: null,
           },
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery = (
   params: {
@@ -26112,7 +24973,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26125,7 +24986,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery = (
         const response =
           await PurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery(
             params,
-            axiosOptions,
+            axiosOptions
           );
         return response;
       },
@@ -26133,10 +24994,9 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery = (
       refetchOnWindowFocus: false,
       gcTime: 1,
       ...queryOptions,
-    },
+    }
   );
 };
-
 
 export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetLazyQuery =
   (
@@ -26147,7 +25007,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetLazyQuery =
       };
     },
     axiosOptions?: AxiosRequestConfig<any>,
-    queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage>,
+    queryOptions?: QueryOptions<CommonResponsePurchaseDeviceModelGradePriceResSingleWithPage>
   ) => {
     const queryKey = queryOptions?.queryKey
       ? queryOptions?.queryKey
@@ -26160,7 +25020,7 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetLazyQuery =
           const response =
             await PurchaseApiAdminPurchaseDeviceModelGradePricesPageGetQuery(
               params,
-              axiosOptions,
+              axiosOptions
             );
           return response;
         },
@@ -26169,10 +25029,9 @@ export const usePurchaseApiAdminPurchaseDeviceModelGradePricesPageGetLazyQuery =
         refetchOnWindowFocus: false,
         gcTime: 1,
         ...queryOptions,
-      },
+      }
     );
   };
-
 
 export const PartnerApiAdminPartnersPageGetQuery = async (
   params: {
@@ -26181,7 +25040,7 @@ export const PartnerApiAdminPartnersPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponsePartnerResSingleWithPage>(
     `/partner/api-admin/partners/page`,
@@ -26197,11 +25056,10 @@ export const PartnerApiAdminPartnersPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnersPageGetQuery = (
   params: {
@@ -26211,7 +25069,7 @@ export const usePartnerApiAdminPartnersPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26222,7 +25080,7 @@ export const usePartnerApiAdminPartnersPageGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26233,7 +25091,6 @@ export const usePartnerApiAdminPartnersPageGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnersPageGetLazyQuery = (
   params: {
     query?: {
@@ -26242,7 +25099,7 @@ export const usePartnerApiAdminPartnersPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePartnerResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26253,7 +25110,7 @@ export const usePartnerApiAdminPartnersPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnersPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26265,7 +25122,6 @@ export const usePartnerApiAdminPartnersPageGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminPartnerMembersPageGetQuery = async (
   params: {
     query?: {
@@ -26273,7 +25129,7 @@ export const PartnerApiAdminPartnerMembersPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponsePartnerMemberResSingleExFieldWithPage>(
@@ -26290,11 +25146,10 @@ export const PartnerApiAdminPartnerMembersPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const usePartnerApiAdminPartnerMembersPageGetQuery = (
   params: {
@@ -26304,7 +25159,7 @@ export const usePartnerApiAdminPartnerMembersPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26315,7 +25170,7 @@ export const usePartnerApiAdminPartnerMembersPageGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26326,7 +25181,6 @@ export const usePartnerApiAdminPartnerMembersPageGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminPartnerMembersPageGetLazyQuery = (
   params: {
     query?: {
@@ -26335,7 +25189,7 @@ export const usePartnerApiAdminPartnerMembersPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponsePartnerMemberResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26346,7 +25200,7 @@ export const usePartnerApiAdminPartnerMembersPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminPartnerMembersPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26358,7 +25212,6 @@ export const usePartnerApiAdminPartnerMembersPageGetLazyQuery = (
   });
 };
 
-
 export const PartnerApiAdminBranchesPageGetQuery = async (
   params: {
     query?: {
@@ -26366,7 +25219,7 @@ export const PartnerApiAdminBranchesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseBranchResItemWithPage>(
     `/partner/api-admin/branches/page`,
@@ -26382,11 +25235,10 @@ export const PartnerApiAdminBranchesPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const usePartnerApiAdminBranchesPageGetQuery = (
   params: {
@@ -26396,7 +25248,7 @@ export const usePartnerApiAdminBranchesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseBranchResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26407,7 +25259,7 @@ export const usePartnerApiAdminBranchesPageGetQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26418,7 +25270,6 @@ export const usePartnerApiAdminBranchesPageGetQuery = (
   });
 };
 
-
 export const usePartnerApiAdminBranchesPageGetLazyQuery = (
   params: {
     query?: {
@@ -26427,7 +25278,7 @@ export const usePartnerApiAdminBranchesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseBranchResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseBranchResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26438,7 +25289,7 @@ export const usePartnerApiAdminBranchesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await PartnerApiAdminBranchesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26450,10 +25301,9 @@ export const usePartnerApiAdminBranchesPageGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionsSubscribeGetQuery = async (
   params: {},
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<void>(
     `/inspection/api-admin/inspections/subscribe`,
@@ -26464,16 +25314,15 @@ export const InspectionApiAdminInspectionsSubscribeGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
 
-
 export const useInspectionApiAdminInspectionsSubscribeGetQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<void>,
+  queryOptions?: QueryOptions<void>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26484,7 +25333,7 @@ export const useInspectionApiAdminInspectionsSubscribeGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsSubscribeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26495,11 +25344,10 @@ export const useInspectionApiAdminInspectionsSubscribeGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionsSubscribeGetLazyQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<void>,
+  queryOptions?: QueryOptions<void>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26510,7 +25358,7 @@ export const useInspectionApiAdminInspectionsSubscribeGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsSubscribeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26522,7 +25370,6 @@ export const useInspectionApiAdminInspectionsSubscribeGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionsPageGetQuery = async (
   params: {
     query?: {
@@ -26530,7 +25377,7 @@ export const InspectionApiAdminInspectionsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseInspectionResItemWithPage>(
     `/inspection/api-admin/inspections/page`,
@@ -26546,11 +25393,10 @@ export const InspectionApiAdminInspectionsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionsPageGetQuery = (
   params: {
@@ -26560,7 +25406,7 @@ export const useInspectionApiAdminInspectionsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26571,7 +25417,7 @@ export const useInspectionApiAdminInspectionsPageGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26582,7 +25428,6 @@ export const useInspectionApiAdminInspectionsPageGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionsPageGetLazyQuery = (
   params: {
     query?: {
@@ -26591,7 +25436,7 @@ export const useInspectionApiAdminInspectionsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseInspectionResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26602,7 +25447,7 @@ export const useInspectionApiAdminInspectionsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26614,7 +25459,6 @@ export const useInspectionApiAdminInspectionsPageGetLazyQuery = (
   });
 };
 
-
 export const InspectionApiAdminInspectionProfilesPageGetQuery = async (
   params: {
     query?: {
@@ -26622,7 +25466,7 @@ export const InspectionApiAdminInspectionProfilesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseInspectionProfileResSingleWithPage>(
@@ -26639,11 +25483,10 @@ export const InspectionApiAdminInspectionProfilesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useInspectionApiAdminInspectionProfilesPageGetQuery = (
   params: {
@@ -26653,7 +25496,7 @@ export const useInspectionApiAdminInspectionProfilesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26664,7 +25507,7 @@ export const useInspectionApiAdminInspectionProfilesPageGetQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26675,7 +25518,6 @@ export const useInspectionApiAdminInspectionProfilesPageGetQuery = (
   });
 };
 
-
 export const useInspectionApiAdminInspectionProfilesPageGetLazyQuery = (
   params: {
     query?: {
@@ -26684,7 +25526,7 @@ export const useInspectionApiAdminInspectionProfilesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseInspectionProfileResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26695,7 +25537,7 @@ export const useInspectionApiAdminInspectionProfilesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await InspectionApiAdminInspectionProfilesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26707,7 +25549,6 @@ export const useInspectionApiAdminInspectionProfilesPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDevicesPageGetQuery = async (
   params: {
     query?: {
@@ -26715,7 +25556,7 @@ export const DeviceApiAdminDevicesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceResItemWithPage>(
     `/device/api-admin/devices/page`,
@@ -26731,11 +25572,10 @@ export const DeviceApiAdminDevicesPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDevicesPageGetQuery = (
   params: {
@@ -26745,7 +25585,7 @@ export const useDeviceApiAdminDevicesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26756,7 +25596,7 @@ export const useDeviceApiAdminDevicesPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26767,7 +25607,6 @@ export const useDeviceApiAdminDevicesPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDevicesPageGetLazyQuery = (
   params: {
     query?: {
@@ -26776,7 +25615,7 @@ export const useDeviceApiAdminDevicesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26787,7 +25626,7 @@ export const useDeviceApiAdminDevicesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDevicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26799,7 +25638,6 @@ export const useDeviceApiAdminDevicesPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceSeriessPageGetQuery = async (
   params: {
     query?: {
@@ -26807,7 +25645,7 @@ export const DeviceApiAdminDeviceSeriessPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceSeriesResSingleWithPage>(
@@ -26824,11 +25662,10 @@ export const DeviceApiAdminDeviceSeriessPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceSeriessPageGetQuery = (
   params: {
@@ -26838,7 +25675,7 @@ export const useDeviceApiAdminDeviceSeriessPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26849,7 +25686,7 @@ export const useDeviceApiAdminDeviceSeriessPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26860,7 +25697,6 @@ export const useDeviceApiAdminDeviceSeriessPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceSeriessPageGetLazyQuery = (
   params: {
     query?: {
@@ -26869,7 +25705,7 @@ export const useDeviceApiAdminDeviceSeriessPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceSeriesResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26880,7 +25716,7 @@ export const useDeviceApiAdminDeviceSeriessPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceSeriessPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26892,7 +25728,6 @@ export const useDeviceApiAdminDeviceSeriessPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceModelsPageGetQuery = async (
   params: {
     query?: {
@@ -26900,7 +25735,7 @@ export const DeviceApiAdminDeviceModelsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseDeviceModelResItemWithPage>(
     `/device/api-admin/device-models/page`,
@@ -26916,11 +25751,10 @@ export const DeviceApiAdminDeviceModelsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceModelsPageGetQuery = (
   params: {
@@ -26930,7 +25764,7 @@ export const useDeviceApiAdminDeviceModelsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26941,7 +25775,7 @@ export const useDeviceApiAdminDeviceModelsPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26952,7 +25786,6 @@ export const useDeviceApiAdminDeviceModelsPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceModelsPageGetLazyQuery = (
   params: {
     query?: {
@@ -26961,7 +25794,7 @@ export const useDeviceApiAdminDeviceModelsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceModelResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceModelResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -26972,7 +25805,7 @@ export const useDeviceApiAdminDeviceModelsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceModelsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -26984,7 +25817,6 @@ export const useDeviceApiAdminDeviceModelsPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufacturesPageGetQuery = async (
   params: {
     query?: {
@@ -26992,7 +25824,7 @@ export const DeviceApiAdminDeviceManufacturesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceManufactureResSingleWithPage>(
@@ -27009,11 +25841,10 @@ export const DeviceApiAdminDeviceManufacturesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufacturesPageGetQuery = (
   params: {
@@ -27023,7 +25854,7 @@ export const useDeviceApiAdminDeviceManufacturesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27034,7 +25865,7 @@ export const useDeviceApiAdminDeviceManufacturesPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27045,7 +25876,6 @@ export const useDeviceApiAdminDeviceManufacturesPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufacturesPageGetLazyQuery = (
   params: {
     query?: {
@@ -27054,7 +25884,7 @@ export const useDeviceApiAdminDeviceManufacturesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27065,7 +25895,7 @@ export const useDeviceApiAdminDeviceManufacturesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufacturesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27077,7 +25907,6 @@ export const useDeviceApiAdminDeviceManufacturesPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceManufactureTypesPageGetQuery = async (
   params: {
     query?: {
@@ -27085,7 +25914,7 @@ export const DeviceApiAdminDeviceManufactureTypesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceManufactureTypeResItemWithPage>(
@@ -27102,11 +25931,10 @@ export const DeviceApiAdminDeviceManufactureTypesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceManufactureTypesPageGetQuery = (
   params: {
@@ -27116,7 +25944,7 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27127,7 +25955,7 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27138,7 +25966,6 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceManufactureTypesPageGetLazyQuery = (
   params: {
     query?: {
@@ -27147,7 +25974,7 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceManufactureTypeResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27158,7 +25985,7 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceManufactureTypesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27170,7 +25997,6 @@ export const useDeviceApiAdminDeviceManufactureTypesPageGetLazyQuery = (
   });
 };
 
-
 export const DeviceApiAdminDeviceDeletionsPageGetQuery = async (
   params: {
     query?: {
@@ -27178,7 +26004,7 @@ export const DeviceApiAdminDeviceDeletionsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseDeviceDeletionResResponseForManageWithPage>(
@@ -27195,11 +26021,10 @@ export const DeviceApiAdminDeviceDeletionsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useDeviceApiAdminDeviceDeletionsPageGetQuery = (
   params: {
@@ -27209,7 +26034,7 @@ export const useDeviceApiAdminDeviceDeletionsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResResponseForManageWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResResponseForManageWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27220,7 +26045,7 @@ export const useDeviceApiAdminDeviceDeletionsPageGetQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27231,7 +26056,6 @@ export const useDeviceApiAdminDeviceDeletionsPageGetQuery = (
   });
 };
 
-
 export const useDeviceApiAdminDeviceDeletionsPageGetLazyQuery = (
   params: {
     query?: {
@@ -27240,7 +26064,7 @@ export const useDeviceApiAdminDeviceDeletionsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResResponseForManageWithPage>,
+  queryOptions?: QueryOptions<CommonResponseDeviceDeletionResResponseForManageWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27251,7 +26075,7 @@ export const useDeviceApiAdminDeviceDeletionsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await DeviceApiAdminDeviceDeletionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27263,7 +26087,6 @@ export const useDeviceApiAdminDeviceDeletionsPageGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminTermsAgreementsPageGetQuery = async (
   params: {
     query?: {
@@ -27271,7 +26094,7 @@ export const CustomerApiAdminTermsAgreementsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseTermsAgreementResSingleWithPage>(
@@ -27288,11 +26111,10 @@ export const CustomerApiAdminTermsAgreementsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCustomerApiAdminTermsAgreementsPageGetQuery = (
   params: {
@@ -27302,7 +26124,7 @@ export const useCustomerApiAdminTermsAgreementsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27313,7 +26135,7 @@ export const useCustomerApiAdminTermsAgreementsPageGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27324,7 +26146,6 @@ export const useCustomerApiAdminTermsAgreementsPageGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminTermsAgreementsPageGetLazyQuery = (
   params: {
     query?: {
@@ -27333,7 +26154,7 @@ export const useCustomerApiAdminTermsAgreementsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsAgreementResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27344,7 +26165,7 @@ export const useCustomerApiAdminTermsAgreementsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminTermsAgreementsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27356,7 +26177,6 @@ export const useCustomerApiAdminTermsAgreementsPageGetLazyQuery = (
   });
 };
 
-
 export const CustomerApiAdminEventApplicationsPageGetQuery = async (
   params: {
     query?: {
@@ -27364,7 +26184,7 @@ export const CustomerApiAdminEventApplicationsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseEventApplicationResSingleWithPage>(
@@ -27381,11 +26201,10 @@ export const CustomerApiAdminEventApplicationsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCustomerApiAdminEventApplicationsPageGetQuery = (
   params: {
@@ -27395,7 +26214,7 @@ export const useCustomerApiAdminEventApplicationsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27406,7 +26225,7 @@ export const useCustomerApiAdminEventApplicationsPageGetQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27417,7 +26236,6 @@ export const useCustomerApiAdminEventApplicationsPageGetQuery = (
   });
 };
 
-
 export const useCustomerApiAdminEventApplicationsPageGetLazyQuery = (
   params: {
     query?: {
@@ -27426,7 +26244,7 @@ export const useCustomerApiAdminEventApplicationsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventApplicationResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27437,7 +26255,7 @@ export const useCustomerApiAdminEventApplicationsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CustomerApiAdminEventApplicationsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27449,7 +26267,6 @@ export const useCustomerApiAdminEventApplicationsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsPageGetQuery = async (
   params: {
     query?: {
@@ -27457,7 +26274,7 @@ export const CommonApiAdminTermsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseTermsResSingleWithPage>(
     `/common/api-admin/terms/page`,
@@ -27473,11 +26290,10 @@ export const CommonApiAdminTermsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsPageGetQuery = (
   params: {
@@ -27487,7 +26303,7 @@ export const useCommonApiAdminTermsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27498,7 +26314,7 @@ export const useCommonApiAdminTermsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27509,7 +26325,6 @@ export const useCommonApiAdminTermsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsPageGetLazyQuery = (
   params: {
     query?: {
@@ -27518,7 +26333,7 @@ export const useCommonApiAdminTermsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27529,7 +26344,7 @@ export const useCommonApiAdminTermsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27541,7 +26356,6 @@ export const useCommonApiAdminTermsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminTermsContentsPageGetQuery = async (
   params: {
     query?: {
@@ -27549,7 +26363,7 @@ export const CommonApiAdminTermsContentsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseTermsContentResSingleWithPage>(
@@ -27566,11 +26380,10 @@ export const CommonApiAdminTermsContentsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminTermsContentsPageGetQuery = (
   params: {
@@ -27580,7 +26393,7 @@ export const useCommonApiAdminTermsContentsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27591,7 +26404,7 @@ export const useCommonApiAdminTermsContentsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27602,7 +26415,6 @@ export const useCommonApiAdminTermsContentsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminTermsContentsPageGetLazyQuery = (
   params: {
     query?: {
@@ -27611,7 +26423,7 @@ export const useCommonApiAdminTermsContentsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseTermsContentResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27622,7 +26434,7 @@ export const useCommonApiAdminTermsContentsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminTermsContentsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27634,7 +26446,6 @@ export const useCommonApiAdminTermsContentsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminSigungusPageGetQuery = async (
   params: {
     query?: {
@@ -27642,7 +26453,7 @@ export const CommonApiAdminSigungusPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseSigunguResSingleWithPage>(
     `/common/api-admin/sigungus/page`,
@@ -27658,11 +26469,10 @@ export const CommonApiAdminSigungusPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminSigungusPageGetQuery = (
   params: {
@@ -27672,7 +26482,7 @@ export const useCommonApiAdminSigungusPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27683,7 +26493,7 @@ export const useCommonApiAdminSigungusPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27694,7 +26504,6 @@ export const useCommonApiAdminSigungusPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminSigungusPageGetLazyQuery = (
   params: {
     query?: {
@@ -27703,7 +26512,7 @@ export const useCommonApiAdminSigungusPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseSigunguResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseSigunguResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27714,7 +26523,7 @@ export const useCommonApiAdminSigungusPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminSigungusPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27726,7 +26535,6 @@ export const useCommonApiAdminSigungusPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminServicesPageGetQuery = async (
   params: {
     query?: {
@@ -27734,7 +26542,7 @@ export const CommonApiAdminServicesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseServiceSeviceResSingleWithPage>(
@@ -27751,11 +26559,10 @@ export const CommonApiAdminServicesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminServicesPageGetQuery = (
   params: {
@@ -27765,7 +26572,7 @@ export const useCommonApiAdminServicesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27776,7 +26583,7 @@ export const useCommonApiAdminServicesPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27787,7 +26594,6 @@ export const useCommonApiAdminServicesPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminServicesPageGetLazyQuery = (
   params: {
     query?: {
@@ -27796,7 +26602,7 @@ export const useCommonApiAdminServicesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseServiceSeviceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27807,7 +26613,7 @@ export const useCommonApiAdminServicesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminServicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27819,10 +26625,9 @@ export const useCommonApiAdminServicesPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenusTreeGetQuery = async (
   params: {},
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseMenuResResponseForMenuTreeList>(
@@ -27834,16 +26639,15 @@ export const CommonApiAdminMenusTreeGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
 
-
 export const useCommonApiAdminMenusTreeGetQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27854,7 +26658,7 @@ export const useCommonApiAdminMenusTreeGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusTreeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27865,11 +26669,10 @@ export const useCommonApiAdminMenusTreeGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenusTreeGetLazyQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27880,7 +26683,7 @@ export const useCommonApiAdminMenusTreeGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusTreeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27892,7 +26695,6 @@ export const useCommonApiAdminMenusTreeGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenusPageGetQuery = async (
   params: {
     query?: {
@@ -27900,7 +26702,7 @@ export const CommonApiAdminMenusPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuResSingleWithPage>(
     `/common/api-admin/menus/page`,
@@ -27916,11 +26718,10 @@ export const CommonApiAdminMenusPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenusPageGetQuery = (
   params: {
@@ -27930,7 +26731,7 @@ export const useCommonApiAdminMenusPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseMenuResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27941,7 +26742,7 @@ export const useCommonApiAdminMenusPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27952,7 +26753,6 @@ export const useCommonApiAdminMenusPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenusPageGetLazyQuery = (
   params: {
     query?: {
@@ -27961,7 +26761,7 @@ export const useCommonApiAdminMenusPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseMenuResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -27972,7 +26772,7 @@ export const useCommonApiAdminMenusPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -27984,10 +26784,9 @@ export const useCommonApiAdminMenusPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenusAuthorizedTreeGetQuery = async (
   params: {},
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseMenuResResponseForMenuTreeList>(
@@ -27999,16 +26798,15 @@ export const CommonApiAdminMenusAuthorizedTreeGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
 
-
 export const useCommonApiAdminMenusAuthorizedTreeGetQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28019,7 +26817,7 @@ export const useCommonApiAdminMenusAuthorizedTreeGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusAuthorizedTreeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28030,11 +26828,10 @@ export const useCommonApiAdminMenusAuthorizedTreeGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenusAuthorizedTreeGetLazyQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>,
+  queryOptions?: QueryOptions<CommonResponseMenuResResponseForMenuTreeList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28045,7 +26842,7 @@ export const useCommonApiAdminMenusAuthorizedTreeGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenusAuthorizedTreeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28057,7 +26854,6 @@ export const useCommonApiAdminMenusAuthorizedTreeGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenuButtonsPageGetQuery = async (
   params: {
     query?: {
@@ -28065,7 +26861,7 @@ export const CommonApiAdminMenuButtonsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseMenuButtonResSingleWithPage>(
     `/common/api-admin/menu-buttons/page`,
@@ -28081,11 +26877,10 @@ export const CommonApiAdminMenuButtonsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsPageGetQuery = (
   params: {
@@ -28095,7 +26890,7 @@ export const useCommonApiAdminMenuButtonsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28106,7 +26901,7 @@ export const useCommonApiAdminMenuButtonsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28117,7 +26912,6 @@ export const useCommonApiAdminMenuButtonsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenuButtonsPageGetLazyQuery = (
   params: {
     query?: {
@@ -28126,7 +26920,7 @@ export const useCommonApiAdminMenuButtonsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28137,7 +26931,7 @@ export const useCommonApiAdminMenuButtonsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28149,14 +26943,13 @@ export const useCommonApiAdminMenuButtonsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminMenuButtonsAuthorizedGetQuery = async (
   params: {
     query?: {
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseMenuButtonResResponseForAuthorizedList>(
@@ -28173,11 +26966,10 @@ export const CommonApiAdminMenuButtonsAuthorizedGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminMenuButtonsAuthorizedGetQuery = (
   params: {
@@ -28186,7 +26978,7 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResResponseForAuthorizedList>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResResponseForAuthorizedList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28197,7 +26989,7 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsAuthorizedGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28208,7 +27000,6 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminMenuButtonsAuthorizedGetLazyQuery = (
   params: {
     query?: {
@@ -28216,7 +27007,7 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseMenuButtonResResponseForAuthorizedList>,
+  queryOptions?: QueryOptions<CommonResponseMenuButtonResResponseForAuthorizedList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28227,7 +27018,7 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminMenuButtonsAuthorizedGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28239,7 +27030,6 @@ export const useCommonApiAdminMenuButtonsAuthorizedGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventsPageGetQuery = async (
   params: {
     query?: {
@@ -28247,7 +27037,7 @@ export const CommonApiAdminEventsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventResSingleWithPage>(
     `/common/api-admin/events/page`,
@@ -28263,11 +27053,10 @@ export const CommonApiAdminEventsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventsPageGetQuery = (
   params: {
@@ -28277,7 +27066,7 @@ export const useCommonApiAdminEventsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28288,7 +27077,7 @@ export const useCommonApiAdminEventsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28299,7 +27088,6 @@ export const useCommonApiAdminEventsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventsPageGetLazyQuery = (
   params: {
     query?: {
@@ -28308,7 +27096,7 @@ export const useCommonApiAdminEventsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28319,7 +27107,7 @@ export const useCommonApiAdminEventsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28331,7 +27119,6 @@ export const useCommonApiAdminEventsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventTermsPageGetQuery = async (
   params: {
     query?: {
@@ -28339,7 +27126,7 @@ export const CommonApiAdminEventTermsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseEventTermsResSingleWithPage>(
     `/common/api-admin/event-terms/page`,
@@ -28355,11 +27142,10 @@ export const CommonApiAdminEventTermsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventTermsPageGetQuery = (
   params: {
@@ -28369,7 +27155,7 @@ export const useCommonApiAdminEventTermsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28380,7 +27166,7 @@ export const useCommonApiAdminEventTermsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28391,7 +27177,6 @@ export const useCommonApiAdminEventTermsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventTermsPageGetLazyQuery = (
   params: {
     query?: {
@@ -28400,7 +27185,7 @@ export const useCommonApiAdminEventTermsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventTermsResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28411,7 +27196,7 @@ export const useCommonApiAdminEventTermsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventTermsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28423,7 +27208,6 @@ export const useCommonApiAdminEventTermsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminEventBenefitsPageGetQuery = async (
   params: {
     query?: {
@@ -28431,7 +27215,7 @@ export const CommonApiAdminEventBenefitsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseEventBenefitResSingleWithPage>(
@@ -28448,11 +27232,10 @@ export const CommonApiAdminEventBenefitsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminEventBenefitsPageGetQuery = (
   params: {
@@ -28462,7 +27245,7 @@ export const useCommonApiAdminEventBenefitsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28473,7 +27256,7 @@ export const useCommonApiAdminEventBenefitsPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28484,7 +27267,6 @@ export const useCommonApiAdminEventBenefitsPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminEventBenefitsPageGetLazyQuery = (
   params: {
     query?: {
@@ -28493,7 +27275,7 @@ export const useCommonApiAdminEventBenefitsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseEventBenefitResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28504,7 +27286,7 @@ export const useCommonApiAdminEventBenefitsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminEventBenefitsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28516,7 +27298,6 @@ export const useCommonApiAdminEventBenefitsPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCouponPoliciesPageGetQuery = async (
   params: {
     query?: {
@@ -28524,7 +27305,7 @@ export const CommonApiAdminCouponPoliciesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseCouponPolicyResSingleWithPage>(
@@ -28541,11 +27322,10 @@ export const CommonApiAdminCouponPoliciesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminCouponPoliciesPageGetQuery = (
   params: {
@@ -28555,7 +27335,7 @@ export const useCommonApiAdminCouponPoliciesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28566,7 +27346,7 @@ export const useCommonApiAdminCouponPoliciesPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28577,7 +27357,6 @@ export const useCommonApiAdminCouponPoliciesPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCouponPoliciesPageGetLazyQuery = (
   params: {
     query?: {
@@ -28586,7 +27365,7 @@ export const useCommonApiAdminCouponPoliciesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCouponPolicyResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28597,7 +27376,7 @@ export const useCommonApiAdminCouponPoliciesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCouponPoliciesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28609,7 +27388,6 @@ export const useCommonApiAdminCouponPoliciesPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminContentDisplaysPageGetQuery = async (
   params: {
     query?: {
@@ -28617,7 +27395,7 @@ export const CommonApiAdminContentDisplaysPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseContentDisplayResItemWithPage>(
@@ -28634,11 +27412,10 @@ export const CommonApiAdminContentDisplaysPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminContentDisplaysPageGetQuery = (
   params: {
@@ -28648,7 +27425,7 @@ export const useCommonApiAdminContentDisplaysPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28659,7 +27436,7 @@ export const useCommonApiAdminContentDisplaysPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28670,7 +27447,6 @@ export const useCommonApiAdminContentDisplaysPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminContentDisplaysPageGetLazyQuery = (
   params: {
     query?: {
@@ -28679,7 +27455,7 @@ export const useCommonApiAdminContentDisplaysPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseContentDisplayResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28690,7 +27466,7 @@ export const useCommonApiAdminContentDisplaysPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminContentDisplaysPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28702,7 +27478,6 @@ export const useCommonApiAdminContentDisplaysPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodesPageGetQuery = async (
   params: {
     query?: {
@@ -28710,7 +27485,7 @@ export const CommonApiAdminCommonCodesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseCommonCodeResSingleWithPage>(
     `/common/api-admin/common-codes/page`,
@@ -28726,11 +27501,10 @@ export const CommonApiAdminCommonCodesPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodesPageGetQuery = (
   params: {
@@ -28740,7 +27514,7 @@ export const useCommonApiAdminCommonCodesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28751,7 +27525,7 @@ export const useCommonApiAdminCommonCodesPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28762,7 +27536,6 @@ export const useCommonApiAdminCommonCodesPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodesPageGetLazyQuery = (
   params: {
     query?: {
@@ -28771,7 +27544,7 @@ export const useCommonApiAdminCommonCodesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28782,7 +27555,7 @@ export const useCommonApiAdminCommonCodesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28794,7 +27567,6 @@ export const useCommonApiAdminCommonCodesPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminCommonCodeTypesPageGetQuery = async (
   params: {
     query?: {
@@ -28802,7 +27574,7 @@ export const CommonApiAdminCommonCodeTypesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseCommonCodeTypeResSingleWithPage>(
@@ -28819,11 +27591,10 @@ export const CommonApiAdminCommonCodeTypesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useCommonApiAdminCommonCodeTypesPageGetQuery = (
   params: {
@@ -28833,7 +27604,7 @@ export const useCommonApiAdminCommonCodeTypesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28844,7 +27615,7 @@ export const useCommonApiAdminCommonCodeTypesPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28855,7 +27626,6 @@ export const useCommonApiAdminCommonCodeTypesPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminCommonCodeTypesPageGetLazyQuery = (
   params: {
     query?: {
@@ -28864,7 +27634,7 @@ export const useCommonApiAdminCommonCodeTypesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseCommonCodeTypeResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28875,7 +27645,7 @@ export const useCommonApiAdminCommonCodeTypesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminCommonCodeTypesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28887,7 +27657,6 @@ export const useCommonApiAdminCommonCodeTypesPageGetLazyQuery = (
   });
 };
 
-
 export const CommonApiAdminApisPageGetQuery = async (
   params: {
     query?: {
@@ -28895,7 +27664,7 @@ export const CommonApiAdminApisPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseApiResSingleWithPage>(
     `/common/api-admin/apis/page`,
@@ -28911,11 +27680,10 @@ export const CommonApiAdminApisPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useCommonApiAdminApisPageGetQuery = (
   params: {
@@ -28925,7 +27693,7 @@ export const useCommonApiAdminApisPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseApiResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28936,7 +27704,7 @@ export const useCommonApiAdminApisPageGetQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminApisPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28947,7 +27715,6 @@ export const useCommonApiAdminApisPageGetQuery = (
   });
 };
 
-
 export const useCommonApiAdminApisPageGetLazyQuery = (
   params: {
     query?: {
@@ -28956,7 +27723,7 @@ export const useCommonApiAdminApisPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseApiResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseApiResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -28967,7 +27734,7 @@ export const useCommonApiAdminApisPageGetLazyQuery = (
     queryFn: async () => {
       const response = await CommonApiAdminApisPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -28979,14 +27746,13 @@ export const useCommonApiAdminApisPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmsStatisticsGetQuery = async (
   params: {
     query?: {
       filter?: Partial<AtmReqFilterForStatistics>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmResResponseForStatisticsList>(
@@ -29003,11 +27769,10 @@ export const AtmApiAdminAtmsStatisticsGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsStatisticsGetQuery = (
   params: {
@@ -29016,7 +27781,7 @@ export const useAtmApiAdminAtmsStatisticsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResResponseForStatisticsList>,
+  queryOptions?: QueryOptions<CommonResponseAtmResResponseForStatisticsList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29027,7 +27792,7 @@ export const useAtmApiAdminAtmsStatisticsGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmsStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29038,7 +27803,6 @@ export const useAtmApiAdminAtmsStatisticsGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmsStatisticsGetLazyQuery = (
   params: {
     query?: {
@@ -29046,7 +27810,7 @@ export const useAtmApiAdminAtmsStatisticsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResResponseForStatisticsList>,
+  queryOptions?: QueryOptions<CommonResponseAtmResResponseForStatisticsList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29057,7 +27821,7 @@ export const useAtmApiAdminAtmsStatisticsGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmsStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29069,7 +27833,6 @@ export const useAtmApiAdminAtmsStatisticsGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmsPageGetQuery = async (
   params: {
     query?: {
@@ -29077,7 +27840,7 @@ export const AtmApiAdminAtmsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmResSingleExFieldWithPage>(
     `/atm/api-admin/atms/page`,
@@ -29093,11 +27856,10 @@ export const AtmApiAdminAtmsPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsPageGetQuery = (
   params: {
@@ -29107,7 +27869,7 @@ export const useAtmApiAdminAtmsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29126,7 +27888,6 @@ export const useAtmApiAdminAtmsPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmsPageGetLazyQuery = (
   params: {
     query?: {
@@ -29135,7 +27896,7 @@ export const useAtmApiAdminAtmsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29155,7 +27916,6 @@ export const useAtmApiAdminAtmsPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmsAtmStatusStatisticsGetQuery = async (
   params: {
     query?: {
@@ -29163,7 +27923,7 @@ export const AtmApiAdminAtmsAtmStatusStatisticsGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmResResponseForDailyAtmStatusWithPage>(
@@ -29180,11 +27940,10 @@ export const AtmApiAdminAtmsAtmStatusStatisticsGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmsAtmStatusStatisticsGetQuery = (
   params: {
@@ -29194,7 +27953,7 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResResponseForDailyAtmStatusWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmResResponseForDailyAtmStatusWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29205,7 +27964,7 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmsAtmStatusStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29216,7 +27975,6 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmsAtmStatusStatisticsGetLazyQuery = (
   params: {
     query?: {
@@ -29225,7 +27983,7 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmResResponseForDailyAtmStatusWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmResResponseForDailyAtmStatusWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29236,7 +27994,7 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmsAtmStatusStatisticsGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29248,14 +28006,13 @@ export const useAtmApiAdminAtmsAtmStatusStatisticsGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmTypeComponentsUnregisteredGetQuery = async (
   params: {
     query?: {
       filter?: Partial<AtmTypeComponentReqFilter>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmTypeComponentResResponseForUnregisterList>(
@@ -29272,11 +28029,10 @@ export const AtmApiAdminAtmTypeComponentsUnregisteredGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmTypeComponentsUnregisteredGetQuery = (
   params: {
@@ -29285,7 +28041,7 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForUnregisterList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForUnregisterList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29296,7 +28052,7 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsUnregisteredGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29307,7 +28063,6 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmTypeComponentsUnregisteredGetLazyQuery = (
   params: {
     query?: {
@@ -29315,7 +28070,7 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForUnregisterList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForUnregisterList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29326,7 +28081,7 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsUnregisteredGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29338,14 +28093,13 @@ export const useAtmApiAdminAtmTypeComponentsUnregisteredGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmTypeComponentsRegisteredGetQuery = async (
   params: {
     query?: {
       filter?: Partial<AtmTypeComponentReqFilter>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmTypeComponentResResponseForRegisterList>(
@@ -29362,11 +28116,10 @@ export const AtmApiAdminAtmTypeComponentsRegisteredGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmTypeComponentsRegisteredGetQuery = (
   params: {
@@ -29375,7 +28128,7 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForRegisterList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForRegisterList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29386,7 +28139,7 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsRegisteredGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29397,7 +28150,6 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmTypeComponentsRegisteredGetLazyQuery = (
   params: {
     query?: {
@@ -29405,7 +28157,7 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForRegisterList>,
+  queryOptions?: QueryOptions<CommonResponseAtmTypeComponentResResponseForRegisterList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29416,7 +28168,7 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmTypeComponentsRegisteredGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29428,7 +28180,6 @@ export const useAtmApiAdminAtmTypeComponentsRegisteredGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmStatusesPageGetQuery = async (
   params: {
     query?: {
@@ -29436,7 +28187,7 @@ export const AtmApiAdminAtmStatusesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmStatusResSingleWithPage>(
     `/atm/api-admin/atm-statuses/page`,
@@ -29452,11 +28203,10 @@ export const AtmApiAdminAtmStatusesPageGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmStatusesPageGetQuery = (
   params: {
@@ -29466,7 +28216,7 @@ export const useAtmApiAdminAtmStatusesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29477,7 +28227,7 @@ export const useAtmApiAdminAtmStatusesPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29488,7 +28238,6 @@ export const useAtmApiAdminAtmStatusesPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmStatusesPageGetLazyQuery = (
   params: {
     query?: {
@@ -29497,7 +28246,7 @@ export const useAtmApiAdminAtmStatusesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29508,7 +28257,7 @@ export const useAtmApiAdminAtmStatusesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29520,7 +28269,6 @@ export const useAtmApiAdminAtmStatusesPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceGetQuery = async (
   params: {
     query?: {
@@ -29528,7 +28276,7 @@ export const AtmApiAdminAtmMaintenanceGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmMaintenanceResSingleList>(
     `/atm/api-admin/atm-maintenance`,
@@ -29544,11 +28292,10 @@ export const AtmApiAdminAtmMaintenanceGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceGetQuery = (
   params: {
@@ -29558,7 +28305,7 @@ export const useAtmApiAdminAtmMaintenanceGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29569,7 +28316,7 @@ export const useAtmApiAdminAtmMaintenanceGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29580,7 +28327,6 @@ export const useAtmApiAdminAtmMaintenanceGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceGetLazyQuery = (
   params: {
     query?: {
@@ -29589,7 +28335,7 @@ export const useAtmApiAdminAtmMaintenanceGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29600,7 +28346,7 @@ export const useAtmApiAdminAtmMaintenanceGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29612,7 +28358,6 @@ export const useAtmApiAdminAtmMaintenanceGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenancePageGetQuery = async (
   params: {
     query?: {
@@ -29620,7 +28365,7 @@ export const AtmApiAdminAtmMaintenancePageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceResSingleWithPage>(
@@ -29637,11 +28382,10 @@ export const AtmApiAdminAtmMaintenancePageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenancePageGetQuery = (
   params: {
@@ -29651,7 +28395,7 @@ export const useAtmApiAdminAtmMaintenancePageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29662,7 +28406,7 @@ export const useAtmApiAdminAtmMaintenancePageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenancePageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29673,7 +28417,6 @@ export const useAtmApiAdminAtmMaintenancePageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenancePageGetLazyQuery = (
   params: {
     query?: {
@@ -29682,7 +28425,7 @@ export const useAtmApiAdminAtmMaintenancePageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29693,7 +28436,7 @@ export const useAtmApiAdminAtmMaintenancePageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenancePageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29705,7 +28448,6 @@ export const useAtmApiAdminAtmMaintenancePageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceStatusesPageGetQuery = async (
   params: {
     query?: {
@@ -29713,7 +28455,7 @@ export const AtmApiAdminAtmMaintenanceStatusesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceStatusResSingleWithPage>(
@@ -29730,11 +28472,10 @@ export const AtmApiAdminAtmMaintenanceStatusesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceStatusesPageGetQuery = (
   params: {
@@ -29744,7 +28485,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29755,7 +28496,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29766,7 +28507,6 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmMaintenanceStatusesPageGetLazyQuery = (
   params: {
     query?: {
@@ -29775,7 +28515,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29786,7 +28526,7 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmMaintenanceStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29798,7 +28538,6 @@ export const useAtmApiAdminAtmMaintenanceStatusesPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = async (
   params: {
     query?: {
@@ -29806,7 +28545,7 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage>(
@@ -29823,11 +28562,10 @@ export const AtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = (
   params: {
@@ -29837,7 +28575,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29850,7 +28588,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = (
         const response =
           await AtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery(
             params,
-            axiosOptions,
+            axiosOptions
           );
         return response;
       },
@@ -29858,10 +28596,9 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery = (
       refetchOnWindowFocus: false,
       gcTime: 1,
       ...queryOptions,
-    },
+    }
   );
 };
-
 
 export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetLazyQuery = (
   params: {
@@ -29871,7 +28608,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmMaintenanceRequestCategoryResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29884,7 +28621,7 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetLazyQuery = (
         const response =
           await AtmApiAdminAtmMaintenanceRequestCategoriesPageGetQuery(
             params,
-            axiosOptions,
+            axiosOptions
           );
         return response;
       },
@@ -29893,10 +28630,9 @@ export const useAtmApiAdminAtmMaintenanceRequestCategoriesPageGetLazyQuery = (
       refetchOnWindowFocus: false,
       gcTime: 1,
       ...queryOptions,
-    },
+    }
   );
 };
-
 
 export const AtmApiAdminAtmComponentStocksPageGetQuery = async (
   params: {
@@ -29905,7 +28641,7 @@ export const AtmApiAdminAtmComponentStocksPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmComponentStockResSingleExFieldWithPage>(
@@ -29922,11 +28658,10 @@ export const AtmApiAdminAtmComponentStocksPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmComponentStocksPageGetQuery = (
   params: {
@@ -29936,7 +28671,7 @@ export const useAtmApiAdminAtmComponentStocksPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29947,7 +28682,7 @@ export const useAtmApiAdminAtmComponentStocksPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29958,7 +28693,6 @@ export const useAtmApiAdminAtmComponentStocksPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmComponentStocksPageGetLazyQuery = (
   params: {
     query?: {
@@ -29967,7 +28701,7 @@ export const useAtmApiAdminAtmComponentStocksPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmComponentStockResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -29978,7 +28712,7 @@ export const useAtmApiAdminAtmComponentStocksPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmComponentStocksPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -29990,7 +28724,6 @@ export const useAtmApiAdminAtmComponentStocksPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionsPageGetQuery = async (
   params: {
     query?: {
@@ -29998,7 +28731,7 @@ export const AtmApiAdminAtmCollectionsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmCollectionResItemWithPage>(
@@ -30015,11 +28748,10 @@ export const AtmApiAdminAtmCollectionsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionsPageGetQuery = (
   params: {
@@ -30029,7 +28761,7 @@ export const useAtmApiAdminAtmCollectionsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30040,7 +28772,7 @@ export const useAtmApiAdminAtmCollectionsPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30051,7 +28783,6 @@ export const useAtmApiAdminAtmCollectionsPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionsPageGetLazyQuery = (
   params: {
     query?: {
@@ -30060,7 +28791,7 @@ export const useAtmApiAdminAtmCollectionsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionResItemWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30071,7 +28802,7 @@ export const useAtmApiAdminAtmCollectionsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30083,7 +28814,6 @@ export const useAtmApiAdminAtmCollectionsPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmCollectionStatusesPageGetQuery = async (
   params: {
     query?: {
@@ -30091,7 +28821,7 @@ export const AtmApiAdminAtmCollectionStatusesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmCollectionStatusResSingleWithPage>(
@@ -30108,11 +28838,10 @@ export const AtmApiAdminAtmCollectionStatusesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmCollectionStatusesPageGetQuery = (
   params: {
@@ -30122,7 +28851,7 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30133,7 +28862,7 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30144,7 +28873,6 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmCollectionStatusesPageGetLazyQuery = (
   params: {
     query?: {
@@ -30153,7 +28881,7 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmCollectionStatusResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30164,7 +28892,7 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmCollectionStatusesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30176,7 +28904,6 @@ export const useAtmApiAdminAtmCollectionStatusesPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmChangedHistoriesGetQuery = async (
   params: {
     query?: {
@@ -30184,7 +28911,7 @@ export const AtmApiAdminAtmChangedHistoriesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmChangedHistoryResSingleList>(
@@ -30201,11 +28928,10 @@ export const AtmApiAdminAtmChangedHistoriesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmChangedHistoriesGetQuery = (
   params: {
@@ -30215,7 +28941,7 @@ export const useAtmApiAdminAtmChangedHistoriesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30226,7 +28952,7 @@ export const useAtmApiAdminAtmChangedHistoriesGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmChangedHistoriesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30237,7 +28963,6 @@ export const useAtmApiAdminAtmChangedHistoriesGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmChangedHistoriesGetLazyQuery = (
   params: {
     query?: {
@@ -30246,7 +28971,7 @@ export const useAtmApiAdminAtmChangedHistoriesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30257,7 +28982,7 @@ export const useAtmApiAdminAtmChangedHistoriesGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmChangedHistoriesGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30269,7 +28994,6 @@ export const useAtmApiAdminAtmChangedHistoriesGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmChangedHistoriesPageGetQuery = async (
   params: {
     query?: {
@@ -30277,7 +29001,7 @@ export const AtmApiAdminAtmChangedHistoriesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmChangedHistoryResSingleWithPage>(
@@ -30294,11 +29018,10 @@ export const AtmApiAdminAtmChangedHistoriesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmChangedHistoriesPageGetQuery = (
   params: {
@@ -30308,7 +29031,7 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30319,7 +29042,7 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmChangedHistoriesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30330,7 +29053,6 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmChangedHistoriesPageGetLazyQuery = (
   params: {
     query?: {
@@ -30339,7 +29061,7 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmChangedHistoryResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30350,7 +29072,7 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmChangedHistoriesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30362,14 +29084,13 @@ export const useAtmApiAdminAtmChangedHistoriesPageGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmAcceptanceDevicesIdGetQuery = async (
   params: {
     path: {
       id: number;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAtmAcceptanceDeviceResItem>(
     `/atm/api-admin/atm-acceptance-devices/${params.path.id}`,
@@ -30380,11 +29101,10 @@ export const AtmApiAdminAtmAcceptanceDevicesIdGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmAcceptanceDevicesIdGetQuery = (
   params: {
@@ -30393,7 +29113,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30404,7 +29124,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmAcceptanceDevicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30415,7 +29135,6 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmAcceptanceDevicesIdGetLazyQuery = (
   params: {
     path: {
@@ -30423,7 +29142,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResItem>,
+  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30434,7 +29153,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmAcceptanceDevicesIdGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30446,7 +29165,6 @@ export const useAtmApiAdminAtmAcceptanceDevicesIdGetLazyQuery = (
   });
 };
 
-
 export const AtmApiAdminAtmAcceptanceDevicesPageGetQuery = async (
   params: {
     query?: {
@@ -30454,7 +29172,7 @@ export const AtmApiAdminAtmAcceptanceDevicesPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAtmAcceptanceDeviceResSingleWithPage>(
@@ -30471,11 +29189,10 @@ export const AtmApiAdminAtmAcceptanceDevicesPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAtmApiAdminAtmAcceptanceDevicesPageGetQuery = (
   params: {
@@ -30485,7 +29202,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30496,7 +29213,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmAcceptanceDevicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30507,7 +29224,6 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetQuery = (
   });
 };
 
-
 export const useAtmApiAdminAtmAcceptanceDevicesPageGetLazyQuery = (
   params: {
     query?: {
@@ -30516,7 +29232,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAtmAcceptanceDeviceResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30527,7 +29243,7 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AtmApiAdminAtmAcceptanceDevicesPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30539,7 +29255,6 @@ export const useAtmApiAdminAtmAcceptanceDevicesPageGetLazyQuery = (
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsPageGetQuery = async (
   params: {
     query?: {
@@ -30547,7 +29262,7 @@ export const AdministratorApiAdminAdministratorsPageGetQuery = async (
       pageable?: Partial<Pageable>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAdministratorResSingleExFieldWithPage>(
@@ -30564,11 +29279,10 @@ export const AdministratorApiAdminAdministratorsPageGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAdministratorApiAdminAdministratorsPageGetQuery = (
   params: {
@@ -30578,7 +29292,7 @@ export const useAdministratorApiAdminAdministratorsPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30589,7 +29303,7 @@ export const useAdministratorApiAdminAdministratorsPageGetQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30600,7 +29314,6 @@ export const useAdministratorApiAdminAdministratorsPageGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorsPageGetLazyQuery = (
   params: {
     query?: {
@@ -30609,7 +29322,7 @@ export const useAdministratorApiAdminAdministratorsPageGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResSingleExFieldWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResSingleExFieldWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30620,7 +29333,7 @@ export const useAdministratorApiAdminAdministratorsPageGetLazyQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsPageGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30632,10 +29345,9 @@ export const useAdministratorApiAdminAdministratorsPageGetLazyQuery = (
   });
 };
 
-
 export const AdministratorApiAdminAdministratorsMeGetQuery = async (
   params: {},
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response = await axiosClient<CommonResponseAdministratorResItem>(
     `/administrator/api-admin/administrators/me`,
@@ -30646,16 +29358,15 @@ export const AdministratorApiAdminAdministratorsMeGetQuery = async (
         indexes: null,
       },
       ...options,
-    },
+    }
   );
   return response.data;
 };
 
-
 export const useAdministratorApiAdminAdministratorsMeGetQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30666,7 +29377,7 @@ export const useAdministratorApiAdminAdministratorsMeGetQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsMeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30677,11 +29388,10 @@ export const useAdministratorApiAdminAdministratorsMeGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorsMeGetLazyQuery = (
   params: {},
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30692,7 +29402,7 @@ export const useAdministratorApiAdminAdministratorsMeGetLazyQuery = (
     queryFn: async () => {
       const response = await AdministratorApiAdminAdministratorsMeGetQuery(
         params,
-        axiosOptions,
+        axiosOptions
       );
       return response;
     },
@@ -30704,7 +29414,6 @@ export const useAdministratorApiAdminAdministratorsMeGetLazyQuery = (
   });
 };
 
-
 export const AdministratorApiAdminAdministratorLoginHistoriesGetQuery = async (
   params: {
     query?: {
@@ -30712,7 +29421,7 @@ export const AdministratorApiAdminAdministratorLoginHistoriesGetQuery = async (
       sort?: Partial<Sort>;
     };
   },
-  options?: AxiosRequestConfig<any>,
+  options?: AxiosRequestConfig<any>
 ) => {
   const response =
     await axiosClient<CommonResponseAdministratorLoginHistoryResSingleList>(
@@ -30729,11 +29438,10 @@ export const AdministratorApiAdminAdministratorLoginHistoriesGetQuery = async (
           indexes: null,
         },
         ...options,
-      },
+      }
     );
   return response.data;
 };
-
 
 export const useAdministratorApiAdminAdministratorLoginHistoriesGetQuery = (
   params: {
@@ -30743,7 +29451,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30755,7 +29463,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetQuery = (
       const response =
         await AdministratorApiAdminAdministratorLoginHistoriesGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -30766,7 +29474,6 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorLoginHistoriesGetLazyQuery = (
   params: {
     query?: {
@@ -30775,7 +29482,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetLazyQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleList>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleList>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30787,7 +29494,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetLazyQuery = (
       const response =
         await AdministratorApiAdminAdministratorLoginHistoriesGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -30799,7 +29506,6 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesGetLazyQuery = (
   });
 };
 
-
 export const AdministratorApiAdminAdministratorLoginHistoriesIdGetQuery =
   async (
     params: {
@@ -30807,7 +29513,7 @@ export const AdministratorApiAdminAdministratorLoginHistoriesIdGetQuery =
         id: number;
       };
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponseAdministratorLoginHistoryResItem>(
@@ -30819,11 +29525,10 @@ export const AdministratorApiAdminAdministratorLoginHistoriesIdGetQuery =
             indexes: null,
           },
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetQuery = (
   params: {
@@ -30832,7 +29537,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResItem>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResItem>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30844,7 +29549,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetQuery = (
       const response =
         await AdministratorApiAdminAdministratorLoginHistoriesIdGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -30855,7 +29560,6 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetLazyQuery =
   (
     params: {
@@ -30864,7 +29568,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetLazyQuery =
       };
     },
     axiosOptions?: AxiosRequestConfig<any>,
-    queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResItem>,
+    queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResItem>
   ) => {
     const queryKey = queryOptions?.queryKey
       ? queryOptions?.queryKey
@@ -30876,7 +29580,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetLazyQuery =
         const response =
           await AdministratorApiAdminAdministratorLoginHistoriesIdGetQuery(
             params,
-            axiosOptions,
+            axiosOptions
           );
         return response;
       },
@@ -30888,7 +29592,6 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesIdGetLazyQuery =
     });
   };
 
-
 export const AdministratorApiAdminAdministratorLoginHistoriesPageGetQuery =
   async (
     params: {
@@ -30897,7 +29600,7 @@ export const AdministratorApiAdminAdministratorLoginHistoriesPageGetQuery =
         pageable?: Partial<Pageable>;
       };
     },
-    options?: AxiosRequestConfig<any>,
+    options?: AxiosRequestConfig<any>
   ) => {
     const response =
       await axiosClient<CommonResponseAdministratorLoginHistoryResSingleWithPage>(
@@ -30914,11 +29617,10 @@ export const AdministratorApiAdminAdministratorLoginHistoriesPageGetQuery =
             indexes: null,
           },
           ...options,
-        },
+        }
       );
     return response.data;
   };
-
 
 export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetQuery = (
   params: {
@@ -30928,7 +29630,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetQuery = (
     };
   },
   axiosOptions?: AxiosRequestConfig<any>,
-  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleWithPage>,
+  queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleWithPage>
 ) => {
   const queryKey = queryOptions?.queryKey
     ? queryOptions?.queryKey
@@ -30940,7 +29642,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetQuery = (
       const response =
         await AdministratorApiAdminAdministratorLoginHistoriesPageGetQuery(
           params,
-          axiosOptions,
+          axiosOptions
         );
       return response;
     },
@@ -30951,7 +29653,6 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetQuery = (
   });
 };
 
-
 export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetLazyQuery =
   (
     params: {
@@ -30961,7 +29662,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetLazyQuery
       };
     },
     axiosOptions?: AxiosRequestConfig<any>,
-    queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleWithPage>,
+    queryOptions?: QueryOptions<CommonResponseAdministratorLoginHistoryResSingleWithPage>
   ) => {
     const queryKey = queryOptions?.queryKey
       ? queryOptions?.queryKey
@@ -30973,7 +29674,7 @@ export const useAdministratorApiAdminAdministratorLoginHistoriesPageGetLazyQuery
         const response =
           await AdministratorApiAdminAdministratorLoginHistoriesPageGetQuery(
             params,
-            axiosOptions,
+            axiosOptions
           );
         return response;
       },

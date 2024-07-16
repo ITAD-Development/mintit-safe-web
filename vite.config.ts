@@ -14,13 +14,15 @@ export default ({ mode }: ConfigEnv) => {
     "/customer/api-atm": env.VITE_MAIN_API_URL,
     "/common/api-atm": env.VITE_MAIN_API_URL,
     "/customer/api-admin": env.VITE_MAIN_API_URL,
-    "/common/api-admin": env.VITE_MAIN_API_URL,
+    "/common/api-safe": env.VITE_MAIN_API_URL,
     "/atm/api-admin": env.VITE_MAIN_API_URL,
     "/administrator/api-admin": env.VITE_MAIN_API_URL,
     "/partner/api-admin": env.VITE_MAIN_API_URL,
     "/branch/api-admin": env.VITE_MAIN_API_URL,
     "/file/api-admin": env.VITE_FILE_API_URL,
     "/statistics/api-admin": env.VITE_MAIN_API_URL,
+    "/member/api-safe": env.VITE_MEMBER_API_URL,
+    "/device/api-safe": env.VITE_MAIN_API_URL,
   };
 
   const proxy = Object.entries(proxies).reduce<CommonServerOptions["proxy"]>(

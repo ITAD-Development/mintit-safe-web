@@ -3,15 +3,23 @@ import usePopupStore from "../stores/usePopupStore";
 
 export type DeletedItemProps = {
   isSelected?: boolean;
+  petName: string;
+  imei: string;
+  model: string;
+  date: string;
 };
 
-const DeletedItem: React.FC<DeletedItemProps> = ({ isSelected }) => {
+const DeletedItem: React.FC<DeletedItemProps> = ({
+  isSelected,
+  petName,
+  imei,
+  model,
+  date,
+}) => {
   if (!isSelected) {
     return (
       <div className="p-5 rounded border border-neutral-200 flex-col justify-start items-start gap-3 flex">
-        <div className="text-zinc-600 text-sm leading-[18px]">
-          갤럭시 S24 Plus
-        </div>
+        <div className="text-zinc-600 text-sm leading-[18px]">{petName}</div>
         <div className="justify-start items-start gap-5 flex">
           <div className="text-zinc-600 text-sm leading-[18px]">
             IMEI
@@ -21,11 +29,11 @@ const DeletedItem: React.FC<DeletedItemProps> = ({ isSelected }) => {
             Date
           </div>
           <div className="w-[147px] text-zinc-600 text-sm leading-[18px]">
-            12345-67-89123231
+            {imei}
             <br />
-            SF-N124SH
+            {model}
             <br />
-            2024-05-01
+            {date}
           </div>
         </div>
       </div>

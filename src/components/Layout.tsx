@@ -19,7 +19,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
 
   return (
     <div className="h-screen justify-center flex">
-      <div className="sm:w-[420px] min-w-[360px] flex flex-col h-full relative overflow-hidden">
+      <div className="w-full md:w-[420px] min-w-[360px] flex flex-col h-full relative overflow-hidden">
         <div className="flex justify-between items-center px-6 py-[15px] border-b	 ">
           <div className="flex gap-2 items-center">
             <img

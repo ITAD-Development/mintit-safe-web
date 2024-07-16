@@ -122,6 +122,26 @@ const router = createBrowserRouter([
       });
     },
   },
+  {
+    path: "/success",
+    async lazy() {
+      return import("./success").then((mod) => {
+        return {
+          Component: mod.Success,
+        };
+      });
+    },
+  },
+  {
+    path: "/failure",
+    async lazy() {
+      return import("./failure").then((mod) => {
+        return {
+          Component: mod.Failure,
+        };
+      });
+    },
+  },
 ]);
 
 export default router;

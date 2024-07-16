@@ -130,7 +130,7 @@ axiosClient.interceptors.request.use(
     // );
 
     if (config.url?.includes("refresh-token") === false) {
-      await refresh();
+      // await refresh();
     }
 
     let accessToken = useAuthStore.getState().accessToken;
@@ -144,10 +144,12 @@ axiosClient.interceptors.request.use(
     return {
       headers: {
         "DRP-SERVICE-ID": serviceId,
+        CHNLDRPADM: "DRP-CHANNEL",
         Authorization: accessToken ? `Bearer ${accessToken}` : undefined,
         ...headers,
       } as AxiosRequestHeaders & {
         "DRP-SERVICE-ID": string;
+        CHNLDRPADM: string;
       },
       ...rest,
     };
@@ -198,7 +200,8 @@ axiosClient.interceptors.response.use(
     }
 
     if (error.response.status === 401) {
-      router.navigate("/login");
+      router.navigate("/histories");
+      useAuthStore.getState().logout();
       return Promise.reject(error);
     }
 
