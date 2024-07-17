@@ -24315,7 +24315,7 @@ export const AdministratorApiAdminAdministratorsRefreshTokenPostMutation =
   ) => {
     const response =
       await axiosClient<CommonResponseAdministratorResResponseForJwtToken>(
-        `/administrator/api-admin/administrators/refresh-token`,
+        `/member/api-safe/members/refresh-token`,
         {
           method: "post",
           data: params.body,

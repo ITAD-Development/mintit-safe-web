@@ -130,7 +130,7 @@ axiosClient.interceptors.request.use(
     // );
 
     if (config.url?.includes("refresh-token") === false) {
-      // await refresh();
+      await refresh();
     }
 
     let accessToken = useAuthStore.getState().accessToken;
