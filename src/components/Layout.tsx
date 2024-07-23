@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import usePopupStore from "../stores/usePopupStore";
 import CertificationPopup from "./CertificatePopup";
 import Footer from "./Footer";
+import MainCarousel from "./MainCarousel";
 import PrivacyPopup from "./PrivacyPopup";
 import TermsPopup from "./TermsPopup";
 
@@ -44,7 +45,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex flex-row xl:h-20 h-0 mx-[63px] border-b-2 border-b-white">
+      <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] border-b-2 border-b-white">
         <div className="flex flex-1 flex-row items-center gap-5">
           <div className="w-[106px] h-[34px] pl-[3px] pr-1 py-1.5 bg-teal-300 rounded-lg shadow justify-center items-center inline-flex">
             <div className="text-white text-xs font-bold font-['Inter'] capitalize leading-snug tracking-wide">
@@ -182,9 +183,9 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
         </div>
       </div>
       <div className="flex flex-1 flex-row">
-        <div className="xl:flex-1 hidden xl:block pt-[90px]">
-          <div className="flex flex-col items-end pr-[350px]">
-            <div className="flex flex-col items-start min-w-max ">
+        <div className="xl:flex-1 hidden xl:block">
+          <div className="flex flex-col items-end pr-[350px] h-full justify-center">
+            <div className="flex flex-col items-start">
               <div>
                 <span className="text-slate-800 text-[28px] font-normal font-['SUIT']">
                   쉽고{" "}
@@ -241,16 +242,14 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
                 <Button title="내 삭제 이력" />
               </div>
             </div>
+            <div className="pr-[15px] mt-[41px]">
+              <MainCarousel />
+            </div>
           </div>
         </div>
         <div className="flex justify-center xl:justify-start flex-1">
           <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-full">
-            <div className="relative">
-              <div className="absolute z-10 right-[-322px] top-[554px] hidden lg:block">
-                <img src="/images/main/fab.png" className="w-[114px]" />
-              </div>
-            </div>
-            <div className="flex flex-col h-full overflow-hidden">
+            <div className="flex flex-col h-full overflow-hidden relative">
               <div className="flex justify-between items-center px-6 py-[15px] border-b	 ">
                 <div className="flex gap-2 items-center">
                   <img
@@ -329,6 +328,11 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
               {isOpenTerms && <TermsPopup />}
               {isOpenPrivacy && <PrivacyPopup />}
               {isOpenCertification && <CertificationPopup />}
+            </div>
+            <div className="relative">
+              <div className="absolute z-10 right-[-322px] bottom-[170px] hidden lg:block">
+                <img src="/images/main/fab.png" className="w-[114px]" />
+              </div>
             </div>
           </div>
         </div>

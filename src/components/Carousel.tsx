@@ -15,6 +15,7 @@ function Carousel() {
     <>
       <div style={{ height: 236, width: 372 }}>
         <Swiper
+          id="carousel"
           modules={[Pagination]}
           spaceBetween={50}
           slidesPerView={1}
