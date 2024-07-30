@@ -69,7 +69,18 @@ export const Auth: React.FC = () => {
               </div>
             </div>
           </div>
-          <div className="w-[268px] h-12 px-5 py-[15px] bg-[#a0f0e0] rounded justify-center items-center inline-flex">
+          <div
+            className="w-[268px] h-12 px-5 py-[15px] bg-[#a0f0e0] rounded justify-center items-center inline-flex"
+            onClick={() => {
+              /// nice-url 이라는 query string 을 읽고 decode 한다.
+              const niceUrl = new URLSearchParams(window.location.search).get(
+                "nice-url"
+              );
+              if (niceUrl) {
+                window.location.href = decodeURIComponent(niceUrl);
+              }
+            }}
+          >
             <div className="text-[#333333] text-sm font-extrabold font-['SUIT'] leading-[18px]">
               본인 인증
             </div>
