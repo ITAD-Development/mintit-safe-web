@@ -84,7 +84,6 @@ type TermsResponse = {
 };
 
 const TermsPopup: React.FC = () => {
-  const [terms, setTerms] = useState<TermsRow>();
   const [contents, setContents] = useState<TermsContent[]>();
   const [selected, setSelected] = useState<TermsContent>();
   useEffect(() => {
@@ -93,7 +92,6 @@ const TermsPopup: React.FC = () => {
         "/common/api-safe/terms?termsCategoryCode=TERMSAFEWE"
       );
       console.log(response.data);
-      setTerms(response.data.data[1]);
       setContents(response.data.data[1].termsContents);
       setSelected(response.data.data[1].termsContents[0]);
     }

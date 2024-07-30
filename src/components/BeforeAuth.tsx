@@ -2,12 +2,10 @@ import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import axios from "axios";
 import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import Auth from "../components/Auth";
 import Loading from "../components/Loading";
 
 export const BeforeAuth: React.FC = () => {
-  const navigate = useNavigate();
   const [identificationId, setIdentificationId] = useLocalStorage(
     "identificationId",
     ""

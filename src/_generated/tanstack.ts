@@ -1,13 +1,6 @@
 import axiosClient from "@libs/axiosClient";
 import { QueryOptions, useMutation, useQuery } from "@tanstack/react-query";
 import { AxiosRequestConfig } from "axios";
-const isLoading: {
-  [key: string]: boolean;
-} = {};
-
-const apiResponseCache: {
-  [key: string]: any;
-} = {};
 
 export type PurchaseReqUpdate = {
   // 매입 아이디

@@ -17,7 +17,7 @@ const InstallationGuide: React.FC = () => {
 
       <h2 className="text-2xl font-bold mb-4">민팃 세이프 설치 방법</h2>
 
-      <InstallStep step={1} imageSrc="" />
+      <InstallStep step={1} />
     </div>
   );
 };
