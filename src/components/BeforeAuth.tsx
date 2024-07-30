@@ -40,6 +40,10 @@ export const BeforeAuth: React.FC = () => {
               "DRP-SERVICE-ID": serviceId,
               Authorization: `Bearer ${import.meta.env.VITE_ALIMTALK_TOKEN}`,
             },
+            baseURL:
+              Boolean(import.meta.env.VITE_USE_PROXY) !== true
+                ? import.meta.env.VITE_MAIN_API_URL
+                : undefined,
           }
         );
 
@@ -64,6 +68,10 @@ export const BeforeAuth: React.FC = () => {
           headers: {
             "DRP-SERVICE-ID": serviceId,
           },
+          baseURL:
+            Boolean(import.meta.env.VITE_USE_PROXY) !== true
+              ? import.meta.env.VITE_MAIN_API_URL
+              : undefined,
         }
       );
 
