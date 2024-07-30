@@ -51,7 +51,7 @@ const Auth: FC<Props> = ({ onAuth }) => {
                 />
               </div>
               <div className="w-6 h-6 relative mr-2">
-                <img src="/public/images/histories/delete-icon.svg" />
+                <img src="/images/histories/delete-icon.svg" />
               </div>
             </div>
           </div>
