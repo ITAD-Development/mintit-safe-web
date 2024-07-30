@@ -99,7 +99,16 @@ export const Home: React.FC = () => {
             을 누르고 판매방법을 확인해 보아요
           </span>
         </div>
-        <Button title="민팃 바로가기" />
+        <Button
+          title="민팃 바로가기"
+          onClick={() => {
+            window.open(
+              "https://www.mintit.co.kr/",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }}
+        />
       </div>
     </Layout>
   );
