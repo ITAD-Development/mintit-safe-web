@@ -1,8 +1,10 @@
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import usePopupStore from "../stores/usePopupStore";
+import AgreementPopup from "./AgreementPopup";
 import CertificationPopup from "./CertificatePopup";
 import ContentHeader from "./ContentHeader";
 import Footer from "./Footer";
+import Header from "./Header";
 import MainFloatingLeft from "./MainFloatingLeft";
 import PrivacyPopup from "./PrivacyPopup";
 import SideMenu from "./SideMenu";
@@ -16,11 +18,13 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isOpenTerms = usePopupStore((state) => state.isOpenTerms);
   const isOpenPrivacy = usePopupStore((state) => state.isOpenPrivacy);
-  const [contentHeight, setContentHeight] = useState(0);
-  const congtentRef = useRef<HTMLDivElement>(null);
+  const isOpenAgreement = usePopupStore((state) => state.isOpenAgreement);
   const isOpenCertification = usePopupStore(
     (state) => state.isOpenCertification
   );
+
+  const [contentHeight, setContentHeight] = useState(0);
+  const congtentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // congtentRef를 observe하여 height를 조절 화면의 높이에 맞게 조절, 브라우저의 크기 변경시에도 조절 될것
@@ -48,14 +52,19 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
         backgroundSize: "cover",
       }}
     >
-      {/* <Header /> */}
-      <div className="flex flex-1 flex-row">
+      <Header />
+      <div
+        className="flex flex-1 flex-row"
+        style={{
+          height: "calc(100vh - 80px)",
+        }}
+      >
         <div className="xl:flex-1 hidden xl:block">
           <MainFloatingLeft />
         </div>
-        <div className="flex justify-center xl:justify-start flex-1">
-          <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-screen">
-            <div className="flex flex-col h-screen overflow-hidden relative">
+        <div className="flex justify-center h-full xl:justify-start flex-1">
+          <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-full">
+            <div className="flex flex-col h-full overflow-hidden relative">
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
               <div className="h-screen" ref={congtentRef}>
                 <div
@@ -72,6 +81,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
               {isOpenTerms && <TermsPopup />}
               {isOpenPrivacy && <PrivacyPopup />}
               {isOpenCertification && <CertificationPopup />}
+              {isOpenAgreement && <AgreementPopup />}
             </div>
             <div className="relative">
               <div className="absolute z-10 right-[-322px] bottom-[170px] hidden lg:block">

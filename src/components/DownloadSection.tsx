@@ -24,7 +24,7 @@ const DownloadSection: React.FC = () => {
       </p>
       <div className="text-center">
         <a
-          href="#"
+          href={import.meta.env.VITE_IOS_DOWNLOAD_URL}
           className="bg-blue-500 text-white py-2 px-4 rounded-full inline-flex items-center"
         >
           <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">

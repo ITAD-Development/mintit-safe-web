@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 type ContentHeaderProps = {
   setIsOpen: (isOpen: boolean) => void;
@@ -19,9 +20,12 @@ const ContentHeader: FC<ContentHeaderProps> = ({ setIsOpen, isOpen }) => {
           </div>
         </div>
         <div className="h-[26px] px-4 py-1 bg-white rounded-[97px] border border-zinc-800 justify-center items-center gap-2.5 inline-flex">
-          <div className="text-zinc-800 text-sm font-normal leading-[18px]">
+          <Link
+            className="text-zinc-800 text-sm font-normal leading-[18px]"
+            to="/download"
+          >
             앱 다운로드
-          </div>
+          </Link>
         </div>
       </div>
       <header className="flex justify-between items-center px-6 py-[10px] border-b	 ">

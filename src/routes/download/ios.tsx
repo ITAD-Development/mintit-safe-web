@@ -9,6 +9,9 @@ export const Ios: React.FC = () => {
         <Button
           icon={<img src="/images/download/ios-download.svg" />}
           title="IOS 버전 다운로드"
+          onClick={() => {
+            location.href = import.meta.env.VITE_IOS_DOWNLOAD_URL;
+          }}
         />
       </div>
       <Outlet />

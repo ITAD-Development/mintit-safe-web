@@ -1,12 +1,32 @@
+import styled from "@emotion/styled";
 import { FC } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import usePopupStore from "../stores/usePopupStore";
 
 type SideProps = {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 };
 
+const IconContainer = styled.div`
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const MenuTitle = styled.div`
+  color: #333;
+  font-family: SUIT;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+`;
+
 const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
   return (
     <>
       {isOpen && (
@@ -17,38 +37,90 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
       )}
 
       <div
-        className={`absolute top-0 right-0 w-4/5 h-full bg-white transform transition-transform z-50 ${
+        className={`absolute top-0 right-0 w-full h-full bg-white transform transition-transform z-50 ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <button
-          className="absolute top-5 right-5 p-3 focus:outline-none"
-          onClick={() => setIsOpen(false)}
-        >
-          <span className="block w-6 h-0.5 bg-gray-600 rotate-45"></span>
-          <span className="block w-6 h-0.5 bg-gray-600 -rotate-45"></span>
-        </button>
-        <nav className="mt-16 p-4">
+        <div className="flex justify-between items-center px-6 py-[10px]	 ">
+          <img src="/square-logo.svg" />
+          <img
+            src="/images/menu/close-icon.svg"
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+          />
+        </div>
+        <nav className="mt-5 m-6 pb-[92px] border-b-2">
           <ul>
-            <li className="mb-4">
-              <Link to="/" className="text-gray-800">
-                MINTIT safe 소개
-              </Link>
+            <li
+              className="flex mb-6 items-center gap-1.5"
+              onClick={() => {
+                navigate("/");
+                setIsOpen(false);
+              }}
+            >
+              <IconContainer className="flex ">
+                <img src="/images/menu/home-icon.svg" />
+              </IconContainer>
+              <MenuTitle>민팃세이프 소개</MenuTitle>
             </li>
-            <li className="mb-4">
-              <Link to="/guide" className="text-gray-800">
-                MINTIT safe Guide
-              </Link>
+            <li
+              className="flex mb-6 items-center gap-1.5"
+              onClick={() => {
+                navigate("/guide");
+                setIsOpen(false);
+              }}
+            >
+              <IconContainer>
+                <img src="/images/menu/guide-icon.svg" />
+              </IconContainer>
+              <MenuTitle>민팃세이프 Guide</MenuTitle>
             </li>
-            <li className="mb-4">
-              <Link to="/download/aos" className="text-gray-800">
-                MINTIT safe Download
-              </Link>
+            <li
+              className="flex mb-6 items-center gap-1.5"
+              onClick={() => {
+                navigate("/download");
+                setIsOpen(false);
+              }}
+            >
+              <IconContainer>
+                <img src="/images/menu/download-icon.svg" />
+              </IconContainer>
+              <MenuTitle>민팃세이프 Download</MenuTitle>
             </li>
-            <li className="mb-4">
-              <Link to="/histories" className="text-gray-800">
-                내 삭제 이력
-              </Link>
+            <li
+              className="flex items-center gap-1.5"
+              onClick={() => {
+                navigate("/histories");
+                setIsOpen(false);
+              }}
+            >
+              <IconContainer>
+                <img src="/images/menu/history-icon.svg" />
+              </IconContainer>
+              <MenuTitle>내 삭제 이력</MenuTitle>
+            </li>
+          </ul>
+        </nav>
+        <nav className="mt-9 m-6">
+          <ul>
+            <li
+              className="flex mb-6 items-center gap-1.5"
+              onClick={() => {
+                usePopupStore.getState().openTerms();
+                setIsOpen(false);
+              }}
+            >
+              <MenuTitle>이용약관</MenuTitle>
+            </li>
+            <li
+              className="flex mb-6 items-center gap-1.5"
+              onClick={() => {
+                usePopupStore.getState().openPrivacy();
+                setIsOpen(false);
+              }}
+            >
+              <MenuTitle>개인정보 처리방침</MenuTitle>
             </li>
           </ul>
         </nav>

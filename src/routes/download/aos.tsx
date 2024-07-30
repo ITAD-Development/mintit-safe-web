@@ -4,10 +4,14 @@ import InstallStep from "../../components/InstallStep";
 
 export const Aos: React.FC = () => {
   return (
-    <div className="flex flex-col px-6">
+    <div className="flex flex-col px-3">
       <Button
         icon={<img src="/images/download/aos-download.svg" />}
         title="Android 버전 다운로드"
+        onClick={() => {
+          // console.log(import.meta.env.VITE_ANDROID_DOWNLOAD_URL);
+          location.href = import.meta.env.VITE_ANDROID_DOWNLOAD_URL;
+        }}
       />
       <div className="flex flex-col gap-10">
         <div className="flex flex-col gap-[40px]">
@@ -45,7 +49,12 @@ export const Aos: React.FC = () => {
                   </span>
                 </div>
               }
-              body={<img src="/images/download/aos/01.png" />}
+              body={
+                <img
+                  style={{ width: "100%" }}
+                  src="/images/download/aos/01.png"
+                />
+              }
               footerDescription={
                 "다운로드된 설치파일은  [내 파일] > [APK 설치파일]에서 확인 가능해요"
               }
@@ -68,7 +77,12 @@ export const Aos: React.FC = () => {
                 </span>
               </div>
             }
-            body={<img src="/images/download/aos/02.png" />}
+            body={
+              <img
+                style={{ width: "100%" }}
+                src="/images/download/aos/02.png"
+              />
+            }
           />
           <InstallStep
             step={3}
@@ -85,7 +99,12 @@ export const Aos: React.FC = () => {
                 </span>
               </div>
             }
-            body={<img src="/images/download/aos/03.png" />}
+            body={
+              <img
+                style={{ width: "100%" }}
+                src="/images/download/aos/03.png"
+              />
+            }
           />
           <InstallStep
             step={4}
@@ -99,7 +118,12 @@ export const Aos: React.FC = () => {
                 </span>
               </div>
             }
-            body={<img src="/images/download/aos/04.png" />}
+            body={
+              <img
+                style={{ width: "100%" }}
+                src="/images/download/aos/04.png"
+              />
+            }
             footerDescription={
               "민팃세이프를 실행하여 본인 인증 및 권한 동의와 안내에 따른 설정을 진행해 주세요"
             }

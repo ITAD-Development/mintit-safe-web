@@ -7,7 +7,7 @@ type Props = {
 const Auth: FC<Props> = ({ onAuth }) => {
   const [isInvalidPhoneNumber, setIsInvalidPhoneNumber] = useState(false);
   const [isPassPhoneNumber, setIsPassPhoneNumber] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("01086368010");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ const Auth: FC<Props> = ({ onAuth }) => {
               <div className="flex-1 flex h-full">
                 <input
                   className="flex px-4 w-full h-full text-zinc-800 text-sm items-center leading-[18px]"
-                  placeholder="010-000-0000"
+                  placeholder="0100000000"
                   value={phoneNumber}
                   onChange={(e) => {
                     setPhoneNumber(e.currentTarget.value);
@@ -50,13 +50,8 @@ const Auth: FC<Props> = ({ onAuth }) => {
                   }}
                 />
               </div>
-              <div className="w-6 h-6 relative">
-                <div className="w-6 h-6 left-0 top-0 absolute">
-                  <div className="w-[18px] h-[18px] left-[3px] top-[3px] absolute bg-zinc-400 rounded-full flex items-center justify-center">
-                    x
-                  </div>
-                </div>
-                <div className="w-2.5 h-2.5 left-[7px] top-[7px] absolute" />
+              <div className="w-6 h-6 relative mr-2">
+                <img src="/public/images/histories/delete-icon.svg" />
               </div>
             </div>
           </div>

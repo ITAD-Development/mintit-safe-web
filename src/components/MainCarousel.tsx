@@ -77,8 +77,8 @@ function MainCarousel() {
                   viewBox="0 0 20 16"
                   fill="none"
                 >
-                  <path d="M7.5 4V12" stroke="white" stroke-width="1.2" />
-                  <path d="M12.5 4V12" stroke="white" stroke-width="1.2" />
+                  <path d="M7.5 4V12" stroke="white" strokeWidth="1.2" />
+                  <path d="M12.5 4V12" stroke="white" strokeWidth="1.2" />
                 </svg>
               </div>
               <div
@@ -113,8 +113,8 @@ function MainCarousel() {
                 viewBox="0 0 16 16"
                 fill="none"
               >
-                <path d="M8 4V12" stroke="white" stroke-width="1.2" />
-                <path d="M12 8L4 8" stroke="white" stroke-width="1.2" />
+                <path d="M8 4V12" stroke="white" strokeWidth="1.2" />
+                <path d="M12 8L4 8" stroke="white" strokeWidth="1.2" />
               </svg>
             </div>
           </div>

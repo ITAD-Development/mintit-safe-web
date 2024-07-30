@@ -6,6 +6,7 @@ import Popup from "./Popup";
 const CertificationPopup: React.FC = () => {
   return (
     <Popup
+      title="삭제 인증서"
       onClose={() => {
         usePopupStore.getState().closeCertification();
       }}

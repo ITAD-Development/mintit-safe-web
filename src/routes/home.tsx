@@ -1,9 +1,11 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import Carousel from "../components/Carousel";
 import Layout from "../components/Layout";
 
 export const Home: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <Layout className="flex flex-col px-6 pt-[140px]">
       <img
@@ -66,7 +68,12 @@ export const Home: React.FC = () => {
             ’민팃세이프’를 설치할 수 있어요
           </span>
         </div>
-        <Button title="다운로드" />
+        <Button
+          title="다운로드"
+          onClick={() => {
+            navigate("/download");
+          }}
+        />
       </div>
 
       <div className="flex flex-col mb-[100px]">
