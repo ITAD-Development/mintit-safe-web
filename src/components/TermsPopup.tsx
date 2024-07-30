@@ -89,11 +89,11 @@ const TermsPopup: React.FC = () => {
   useEffect(() => {
     async function init() {
       const response = await axiosClient.get<TermsResponse>(
-        "/common/api-safe/terms?termsCategoryCode=TERMSAAPUS"
+        "/common/api-safe/terms?termsCategoryCode=TERMSAWEUS"
       );
       console.log(response.data);
-      setContents(response.data.data[1].termsContents);
-      setSelected(response.data.data[1].termsContents[0]);
+      setContents(response.data.data[0].termsContents);
+      setSelected(response.data.data[0].termsContents[0]);
     }
     init();
   }, []);
