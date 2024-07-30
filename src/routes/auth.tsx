@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Success: React.FC = () => {
+export const Auth: React.FC = () => {
   return (
     <div className="flex flex-col">
       <div className="h-[60px] pl-6 py-[11px] items-center inline-flex">
@@ -69,7 +69,11 @@ export const Success: React.FC = () => {
               </div>
             </div>
           </div>
-          <div />
+          <div className="w-[268px] h-12 px-5 py-[15px] bg-[#a0f0e0] rounded justify-center items-center inline-flex">
+            <div className="text-[#333333] text-sm font-extrabold font-['SUIT'] leading-[18px]">
+              본인 인증
+            </div>
+          </div>
         </div>
       </div>
     </div>

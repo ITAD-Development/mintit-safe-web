@@ -93,16 +93,6 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/auth",
-    async lazy() {
-      return import("./home").then((mod) => {
-        return {
-          Component: mod.Home,
-        };
-      });
-    },
-  },
-  {
     path: "/agreement/marketing",
     async lazy() {
       return import("./home").then((mod) => {
@@ -128,6 +118,16 @@ const router = createBrowserRouter([
       return import("./success").then((mod) => {
         return {
           Component: mod.Success,
+        };
+      });
+    },
+  },
+  {
+    path: "/auth",
+    async lazy() {
+      return import("./auth").then((mod) => {
+        return {
+          Component: mod.Auth,
         };
       });
     },
