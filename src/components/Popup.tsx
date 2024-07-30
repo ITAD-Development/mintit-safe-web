@@ -1,11 +1,12 @@
 import React, { ReactNode } from "react";
 
 type Props = {
+  title: string;
   children: ReactNode;
   onClose: () => void;
 };
 
-const Popup: React.FC<Props> = ({ children, onClose }) => {
+const Popup: React.FC<Props> = ({ title, children, onClose }) => {
   return (
     <div className="absolute flex flex-col top-0 right-0 bottom-0 left-0 inset-0 bg-white z-40">
       <div className="h-16 py-2 flex">
@@ -24,7 +25,7 @@ const Popup: React.FC<Props> = ({ children, onClose }) => {
           </div>
           <div className="grow shrink basis-0 flex-col justify-center items-start gap-3 flex">
             <div className="text-center text-zinc-800 text-base font-semibold leading-tight">
-              이용약관
+              {title}
             </div>
           </div>
           <div className="w-6 h-6 py-1.5 opacity-0 flex" />

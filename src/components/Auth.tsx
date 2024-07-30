@@ -3,8 +3,8 @@ import { Button } from "./Button";
 
 type Props = {
   onAuth: (phoneNumber: string) => void;
-}
-const Auth: FC<Props> = ({ onAuth}) => {
+};
+const Auth: FC<Props> = ({ onAuth }) => {
   const [isInvalidPhoneNumber, setIsInvalidPhoneNumber] = useState(false);
   const [isPassPhoneNumber, setIsPassPhoneNumber] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState("01086368010");
@@ -13,7 +13,7 @@ const Auth: FC<Props> = ({ onAuth}) => {
   useEffect(() => {
     setIsPassPhoneNumber(/^[0-9]{3}[0-9]{3,4}[0-9]{4}$/.test(phoneNumber));
   }, [phoneNumber]);
-  
+
   return (
     <>
       <div className="pt-3 pb-10 flex-col gap-2 flex">
@@ -30,9 +30,13 @@ const Auth: FC<Props> = ({ onAuth}) => {
             <div className=" text-zinc-800 text-base font-bold leading-tight">
               휴대폰 번호
             </div>
-            <div className={`h-12  bg-white rounded border ${isInvalidPhoneNumber && "border-red-600"} justify-start items-center gap-3 flex`}>
+            <div
+              className={`h-12  bg-white rounded border ${
+                isInvalidPhoneNumber && "border-red-600"
+              } justify-start items-center gap-3 flex`}
+            >
               <div className="flex-1 flex h-full">
-                <input 
+                <input
                   className="flex px-4 w-full h-full text-zinc-800 text-sm items-center leading-[18px]"
                   placeholder="010-000-0000"
                   value={phoneNumber}
@@ -40,28 +44,34 @@ const Auth: FC<Props> = ({ onAuth}) => {
                     setPhoneNumber(e.currentTarget.value);
                   }}
                   onBlur={() => {
-                    setIsInvalidPhoneNumber(!/^[0-9]{3}[0-9]{3,4}[0-9]{4}$/.test(phoneNumber));
+                    setIsInvalidPhoneNumber(
+                      !/^[0-9]{3}[0-9]{3,4}[0-9]{4}$/.test(phoneNumber)
+                    );
                   }}
                 />
               </div>
               <div className="w-6 h-6 relative">
                 <div className="w-6 h-6 left-0 top-0 absolute">
-                  <div className="w-[18px] h-[18px] left-[3px] top-[3px] absolute bg-zinc-400 rounded-full" />
+                  <div className="w-[18px] h-[18px] left-[3px] top-[3px] absolute bg-zinc-400 rounded-full flex items-center justify-center">
+                    x
+                  </div>
                 </div>
                 <div className="w-2.5 h-2.5 left-[7px] top-[7px] absolute" />
               </div>
             </div>
           </div>
-          {isInvalidPhoneNumber && <div className="justify-start items-center gap-1 flex">
-            <div className="w-3 h-3 relative">
-              <div className="w-3 h-3 left-0 top-0 absolute bg-red-500 rounded-full" />
-              <div className="w-[1.50px] h-[1.50px] left-[5.25px] top-[7.50px] absolute bg-white rounded-full" />
-              <div className="w-[1.50px] h-[3.75px] left-[5.25px] top-[3px] absolute bg-white rounded-[64px]" />
+          {isInvalidPhoneNumber && (
+            <div className="justify-start items-center gap-1 flex">
+              <div className="w-3 h-3 relative">
+                <div className="w-3 h-3 left-0 top-0 absolute bg-red-500 rounded-full" />
+                <div className="w-[1.50px] h-[1.50px] left-[5.25px] top-[7.50px] absolute bg-white rounded-full" />
+                <div className="w-[1.50px] h-[3.75px] left-[5.25px] top-[3px] absolute bg-white rounded-[64px]" />
+              </div>
+              <div className="w-[284px] text-red-500 text-xs">
+                휴대폰 번호를 정확히 입력해주세요.
+              </div>
             </div>
-            <div className="w-[284px] text-red-500 text-xs">
-              휴대폰 번호를 정확히 입력해주세요.
-            </div>
-          </div>}
+          )}
         </div>
         <div className="h-[266px] flex-col gap-5 flex">
           <div className="text-black text-lg font-extrabold leading-normal">
@@ -116,9 +126,14 @@ const Auth: FC<Props> = ({ onAuth}) => {
             </div>
             <div className="justify-start items-center gap-2 flex">
               <div className="w-5 h-5 relative">
-                <input type="checkbox" className="border-teal-100" checked={isChecked} onChange={() => {
-                  setIsChecked(!isChecked);
-                }}/>
+                <input
+                  type="checkbox"
+                  className="border-teal-100"
+                  checked={isChecked}
+                  onChange={() => {
+                    setIsChecked(!isChecked);
+                  }}
+                />
               </div>
               <div>
                 <span className="text-zinc-800 text-sm font-extrabold leading-[18px]">
@@ -131,9 +146,13 @@ const Auth: FC<Props> = ({ onAuth}) => {
             </div>
           </div>
         </div>
-        <Button title="인증 요청 하기" isDisabled={!isChecked || !isPassPhoneNumber || isInvalidPhoneNumber} onClick={() => {
-          onAuth(phoneNumber);
-        }}/>
+        <Button
+          title="인증 요청 하기"
+          isDisabled={!isChecked || !isPassPhoneNumber || isInvalidPhoneNumber}
+          onClick={() => {
+            onAuth(phoneNumber);
+          }}
+        />
       </div>
     </>
   );

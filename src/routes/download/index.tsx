@@ -6,7 +6,7 @@ import { PageTitle } from "../../components/PageTitle";
 
 export const Download: React.FC = () => {
   return (
-    <Layout className="flex flex-col mb-12">
+    <Layout className="flex flex-col mb-12 pt-[140px]">
       <div className="flex flex-col gap-[12px] px-6">
         <PageTitle
           icon={<img src="/images/download/download.svg" />}

@@ -57,7 +57,7 @@ export const Histories: React.FC = () => {
   }, [accessToken, memberId]);
 
   return (
-    <Layout className="flex flex-col px-6 pb-[60px]">
+    <Layout className="flex flex-col px-6 pt-[140px] pb-[60px]">
       <PageTitle
         icon={<img src="/images/list/server.svg" />}
         title="내 삭제 내역"

@@ -5,7 +5,7 @@ import Layout from "../components/Layout";
 
 export const Home: React.FC = () => {
   return (
-    <Layout className="flex flex-col relative px-6 pt-[40px]">
+    <Layout className="flex flex-col px-6 pt-[140px]">
       <img
         src="/images/home-bg.svg"
         className="w-[105px] h-[91px] absolute top-[15px] right-[-7px]"

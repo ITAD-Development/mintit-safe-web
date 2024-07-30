@@ -102,6 +102,7 @@ const TermsPopup: React.FC = () => {
 
   return (
     <Popup
+      title="이용약관"
       onClose={() => {
         usePopupStore.getState().closeTerms();
       }}

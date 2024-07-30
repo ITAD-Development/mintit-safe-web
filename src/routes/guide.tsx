@@ -7,7 +7,7 @@ import { PageTitle } from "../components/PageTitle";
 
 export const Guide: FC = () => {
   return (
-    <Layout className="flex flex-col gap-[40px] px-6 pt-[40px]">
+    <Layout className="flex flex-col gap-[40px] px-6 pt-[140px]">
       <div className="flex flex-col gap-[12px]">
         <PageTitle
           icon={<img src="/images/guide/book.svg" />}

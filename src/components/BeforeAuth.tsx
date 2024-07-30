@@ -2,10 +2,12 @@ import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import axios from "axios";
 import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import Auth from "../components/Auth";
 import Loading from "../components/Loading";
 
 export const BeforeAuth: React.FC = () => {
+  const navigate = useNavigate();
   const [identificationId, setIdentificationId] = useLocalStorage(
     "identificationId",
     ""
@@ -31,8 +33,8 @@ export const BeforeAuth: React.FC = () => {
             popupGubun: "",
             customize: "Mobile",
             gender: "",
-            successRedirectUrl: "http://192.168.20.61:5173/success",
-            failRedirectUrl: "http://192.168.20.61:5173/failure",
+            successRedirectUrl: import.meta.env.VITE_SUCCESS_REDIRECT_URL,
+            failRedirectUrl: import.meta.env.VITE_FAIL_REDIRECT_URL,
             mobileNum: phoneNumber,
           },
           {
