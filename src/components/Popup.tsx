@@ -11,7 +11,7 @@ const Popup: React.FC<Props> = ({ title, children, onClose }) => {
     <div className="absolute flex flex-col top-0 right-0 bottom-0 left-0 inset-0 bg-white z-40">
       <div className="h-16 py-2 flex">
         <div className="h-12 px-6 py-3 backdrop-blur-xl justify-start items-center gap-3 flex">
-          <div className="w-6 h-6 relative" onClick={onClose}>
+          <div className="w-6 h-6 relative cursor-pointer" onClick={onClose}>
             <svg
               width="24"
               height="24"

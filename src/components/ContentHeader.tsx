@@ -28,9 +28,10 @@ const ContentHeader: FC<ContentHeaderProps> = ({ setIsOpen, isOpen }) => {
           </Link>
         </div>
       </div>
-      <header className="flex justify-between items-center px-6 py-[10px] border-b	 ">
+      <header className="flex justify-between items-center px-6 py-[10px] border-b">
         <img src="/square-logo.svg" />
         <img
+          className="cursor-pointer"
           src="/hamburgur.svg"
           onClick={() => {
             setIsOpen(!isOpen);

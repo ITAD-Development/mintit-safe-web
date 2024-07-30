@@ -44,6 +44,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
         <div className="flex justify-between items-center px-6 py-[10px]	 ">
           <img src="/square-logo.svg" />
           <img
+            className="cursor-pointer"
             src="/images/menu/close-icon.svg"
             onClick={() => {
               setIsOpen(!isOpen);
@@ -53,7 +54,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
         <nav className="mt-5 m-6 pb-[92px] border-b-2">
           <ul>
             <li
-              className="flex mb-6 items-center gap-1.5"
+              className="flex mb-6 items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 navigate("/");
                 setIsOpen(false);
@@ -65,7 +66,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
               <MenuTitle>민팃세이프 소개</MenuTitle>
             </li>
             <li
-              className="flex mb-6 items-center gap-1.5"
+              className="flex mb-6 items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 navigate("/guide");
                 setIsOpen(false);
@@ -77,7 +78,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
               <MenuTitle>민팃세이프 Guide</MenuTitle>
             </li>
             <li
-              className="flex mb-6 items-center gap-1.5"
+              className="flex mb-6 items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 navigate("/download");
                 setIsOpen(false);
@@ -89,7 +90,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
               <MenuTitle>민팃세이프 Download</MenuTitle>
             </li>
             <li
-              className="flex items-center gap-1.5"
+              className="flex items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 navigate("/histories");
                 setIsOpen(false);
@@ -105,7 +106,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
         <nav className="mt-9 m-6">
           <ul>
             <li
-              className="flex mb-6 items-center gap-1.5"
+              className="flex mb-6 items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 usePopupStore.getState().openTerms();
                 setIsOpen(false);
@@ -114,7 +115,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
               <MenuTitle>이용약관</MenuTitle>
             </li>
             <li
-              className="flex mb-6 items-center gap-1.5"
+              className="flex mb-6 items-center gap-1.5 cursor-pointer"
               onClick={() => {
                 usePopupStore.getState().openPrivacy();
                 setIsOpen(false);
