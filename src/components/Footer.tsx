@@ -7,8 +7,15 @@ const Footer: React.FC = () => {
       <div className="flex justify-between items-center mb-[22px]">
         <img src="/logo.svg" />
         <div className="flex gap-[10px]">
-          <img src="/youtube.svg" />
-          <img src="/instagram.svg" />
+          <a
+            href="https://www.youtube.com/channel/UC5bT0Fy-Ui6jJLPvw0P051g"
+            target="_blank"
+          >
+            <img src="/youtube.svg" />
+          </a>
+          <a href="https://www.instagram.com/mintit_official/" target="_blank">
+            <img src="/instagram.svg" />
+          </a>
         </div>
       </div>
       <div className="grow shrink basis-0 flex-col justify-start items-start gap-4 inline-flex">
