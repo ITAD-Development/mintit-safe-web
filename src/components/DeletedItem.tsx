@@ -7,6 +7,7 @@ export type DeletedItemProps = {
   imei: string;
   model: string;
   date: string;
+  onClick?: () => void;
 };
 
 const DeletedItem: React.FC<DeletedItemProps> = ({
@@ -15,10 +16,17 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
   imei,
   model,
   date,
+  onClick,
 }) => {
   if (!isSelected) {
     return (
-      <div className="p-5 rounded border border-neutral-200 flex-col justify-start items-start gap-3 flex">
+      <div
+        className="p-5 rounded border border-neutral-200 flex-col justify-start items-start gap-3 flex cursor-pointer"
+        onClick={() => {
+          usePopupStore.getState().openCertification();
+          onClick?.();
+        }}
+      >
         <div className="text-zinc-600 text-sm leading-[18px]">{petName}</div>
         <div className="justify-start items-start gap-5 flex">
           <div className="text-zinc-600 text-sm leading-[18px]">
@@ -45,6 +53,7 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
       className={`p-5 bg-teal-50 rounded border border-teal-300 flex-col justify-start items-start gap-3 flex`}
       onClick={() => {
         usePopupStore.getState().openCertification();
+        onClick?.();
       }}
     >
       <div className="text-black text-sm font-bold leading-[18px]">
@@ -59,11 +68,11 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
           Date
         </div>
         <div className=" text-black text-sm font-bold leading-[18px]">
-          12345-67-89123231
+          {imei}
           <br />
-          SF-N124SH
+          {model}
           <br />
-          2024-05-01
+          {date}
         </div>
       </div>
     </div>

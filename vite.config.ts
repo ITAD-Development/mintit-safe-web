@@ -21,7 +21,7 @@ export default ({ mode }: ConfigEnv) => {
     "/branch/api-admin": env.VITE_MAIN_API_URL,
     "/file/api-admin": env.VITE_FILE_API_URL,
     "/statistics/api-admin": env.VITE_MAIN_API_URL,
-    "/member/api-safe": env.VITE_MEMBER_API_URL,
+    "/member/api-safe": env.VITE_MAIN_API_URL,
     "/device/api-safe": env.VITE_MAIN_API_URL,
   };
 

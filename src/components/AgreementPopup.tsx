@@ -8,7 +8,7 @@ const AgreementPopup: React.FC = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
   return (
     <Popup
-      title="약관 동의 내역"
+      title="서비스 동의 내역"
       onClose={() => {
         usePopupStore.getState().closeAgreement();
       }}

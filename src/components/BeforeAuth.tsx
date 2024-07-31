@@ -1,6 +1,6 @@
 import { useAuthStore } from "@hooks/zustand/useAuthStore";
+import axiosClient from "@libs/axiosClient";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import axios from "axios";
 import React, { useCallback } from "react";
 import Auth from "../components/Auth";
 import Loading from "../components/Loading";
@@ -22,7 +22,7 @@ export const BeforeAuth: React.FC = () => {
       );
 
       try {
-        const response = await axios.post(
+        const response = await axiosClient.post(
           `/member/api-safe/pass-identifications`,
           {
             channelCode: "CHNLMINWEB",
@@ -40,10 +40,6 @@ export const BeforeAuth: React.FC = () => {
               "DRP-SERVICE-ID": serviceId,
               Authorization: `Bearer ${import.meta.env.VITE_ALIMTALK_TOKEN}`,
             },
-            baseURL:
-              Boolean(import.meta.env.VITE_USE_PROXY) !== true
-                ? import.meta.env.VITE_MAIN_API_URL
-                : undefined,
           }
         );
 
@@ -62,17 +58,8 @@ export const BeforeAuth: React.FC = () => {
 
   const onConfirm = useCallback(async () => {
     try {
-      const response = await axios.get(
-        `/member/api-safe/pass-identifications/${identificationId}/token`,
-        {
-          headers: {
-            "DRP-SERVICE-ID": serviceId,
-          },
-          baseURL:
-            Boolean(import.meta.env.VITE_USE_PROXY) !== true
-              ? import.meta.env.VITE_MAIN_API_URL
-              : undefined,
-        }
+      const response = await axiosClient.get(
+        `/member/api-safe/pass-identifications/${identificationId}/token`
       );
 
       console.log(response.data);

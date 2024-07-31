@@ -89,7 +89,7 @@ const TermsPopup: React.FC = () => {
   useEffect(() => {
     async function init() {
       const response = await axiosClient.get<TermsResponse>(
-        "/common/api-safe/terms?termsCategoryCode=TERMSAWEUS"
+        "/common/api-safe/terms?id=znqkVo6TRkCptW7Ae796Ow&sort=createdAt,desc"
       );
       console.log(response.data);
       setContents(response.data.data[0].termsContents);

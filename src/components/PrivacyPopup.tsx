@@ -89,7 +89,7 @@ const PrivacyPopup: React.FC = () => {
   useEffect(() => {
     async function init() {
       const response = await axiosClient.get<TermsResponse>(
-        "/common/api-safe/terms?termsCategoryCode=TERMSAWEPR"
+        "/common/api-safe/terms?id=F3BJe5hqTP-XrkrZezDWAQ&sort=createdAt,desc"
       );
       console.log(response.data);
       setContents(response.data.data[0].termsContents);

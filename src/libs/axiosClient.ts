@@ -129,10 +129,6 @@ axiosClient.interceptors.request.use(
     //   isRefreshTokenExpired
     // );
 
-    if (config.url?.includes("refresh-token") === false) {
-      await refresh();
-    }
-
     let accessToken = useAuthStore.getState().accessToken;
     const serviceId = useAuthStore.getState().serviceId;
 
@@ -145,11 +141,13 @@ axiosClient.interceptors.request.use(
       headers: {
         "DRP-SERVICE-ID": serviceId,
         CHNLDRPADM: "DRP-CHANNEL",
+        "DRP-CHANNEL": "CHNLSAFE0C",
         Authorization: accessToken ? `Bearer ${accessToken}` : undefined,
         ...headers,
       } as AxiosRequestHeaders & {
         "DRP-SERVICE-ID": string;
         CHNLDRPADM: string;
+        "DRP-CHANNEL": string;
       },
       ...rest,
     };

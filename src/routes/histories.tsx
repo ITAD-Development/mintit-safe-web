@@ -58,6 +58,7 @@ export const Histories: React.FC = () => {
   const accessToken = useAuthStore((state) => state.accessToken);
   const memberId = useAuthStore((state) => state.memberId);
   const [data, setData] = useState<Data[]>([]);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
 
   useEffect(() => {
     async function init() {
@@ -118,6 +119,10 @@ export const Histories: React.FC = () => {
                 imei={row.device.imei}
                 model={row.device.deviceModel.number}
                 date={row.createdAt}
+                isSelected={row.id === selectedId}
+                onClick={() => {
+                  setSelectedId(row.id);
+                }}
               />
             );
           })}
