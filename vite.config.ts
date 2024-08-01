@@ -23,6 +23,7 @@ export default ({ mode }: ConfigEnv) => {
     "/statistics/api-admin": env.VITE_MAIN_API_URL,
     "/member/api-safe": env.VITE_MAIN_API_URL,
     "/device/api-safe": env.VITE_MAIN_API_URL,
+    "/rest/api": env.VITE_MINTIT_API_URL,
   };
 
   const proxy = Object.entries(proxies).reduce<CommonServerOptions["proxy"]>(

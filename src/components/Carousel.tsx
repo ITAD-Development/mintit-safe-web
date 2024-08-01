@@ -38,14 +38,20 @@ function Carousel() {
         ref={contentRef}
         className="flex items-center justify-center"
       >
-        <div style={{ width }}>
+        <div
+          style={{
+            width,
+            boxShadow: "8px 8px 30px 0px rgba(58, 58, 60, 0.14)",
+          }}
+        >
           <Swiper
             id="carousel"
             modules={[Pagination]}
             spaceBetween={0}
             slidesPerView={1}
-            onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
-            onSwiper={(swiper) => console.log(swiper)}
+            slidesPerGroup={1}
+            loop
+            onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             ref={swiperRef}
           >
             <SwiperSlide>

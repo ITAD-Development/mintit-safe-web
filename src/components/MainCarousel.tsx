@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import axios from "axios";
+import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
@@ -11,6 +12,35 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 function MainCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
+  const [data, setData] = useState<
+    {
+      id: number;
+      app_banner_img_path: string;
+      mobile_web_banner_img_path: string;
+      description: string;
+      title: string;
+      url: string;
+      viewable: boolean;
+    }[]
+  >([]);
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const response = await axios.get("/rest/api/evt/list?is_valid=true", {
+          baseURL:
+            Boolean(import.meta.env.VITE_USE_PROXY) !== true
+              ? import.meta.env.VITE_MINTIT_API_URL
+              : undefined,
+        });
+        setData(response.data.dataset);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetch();
+  }, []);
+
   return (
     <>
       <div style={{ height: 453, width: 320 }} className="relative">
@@ -19,47 +49,29 @@ function MainCarousel() {
           modules={[Pagination, Autoplay]}
           slidesPerView={1}
           spaceBetween={0}
+          slidesPerGroup={1}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
-          onSwiper={(swiper) => console.log(swiper)}
           loop={true}
           autoplay={{
             delay: 5000,
           }}
           ref={swiperRef}
         >
-          <SwiperSlide>
-            <a target="_blank" href="https://mintit.co.kr/carbonPoint">
-              <img
-                src="https://d11o63lgw0n6wa.cloudfront.net/images/events/36/main.png"
-                alt="메인 이벤트 배너"
-                style={{
-                  borderRadius: 10,
-                }}
-              />
-            </a>
-          </SwiperSlide>
-          <SwiperSlide>
-            <a target="_blank" href="https://mintit.co.kr/galaxy_reward">
-              <img
-                src="https://d11o63lgw0n6wa.cloudfront.net/images/events/81/main.png"
-                alt="메인 이벤트 배너"
-                style={{
-                  borderRadius: 10,
-                }}
-              />
-            </a>
-          </SwiperSlide>{" "}
-          <SwiperSlide>
-            <a target="_blank" href="https://mintit.co.kr/galaxy_reward#watch">
-              <img
-                src="https://d11o63lgw0n6wa.cloudfront.net/images/events/82/main.png"
-                alt="메인 이벤트 배너"
-                style={{
-                  borderRadius: 10,
-                }}
-              />
-            </a>
-          </SwiperSlide>
+          {data
+            .filter((row) => row.viewable)
+            .map((row) => (
+              <SwiperSlide key={row.id}>
+                <a target="_blank" href={row.url}>
+                  <img
+                    src={row.app_banner_img_path}
+                    alt={row.title}
+                    style={{
+                      borderRadius: 10,
+                    }}
+                  />
+                </a>
+              </SwiperSlide>
+            ))}
         </Swiper>
         <div className="flex justify-center absolute z-10 bottom-3 right-3">
           <div className="self-stretch pl-0.5 pr-1 py-0.5 bg-zinc-800/opacity-40 rounded-sm flex-col justify-center items-center gap-2.5 inline-flex">
