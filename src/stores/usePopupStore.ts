@@ -5,6 +5,7 @@ type PopupStoreParams = {
   isOpenPrivacy: boolean;
   isOpenCertification: boolean;
   isOpenAgreement: boolean;
+  fileUrl?: string;
 };
 
 type PopupStoreActions = {
@@ -12,7 +13,7 @@ type PopupStoreActions = {
   closeTerms: () => void;
   openPrivacy: () => void;
   closePrivacy: () => void;
-  openCertification: () => void;
+  openCertification: (fileUrl: string) => void;
   closeCertification: () => void;
   openAgreement: () => void;
   closeAgreement: () => void;
@@ -23,12 +24,15 @@ const usePopupStore = create<PopupStoreParams & PopupStoreActions>((set) => ({
   isOpenPrivacy: false,
   isOpenCertification: false,
   isOpenAgreement: false,
+  fileUrl: undefined,
   openTerms: () => set({ isOpenTerms: true }),
   closeTerms: () => set({ isOpenTerms: false }),
   openPrivacy: () => set({ isOpenPrivacy: true }),
   closePrivacy: () => set({ isOpenPrivacy: false }),
-  openCertification: () => set({ isOpenCertification: true }),
-  closeCertification: () => set({ isOpenCertification: false }),
+  openCertification: (fileUrl: string) =>
+    set({ isOpenCertification: true, fileUrl }),
+  closeCertification: () =>
+    set({ isOpenCertification: false, fileUrl: undefined }),
   openAgreement: () => set({ isOpenAgreement: true }),
   closeAgreement: () => set({ isOpenAgreement: false }),
 }));

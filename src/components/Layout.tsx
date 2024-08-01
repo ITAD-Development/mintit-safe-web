@@ -51,12 +51,13 @@ const Layout: FC<PropsWithChildren<Props>> = ({
 
   return (
     <div
-      className="h-screen flex flex-col"
+      className="flex flex-col"
       style={{
         backgroundImage: "url('/images/bg.png')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
+        height: "100dvh",
       }}
     >
       <Header />
@@ -73,7 +74,12 @@ const Layout: FC<PropsWithChildren<Props>> = ({
           <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-full">
             <div className="flex flex-col h-full overflow-hidden relative">
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
-              <div className="h-screen" ref={congtentRef}>
+              <div
+                ref={congtentRef}
+                style={{
+                  height: "100dvh",
+                }}
+              >
                 <div
                   style={{ height: contentHeight }}
                   className="flex flex-col no-scrollbar overflow-y-scroll"

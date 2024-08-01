@@ -1,11 +1,12 @@
+import { Button } from "@components/Button";
 import { usePdf } from "@mikecousins/react-pdf";
 import React, { useMemo, useRef } from "react";
-import usePopupStore from "../stores/usePopupStore";
-import { Button } from "./Button";
-import Popup from "./Popup";
 
-const CertificationPopup: React.FC = () => {
-  const fileUrl = usePopupStore((state) => state.fileUrl);
+export const Certificate: React.FC = () => {
+  const fileUrl = useMemo(() => {
+    const url = new URLSearchParams(window.location.search).get("file-url");
+    return decodeURIComponent(url || "");
+  }, []);
 
   const canvasRef = useRef(null);
 
@@ -29,13 +30,12 @@ const CertificationPopup: React.FC = () => {
   });
 
   return (
-    <Popup
-      title="삭제 인증서"
-      onClose={() => {
-        usePopupStore.getState().closeCertification();
+    <div
+      style={{
+        padding: 24,
       }}
     >
-      <div className="flex flex-1">
+      <div className="flex flex-1 ">
         <canvas
           ref={canvasRef}
           style={{
@@ -64,8 +64,6 @@ const CertificationPopup: React.FC = () => {
           }}
         />
       </div>
-    </Popup>
+    </div>
   );
 };
-
-export default CertificationPopup;

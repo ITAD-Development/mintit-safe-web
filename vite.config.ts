@@ -24,6 +24,8 @@ export default ({ mode }: ConfigEnv) => {
     "/member/api-safe": env.VITE_MAIN_API_URL,
     "/device/api-safe": env.VITE_MAIN_API_URL,
     "/rest/api": env.VITE_MINTIT_API_URL,
+    "/customer/api-safe": env.VITE_MAIN_API_URL,
+    "/deletion-certificate": "https://static.drp-dev.mintit.ai/",
   };
 
   const proxy = Object.entries(proxies).reduce<CommonServerOptions["proxy"]>(

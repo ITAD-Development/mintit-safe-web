@@ -1,4 +1,5 @@
 import { BeforeAuth } from "@components/BeforeAuth";
+import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
 import styled from "@emotion/styled";
 import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import axiosClient from "@libs/axiosClient";
@@ -18,6 +19,7 @@ type Data = {
       name: string;
     };
   };
+  fileUrl: string;
   deletionRequestTypeCode: string;
   atmId: string | null;
   deletionAppTypeCode: string;
@@ -88,7 +90,13 @@ export const Histories: React.FC = () => {
   }, [accessToken, memberId]);
 
   return (
-    <Layout className="flex flex-col px-6 pt-[140px] pb-[60px]">
+    <Layout
+      className="flex flex-col px-6 pb-[60px]"
+      enableAppDownload={false}
+      style={{
+        paddingTop: APP_TOP_MENU_HEIGHT,
+      }}
+    >
       <PageTitle
         icon={<img src="/images/list/server.svg" />}
         title="내 삭제 내역"
@@ -119,6 +127,7 @@ export const Histories: React.FC = () => {
                 imei={row.device.imei}
                 model={row.device.deviceModel.number}
                 date={row.createdAt}
+                fileUrl={row.fileUrl}
                 isSelected={row.id === selectedId}
                 onClick={() => {
                   setSelectedId(row.id);

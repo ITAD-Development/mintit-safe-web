@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useAuthStore } from "@hooks/zustand/useAuthStore";
+import axiosClient from "@libs/axiosClient";
+import React, { useCallback, useEffect, useState } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import { Button } from "./Button";
 import Popup from "./Popup";
@@ -6,6 +8,28 @@ import Switch from "./Switch";
 
 const AgreementPopup: React.FC = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+
+  const saveAgreement = useCallback((checked: boolean) => {
+    const memberId = useAuthStore.getState().memberId;
+    axiosClient.post("/customer/api-safe/marketing-agreements", {
+      memberId,
+      termsId: "termsIdabc",
+      agreementYn: checked ? "Y" : "N",
+    });
+  }, []);
+
+  const fetchAgreement = useCallback(async () => {
+    const memberId = useAuthStore.getState().memberId;
+    const response = axiosClient.get(
+      `/customer/api-safe/marketing-agreements?memberId=${memberId}&termsId=termsIdabc`
+    );
+    setIsChecked(response.data.data.agreementYn === "Y");
+  }, []);
+
+  useEffect(() => {
+    fetchAgreement();
+  }, [fetchAgreement]);
+
   return (
     <Popup
       title="서비스 동의 내역"
@@ -24,7 +48,7 @@ const AgreementPopup: React.FC = () => {
                 마케팅 정보 수신:
               </span>
               <span className="text-[#b3b3b3] text-base font-extrabold font-['SUIT'] leading-tight">
-                OFF
+                {isChecked ? "ON" : "OFF"}
               </span>
             </div>
             <Switch
@@ -39,7 +63,12 @@ const AgreementPopup: React.FC = () => {
           </div>
         </div>
       </div>
-      <Button title="변경 저장" />
+      <Button
+        title="변경 저장"
+        onClick={() => {
+          saveAgreement(isChecked);
+        }}
+      />
     </Popup>
   );
 };

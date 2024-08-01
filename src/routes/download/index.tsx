@@ -1,3 +1,4 @@
+import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Layout from "../../components/Layout";
@@ -6,7 +7,13 @@ import { PageTitle } from "../../components/PageTitle";
 
 export const Download: React.FC = () => {
   return (
-    <Layout className="flex flex-col mb-12 pt-[140px]">
+    <Layout
+      className="flex flex-col mb-12"
+      enableAppDownload={false}
+      style={{
+        paddingTop: APP_TOP_MENU_HEIGHT,
+      }}
+    >
       <div className="flex flex-col gap-[12px] px-6">
         <PageTitle
           icon={<img src="/images/download/download.svg" />}

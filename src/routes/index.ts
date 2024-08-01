@@ -133,6 +133,16 @@ const router = createBrowserRouter([
     },
   },
   {
+    path: "/certificate",
+    async lazy() {
+      return import("./certificate").then((mod) => {
+        return {
+          Component: mod.Certificate,
+        };
+      });
+    },
+  },
+  {
     path: "/failure",
     async lazy() {
       return import("./failure").then((mod) => {
