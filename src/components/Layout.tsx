@@ -13,12 +13,14 @@ import TermsPopup from "./TermsPopup";
 type Props = {
   className?: string;
   style?: React.CSSProperties;
+  enableAppDownload?: boolean;
 };
 
 const Layout: FC<PropsWithChildren<Props>> = ({
   children,
   className,
   style,
+  enableAppDownload = true,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isOpenTerms = usePopupStore((state) => state.isOpenTerms);
@@ -76,7 +78,11 @@ const Layout: FC<PropsWithChildren<Props>> = ({
                   style={{ height: contentHeight }}
                   className="flex flex-col no-scrollbar overflow-y-scroll"
                 >
-                  <ContentHeader isOpen={isOpen} setIsOpen={setIsOpen} />
+                  <ContentHeader
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    enableAppDownload={enableAppDownload}
+                  />
                   <>
                     <main className={`flex-1 ${className}`} style={style}>
                       {children}

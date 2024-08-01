@@ -8,7 +8,7 @@ export const Installation: React.FC = () => {
     <div className="flex flex-col gap-10">
       <TabMenu activeIndex={0} />
       <div className="flex flex-col gap-[40px] px-6">
-        <div className="py-6 bg-green-50 rounded-[9.54px] flex-col justify-center items-center gap-5 inline-flex">
+        <div className="px-6 py-6 bg-green-50 rounded-[9.54px] flex-col justify-center items-center gap-5 inline-flex">
           <div className="text-center text-stone-900 text-base font-extrabold leading-tight">
             안심하고 다운로드하세요!
           </div>

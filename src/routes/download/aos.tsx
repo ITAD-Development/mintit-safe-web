@@ -13,9 +13,9 @@ export const Aos: React.FC = () => {
           location.href = import.meta.env.VITE_ANDROID_DOWNLOAD_URL;
         }}
       />
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 mt-[60px]">
         <div className="flex flex-col gap-[40px]">
-          <div className="py-6 bg-green-50 rounded-[9.54px] flex-col justify-center items-center gap-5 inline-flex">
+          <div className="px-6 py-6 bg-green-50 rounded-[9.54px] flex-col justify-center items-center gap-5 inline-flex">
             <div className="text-center text-stone-900 text-base font-extrabold leading-tight">
               안심하고 다운로드하세요!
             </div>

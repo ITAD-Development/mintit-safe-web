@@ -1,3 +1,4 @@
+import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
 import { FC } from "react";
 import { Button } from "../components/Button";
 import InstallStep from "../components/InstallStep";
@@ -7,7 +8,13 @@ import { PageTitle } from "../components/PageTitle";
 
 export const Guide: FC = () => {
   return (
-    <Layout className="flex flex-col gap-[40px] px-6 pt-[140px]">
+    <Layout
+      className={`flex flex-col gap-[40px] px-6`}
+      enableAppDownload={false}
+      style={{
+        paddingTop: APP_TOP_MENU_HEIGHT,
+      }}
+    >
       <div className="flex flex-col gap-[12px]">
         <PageTitle
           icon={<img src="/images/guide/book.svg" />}
