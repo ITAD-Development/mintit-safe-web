@@ -2,9 +2,17 @@ const Header = () => {
   return (
     <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] border-b-2 border-b-white">
       <div className="flex flex-1 flex-row items-center gap-5">
-        <div className="w-[106px] h-[34px] pl-[3px] pr-1 py-1.5 bg-teal-300 rounded-lg shadow justify-center items-center inline-flex">
+        <div
+          className="pl-[3px] pr-1 py-1.5 rounded-lg shadow justify-center items-center inline-flex"
+          style={{
+            width: 106,
+            height: 34,
+            backgroundColor: "#53D9C1",
+            boxShadow: "3.886px 3.886px 14.571px 0px rgba(3, 53, 43, 0.08)",
+          }}
+        >
           <div
-            className="text-white text-xs font-bold font-['Inter'] capitalize leading-snug tracking-wide"
+            className="text-white text-xs font-bold font-['Inter']"
             onClick={() => {
               location.href = import.meta.env.VITE_ANDROID_DOWNLOAD_URL;
             }}
@@ -12,14 +20,25 @@ const Header = () => {
             Android 다운로드
           </div>
         </div>
-        <div className="w-[106px] h-[34px] pl-[18px] pr-[17px] py-1.5 bg-emerald-50 rounded-lg shadow justify-center items-center inline-flex">
+        <div
+          className="pl-[18px] pr-[17px] py-1.5 bg-emerald-50 rounded-lg shadow justify-center items-center inline-flex"
+          style={{
+            width: 106,
+            height: 34,
+            backgroundColor: "#E7FBF7",
+            boxShadow: "3.886px 3.886px 14.571px 0px rgba(3, 53, 43, 0.08)",
+          }}
+        >
           <div
-            className="text-emerald-400 text-xs font-bold font-['Inter'] capitalize leading-snug tracking-wide"
+            className=" text-xs font-bold font-['Inter']"
+            style={{
+              color: "#49B59F",
+            }}
             onClick={() => {
               location.href = import.meta.env.VITE_IOS_DOWNLOAD_URL;
             }}
           >
-            iOS 다운로드
+            IOS 다운로드
           </div>
         </div>
       </div>
