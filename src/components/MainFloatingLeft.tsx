@@ -8,7 +8,7 @@ const Button: FC<{
 }> = ({ title, onClick }) => {
   return (
     <div
-      className="h-10 px-3.5 py-2.5 bg-white rounded-[500px] border justify-center items-center gap-2.5 inline-flex"
+      className="h-10 px-3.5 py-2.5 bg-white rounded-[500px] border justify-center items-center gap-2.5 inline-flex cursor-pointer"
       style={{
         borderColor: "#53D9C1",
       }}
@@ -61,9 +61,12 @@ const MainFloatingLeft = () => {
         </div>
         <div className="flex flex-row gap-2 w-[300px] flex-wrap">
           <div
-            className="w-10 h-10 p-2.5 rounded-[500px]  justify-center items-center inline-flex"
+            className="w-10 h-10 p-2.5 rounded-[500px]  justify-center items-center inline-flex cursor-pointer"
             style={{
               backgroundColor: "#53D9C1",
+            }}
+            onClick={() => {
+              navigate("/");
             }}
           >
             <svg
