@@ -12,9 +12,14 @@ import TermsPopup from "./TermsPopup";
 
 type Props = {
   className?: string;
+  style?: React.CSSProperties;
 };
 
-const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
+const Layout: FC<PropsWithChildren<Props>> = ({
+  children,
+  className,
+  style,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const isOpenTerms = usePopupStore((state) => state.isOpenTerms);
   const isOpenPrivacy = usePopupStore((state) => state.isOpenPrivacy);
@@ -73,7 +78,9 @@ const Layout: FC<PropsWithChildren<Props>> = ({ children, className }) => {
                 >
                   <ContentHeader isOpen={isOpen} setIsOpen={setIsOpen} />
                   <>
-                    <main className={`flex-1 ${className}`}>{children}</main>
+                    <main className={`flex-1 ${className}`} style={style}>
+                      {children}
+                    </main>
                     <Footer />
                   </>
                 </div>

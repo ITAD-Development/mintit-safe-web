@@ -42,7 +42,7 @@ function Carousel() {
           <Swiper
             id="carousel"
             modules={[Pagination]}
-            spaceBetween={50}
+            spaceBetween={0}
             slidesPerView={1}
             onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
             onSwiper={(swiper) => console.log(swiper)}
@@ -56,13 +56,25 @@ function Carousel() {
               />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/02.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/02.png"
+                alt="slide1"
+                style={{ width }}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/03.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/03.png"
+                alt="slide1"
+                style={{ width }}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/04.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/04.png"
+                alt="slide1"
+                style={{ width }}
+              />
             </SwiperSlide>
           </Swiper>
         </div>

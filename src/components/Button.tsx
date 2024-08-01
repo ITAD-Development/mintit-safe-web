@@ -24,11 +24,21 @@ export const Button: React.FC<Props> = ({
 
   return (
     <div
-      className="flex w-full h-12 px-12 bg-teal-200 rounded justify-center items-center gap-2 cursor-pointer"
+      className="flex w-full h-12 px-12 rounded justify-center items-center gap-2 cursor-pointer"
       onClick={onClick}
+      style={{
+        backgroundColor: "#A0F0E0",
+      }}
     >
       {icon}
-      <div className="text-zinc-800 text-sm font-extrabold">{title}</div>
+      <div
+        className="text-sm font-extrabold"
+        style={{
+          color: "#333",
+        }}
+      >
+        {title}
+      </div>
     </div>
   );
 };

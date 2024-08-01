@@ -8,10 +8,18 @@ const Button: FC<{
 }> = ({ title, onClick }) => {
   return (
     <div
-      className="h-10 px-3.5 py-2.5 bg-white rounded-[500px] border border-teal-300 justify-center items-center gap-2.5 inline-flex"
+      className="h-10 px-3.5 py-2.5 bg-white rounded-[500px] border justify-center items-center gap-2.5 inline-flex"
+      style={{
+        borderColor: "#53D9C1",
+      }}
       onClick={onClick}
     >
-      <div className="text-teal-400 text-base font-bold font-['SUIT'] leading-tight">
+      <div
+        className="text-base font-bold font-['SUIT'] leading-tight"
+        style={{
+          color: "#3FDBBF",
+        }}
+      >
         {title}
       </div>
     </div>
@@ -39,7 +47,12 @@ const MainFloatingLeft = () => {
           </span>
         </div>
         <div className="mb-[20px]">
-          <span className="text-cyan-500 text-6xl font-extrabold font-['SUIT']">
+          <span
+            className="text-6xl font-extrabold font-['SUIT']"
+            style={{
+              color: "#09CCBD",
+            }}
+          >
             민팃
           </span>
           <span className="text-slate-800 text-6xl font-extrabold font-['SUIT']">
@@ -47,7 +60,12 @@ const MainFloatingLeft = () => {
           </span>
         </div>
         <div className="flex flex-row gap-2 w-[300px] flex-wrap">
-          <div className="w-10 h-10 p-2.5 bg-teal-300 rounded-[500px] border border-teal-300 justify-center items-center inline-flex">
+          <div
+            className="w-10 h-10 p-2.5 rounded-[500px]  justify-center items-center inline-flex"
+            style={{
+              backgroundColor: "#53D9C1",
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
