@@ -1,15 +1,24 @@
 import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import axiosClient from "@libs/axiosClient";
 import { useLocalStorage } from "@uidotdev/usehooks";
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import Auth from "../components/Auth";
 import Loading from "../components/Loading";
+import Alert from "./Alert";
 
 export const BeforeAuth: React.FC = () => {
   const [identificationId, setIdentificationId] = useLocalStorage(
     "identificationId",
     ""
   );
+  const [alert, setAlert] = useState<
+    | {
+        message: string;
+        onCancel?: () => void;
+        onConfirm?: () => void;
+      }
+    | undefined
+  >();
 
   const serviceId = useAuthStore((state) => state.serviceId);
 
@@ -53,7 +62,16 @@ export const BeforeAuth: React.FC = () => {
   );
 
   const onCancel = useCallback(() => {
-    setIdentificationId("");
+    setAlert({
+      message: "본인 인증을 취소 하시겠습니까?",
+      onConfirm() {
+        setIdentificationId("");
+        setAlert(undefined);
+      },
+      onCancel() {
+        setAlert(undefined);
+      },
+    });
   }, [setIdentificationId]);
 
   const onConfirm = useCallback(async () => {
@@ -70,7 +88,12 @@ export const BeforeAuth: React.FC = () => {
       const memberId = response.data?.data?.memberId;
 
       if (!accessToken) {
-        alert("인증해 주세요");
+        setAlert({
+          message: "본인 인증이 아직 완료되지\n않았습니다.",
+          onConfirm() {
+            setAlert(undefined);
+          },
+        });
       } else {
         useAuthStore.getState().save({
           accessToken,
@@ -87,7 +110,7 @@ export const BeforeAuth: React.FC = () => {
       setIdentificationId("");
       console.log(e);
     }
-  }, [identificationId, serviceId, setIdentificationId]);
+  }, [identificationId, setIdentificationId]);
 
   return (
     <>
@@ -95,6 +118,14 @@ export const BeforeAuth: React.FC = () => {
         <Loading onCancel={onCancel} onConfirm={onConfirm} />
       ) : (
         <Auth onAuth={onAuth} />
+      )}
+      {alert && (
+        <Alert
+          message={alert?.message}
+          onConfirm={alert?.onConfirm}
+          onCancel={alert?.onCancel}
+          onClose={() => setAlert(undefined)}
+        />
       )}
     </>
   );
