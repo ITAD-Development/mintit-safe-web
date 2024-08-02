@@ -47,7 +47,6 @@ function Carousel() {
             boxShadow: "8px 8px 30px 0px rgba(58, 58, 60, 0.14)",
           }}
         >
-          {width}
           <Swiper
             id="carousel"
             modules={[Pagination]}

@@ -3,7 +3,7 @@ const Header = () => {
     <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] border-b-2 border-b-white">
       <div className="flex flex-1 flex-row items-center gap-5">
         <div
-          className="py-1.5 rounded-lg justify-center items-center inline-flex"
+          className="py-1.5 rounded-lg justify-center items-center inline-flex cursor-pointer"
           style={{
             width: 106,
             height: 34,
@@ -21,7 +21,7 @@ const Header = () => {
           </div>
         </div>
         <div
-          className="py-1.5 rounded-lg justify-center items-center inline-flex"
+          className="py-1.5 rounded-lg justify-center items-center inline-flex cursor-pointer"
           style={{
             width: 106,
             height: 34,
