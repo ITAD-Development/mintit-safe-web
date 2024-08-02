@@ -4,7 +4,7 @@ import React, { useMemo, useRef } from "react";
 
 export const Certificate: React.FC = () => {
   const fileUrl = useMemo(() => {
-    const url = new URLSearchParams(window.location.search).get("file-url");
+    const url = new URLSearchParams(window.location.search).get("fileUrl");
     return atob(url || "");
   }, []);
 

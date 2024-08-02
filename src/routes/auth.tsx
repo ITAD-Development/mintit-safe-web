@@ -74,7 +74,7 @@ export const Auth: React.FC = () => {
             onClick={() => {
               /// nice-url 이라는 query string 을 읽고 decode 한다.
               const niceUrl = new URLSearchParams(window.location.search).get(
-                "nice-url"
+                "niceUrl"
               );
               if (niceUrl) {
                 window.location.href = atob(niceUrl);
