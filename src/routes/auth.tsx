@@ -58,14 +58,14 @@ export const Auth: React.FC = () => {
             </div>
             <div className="flex-col justify-start items-center gap-3 flex">
               <div className="text-center text-[#333333] text-lg font-extrabold font-['SUIT'] leading-normal">
-                휴대폰 본인인증 완료
+                휴대폰 본인인증
               </div>
               <div className="text-center text-[#333333] text-sm font-normal font-['SUIT'] leading-[18px]">
-                휴대폰 본인인증을 완료하셨습니다.
+                휴대폰 본인인증이 필요합니다.
                 <br />
-                삭제할 중고폰의 민팃세이프앱에서
+                아래 [본인인증] 버튼을 눌러서
                 <br />
-                다음 단계를 확인해주세요.
+                본인인증을 진행해주세요
               </div>
             </div>
           </div>

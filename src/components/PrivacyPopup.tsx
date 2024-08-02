@@ -96,34 +96,35 @@ const PrivacyPopup: React.FC = () => {
       setSelected(response.data.data[0].termsContents[0]);
     }
 
-    async function initDev() {
-      // axios로 /privacy.html 가져오기
-      try {
-        const response = await fetch("/privacy.html");
-        const text = await response.text();
-        setSelected({
-          id: 0,
-          termsId: "0",
-          content: text,
-          executionAt: new Date().toISOString(),
-          status: "A",
-          createdAt: new Date().toISOString(),
-          createdBy: "admin",
-          updatedAt: new Date().toISOString(),
-          updatedBy: "admin",
-        });
-      } catch (error) {
-        console.log(error);
-      }
+    // async function initDev() {
+    //   // axios로 /privacy.html 가져오기
+    //   try {
+    //     const response = await fetch("/privacy.html");
+    //     const text = await response.text();
+    //     setSelected({
+    //       id: 0,
+    //       termsId: "0",
+    //       content: text,
+    //       executionAt: new Date().toISOString(),
+    //       status: "A",
+    //       createdAt: new Date().toISOString(),
+    //       createdBy: "admin",
+    //       updatedAt: new Date().toISOString(),
+    //       updatedBy: "admin",
+    //     });
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
 
-      // console.log(response.data);
-    }
+    //   // console.log(response.data);
+    // }
 
-    if (import.meta.env.DEV) {
-      initDev();
-    } else {
-      init();
-    }
+    init();
+    // if (import.meta.env.DEV) {
+    //   initDev();
+    // } else {
+    //   init();
+    // }
   }, []);
 
   return (
