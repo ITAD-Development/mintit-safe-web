@@ -29,20 +29,40 @@ const Button: FC<{
 const MainFloatingLeft = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-end pr-[350px] h-full justify-center">
+    <div className="flex flex-col items-end xl:pr-[310px] lg:pr-[50px] h-full justify-center">
       <div className="flex flex-col items-start">
         <div>
-          <span className="text-slate-800 text-[28px] font-normal font-['SUIT']">
+          <span
+            className="text-[28px] font-normal font-['SUIT']"
+            style={{
+              color: "#1F303B",
+            }}
+          >
             쉽고{" "}
           </span>
-          <span className="text-slate-800 text-[28px] font-bold font-['SUIT']">
+          <span
+            className="text-[28px] font-bold font-['SUIT']"
+            style={{
+              color: "#1F303B",
+            }}
+          >
             안전하게
           </span>
-          <span className="text-slate-800 text-[28px] font-normal font-['SUIT']">
+          <span
+            className="text-[28px] font-normal font-['SUIT']"
+            style={{
+              color: "#1F303B",
+            }}
+          >
             {" "}
             데이터{" "}
           </span>
-          <span className="text-slate-800 text-[28px] font-bold font-['SUIT']">
+          <span
+            className="text-[28px] font-bold font-['SUIT']"
+            style={{
+              color: "#1F303B",
+            }}
+          >
             완적삭제
           </span>
         </div>

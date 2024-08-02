@@ -67,10 +67,10 @@ const Layout: FC<PropsWithChildren<Props>> = ({
           height: "calc(100vh - 80px)",
         }}
       >
-        <div className="xl:flex-1 hidden xl:block">
+        <div className="lg:flex-1 hidden lg:block">
           <MainFloatingLeft />
         </div>
-        <div className="flex justify-center h-full xl:justify-start flex-1">
+        <div className="flex justify-center h-full lg:justify-start flex-1">
           <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-full">
             <div className="flex flex-col h-full overflow-hidden relative">
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -102,10 +102,17 @@ const Layout: FC<PropsWithChildren<Props>> = ({
               {isOpenCertification && <CertificationPopup />}
               {isOpenAgreement && <AgreementPopup />}
             </div>
-            <div className="relative">
-              <div className="absolute z-10 right-[-322px] bottom-[170px] hidden lg:block">
-                <img src="/images/main/fab.png" className="w-[114px]" />
-              </div>
+          </div>
+          <div className="flex-1 relative lg:block hidden">
+            <div className="flex items-end lg:pb-[192px] lg:pl-[20px] 2xl:pl-[208px] h-full">
+              <img
+                src="/images/main/fab.png"
+                style={{
+                  width: 114,
+                  height: 257,
+                  minWidth: 114,
+                }}
+              />
             </div>
           </div>
         </div>

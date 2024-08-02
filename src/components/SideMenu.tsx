@@ -42,7 +42,13 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
         }`}
       >
         <div className="flex justify-between items-center px-6 py-[10px]	 ">
-          <img src="/square-logo.svg" />
+          <img
+            src="/square-logo.svg"
+            className="rounded-md"
+            style={{
+              filter: "drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.10))",
+            }}
+          />
           <img
             className="cursor-pointer"
             src="/images/menu/close-icon.svg"

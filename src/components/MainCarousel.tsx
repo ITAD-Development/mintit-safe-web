@@ -12,6 +12,7 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 function MainCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperRef>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [data, setData] = useState<
     {
       id: number;
@@ -50,21 +51,20 @@ function MainCarousel() {
           modules={[Pagination, Autoplay]}
           slidesPerView={1}
           spaceBetween={0}
-          slidesPerGroup={1}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           loop={true}
           autoplay={{
-            delay: 5000,
+            delay: 3000,
           }}
           ref={swiperRef}
         >
           {data
-            .filter((row) => row.viewable)
+            .filter((row) => row.viewable === true)
             .map((row) => (
               <SwiperSlide key={row.id}>
                 <a target="_blank" href={row.url}>
                   <img
-                    src={row.web_banner_img_path}
+                    src={row.app_banner_img_path.replace("app.png", "main.png")}
                     alt={row.title}
                     style={{
                       borderRadius: 10,
@@ -82,17 +82,21 @@ function MainCarousel() {
                 style={{
                   background: "rgba(51, 51, 51, 0.40)",
                 }}
+                onClick={() => {
+                  if (swiperRef.current?.swiper.autoplay.running) {
+                    swiperRef.current?.swiper.autoplay.stop();
+                    setIsPlaying(false);
+                  } else {
+                    swiperRef.current?.swiper.autoplay.start();
+                    setIsPlaying(true);
+                  }
+                }}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="16"
-                  viewBox="0 0 20 16"
-                  fill="none"
-                >
-                  <path d="M7.5 4V12" stroke="white" strokeWidth="1.2" />
-                  <path d="M12.5 4V12" stroke="white" strokeWidth="1.2" />
-                </svg>
+                {isPlaying ? (
+                  <img src="/images/main/swiper/stop-icon.png" alt="stop" />
+                ) : (
+                  <img src="/images/main/swiper/start-icon.png" alt="play" />
+                )}
               </div>
               <div
                 className="justify-start items-center gap-1 flex px-1 h-5"
@@ -107,28 +111,9 @@ function MainCarousel() {
                   /
                 </div>
                 <div className="w-2 text-center text-neutral-200 text-[10px] leading-[18px]">
-                  3
+                  {data.filter((row) => row.viewable === true).length}
                 </div>
               </div>
-            </div>
-          </div>
-          <div className="grow shrink basis-0 self-stretch p-0.5 bg-zinc-800/opacity-40 rounded-sm justify-center items-center gap-2.5 flex">
-            <div
-              className="w-5 h-5 relative flex items-center justify-center"
-              style={{
-                background: "rgba(51, 51, 51, 0.40)",
-              }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-              >
-                <path d="M8 4V12" stroke="white" strokeWidth="1.2" />
-                <path d="M12 8L4 8" stroke="white" strokeWidth="1.2" />
-              </svg>
             </div>
           </div>
         </div>
