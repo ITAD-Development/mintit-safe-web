@@ -104,7 +104,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
             </div>
           </div>
           <div className="flex-1 relative lg:block hidden">
-            <div className="flex items-end lg:pb-[192px] lg:pl-[20px] 2xl:pl-[208px] h-full">
+            <div className="flex items-end lg:pb-[192px] lg:pl-[20px] xl:pl-[208px] h-full">
               <img
                 src="/images/main/fab.png"
                 style={{

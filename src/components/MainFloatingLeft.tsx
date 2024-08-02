@@ -29,7 +29,7 @@ const Button: FC<{
 const MainFloatingLeft = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-end xl:pr-[310px] lg:pr-[50px] h-full justify-center">
+    <div className="flex flex-col items-end xl:pr-[310px] lg:pr-[20px] h-full justify-center">
       <div className="flex flex-col items-start">
         <div>
           <span

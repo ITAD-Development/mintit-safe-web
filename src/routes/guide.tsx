@@ -91,7 +91,12 @@ export const Guide: FC = () => {
             해보세요
           </span>
         </div>
-        <Button title="중고폰 판매하러 가기" />
+        <Button
+          title="중고폰 판매하러 가기"
+          onClick={() => {
+            window.open("https://mintit.co.kr", "_blank");
+          }}
+        />
       </div>
     </Layout>
   );
