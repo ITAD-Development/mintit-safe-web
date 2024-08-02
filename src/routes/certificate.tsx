@@ -5,7 +5,7 @@ import React, { useMemo, useRef } from "react";
 export const Certificate: React.FC = () => {
   const fileUrl = useMemo(() => {
     const url = new URLSearchParams(window.location.search).get("file-url");
-    return decodeURIComponent(url || "");
+    return atob(url || "");
   }, []);
 
   const canvasRef = useRef(null);

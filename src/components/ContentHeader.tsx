@@ -21,7 +21,7 @@ const ContentHeader: FC<ContentHeaderProps> = ({
     <div className="flex flex-col absolute right-0 left-0 bg-white z-20">
       {enableAppDownload && (
         <div
-          className="flex justify-between items-center px-6 py-[15px] border-b	"
+          className="flex xl:hidden justify-between items-center px-6 py-[15px] border-b	"
           style={{
             backgroundColor: "#F8F8F8",
             height: APP_DOWNLOAD_HEADER_HEIGHT,

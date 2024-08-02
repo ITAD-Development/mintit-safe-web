@@ -4,7 +4,7 @@ import InstallStep from "../../components/InstallStep";
 
 export const Aos: React.FC = () => {
   return (
-    <div className="flex flex-col px-3">
+    <div className="flex flex-col px-6">
       <Button
         icon={<img src="/images/download/aos-download.svg" />}
         title="Android 버전 다운로드"

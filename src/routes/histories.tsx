@@ -1,6 +1,10 @@
 import { BeforeAuth } from "@components/BeforeAuth";
-import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
+import {
+  APP_HEADER_HEIGHT,
+  APP_TOP_MENU_HEIGHT,
+} from "@components/ContentHeader";
 import styled from "@emotion/styled";
+import { useScreenSize } from "@hooks/useScreenSize";
 import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import axiosClient from "@libs/axiosClient";
 import React, { useEffect, useState } from "react";
@@ -61,6 +65,7 @@ export const Histories: React.FC = () => {
   const memberId = useAuthStore((state) => state.memberId);
   const [data, setData] = useState<Data[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const isXL = useScreenSize();
 
   useEffect(() => {
     async function init() {
@@ -92,9 +97,8 @@ export const Histories: React.FC = () => {
   return (
     <Layout
       className="flex flex-col px-6 pb-[60px]"
-      enableAppDownload={false}
       style={{
-        paddingTop: APP_TOP_MENU_HEIGHT,
+        paddingTop: isXL ? APP_TOP_MENU_HEIGHT : APP_HEADER_HEIGHT,
       }}
     >
       <PageTitle

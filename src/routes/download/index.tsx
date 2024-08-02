@@ -1,4 +1,8 @@
-import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
+import {
+  APP_HEADER_HEIGHT,
+  APP_TOP_MENU_HEIGHT,
+} from "@components/ContentHeader";
+import { useScreenSize } from "@hooks/useScreenSize";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Layout from "../../components/Layout";
@@ -6,12 +10,12 @@ import { PageDesc } from "../../components/PageDesc";
 import { PageTitle } from "../../components/PageTitle";
 
 export const Download: React.FC = () => {
+  const isXL = useScreenSize();
   return (
     <Layout
       className="flex flex-col mb-12"
-      enableAppDownload={false}
       style={{
-        paddingTop: APP_TOP_MENU_HEIGHT,
+        paddingTop: isXL ? APP_TOP_MENU_HEIGHT : APP_HEADER_HEIGHT,
       }}
     >
       <div className="flex flex-col gap-[12px] px-6">

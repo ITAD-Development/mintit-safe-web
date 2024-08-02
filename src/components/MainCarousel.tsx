@@ -17,6 +17,7 @@ function MainCarousel() {
       id: number;
       app_banner_img_path: string;
       mobile_web_banner_img_path: string;
+      web_banner_img_path: string;
       description: string;
       title: string;
       url: string;
@@ -63,7 +64,7 @@ function MainCarousel() {
               <SwiperSlide key={row.id}>
                 <a target="_blank" href={row.url}>
                   <img
-                    src={row.app_banner_img_path}
+                    src={row.web_banner_img_path}
                     alt={row.title}
                     style={{
                       borderRadius: 10,

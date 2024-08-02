@@ -1,4 +1,8 @@
-import { APP_TOP_MENU_HEIGHT } from "@components/ContentHeader";
+import {
+  APP_HEADER_HEIGHT,
+  APP_TOP_MENU_HEIGHT,
+} from "@components/ContentHeader";
+import { useScreenSize } from "@hooks/useScreenSize";
 import { FC } from "react";
 import { Button } from "../components/Button";
 import InstallStep from "../components/InstallStep";
@@ -7,12 +11,13 @@ import { PageDesc } from "../components/PageDesc";
 import { PageTitle } from "../components/PageTitle";
 
 export const Guide: FC = () => {
+  const isXL = useScreenSize();
+
   return (
     <Layout
       className={`flex flex-col gap-[40px] px-6`}
-      enableAppDownload={false}
       style={{
-        paddingTop: APP_TOP_MENU_HEIGHT,
+        paddingTop: isXL ? APP_TOP_MENU_HEIGHT : APP_HEADER_HEIGHT,
       }}
     >
       <div className="flex flex-col gap-[12px]">

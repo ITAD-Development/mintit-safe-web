@@ -3,7 +3,7 @@ const Header = () => {
     <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] border-b-2 border-b-white">
       <div className="flex flex-1 flex-row items-center gap-5">
         <div
-          className="pl-[3px] pr-1 py-1.5 rounded-lg shadow justify-center items-center inline-flex"
+          className="py-1.5 rounded-lg justify-center items-center inline-flex"
           style={{
             width: 106,
             height: 34,
@@ -12,7 +12,7 @@ const Header = () => {
           }}
         >
           <div
-            className="text-white text-xs font-bold font-['Inter']"
+            className="text-white text-xs font-bold"
             onClick={() => {
               location.href = import.meta.env.VITE_ANDROID_DOWNLOAD_URL;
             }}
@@ -21,7 +21,7 @@ const Header = () => {
           </div>
         </div>
         <div
-          className="pl-[18px] pr-[17px] py-1.5 bg-emerald-50 rounded-lg shadow justify-center items-center inline-flex"
+          className="py-1.5 rounded-lg justify-center items-center inline-flex"
           style={{
             width: 106,
             height: 34,
@@ -30,7 +30,7 @@ const Header = () => {
           }}
         >
           <div
-            className=" text-xs font-bold font-['Inter']"
+            className=" text-xs font-bold"
             style={{
               color: "#49B59F",
             }}

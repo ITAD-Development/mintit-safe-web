@@ -19,7 +19,10 @@ function Carousel() {
     // congtentRef를 observe하여 height를 조절 화면의 높이에 맞게 조절, 브라우저의 크기 변경시에도 조절 될것
     const resizeObserver = new ResizeObserver((entries) => {
       for (const entry of entries) {
-        setWidth(entry.contentRect.width);
+        setWidth(entry.contentRect.width > 420 ? 420 : entry.contentRect.width);
+        if (swiperRef.current) {
+          swiperRef.current.swiper.update();
+        }
       }
     });
     if (contentRef.current) {
@@ -34,9 +37,9 @@ function Carousel() {
   return (
     <>
       <div
-        style={{ height: 236, width: "100%" }}
-        ref={contentRef}
+        style={{ width: "100%" }}
         className="flex items-center justify-center"
+        ref={contentRef}
       >
         <div
           style={{
@@ -44,6 +47,7 @@ function Carousel() {
             boxShadow: "8px 8px 30px 0px rgba(58, 58, 60, 0.14)",
           }}
         >
+          {width}
           <Swiper
             id="carousel"
             modules={[Pagination]}
@@ -53,34 +57,21 @@ function Carousel() {
             loop
             onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
             ref={swiperRef}
+            style={{
+              width,
+            }}
           >
             <SwiperSlide>
-              <img
-                src="/images/main/swiper/01.png"
-                alt="slide1"
-                style={{ width }}
-              />
+              <img src="/images/main/swiper/01.png" alt="slide1" />
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                src="/images/main/swiper/02.png"
-                alt="slide1"
-                style={{ width }}
-              />
+              <img src="/images/main/swiper/02.png" alt="slide1" />
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                src="/images/main/swiper/03.png"
-                alt="slide1"
-                style={{ width }}
-              />
+              <img src="/images/main/swiper/03.png" alt="slide1" />
             </SwiperSlide>
             <SwiperSlide>
-              <img
-                src="/images/main/swiper/04.png"
-                alt="slide1"
-                style={{ width }}
-              />
+              <img src="/images/main/swiper/04.png" alt="slide1" />
             </SwiperSlide>
           </Swiper>
         </div>

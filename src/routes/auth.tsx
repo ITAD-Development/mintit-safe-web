@@ -77,7 +77,7 @@ export const Auth: React.FC = () => {
                 "nice-url"
               );
               if (niceUrl) {
-                window.location.href = decodeURIComponent(niceUrl);
+                window.location.href = atob(niceUrl);
               }
             }}
           >

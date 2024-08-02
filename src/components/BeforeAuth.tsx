@@ -31,8 +31,8 @@ export const BeforeAuth: React.FC = () => {
             popupGubun: "",
             customize: "Mobile",
             gender: "",
-            successRedirectUrl: import.meta.env.VITE_SUCCESS_REDIRECT_URL,
-            failRedirectUrl: import.meta.env.VITE_FAIL_REDIRECT_URL,
+            successRedirectUrl: btoa(import.meta.env.VITE_SUCCESS_REDIRECT_URL),
+            failRedirectUrl: btoa(import.meta.env.VITE_FAIL_REDIRECT_URL),
             mobileNum: phoneNumber,
           },
           {

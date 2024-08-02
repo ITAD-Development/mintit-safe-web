@@ -1,4 +1,8 @@
-import { APP_HEADER_HEIGHT } from "@components/ContentHeader";
+import {
+  APP_HEADER_HEIGHT,
+  APP_TOP_MENU_HEIGHT,
+} from "@components/ContentHeader";
+import { useScreenSize } from "@hooks/useScreenSize";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -7,11 +11,13 @@ import Layout from "../components/Layout";
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
+  const isXL = useScreenSize();
+
   return (
     <Layout
       className={`flex flex-col px-6 relative`}
       style={{
-        paddingTop: APP_HEADER_HEIGHT + 40,
+        paddingTop: isXL ? APP_TOP_MENU_HEIGHT + 40 : APP_HEADER_HEIGHT + 40,
       }}
     >
       <div className="relative top-0 z-10">
