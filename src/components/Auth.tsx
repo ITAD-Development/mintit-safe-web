@@ -51,7 +51,13 @@ const Auth: FC<Props> = ({ onAuth }) => {
                 />
               </div>
               <div className="w-6 h-6 relative mr-2">
-                <img src="/images/histories/delete-icon.svg" />
+                <img
+                  src="/images/histories/delete-icon.svg"
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setPhoneNumber("");
+                  }}
+                />
               </div>
             </div>
           </div>

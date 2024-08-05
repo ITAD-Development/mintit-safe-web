@@ -59,7 +59,7 @@ function MainCarousel() {
           ref={swiperRef}
         >
           {data
-            .filter((row) => row.viewable === true)
+            .filter((row) => row.viewable === true && row.id !== 3)
             .map((row) => (
               <SwiperSlide key={row.id}>
                 <a target="_blank" href={row.url}>
@@ -111,7 +111,10 @@ function MainCarousel() {
                   /
                 </div>
                 <div className="w-2 text-center text-neutral-200 text-[10px] leading-[18px]">
-                  {data.filter((row) => row.viewable === true).length}
+                  {
+                    data.filter((row) => row.viewable === true && row.id !== 3)
+                      .length
+                  }
                 </div>
               </div>
             </div>

@@ -18,13 +18,15 @@ const InstallStep: FC<Props> = ({
 }) => {
   return (
     <div>
-      <div className="flex mb-[16px] items-center">
-        <div className="w-12 mr-2.5 text-teal-400 text-[11px] font-extrabold leading-[14px]">
+      <div className="flex mb-[16px] items-start">
+        <div className="w-10 mr-2.5 text-teal-400 text-[11px] font-extrabold leading-[20px] ">
           STEP {step}
         </div>
         {typeof title === "string" && (
-          <div className=" text-zinc-800 text-base font-extrabold leading-tight">
-            {title}
+          <div className="flex-1">
+            <div className=" text-zinc-800 text-base font-extrabold">
+              {title}
+            </div>
           </div>
         )}
         {typeof title !== "string" && <div className="flex-1">{title}</div>}

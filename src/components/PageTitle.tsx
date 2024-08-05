@@ -9,7 +9,16 @@ export const PageTitle: React.FC<Props> = ({ icon, title, RightComponent }) => {
   return (
     <div className="flex h-12 justify-start items-center gap-2">
       <div>{icon}</div>
-      <div className="text-left text-zinc-800 text-base font-bold leading-tight flex-1">
+      <div
+        style={{
+          color: "#333",
+          textAlign: "center",
+          fontSize: 16,
+          fontStyle: "normal",
+          fontWeight: "700",
+          lineHeight: 20,
+        }}
+      >
         {title}
       </div>
       <div>{RightComponent}</div>

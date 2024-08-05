@@ -7,7 +7,12 @@ type Props = {
 };
 export const PageDesc: React.FC<Props> = ({ icon, content }) => {
   return (
-    <div className="w-full px-4 py-3.5 bg-emerald-50 rounded-md flex-col justify-start items-start gap-2.5 inline-flex">
+    <div
+      className="w-full px-4 py-3.5 rounded-md flex-col justify-start items-start gap-2.5 inline-flex"
+      style={{
+        backgroundColor: "#E7FBF7",
+      }}
+    >
       <div className="justify-start items-center gap-1.5 flex">
         {icon}
         <div className="text-black text-xs font-normal leading-4">

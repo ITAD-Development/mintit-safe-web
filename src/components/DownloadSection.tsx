@@ -9,11 +9,7 @@ const DownloadSection: React.FC = () => {
         앱스토어/마켓에 등록이 불가하여 별도로 설치가 꼭 필요해요
       </p>
       <div className="text-center mb-6">
-        <img
-          src="path/to/logo.png"
-          alt="MINTIT Safe"
-          className="mx-auto mb-2"
-        />
+        <img src="path/to/logo.png" alt="민팃세이프" className="mx-auto mb-2" />
         <p className="text-lg font-medium">민팃 세이프</p>
       </div>
       <h3 className="text-lg font-semibold mb-2">
@@ -30,7 +26,7 @@ const DownloadSection: React.FC = () => {
           <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
             <path d="M21 10h-6V4h-2v6H3v2h10v6h2v-6h6z" />
           </svg>
-          IOS 버전 다운로드
+          iOS 버전 다운로드
         </a>
       </div>
     </div>

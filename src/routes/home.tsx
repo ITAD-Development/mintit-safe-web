@@ -35,30 +35,30 @@ export const Home: React.FC = () => {
           <div className="self-stretch px-3 justify-center items-center gap-2.5 inline-flex mb-[38px]">
             <div className="grow shrink basis-0">
               <span
-                className="text-[22px] font-bold leading-7"
+                className="text-[21px] font-bold leading-7"
                 style={{
                   color: "#05977D",
                 }}
               >
                 민팃세이프
               </span>
-              <span className="text-black text-[22px] font-normal leading-7">
+              <span className="text-black text-[21px] font-normal leading-7">
                 에서는 <br />
                 고객님들의 스마트폰이
                 <br />
               </span>
               <span
-                className="text-[22px] font-bold leading-7"
+                className="text-[21px] font-bold leading-7"
                 style={{
                   color: "#05977D",
                 }}
               >
                 안전하고 빠르게 초기화
               </span>
-              <span className="text-black text-[22px] font-bold leading-7">
+              <span className="text-black text-[21px] font-bold leading-7">
                 {" "}
               </span>
-              <span className="text-black text-[22px] font-normal leading-7">
+              <span className="text-black text-[21px] font-normal leading-7">
                 될 수<br />
                 있도록 서비스를 제공하고 있습니다.
               </span>
@@ -74,17 +74,17 @@ export const Home: React.FC = () => {
               </span>
               <br />
               <span className="text-zinc-800 text-lg font-extrabold leading-normal">
-                민팃세이프를 설치
+                민팃세이프를 설치해
               </span>
               <span className="text-zinc-800 text-lg font-bold leading-normal">
                 {" "}
-                해보세요.
+                보세요.
               </span>
             </div>
             <div
               style={{
                 backgroundColor: "#73EED8",
-                width: 135,
+                width: 150,
                 height: 8,
                 position: "absolute",
                 left: -3,
@@ -120,10 +120,10 @@ export const Home: React.FC = () => {
                 데이터 삭제를 마치셨다면 <br />
               </span>
               <span className="text-zinc-800 text-lg font-extrabold leading-normal">
-                중고폰을 판매
+                중고폰을 판매해{" "}
               </span>
               <span className="text-zinc-800 text-lg font-bold leading-normal">
-                해 보세요.
+                보세요.
               </span>
             </div>
             <div

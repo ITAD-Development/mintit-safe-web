@@ -33,7 +33,7 @@ export const Download: React.FC = () => {
 
       <div className="flex flex-col items-center mt-[40px] mb-[40px] px-6 ">
         <img
-          src="/images/download/download-mintit-safe.png"
+          src="/images/download/download-mintit-safe.svg"
           className="w-20 mb-[60px]"
         />
         <div className="text-zinc-800 text-sm font-extrabold leading-[18px] mb-4">

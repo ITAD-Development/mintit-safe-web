@@ -12,7 +12,11 @@ const TabMenu: React.FC<Props> = ({ activeIndex }) => {
         replace
         className="flex-1 flex-col items-center gap-1.5 flex"
       >
-        <div className="text-center text-black text-sm font-extrabold leading-[18px]">
+        <div
+          className={`text-center text-sm font-extrabold leading-[18px] ${
+            activeIndex === 0 ? "text-black" : "text-zinc-400"
+          }`}
+        >
           설치방법
         </div>
         {activeIndex === 0 ? (
@@ -26,7 +30,11 @@ const TabMenu: React.FC<Props> = ({ activeIndex }) => {
         replace
         className="flex-1 flex-col items-center gap-1.5 flex"
       >
-        <div className="text-center text-zinc-400 text-sm font-extrabold leading-[18px]">
+        <div
+          className={`text-center text-sm font-extrabold leading-[18px] ${
+            activeIndex === 1 ? "text-black" : "text-zinc-400"
+          }`}
+        >
           주의사항
         </div>
         {activeIndex === 1 ? (

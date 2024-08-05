@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
+  const navigate = useNavigate();
   return (
-    <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] border-b-2 border-b-white">
+    <div className="flex flex-row xl:h-20 h-0 overflow-hidden mx-[63px] xl:border-b-2 border-b-white">
       <div className="flex flex-1 flex-row items-center gap-5">
         <div
           className="py-1.5 rounded-lg justify-center items-center inline-flex cursor-pointer"
@@ -38,11 +41,16 @@ const Header = () => {
               location.href = import.meta.env.VITE_IOS_DOWNLOAD_URL;
             }}
           >
-            IOS 다운로드
+            iOS 다운로드
           </div>
         </div>
       </div>
-      <div className="flex flex-row items-center">
+      <div
+        className="flex flex-row items-center cursor-pointer"
+        onClick={() => {
+          navigate("/");
+        }}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="129"

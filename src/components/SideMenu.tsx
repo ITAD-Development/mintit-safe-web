@@ -57,7 +57,10 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
             }}
           />
         </div>
-        <nav className="mt-5 m-6 pb-[92px] border-b-2">
+        <nav
+          className="mt-5 m-6 pb-[92px]"
+          style={{ borderBottom: "1px solid #000" }}
+        >
           <ul>
             <li
               className="flex mb-6 items-center gap-1.5 cursor-pointer"
