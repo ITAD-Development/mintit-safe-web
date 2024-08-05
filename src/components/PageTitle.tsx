@@ -12,11 +12,12 @@ export const PageTitle: React.FC<Props> = ({ icon, title, RightComponent }) => {
       <div
         style={{
           color: "#333",
-          textAlign: "center",
+          textAlign: "left",
           fontSize: 16,
           fontStyle: "normal",
           fontWeight: "700",
           lineHeight: 20,
+          flex: 1,
         }}
       >
         {title}

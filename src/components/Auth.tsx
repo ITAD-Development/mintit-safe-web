@@ -86,8 +86,7 @@ const Auth: FC<Props> = ({ onAuth }) => {
                 </div>
                 <div className="flex text-zinc-800 text-xs">
                   귀하께서는 본 안내에 따른 개인정보 수집, 이용에 대하여 동의를
-                  거부할 <br />
-                  권리가 있습니다.
+                  거부할 권리가 있습니다.
                 </div>
               </div>
               <div className="h-[76px] flex-col gap-2 flex">
@@ -127,11 +126,13 @@ const Auth: FC<Props> = ({ onAuth }) => {
             </div>
             <div className="justify-start items-center gap-2 flex">
               <div className="w-5 h-5 relative">
-                <input
-                  type="checkbox"
-                  className="border-teal-100"
-                  checked={isChecked}
-                  onChange={() => {
+                <div
+                  className="w-5 h-5 rounded"
+                  style={{
+                    border: "2px solid #CFF9F1",
+                    backgroundColor: isChecked ? "#CFF9F1" : "white",
+                  }}
+                  onClick={() => {
                     setIsChecked(!isChecked);
                   }}
                 />
