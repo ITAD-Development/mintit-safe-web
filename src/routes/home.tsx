@@ -2,6 +2,7 @@ import {
   APP_HEADER_HEIGHT,
   APP_TOP_MENU_HEIGHT,
 } from "@components/ContentHeader";
+import { useIsMobile } from "@hooks/useIsMobile";
 import { useScreenSize } from "@hooks/useScreenSize";
 import React from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,7 +12,8 @@ import Layout from "../components/Layout";
 
 export const Home: React.FC = () => {
   const navigate = useNavigate();
-  const isXL = useScreenSize();
+  const { isXL, isUnder360 } = useScreenSize();
+  const isMobile = useIsMobile();
 
   return (
     <Layout
@@ -19,6 +21,7 @@ export const Home: React.FC = () => {
       style={{
         paddingTop: isXL ? APP_TOP_MENU_HEIGHT + 40 : APP_HEADER_HEIGHT + 40,
       }}
+      hasBorder={true}
     >
       <div className="relative top-0 z-10">
         <div className="flex-col justify-start items-start gap-5 inline-flex ">
@@ -35,32 +38,34 @@ export const Home: React.FC = () => {
           <div className="self-stretch px-3 justify-center items-center gap-2.5 inline-flex mb-[38px]">
             <div className="grow shrink basis-0">
               <span
-                className="text-[21px] font-bold leading-7"
+                className="text-[20px] font-bold leading-7"
                 style={{
                   color: "#05977D",
                 }}
               >
                 민팃세이프
               </span>
-              <span className="text-black text-[21px] font-normal leading-7">
+              <span className="text-black text-[20px] font-normal leading-7">
                 에서는 <br />
                 고객님들의 스마트폰이
                 <br />
               </span>
               <span
-                className="text-[21px] font-bold leading-7"
+                className="text-[20px] font-bold leading-7"
                 style={{
                   color: "#05977D",
                 }}
               >
                 안전하고 빠르게 초기화
               </span>
-              <span className="text-black text-[21px] font-bold leading-7">
+              <span className="text-black text-[20px] font-bold leading-7">
                 {" "}
               </span>
-              <span className="text-black text-[21px] font-normal leading-7">
+              <span className="text-black text-[20px] font-normal leading-7">
                 될 수<br />
-                있도록 서비스를 제공하고 있습니다.
+                있도록 서비스를 제공하고
+                {isUnder360 && <br />}
+                있습니다.
               </span>
             </div>
           </div>
@@ -93,16 +98,16 @@ export const Home: React.FC = () => {
               }}
             />
           </div>
-          <div className="mb-7">
-            <span className="text-zinc-600 text-sm font-normal leading-4.5">
-              아래의
-            </span>
-            <span className="text-zinc-600 text-sm font-bold leading-4.5">
+          <div className="mb-7 leading-4">
+            <span className="text-zinc-600 text-sm font-normal">아래의</span>
+            <span className="text-zinc-600 text-sm font-bold">
               {" "}
               다운로드 버튼을 누르면{" "}
             </span>
-            <span className="text-zinc-600 text-sm font-normal leading-4.5">
-              ’민팃세이프’를 설치할 수 있어요
+            <span className="text-zinc-600 text-sm font-normal">
+              ’민팃세이프’를
+              {isMobile && <br />}
+              설치할 수 있어요
             </span>
           </div>
           <Button
@@ -138,15 +143,15 @@ export const Home: React.FC = () => {
               }}
             />
           </div>
-          <div className="mb-7">
-            <span className="text-zinc-600 text-sm font-normal leading-4.5">
-              아래의{" "}
-            </span>
-            <span className="text-zinc-600 text-sm font-bold leading-4.5">
+          <div className="mb-7 leading-4">
+            <span className="text-zinc-600 text-sm font-normal">아래의 </span>
+            <span className="text-zinc-600 text-sm font-bold">
               민팃 바로가기 버튼
             </span>
-            <span className="text-zinc-600 text-sm font-normal leading-4.5">
-              을 누르고 판매방법을 확인해 보아요
+            <span className="text-zinc-600 text-sm font-normal">
+              을 누르고 판매방법을
+              {isMobile && <br />}
+              확인해 보아요
             </span>
           </div>
           <Button

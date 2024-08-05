@@ -14,6 +14,7 @@ type Props = {
   className?: string;
   style?: React.CSSProperties;
   enableAppDownload?: boolean;
+  hasBorder?: boolean;
 };
 
 const Layout: FC<PropsWithChildren<Props>> = ({
@@ -21,6 +22,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
   className,
   style,
   enableAppDownload = true,
+  hasBorder = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isOpenTerms = usePopupStore((state) => state.isOpenTerms);
@@ -71,7 +73,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
           <MainFloatingLeft />
         </div>
         <div className="flex justify-center h-full lg:justify-start flex-1">
-          <div className="w-full md:w-[420px] bg-white min-w-[360px] flex flex-col h-full">
+          <div className="max-w-[420px] bg-white min-w-[320px] flex flex-col h-full">
             <div className="flex flex-col h-full overflow-hidden relative">
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
               <div
@@ -88,6 +90,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                     enableAppDownload={enableAppDownload}
+                    hasBorder={hasBorder}
                   />
                   <>
                     <main className={`flex-1 ${className}`} style={style}>

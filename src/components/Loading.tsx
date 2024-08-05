@@ -23,7 +23,7 @@ const Loading: FC<Props> = ({ onCancel, onConfirm }) => {
       </div>
       <div className="flex gap-3">
         <div
-          className="flex-1 h-12 px-12 py-[15px] bg-zinc-100 rounded justify-center items-center flex"
+          className="flex-1 h-12 py-[15px] bg-zinc-100 rounded justify-center items-center flex"
           onClick={onCancel}
         >
           <div className="text-zinc-800 text-sm font-extrabold leading-[18px]">
@@ -31,7 +31,7 @@ const Loading: FC<Props> = ({ onCancel, onConfirm }) => {
           </div>
         </div>
         <div
-          className="flex-1 h-12 px-12 py-[15px] bg-teal-200 rounded justify-center items-center flex"
+          className="flex-1 h-12 py-[15px] bg-teal-200 rounded justify-center items-center flex"
           onClick={onConfirm}
         >
           <div className="text-zinc-800 text-sm font-extrabold leading-[18px]">

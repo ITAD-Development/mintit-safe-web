@@ -65,7 +65,7 @@ export const Histories: React.FC = () => {
   const memberId = useAuthStore((state) => state.memberId);
   const [data, setData] = useState<Data[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
-  const isXL = useScreenSize();
+  const { isXL } = useScreenSize();
 
   useEffect(() => {
     async function init() {

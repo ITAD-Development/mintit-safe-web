@@ -37,7 +37,7 @@ export const Aos: React.FC = () => {
             <InstallStep
               step={1}
               title={
-                <div className="w-[264px]">
+                <div>
                   <span className="text-zinc-800 text-base leading-tight">
                     민팃세이프 다운로드 완료 후, <br />
                   </span>

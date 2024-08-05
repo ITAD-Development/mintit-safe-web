@@ -32,8 +32,7 @@ export const Caution: React.FC = () => {
                 아이폰의{" "}
               </span>
               <span className="text-zinc-800 text-base font-extrabold leading-tight">
-                설정 &gt; Face ID 및 암호 &gt; <br />
-                도난당한 기기보호 설정
+                설정 &gt; Face ID 및 암호 &gt; 도난당한 기기보호 설정
               </span>
               <span className="text-zinc-800 text-base leading-tight">
                 으로 이동해 주세요

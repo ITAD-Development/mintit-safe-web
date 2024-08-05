@@ -10,7 +10,7 @@ import { PageDesc } from "../../components/PageDesc";
 import { PageTitle } from "../../components/PageTitle";
 
 export const Download: React.FC = () => {
-  const isXL = useScreenSize();
+  const { isXL } = useScreenSize();
   return (
     <Layout
       className="flex flex-col mb-12"

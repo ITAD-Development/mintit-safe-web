@@ -11,7 +11,7 @@ import { PageDesc } from "../components/PageDesc";
 import { PageTitle } from "../components/PageTitle";
 
 export const Guide: FC = () => {
-  const isXL = useScreenSize();
+  const { isXL } = useScreenSize();
 
   return (
     <Layout

@@ -1,7 +1,9 @@
+import { useScreenSize } from "@hooks/useScreenSize";
 import React from "react";
 import usePopupStore from "../stores/usePopupStore";
 
 const Footer: React.FC = () => {
+  const { isUnder360 } = useScreenSize();
   return (
     <footer className="w-full px-6 py-10 bg-neutral-100">
       <div className="flex justify-between items-center mb-[22px]">
@@ -40,8 +42,9 @@ const Footer: React.FC = () => {
             </div>
           </div>
           <div className="flex-col justify-start items-start gap-2 flex">
-            <div className="text-zinc-600 text-xs font-normal leading-none">
-              평일 9:00-18:00, 점심 12:00-13:00, 주말 및 공휴일 휴무
+            <div className="text-zinc-600 text-xs font-normal leading-[18px]">
+              평일 9:00-18:00, 점심 12:00-13:00,{isUnder360 && <br />} 주말 및
+              공휴일 휴무
             </div>
           </div>
         </div>

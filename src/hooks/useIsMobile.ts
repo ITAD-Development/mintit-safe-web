@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
 
-export const useScreenSize = () => {
-  const [isXL, setIsXL] = useState(false);
-  const [isUnder360, setIsUnder320] = useState(false);
+export const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     function handleResize() {
-      setIsXL(window.innerWidth > 1280);
-      setIsUnder320(window.innerWidth <= 360);
+      setIsMobile(window.innerWidth <= 768);
     }
 
     handleResize();
@@ -17,5 +15,5 @@ export const useScreenSize = () => {
     };
   }, []);
 
-  return { isXL, isUnder360 };
+  return isMobile;
 };
