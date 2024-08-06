@@ -115,7 +115,7 @@ export const Histories: React.FC = () => {
                 }}
               >
                 <AgreementButtonTitle>약관 동의 내역</AgreementButtonTitle>
-                <img src="/images/histories/right-icon.svg" />
+                <img src="/images/histories/right.svg" />
               </AgreementButton>
             )}
           </div>
