@@ -1,5 +1,4 @@
 import React from "react";
-import usePopupStore from "../stores/usePopupStore";
 
 export type DeletedItemProps = {
   isSelected?: boolean;
@@ -7,7 +6,6 @@ export type DeletedItemProps = {
   imei: string;
   model: string;
   date: string;
-  fileUrl: string;
   onClick?: () => void;
 };
 
@@ -17,17 +15,13 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
   imei,
   model,
   date,
-  fileUrl,
   onClick,
 }) => {
   if (!isSelected) {
     return (
       <div
         className="p-5 rounded border border-neutral-200 flex-col justify-start items-start gap-3 flex cursor-pointer"
-        onClick={() => {
-          usePopupStore.getState().openCertification(fileUrl);
-          onClick?.();
-        }}
+        onClick={onClick}
       >
         <div className="text-zinc-600 text-sm leading-[18px]">{petName}</div>
         <div className="justify-start items-start gap-5 flex">
@@ -53,10 +47,7 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
   return (
     <div
       className={`p-5 bg-teal-50 rounded border border-teal-300 flex-col justify-start items-start gap-3 flex`}
-      onClick={() => {
-        usePopupStore.getState().openCertification(fileUrl);
-        onClick?.();
-      }}
+      onClick={onClick}
     >
       <div className="text-black text-sm font-bold leading-[18px]">
         갤럭시 S24 Plus

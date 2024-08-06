@@ -2,28 +2,34 @@ import { useAuthStore } from "@hooks/zustand/useAuthStore";
 import axiosClient from "@libs/axiosClient";
 import React, { useCallback, useEffect, useState } from "react";
 import usePopupStore from "../stores/usePopupStore";
+import Alert from "./Alert";
 import { Button } from "./Button";
 import Popup from "./Popup";
 import Switch from "./Switch";
 
 const AgreementPopup: React.FC = () => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [date, setDate] = useState<string>("");
+  const [isSaved, setIsSaved] = useState<boolean>(false);
 
-  const saveAgreement = useCallback((checked: boolean) => {
+  const saveAgreement = useCallback(async (checked: boolean) => {
     const memberId = useAuthStore.getState().memberId;
-    axiosClient.post("/customer/api-safe/marketing-agreements", {
+    await axiosClient.post("/customer/api-safe/marketing-agreements", {
       memberId,
       termsId: "termsIdabc",
       agreementYn: checked ? "Y" : "N",
     });
+    setIsSaved(true);
   }, []);
 
   const fetchAgreement = useCallback(async () => {
     const memberId = useAuthStore.getState().memberId;
-    const response = axiosClient.get(
+    const response = await axiosClient.get(
       `/customer/api-safe/marketing-agreements?memberId=${memberId}&termsId=termsIdabc`
     );
-    setIsChecked(response.data.data.agreementYn === "Y");
+
+    setDate(response.data?.data?.[0].agreementAt);
+    setIsChecked(response.data?.data?.[0].agreementYn === "Y");
   }, []);
 
   useEffect(() => {
@@ -59,10 +65,21 @@ const AgreementPopup: React.FC = () => {
             />
           </div>
           <div className="self-stretch text-[#5e5e5e] text-xs font-normal font-['SUIT'] leading-none">
-            최근 변동 일시 : 2024-05-01 09:00:00
+            최근 변동 일시 : {date}
           </div>
         </div>
       </div>
+      {isSaved && (
+        <Alert
+          message="저장되었습니다."
+          onConfirm={() => {
+            setIsSaved(false);
+          }}
+          onClose={() => {
+            setIsSaved(false);
+          }}
+        />
+      )}
       <Button
         title="변경 저장"
         onClick={() => {

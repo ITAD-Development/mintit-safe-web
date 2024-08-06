@@ -1,3 +1,4 @@
+import Alert from "@components/Alert";
 import { BeforeAuth } from "@components/BeforeAuth";
 import {
   APP_HEADER_HEIGHT,
@@ -65,6 +66,7 @@ export const Histories: React.FC = () => {
   const memberId = useAuthStore((state) => state.memberId);
   const [data, setData] = useState<Data[]>([]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
   const { isXL } = useScreenSize();
 
   useEffect(() => {
@@ -131,15 +133,31 @@ export const Histories: React.FC = () => {
                 imei={row.device.imei}
                 model={row.device.deviceModel.number}
                 date={row.createdAt}
-                fileUrl={row.fileUrl}
                 isSelected={row.id === selectedId}
                 onClick={() => {
                   setSelectedId(row.id);
+                  if (row.status !== "C" || row.fileUrl.includes("null")) {
+                    setIsProcessing(true);
+                    return;
+                  }
+
+                  usePopupStore.getState().openCertification(row.fileUrl);
                 }}
               />
             );
           })}
         </div>
+      )}
+      {isProcessing && (
+        <Alert
+          message="고객님의 삭제 인증서를 생성 중입니다."
+          onConfirm={() => {
+            setIsProcessing(false);
+          }}
+          onClose={() => {
+            setIsProcessing(false);
+          }}
+        />
       )}
     </Layout>
   );

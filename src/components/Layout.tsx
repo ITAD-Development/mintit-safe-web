@@ -1,3 +1,4 @@
+import { useScreenSize } from "@hooks/useScreenSize";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import AgreementPopup from "./AgreementPopup";
@@ -34,6 +35,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
 
   const [contentHeight, setContentHeight] = useState(0);
   const congtentRef = useRef<HTMLDivElement>(null);
+  const { isUnderLG } = useScreenSize();
 
   useEffect(() => {
     // congtentRef를 observe하여 height를 조절 화면의 높이에 맞게 조절, 브라우저의 크기 변경시에도 조절 될것
@@ -55,7 +57,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
     <div
       className="flex flex-col"
       style={{
-        backgroundImage: "url('/images/bg.png')",
+        backgroundImage: isUnderLG ? undefined : "url('/images/bg.png')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
@@ -73,8 +75,14 @@ const Layout: FC<PropsWithChildren<Props>> = ({
           <MainFloatingLeft />
         </div>
         <div className="flex justify-center h-full lg:justify-start flex-1">
-          <div className="max-w-[420px] bg-white min-w-[320px] flex flex-col h-full">
-            <div className="flex flex-col h-full overflow-hidden relative">
+          <div className="w-full max-w-[420px] bg-white min-w-[320px] flex flex-col h-full">
+            <div
+              className="flex flex-col h-full overflow-hidden relative"
+              style={{
+                borderLeft: isUnderLG ? "1px solid #e7e7e7" : undefined,
+                borderRight: isUnderLG ? "1px solid #e7e7e7" : undefined,
+              }}
+            >
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
               <div
                 ref={congtentRef}
@@ -83,7 +91,9 @@ const Layout: FC<PropsWithChildren<Props>> = ({
                 }}
               >
                 <div
-                  style={{ height: contentHeight }}
+                  style={{
+                    height: contentHeight,
+                  }}
                   className="flex flex-col no-scrollbar overflow-y-scroll"
                 >
                   <ContentHeader
