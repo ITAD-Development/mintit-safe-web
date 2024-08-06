@@ -42,7 +42,6 @@ export const Certificate: React.FC = () => {
 
       const request = new Request(url, {
         method: "GET",
-        mode: "no-cors",
       });
 
       const response = await fetch(request);
@@ -94,7 +93,6 @@ export const Certificate: React.FC = () => {
 
             const request = new Request(url, {
               method: "GET",
-              mode: "no-cors",
             });
 
             const response = await fetch(request);

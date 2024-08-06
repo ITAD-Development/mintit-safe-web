@@ -41,7 +41,6 @@ const CertificationPopup: React.FC = () => {
 
       const request = new Request(url, {
         method: "GET",
-        mode: "no-cors",
       });
 
       const response = await fetch(request);
@@ -93,7 +92,6 @@ const CertificationPopup: React.FC = () => {
 
             const request = new Request(url, {
               method: "GET",
-              mode: "no-cors",
             });
 
             const response = await fetch(request);
