@@ -63,7 +63,7 @@ const MainFloatingLeft = () => {
               color: "#1F303B",
             }}
           >
-            완적삭제
+            완전삭제
           </span>
         </div>
         <div className="mb-[20px]">

@@ -62,16 +62,40 @@ function Carousel() {
             }}
           >
             <SwiperSlide>
-              <img src="/images/main/swiper/01.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/01.png"
+                alt="slide1"
+                style={{
+                  borderRadius: "8px",
+                }}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/02.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/02.png"
+                alt="slide1"
+                style={{
+                  borderRadius: "8px",
+                }}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/03.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/03.png"
+                alt="slide1"
+                style={{
+                  borderRadius: "8px",
+                }}
+              />
             </SwiperSlide>
             <SwiperSlide>
-              <img src="/images/main/swiper/04.png" alt="slide1" />
+              <img
+                src="/images/main/swiper/04.png"
+                alt="slide1"
+                style={{
+                  borderRadius: "8px",
+                }}
+              />
             </SwiperSlide>
           </Swiper>
         </div>

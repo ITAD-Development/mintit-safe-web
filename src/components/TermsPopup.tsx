@@ -107,11 +107,11 @@ const TermsPopup: React.FC = () => {
     >
       <div style={{ marginBottom: 24 }}>
         <DropDown
-          selected={selected?.executionAt.toString() || ""}
+          selected={selected?.executionAt.toString().substring(0, 10) || ""}
           options={
             contents?.map((row) => {
               return {
-                label: row.executionAt.toString(),
+                label: row.executionAt.toString().substring(0, 10),
                 value: row.id.toString(),
               };
             }) || []

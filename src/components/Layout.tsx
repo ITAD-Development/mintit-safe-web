@@ -60,7 +60,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
         backgroundImage: isUnderLG ? undefined : "url('/images/bg.png')",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundSize: "cover",
+        // backgroundSize: "cover",
         height: "100dvh",
       }}
     >

@@ -41,7 +41,7 @@ export const Success: React.FC = () => {
       </div>
       <div className="w-[360px] h-12 px-6 py-3 backdrop-blur-xl justify-start items-center gap-3 inline-flex">
         <div className="grow shrink basis-0 flex-col justify-center items-start gap-3 inline-flex">
-          <div className="text-center text-[#333333] text-base font-semibold font-['Pretendard'] leading-tight">
+          <div className="text-center text-[#333333] text-base font-semibold leading-tight">
             휴대폰 본인인증
           </div>
         </div>

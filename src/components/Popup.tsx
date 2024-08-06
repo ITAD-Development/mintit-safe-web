@@ -21,7 +21,12 @@ const Popup: React.FC<Props> = ({ title, children, onClose }) => {
         {children}
       </div>
       <div className="absolute top-0 left-0 right-0 h-16 py-2 flex z-2">
-        <div className="h-12 px-6 py-3 backdrop-blur-xl justify-start items-center gap-3 flex">
+        <div className="h-12 px-6 py-3 backdrop-blur-xl justify-start items-center gap-3 flex w-full">
+          <div className="flex-col justify-center items-start gap-3 flex flex-1">
+            <div className="text-center text-zinc-800 text-base font-semibold leading-tight">
+              {title}
+            </div>
+          </div>
           <div className="w-6 h-6 relative cursor-pointer" onClick={onClose}>
             <svg
               width="24"
@@ -34,12 +39,6 @@ const Popup: React.FC<Props> = ({ title, children, onClose }) => {
               <path d="M18 6L6 18" stroke="#333333" strokeLinecap="round" />
             </svg>
           </div>
-          <div className="grow shrink basis-0 flex-col justify-center items-start gap-3 flex">
-            <div className="text-center text-zinc-800 text-base font-semibold leading-tight">
-              {title}
-            </div>
-          </div>
-          <div className="w-6 h-6 py-1.5 opacity-0 flex" />
         </div>
       </div>
     </div>
