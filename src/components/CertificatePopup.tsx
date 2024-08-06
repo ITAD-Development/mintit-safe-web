@@ -1,5 +1,5 @@
 import { usePdf } from "@mikecousins/react-pdf";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import usePopupStore from "../stores/usePopupStore";
 import { Button } from "./Button";
 import Popup from "./Popup";
@@ -7,6 +7,7 @@ import Popup from "./Popup";
 const CertificationPopup: React.FC = () => {
   const fileUrl = usePopupStore((state) => state.fileUrl);
   const [width, setWidth] = useState(window.innerWidth);
+  const [awsObjectUrl, setAwsObjectUrl] = useState("");
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -27,18 +28,29 @@ const CertificationPopup: React.FC = () => {
 
   const canvasRef = useRef(null);
 
-  const awsObjectUrl = useMemo(() => {
-    if (!fileUrl) {
-      return "";
+  useEffect(() => {
+    async function init() {
+      if (!fileUrl) {
+        return;
+      }
+
+      let url = fileUrl;
+      if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
+        url = fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
+      }
+
+      const request = new Request(url, {
+        method: "GET",
+        mode: "no-cors",
+      });
+
+      const response = await fetch(request);
+      const blob = await response.blob();
+      setAwsObjectUrl(URL.createObjectURL(blob));
     }
 
-    if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
-      return fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
-    }
-
-    return fileUrl;
+    init();
   }, [fileUrl]);
-
   usePdf({
     file: awsObjectUrl,
     page: 1,
@@ -69,20 +81,29 @@ const CertificationPopup: React.FC = () => {
       <div className="pt-[60px]">
         <Button
           title="삭제 인증서 다운로드"
-          onClick={() => {
+          onClick={async () => {
             if (!fileUrl) {
               return;
             }
-            // create Blob from fileUrl
-            fetch(awsObjectUrl)
-              .then((res) => res.blob())
-              .then((blob) => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "삭제인증서.pdf";
-                a.click();
-              });
+
+            let url = fileUrl;
+            if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
+              url = fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
+            }
+
+            const request = new Request(url, {
+              method: "GET",
+              mode: "no-cors",
+            });
+
+            const response = await fetch(request);
+            const blob = await response.blob();
+
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.download = "삭제인증서.pdf";
+            a.click();
           }}
         />
       </div>

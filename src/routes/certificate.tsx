@@ -7,6 +7,7 @@ export const Certificate: React.FC = () => {
     const url = new URLSearchParams(window.location.search).get("fileUrl");
     return atob(url || "");
   }, []);
+  const [awsObjectUrl, setAwsObjectUrl] = useState("");
   const [width, setWidth] = useState(window.innerWidth);
 
   const contentRef = useRef<HTMLDivElement>(null);
@@ -28,16 +29,28 @@ export const Certificate: React.FC = () => {
     };
   }, []);
 
-  const awsObjectUrl = useMemo(() => {
-    if (!fileUrl) {
-      return "";
+  useEffect(() => {
+    async function init() {
+      if (!fileUrl) {
+        return;
+      }
+
+      let url = fileUrl;
+      if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
+        url = fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
+      }
+
+      const request = new Request(url, {
+        method: "GET",
+        mode: "no-cors",
+      });
+
+      const response = await fetch(request);
+      const blob = await response.blob();
+      setAwsObjectUrl(URL.createObjectURL(blob));
     }
 
-    if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
-      return fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
-    }
-
-    return fileUrl;
+    init();
   }, [fileUrl]);
 
   usePdf({
@@ -45,6 +58,7 @@ export const Certificate: React.FC = () => {
     page: 1,
     canvasRef,
     scale: 1,
+    withCredentials: false,
   });
 
   const certWidth = width * 1.2;
@@ -72,20 +86,25 @@ export const Certificate: React.FC = () => {
       <div className="pt-[60px]">
         <Button
           title="삭제 인증서 다운로드"
-          onClick={() => {
-            if (!fileUrl) {
-              return;
+          onClick={async () => {
+            let url = fileUrl;
+            if (Boolean(import.meta.env.VITE_USE_PROXY) === true) {
+              url = fileUrl.replace(import.meta.env.VITE_STATIC_URL, "");
             }
-            // create Blob from fileUrl
-            fetch(awsObjectUrl)
-              .then((res) => res.blob())
-              .then((blob) => {
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement("a");
-                a.href = url;
-                a.download = "삭제인증서.pdf";
-                a.click();
-              });
+
+            const request = new Request(url, {
+              method: "GET",
+              mode: "no-cors",
+            });
+
+            const response = await fetch(request);
+            const blob = await response.blob();
+
+            const downloadUrl = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = downloadUrl;
+            a.download = "삭제인증서.pdf";
+            a.click();
           }}
         />
       </div>
