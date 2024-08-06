@@ -53,16 +53,19 @@ export const Certificate: React.FC = () => {
     <div
       style={{
         padding: 24,
+        display: "flex",
+        flexDirection: "column",
+        height: "100dvh",
       }}
     >
-      <div className="flex flex-1 overflow-hidden" ref={contentRef}>
+      <div className="flex flex-1 overflow-x-hidden relative" ref={contentRef}>
         <canvas
           ref={canvasRef}
           style={{
             position: "absolute",
             width: certWidth,
             height: certWidth * 1.414,
-            left: -20,
+            left: -80,
           }}
         />
       </div>
