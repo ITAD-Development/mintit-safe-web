@@ -1,4 +1,4 @@
-import axios from "axios";
+import axiosClient from "@libs/axiosClient";
 import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -29,12 +29,9 @@ function MainCarousel() {
   useEffect(() => {
     const fetch = async () => {
       try {
-        const response = await axios.get("/rest/api/evt/list?is_valid=true", {
-          baseURL:
-            Boolean(import.meta.env.VITE_USE_PROXY) !== true
-              ? import.meta.env.VITE_MINTIT_API_URL
-              : undefined,
-        });
+        const response = await axiosClient.get(
+          "/legacy/api-safe/event/list?is_valid=true"
+        );
         setData(response.data.dataset);
       } catch (error) {
         console.error(error);

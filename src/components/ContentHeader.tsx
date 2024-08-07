@@ -1,4 +1,5 @@
 import { useScreenSize } from "@hooks/useScreenSize";
+import usePopupStore from "@stores/usePopupStore";
 import { FC } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -77,6 +78,7 @@ const ContentHeader: FC<ContentHeaderProps> = ({
           onClick={() => {
             navigate("/");
             setIsOpen(false);
+            usePopupStore.getState().closeAll();
           }}
         />
         <img

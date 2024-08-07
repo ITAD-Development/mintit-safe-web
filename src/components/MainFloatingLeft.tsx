@@ -1,3 +1,4 @@
+import usePopupStore from "@stores/usePopupStore";
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import MainCarousel from "./MainCarousel";
@@ -29,8 +30,11 @@ const Button: FC<{
 const MainFloatingLeft = () => {
   const navigate = useNavigate();
   return (
-    <div className="flex flex-col items-end xl:pr-[310px] lg:pr-[20px] h-full justify-center">
-      <div className="flex flex-col items-start">
+    <div className="flex flex-col items-end xl:pr-[310px] pr-6 h-full justify-center">
+      <div
+        className="flex flex-col items-start justify-start"
+        style={{ width: 320 }}
+      >
         <div>
           <span
             className="text-[28px] font-normal font-['SUIT']"
@@ -55,7 +59,6 @@ const MainFloatingLeft = () => {
             }}
           >
             {" "}
-            데이터{" "}
           </span>
           <span
             className="text-[28px] font-bold font-['SUIT']"
@@ -87,6 +90,7 @@ const MainFloatingLeft = () => {
             }}
             onClick={() => {
               navigate("/");
+              usePopupStore.getState().closeAll();
             }}
           >
             <svg
@@ -112,6 +116,7 @@ const MainFloatingLeft = () => {
             title="민팃세이프 소개"
             onClick={() => {
               navigate("/");
+              usePopupStore.getState().closeAll();
             }}
           />
           <Button
@@ -134,7 +139,7 @@ const MainFloatingLeft = () => {
           />
         </div>
       </div>
-      <div className="pr-[15px] mt-[41px]">
+      <div className="mt-[41px]">
         <MainCarousel />
       </div>
     </div>

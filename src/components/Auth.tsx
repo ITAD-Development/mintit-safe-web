@@ -135,7 +135,11 @@ const Auth: FC<Props> = ({ onAuth }) => {
                   onClick={() => {
                     setIsChecked(!isChecked);
                   }}
-                />
+                >
+                  {isChecked && (
+                    <img src="/images/histories/checked-icon.png" />
+                  )}
+                </div>
               </div>
               <div>
                 <span className="text-zinc-800 text-sm font-extrabold leading-[18px]">

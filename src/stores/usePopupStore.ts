@@ -17,6 +17,7 @@ type PopupStoreActions = {
   closeCertification: () => void;
   openAgreement: () => void;
   closeAgreement: () => void;
+  closeAll: () => void;
 };
 
 const usePopupStore = create<PopupStoreParams & PopupStoreActions>((set) => ({
@@ -35,5 +36,12 @@ const usePopupStore = create<PopupStoreParams & PopupStoreActions>((set) => ({
     set({ isOpenCertification: false, fileUrl: undefined }),
   openAgreement: () => set({ isOpenAgreement: true }),
   closeAgreement: () => set({ isOpenAgreement: false }),
+  closeAll: () =>
+    set({
+      isOpenTerms: false,
+      isOpenPrivacy: false,
+      isOpenCertification: false,
+      isOpenAgreement: false,
+    }),
 }));
 export default usePopupStore;

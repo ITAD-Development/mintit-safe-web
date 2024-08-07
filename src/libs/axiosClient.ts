@@ -166,7 +166,7 @@ axiosClient.interceptors.response.use(
     // 2xx 범위에 있는 상태 코드는 이 함수를 트리거 합니다.
     // 응답 데이터가 있는 작업 수행
 
-    if (response.data.code !== "CM0000") {
+    if (response.data.code !== "CM0000" && response.data.code !== "APP_0000") {
       SystemToast.error(response.data.message);
       throw new AxiosError(
         response.data.message,

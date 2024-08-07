@@ -28,6 +28,7 @@
       "@routes/*": ["src/routes/*"], // @routes 별칭 설정
       "@libs/*": ["src/libs/*"], // @libs 별칭 설정
       "@hooks/*": ["src/hooks/*"], // @hooks 별칭 설정
+      "@stores/*": ["src/stores/*"], // @stores 별칭 설정
       "@constants/*": ["src/constants/*"], // @constants 별칭 설정
       "@data/*": ["src/data/*"], // @data 별칭 설정
       "@_generated/*": ["src/_generated/*"], // @_generated 별칭 설정

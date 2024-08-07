@@ -51,6 +51,7 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
             onClick={() => {
               navigate("/");
               setIsOpen(false);
+              usePopupStore.getState().closeAll();
             }}
           />
           <img
@@ -71,10 +72,11 @@ const SideMenu: FC<SideProps> = ({ isOpen, setIsOpen }) => {
               onClick={() => {
                 navigate("/");
                 setIsOpen(false);
+                usePopupStore.getState().closeAll();
               }}
             >
               <IconContainer className="flex ">
-                <img src="/images/menu/home-icon.svg" />
+                <img src="/images/menu/home-icon.png" />
               </IconContainer>
               <MenuTitle>민팃세이프 소개</MenuTitle>
             </li>

@@ -1,5 +1,6 @@
 import { useScreenSize } from "@hooks/useScreenSize";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
+import { useLocation } from "react-router-dom";
 import usePopupStore from "../stores/usePopupStore";
 import AgreementPopup from "./AgreementPopup";
 import CertificationPopup from "./CertificatePopup";
@@ -25,6 +26,7 @@ const Layout: FC<PropsWithChildren<Props>> = ({
   enableAppDownload = true,
   hasBorder = false,
 }) => {
+  const { pathname } = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const isOpenTerms = usePopupStore((state) => state.isOpenTerms);
   const isOpenPrivacy = usePopupStore((state) => state.isOpenPrivacy);
@@ -53,15 +55,20 @@ const Layout: FC<PropsWithChildren<Props>> = ({
     };
   }, []);
 
+  useEffect(() => {
+    usePopupStore.getState().closeAll();
+  }, [pathname]);
+
   return (
     <div
       className="flex flex-col"
       style={{
         backgroundImage: isUnderLG ? undefined : "url('/images/bg.png')",
         backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        // backgroundSize: "cover",
+        backgroundPositionX: "center",
+        backgroundPositionY: "center",
         height: "100dvh",
+        backgroundColor: "rgba(214,251,233)",
       }}
     >
       <Header />
@@ -75,13 +82,15 @@ const Layout: FC<PropsWithChildren<Props>> = ({
           <MainFloatingLeft />
         </div>
         <div className="flex justify-center h-full lg:justify-start flex-1">
-          <div className="w-full max-w-[420px] bg-white min-w-[320px] flex flex-col h-full">
+          <div className="w-full max-w-[420px] bg-white min-w-[320px] md:min-w-[420px] flex flex-col h-full">
             <div
               className="flex flex-col h-full overflow-hidden relative"
-              style={{
-                borderLeft: isUnderLG ? "1px solid #e7e7e7" : undefined,
-                borderRight: isUnderLG ? "1px solid #e7e7e7" : undefined,
-              }}
+              style={
+                {
+                  // borderLeft: isUnderLG ? "1px solid #e7e7e7" : undefined,
+                  // borderRight: isUnderLG ? "1px solid #e7e7e7" : undefined,
+                }
+              }
             >
               <SideMenu isOpen={isOpen} setIsOpen={setIsOpen} />
               <div
@@ -116,8 +125,8 @@ const Layout: FC<PropsWithChildren<Props>> = ({
               {isOpenAgreement && <AgreementPopup />}
             </div>
           </div>
-          <div className="flex-1 relative lg:block hidden">
-            <div className="flex items-end lg:pb-[192px] lg:pl-[20px] xl:pl-[208px] h-full">
+          <div className="2xl:w-[300px] relative lg:block hidden">
+            <div className="flex items-end justify-end pl-6 pb-[192px] h-full">
               <img
                 src="/images/main/fab.png"
                 style={{

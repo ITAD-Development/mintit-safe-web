@@ -3,7 +3,7 @@ import React from "react";
 const DownloadSection: React.FC = () => {
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">MINTIT safe Download</h2>
+      <h2 className="text-2xl font-bold mb-4">민팃세이프 Download</h2>
       <p className="text-gray-700 mb-6">
         민팃 세이프는 휴대기기 성능진단과 데이터 삭제를 위한 프로그램으로
         앱스토어/마켓에 등록이 불가하여 별도로 설치가 꼭 필요해요
