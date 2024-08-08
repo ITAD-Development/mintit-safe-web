@@ -73,7 +73,7 @@ const CertificationPopup: React.FC = () => {
         usePopupStore.getState().closeCertification();
       }}
     >
-      <div className="flex flex-1 overflow-hidden" ref={contentRef}>
+      <div className="flex flex-1 overflow-hidden relative" ref={contentRef}>
         <canvas
           ref={canvasRef}
           style={{

@@ -53,7 +53,7 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
       onClick={onClick}
     >
       <div className="text-black text-sm font-bold leading-[18px]">
-        갤럭시 S24 Plus
+        {petName}
       </div>
       <div className="justify-start items-start gap-5 flex">
         <div className="text-black text-sm font-bold leading-[18px]">

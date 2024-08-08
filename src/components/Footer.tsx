@@ -24,7 +24,7 @@ const Footer: React.FC = () => {
         <div className="self-stretch flex-col justify-start items-start gap-[22px] flex">
           <div className="justify-start items-center gap-2 inline-flex">
             <div
-              className="text-zinc-800 text-sm font-bold leading-[18px] cursor-pointer"
+              className="text-zinc-800 text-sm  leading-[18px] cursor-pointer"
               onClick={() => {
                 usePopupStore.getState().openTerms();
               }}
