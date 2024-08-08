@@ -33,7 +33,7 @@ export const Download: React.FC = () => {
 
       <div className="flex flex-col items-center mt-[40px] mb-[40px] px-6 ">
         <img
-          src="/images/download/download-mintit-safe.svg"
+          src="/images/download/download-mintit-safe.png"
           className="w-20 mb-[60px]"
         />
         <div className="text-zinc-800 text-sm font-extrabold leading-[18px] mb-4">
@@ -43,14 +43,12 @@ export const Download: React.FC = () => {
           설치해 주세요!
         </div>
         <div className="">
-          <span className="text-zinc-500 text-sm font-normal leading-[18px]">
-            아래의
-          </span>
-          <span className="text-zinc-500 text-sm font-extrabold leading-[18px]">
+          <span className="text-zinc-500 text-sm  font-normal">아래의</span>
+          <span className="text-zinc-500 text-sm  font-extrabold">
             {" "}
             다운로드 버튼을 누르면 <br />
           </span>
-          <span className="text-zinc-500 text-sm font-normal leading-[18px]">
+          <span className="text-zinc-500 text-sm  font-normal">
             ’민팃세이프’를 설치할 수 있어요
           </span>
         </div>

@@ -84,13 +84,13 @@ function MainCarousel() {
             ))}
         </Swiper>
         <div className="flex justify-center absolute z-10 bottom-3 right-3">
-          <div className="self-stretch pl-0.5 pr-1 py-0.5 bg-zinc-800 opacity-40 rounded-sm flex-col justify-center items-center gap-2.5 inline-flex">
-            <div
-              className="justify-start items-center inline-flex"
-              style={{
-                background: "rgba(51, 51, 51, 0.40)",
-              }}
-            >
+          <div
+            className="self-stretch pl-0.5 pr-1 py-0.5 rounded-sm flex-col justify-center items-center gap-2.5 inline-flex"
+            style={{
+              background: "rgba(51, 51, 51, 0.40)",
+            }}
+          >
+            <div className="justify-start items-center inline-flex">
               <div
                 className="flex w-5 h-5 relative items-center justify-center"
                 onClick={() => {
@@ -109,12 +109,7 @@ function MainCarousel() {
                   <img src="/images/main/swiper/start-icon.png" alt="play" />
                 )}
               </div>
-              <div
-                className="justify-start items-center gap-1 flex px-1 h-5"
-                style={{
-                  background: "rgba(51, 51, 51, 0.40)",
-                }}
-              >
+              <div className="justify-start items-center gap-1 flex px-1 h-5">
                 <div className="w-2 text-center text-white text-[10px] font-extrabold leading-[18px]">
                   {activeIndex + 1}
                 </div>

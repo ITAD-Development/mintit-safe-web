@@ -33,7 +33,7 @@ export const Guide: FC = () => {
         />
       </div>
       <div className="text-black text-xl font-extrabold leading-relaxed mb-7 mt-10">
-        민팃세이프 설치 안내
+        민팃세이프 사용 안내
       </div>
       <div className="flex flex-col gap-10">
         <InstallStep
