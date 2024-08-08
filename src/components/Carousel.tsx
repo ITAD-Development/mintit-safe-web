@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import { useEffect, useRef, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,6 +8,14 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 // customPaging: () => (
 //   <div className="w-[6px] h-[6px] bg-teal-300 rounded-[6px]" />
 // ),
+
+const Slide = styled(SwiperSlide)`
+  border-radius: 8px;
+`;
+
+const Image = styled.img`
+  border-radius: 8px;
+`;
 
 function Carousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -59,44 +68,21 @@ function Carousel() {
             ref={swiperRef}
             style={{
               width,
+              borderRadius: "8px",
             }}
           >
-            <SwiperSlide>
-              <img
-                src="/images/main/swiper/01.png"
-                alt="slide1"
-                style={{
-                  borderRadius: "8px",
-                }}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src="/images/main/swiper/02.png"
-                alt="slide1"
-                style={{
-                  borderRadius: "8px",
-                }}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src="/images/main/swiper/03.png"
-                alt="slide1"
-                style={{
-                  borderRadius: "8px",
-                }}
-              />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img
-                src="/images/main/swiper/04.png"
-                alt="slide1"
-                style={{
-                  borderRadius: "8px",
-                }}
-              />
-            </SwiperSlide>
+            <Slide>
+              <Image src="/images/main/swiper/01.png" alt="slide1" />
+            </Slide>
+            <Slide>
+              <Image src="/images/main/swiper/02.png" alt="slide1" />
+            </Slide>
+            <Slide>
+              <Image src="/images/main/swiper/03.png" alt="slide1" />
+            </Slide>
+            <Slide>
+              <Image src="/images/main/swiper/04.png" alt="slide1" />
+            </Slide>
           </Swiper>
         </div>
       </div>

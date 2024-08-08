@@ -37,17 +37,20 @@ export const Download: React.FC = () => {
           className="w-20 mb-[60px]"
         />
         <div className="text-zinc-800 text-sm font-extrabold leading-[18px] mb-4">
-          삭제할 중고폰에 설치해 주세요!
+          <span style={{ backgroundColor: "rgba(203, 246, 237)" }}>
+            삭제할 중고폰에
+          </span>{" "}
+          설치해 주세요!
         </div>
         <div className="">
-          <span className="text-zinc-500 text-sm font-normal font-['SUIT'] leading-[18px]">
+          <span className="text-zinc-500 text-sm font-normal leading-[18px]">
             아래의
           </span>
-          <span className="text-zinc-500 text-sm font-extrabold font-['SUIT'] leading-[18px]">
+          <span className="text-zinc-500 text-sm font-extrabold leading-[18px]">
             {" "}
             다운로드 버튼을 누르면 <br />
           </span>
-          <span className="text-zinc-500 text-sm font-normal font-['SUIT'] leading-[18px]">
+          <span className="text-zinc-500 text-sm font-normal leading-[18px]">
             ’민팃세이프’를 설치할 수 있어요
           </span>
         </div>

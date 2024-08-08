@@ -7,6 +7,7 @@ export type DeletedItemProps = {
   model: string;
   date: string;
   onClick?: () => void;
+  onMouseDown?: () => void;
 };
 
 const DeletedItem: React.FC<DeletedItemProps> = ({
@@ -16,12 +17,14 @@ const DeletedItem: React.FC<DeletedItemProps> = ({
   model,
   date,
   onClick,
+  onMouseDown,
 }) => {
   if (!isSelected) {
     return (
       <div
         className="p-5 rounded border border-neutral-200 flex-col justify-start items-start gap-3 flex cursor-pointer"
         onClick={onClick}
+        onMouseDown={onMouseDown}
       >
         <div className="text-zinc-600 text-sm leading-[18px]">{petName}</div>
         <div className="justify-start items-start gap-5 flex">

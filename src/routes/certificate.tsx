@@ -52,15 +52,20 @@ export const Certificate: React.FC = () => {
     init();
   }, [fileUrl]);
 
-  usePdf({
+  const values = usePdf({
     file: awsObjectUrl,
     page: 1,
     canvasRef,
-    scale: 1,
+    scale: 2,
     withCredentials: false,
   });
 
-  const certWidth = width * 1.2;
+  const pdfWidth = values.pdfPage?.view?.[2] || 1;
+  const pdfHeight = values.pdfPage?.view?.[3] || 1;
+
+  const orgWidth = width;
+  const certWidth = orgWidth * 1.4;
+  const certHeight = certWidth * (pdfHeight / pdfWidth);
 
   return (
     <div
@@ -77,8 +82,8 @@ export const Certificate: React.FC = () => {
           style={{
             position: "absolute",
             width: certWidth,
-            height: certWidth * 1.414,
-            left: -80,
+            height: certHeight,
+            left: -(certWidth - orgWidth) / 2,
           }}
         />
       </div>

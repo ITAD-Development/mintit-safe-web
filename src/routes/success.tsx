@@ -65,7 +65,8 @@ export const Success: React.FC = () => {
                 <br />
                 삭제할 중고폰의 민팃세이프앱에서
                 <br />
-                다음 단계를 확인해주세요.
+                <span className="font-bold">[인증 확인 하기]</span> 버튼을
+                눌러주세요.
               </div>
             </div>
           </div>

@@ -134,8 +134,10 @@ export const Histories: React.FC = () => {
                 model={row.device.deviceModel.number}
                 date={row.createdAt}
                 isSelected={row.id === selectedId}
-                onClick={() => {
+                onMouseDown={() => {
                   setSelectedId(row.id);
+                }}
+                onClick={() => {
                   if (row.status !== "C" || row.fileUrl.includes("null")) {
                     setIsProcessing(true);
                     return;

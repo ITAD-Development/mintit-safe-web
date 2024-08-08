@@ -1,3 +1,4 @@
+import styled from "@emotion/styled";
 import axiosClient from "@libs/axiosClient";
 import { useEffect, useRef, useState } from "react";
 import "swiper/css";
@@ -8,6 +9,14 @@ import { Swiper, SwiperRef, SwiperSlide } from "swiper/react";
 // customPaging: () => (
 //   <div className="w-[6px] h-[6px] bg-teal-300 rounded-[6px]" />
 // ),
+
+const Slide = styled(SwiperSlide)`
+  border-radius: 8px;
+`;
+
+const Image = styled.img`
+  border-radius: 8px;
+`;
 
 function MainCarousel() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -54,11 +63,14 @@ function MainCarousel() {
             delay: 3000,
           }}
           ref={swiperRef}
+          style={{
+            borderRadius: 10,
+          }}
         >
           {data
             .filter((row) => row.viewable === true && row.id !== 3)
             .map((row) => (
-              <SwiperSlide key={row.id}>
+              <Slide key={row.id}>
                 <a target="_blank" href={row.url}>
                   <img
                     src={row.app_banner_img_path.replace("app.png", "main.png")}
@@ -68,17 +80,19 @@ function MainCarousel() {
                     }}
                   />
                 </a>
-              </SwiperSlide>
+              </Slide>
             ))}
         </Swiper>
         <div className="flex justify-center absolute z-10 bottom-3 right-3">
-          <div className="self-stretch pl-0.5 pr-1 py-0.5 bg-zinc-800/opacity-40 rounded-sm flex-col justify-center items-center gap-2.5 inline-flex">
-            <div className="justify-start items-center inline-flex">
+          <div className="self-stretch pl-0.5 pr-1 py-0.5 bg-zinc-800 opacity-40 rounded-sm flex-col justify-center items-center gap-2.5 inline-flex">
+            <div
+              className="justify-start items-center inline-flex"
+              style={{
+                background: "rgba(51, 51, 51, 0.40)",
+              }}
+            >
               <div
                 className="flex w-5 h-5 relative items-center justify-center"
-                style={{
-                  background: "rgba(51, 51, 51, 0.40)",
-                }}
                 onClick={() => {
                   if (swiperRef.current?.swiper.autoplay.running) {
                     swiperRef.current?.swiper.autoplay.stop();
